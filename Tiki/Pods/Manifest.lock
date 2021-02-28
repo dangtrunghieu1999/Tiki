@@ -1,0 +1,52 @@
+PODS:
+  - Alamofire (4.8.1)
+  - IQKeyboardManagerSwift (6.5.6)
+  - JGProgressHUD (2.0.3)
+  - KeychainAccess (4.2.1)
+  - NVActivityIndicatorView (5.1.1):
+    - NVActivityIndicatorView/Base (= 5.1.1)
+  - NVActivityIndicatorView/Base (5.1.1)
+  - SDWebImage (4.4.6):
+    - SDWebImage/Core (= 4.4.6)
+  - SDWebImage/Core (4.4.6)
+  - SnapKit (4.2.0)
+  - SwiftyJSON (4.3.0)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire (= 4.8.1)
+  - IQKeyboardManagerSwift
+  - JGProgressHUD (= 2.0.3)
+  - KeychainAccess (= 4.2.1)
+  - NVActivityIndicatorView
+  - SDWebImage (= 4.4.6)
+  - SnapKit (~> 4.2.0)
+  - SwiftyJSON (~> 4.0)
+  - Toast-Swift (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - JGProgressHUD
+    - KeychainAccess
+    - NVActivityIndicatorView
+    - SDWebImage
+    - SnapKit
+    - SwiftyJSON
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  JGProgressHUD: 12b20a8f4ffe05258f8635c1ab92816e451f904d
+  KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
+  NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: f064774eb06e09bbb839eb5468d078a6550effea
+
+COCOAPODS: 1.10.0
