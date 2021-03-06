@@ -11,6 +11,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("test")
+        
         navigationItem.title = "HomView"
         view.backgroundColor = .white
     }
