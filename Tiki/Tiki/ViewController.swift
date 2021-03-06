@@ -13,6 +13,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "HomView"
         view.backgroundColor = .white
+        print("Test2")
     }
 
 
