@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18D42" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ProductCart" representedClassName="ProductCart" syncable="YES" codeGenerationType="class">
+        <attribute name="cartDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="colors" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="productName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="selectedColor" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="selectedSize" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sizes" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="shop" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ShopCart" inverseName="products" inverseEntity="ShopCart" syncable="YES"/>
+    </entity>
+    <entity name="ShopCart" representedClassName="ShopCart" parentEntity="ProductCart" syncable="YES" codeGenerationType="class">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="shopDateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="shopId" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="shopName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="products" toMany="YES" deletionRule="Cascade" destinationEntity="ProductCart" inverseName="shop" inverseEntity="ProductCart" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ProductCart" positionX="-450.4453125" positionY="72.703125" width="128" height="210"/>
+        <element name="ShopCart" positionX="-48.90234375" positionY="-38.64453125" width="128" height="118"/>
+    </elements>
+</model>

@@ -11,4 +11,10 @@ target 'Tiki' do
     pod 'JGProgressHUD', '2.0.3'
     pod 'Toast-Swift', '~> 5.0.1'
     pod 'KeychainAccess', '4.2.1'
+    pod 'Localize-Swift', '~> 3.2'
+    pod 'Shimmer', '~> 1.0.2'
+    pod 'IGListKit', '~> 3.4.0'
+    pod 'GooglePlaces'
+    pod 'HCSStarRatingView', '~> 1.5'
+
 end
