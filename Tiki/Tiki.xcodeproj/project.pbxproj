@@ -67,9 +67,6 @@
 		CFA5BB4A25EB89BE00AC20D1 /* Tiki */ = {
 			isa = PBXGroup;
 			children = (
-				CFA5BBB325EB8E9F00AC20D1 /* Extensions */,
-				CFA5BBB225EB8E9400AC20D1 /* Commons */,
-				CFA5BBB025EB8E8400AC20D1 /* Bases */,
 				CFA5BBB125EB8E8B00AC20D1 /* Features */,
 				CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */,
 				CFA5BB5425EB89BF00AC20D1 /* Assets.xcassets */,
@@ -79,33 +76,12 @@
 			path = Tiki;
 			sourceTree = "<group>";
 		};
-		CFA5BBB025EB8E8400AC20D1 /* Bases */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Bases;
-			sourceTree = "<group>";
-		};
 		CFA5BBB125EB8E8B00AC20D1 /* Features */ = {
 			isa = PBXGroup;
 			children = (
 				CFA5BBB425EB8EA700AC20D1 /* Home */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		CFA5BBB225EB8E9400AC20D1 /* Commons */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Commons;
-			sourceTree = "<group>";
-		};
-		CFA5BBB325EB8E9F00AC20D1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
 			sourceTree = "<group>";
 		};
 		CFA5BBB425EB8EA700AC20D1 /* Home */ = {
