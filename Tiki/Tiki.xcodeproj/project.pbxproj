@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */; };
-		CFA5BB5025EB89BE00AC20D1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4F25EB89BE00AC20D1 /* ViewController.swift */; };
+		CFA5BB5025EB89BE00AC20D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */; };
 		CFA5BB5525EB89BF00AC20D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA5BB5425EB89BF00AC20D1 /* Assets.xcassets */; };
 		CFA5BB5825EB89BF00AC20D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA5BB5625EB89BF00AC20D1 /* LaunchScreen.storyboard */; };
 		CFAF8E1925FC4EDD000E2CCA /* ServiceErrorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8DBC25FC4EDC000E2CCA /* ServiceErrorAPI.swift */; };
@@ -204,6 +204,10 @@
 		CFAF8FDA25FC545D000E2CCA /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FB725FC545D000E2CCA /* EmptyView.swift */; };
 		CFAF8FE225FC55D1000E2CCA /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FE125FC55D1000E2CCA /* SignInViewController.swift */; };
 		CFAF8FEA25FC5647000E2CCA /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FE925FC5647000E2CCA /* Shop.swift */; };
+		CFAF8FF025FC5D48000E2CCA /* TKTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FEF25FC5D48000E2CCA /* TKTabBarViewController.swift */; };
+		CFAF8FF525FC5E38000E2CCA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */; };
+		CFAF8FF925FC5E51000E2CCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */; };
+		CFAF8FFD25FC5EBF000E2CCA /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */; };
 		D3D31FCBF7CFFB2FE02B1431 /* Pods_Tiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89804318629FE70AB5E51062 /* Pods_Tiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -212,7 +216,7 @@
 		B436648191770830A2E126B8 /* Pods-Tiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.release.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.release.xcconfig"; sourceTree = "<group>"; };
 		CFA5BB4825EB89BE00AC20D1 /* Tiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CFA5BB4F25EB89BE00AC20D1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CFA5BB5425EB89BF00AC20D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFA5BB5725EB89BF00AC20D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFA5BB5925EB89BF00AC20D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -448,6 +452,10 @@
 		CFAF8FB725FC545D000E2CCA /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		CFAF8FE125FC55D1000E2CCA /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		CFAF8FE925FC5647000E2CCA /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		CFAF8FEF25FC5D48000E2CCA /* TKTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TKTabBarViewController.swift; sourceTree = "<group>"; };
+		CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
+		CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -508,12 +516,15 @@
 		CFA5BBB125EB8E8B00AC20D1 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CFAF8FFB25FC5EB0000E2CCA /* Personal */,
+				CFAF8FF325FC5E24000E2CCA /* Category */,
 				CFAF8FE825FC5638000E2CCA /* Other */,
 				CFAF8FE725FC5630000E2CCA /* Chat */,
 				CFAF8FE625FC55FF000E2CCA /* Shop */,
 				CFAF8FDF25FC55BF000E2CCA /* User */,
 				CFA5BBB425EB8EA700AC20D1 /* Home */,
 				CFAF8F8925FC545D000E2CCA /* Common */,
+				CFAF8FEF25FC5D48000E2CCA /* TKTabBarViewController.swift */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -524,7 +535,7 @@
 				CFA5BBB525EB8EAE00AC20D1 /* Model */,
 				CFA5BBB625EB8EB600AC20D1 /* View */,
 				CFA5BBB725EB8EC700AC20D1 /* ViewModel */,
-				CFA5BB4F25EB89BE00AC20D1 /* ViewController.swift */,
+				CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1124,6 +1135,7 @@
 		CFAF8FE725FC5630000E2CCA /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -1133,6 +1145,22 @@
 			children = (
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		CFAF8FF325FC5E24000E2CCA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CFAF8FFB25FC5EB0000E2CCA /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
+			);
+			path = Personal;
 			sourceTree = "<group>";
 		};
 		E3A1ECCA103076A915AB7FA2 /* Pods */ = {
@@ -1325,7 +1353,7 @@
 				CFAF8F4725FC507C000E2CCA /* AbstractHeaderedTabScrollViewController.swift in Sources */,
 				CFAF8F4225FC507C000E2CCA /* CAPSPageMenu+UIScrollViewDelegate.swift in Sources */,
 				CFAF8E1925FC4EDD000E2CCA /* ServiceErrorAPI.swift in Sources */,
-				CFA5BB5025EB89BE00AC20D1 /* ViewController.swift in Sources */,
+				CFA5BB5025EB89BE00AC20D1 /* HomeViewController.swift in Sources */,
 				CFAF8F0A25FC507C000E2CCA /* NIDebuggingTools.m in Sources */,
 				CFAF8E5625FC4EDD000E2CCA /* AppRouter.swift in Sources */,
 				CFAF8F2925FC507C000E2CCA /* PhotoGalleryCameraCell.swift in Sources */,
@@ -1337,6 +1365,7 @@
 				CFAF8E2C25FC4EDD000E2CCA /* BaseView.swift in Sources */,
 				CFAF8FD225FC545D000E2CCA /* WebViewViewController.swift in Sources */,
 				CFAF8F2025FC507C000E2CCA /* GalleryVideoCell.swift in Sources */,
+				CFAF8FF525FC5E38000E2CCA /* CategoryViewController.swift in Sources */,
 				CFAF8E6125FC4EDD000E2CCA /* SettingTextManager.swift in Sources */,
 				CFAF8FCA25FC545D000E2CCA /* ExpandableTextView.swift in Sources */,
 				CFAF8FC625FC545D000E2CCA /* ProductCollectionViewCell.swift in Sources */,
@@ -1384,7 +1413,9 @@
 				CFAF8E5025FC4EDD000E2CCA /* CGFloat+Additions.swift in Sources */,
 				CFAF8F1F25FC507C000E2CCA /* CameraSessionHandler.swift in Sources */,
 				CFAF8E4225FC4EDD000E2CCA /* URL+Extension.swift in Sources */,
+				CFAF8FF025FC5D48000E2CCA /* TKTabBarViewController.swift in Sources */,
 				CFAF8F2F25FC507C000E2CCA /* PhotoGalleryTagLabel.swift in Sources */,
+				CFAF8FFD25FC5EBF000E2CCA /* PersonalViewController.swift in Sources */,
 				CFAF8F3425FC507C000E2CCA /* PhotoGalleryViewController+UIViewControllerPreviewing.swift in Sources */,
 				CFAF8E4825FC4EDD000E2CCA /* NSAttributedString+Extension.swift in Sources */,
 				CFAF8F2225FC507C000E2CCA /* SlideUpPresentingAnimator.swift in Sources */,
@@ -1475,6 +1506,7 @@
 				CFAF8F0325FC507C000E2CCA /* NIRuntimeClassModifications.m in Sources */,
 				CFAF8F2125FC507C000E2CCA /* PhotoGalleryLiveViewCell.swift in Sources */,
 				CFAF8E6025FC4EDD000E2CCA /* NewsFeedTextManager.swift in Sources */,
+				CFAF8FF925FC5E51000E2CCA /* ChatViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
