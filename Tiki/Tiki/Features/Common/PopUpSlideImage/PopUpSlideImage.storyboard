@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Pop Up Slide Image Controller-->
+        <scene sceneID="pqL-5k-kPk">
+            <objects>
+                <viewController storyboardIdentifier="PopUpSlideImageController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="DgW-0h-SlA" customClass="PopUpSlideImageController" customModule="ZoZoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M5b-Br-LTg"/>
+                        <viewControllerLayoutGuide type="bottom" id="tRD-lf-UYr"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="d7B-jk-U9L">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eqo-j1-eoI">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="g3r-49-NW7">
+                                        <rect key="frame" x="176" y="623" width="23" height="12"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="12" id="dLe-UP-jdU"/>
+                                        </constraints>
+                                        <color key="pageIndicatorTintColor" red="0.9959705472" green="0.99614065890000003" blue="0.99595981840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="currentPageIndicatorTintColor" red="0.89969617130000001" green="0.06091261655" blue="0.1111835316" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="pageControlTapped:" destination="DgW-0h-SlA" eventType="valueChanged" id="KL2-MY-Pcy"/>
+                                        </connections>
+                                    </pageControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8a-4a-8D4">
+                                        <rect key="frame" x="16" y="647" width="343" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYj-N4-cfh">
+                                        <rect key="frame" x="332" y="32" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="20" id="Uwv-80-ALx"/>
+                                            <constraint firstAttribute="height" constant="20" id="apR-yU-dcJ"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="CloseIconWhite"/>
+                                        <connections>
+                                            <action selector="closeButtonTapped:" destination="DgW-0h-SlA" eventType="touchUpInside" id="Tha-tz-Zkt"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1/2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1h-ei-VFU">
+                                        <rect key="frame" x="310" y="619" width="24" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="S8a-4a-8D4" secondAttribute="bottom" constant="20" id="6Sg-lH-Sdf"/>
+                                    <constraint firstItem="S8a-4a-8D4" firstAttribute="top" secondItem="g3r-49-NW7" secondAttribute="bottom" constant="12" id="Fhr-jw-Bhf"/>
+                                    <constraint firstItem="S8a-4a-8D4" firstAttribute="leading" secondItem="eqo-j1-eoI" secondAttribute="leading" constant="16" id="Gut-vV-p1d"/>
+                                    <constraint firstItem="g3r-49-NW7" firstAttribute="centerX" secondItem="eqo-j1-eoI" secondAttribute="centerX" id="K3I-Pq-cdg"/>
+                                    <constraint firstItem="S8a-4a-8D4" firstAttribute="centerX" secondItem="eqo-j1-eoI" secondAttribute="centerX" id="PN3-R2-u1u"/>
+                                    <constraint firstAttribute="trailing" secondItem="v1h-ei-VFU" secondAttribute="trailing" constant="41" id="hZK-wy-iHJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="lYj-N4-cfh" secondAttribute="trailing" constant="23" id="hgX-Ad-fFi"/>
+                                    <constraint firstAttribute="trailing" secondItem="S8a-4a-8D4" secondAttribute="trailing" constant="16" id="pvK-Wd-Pj6"/>
+                                    <constraint firstItem="S8a-4a-8D4" firstAttribute="top" secondItem="v1h-ei-VFU" secondAttribute="bottom" constant="7" id="uHX-cl-yvC"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="B4e-X3-iAX" appends="YES" id="guC-oA-48H"/>
+                                </connections>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KUI-gf-dWn">
+                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KUI-gf-dWn" secondAttribute="height" multiplier="1:1" id="azs-Iu-C7K"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="H8h-Zg-WVy">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="c3B-Na-tN9">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="DgW-0h-SlA" id="tb7-VG-enw"/>
+                                    <outlet property="delegate" destination="DgW-0h-SlA" id="ehK-D9-r1L"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eqo-j1-eoI" secondAttribute="trailing" id="A8K-Xn-iO1"/>
+                            <constraint firstItem="KUI-gf-dWn" firstAttribute="centerY" secondItem="d7B-jk-U9L" secondAttribute="centerY" id="JCu-JK-IuU"/>
+                            <constraint firstAttribute="bottom" secondItem="eqo-j1-eoI" secondAttribute="bottom" id="QUY-18-19Z"/>
+                            <constraint firstItem="KUI-gf-dWn" firstAttribute="centerX" secondItem="d7B-jk-U9L" secondAttribute="centerX" id="cfl-zd-nUP"/>
+                            <constraint firstItem="eqo-j1-eoI" firstAttribute="top" secondItem="d7B-jk-U9L" secondAttribute="top" id="dOf-ga-ewl"/>
+                            <constraint firstItem="lYj-N4-cfh" firstAttribute="top" secondItem="M5b-Br-LTg" secondAttribute="bottom" constant="12" id="dcW-c5-g4O"/>
+                            <constraint firstItem="eqo-j1-eoI" firstAttribute="leading" secondItem="d7B-jk-U9L" secondAttribute="leading" id="tc2-WM-0xW"/>
+                            <constraint firstItem="KUI-gf-dWn" firstAttribute="width" secondItem="d7B-jk-U9L" secondAttribute="width" id="ybm-Ab-uiE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CUB-Is-XaS"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="0Uo-Gg-IJM" appends="YES" id="GZk-LM-ug0"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="KUI-gf-dWn" id="pzm-rE-xUv"/>
+                        <outlet property="containerView" destination="eqo-j1-eoI" id="PGt-nU-5CZ"/>
+                        <outlet property="pageControl" destination="g3r-49-NW7" id="1Sz-hp-wCt"/>
+                        <outlet property="pageLabel" destination="v1h-ei-VFU" id="lUu-2d-7S9"/>
+                        <outlet property="productNameLabel" destination="S8a-4a-8D4" id="1sK-7Q-SOw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LKP-X0-aLG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="0Uo-Gg-IJM">
+                    <connections>
+                        <action selector="handlePanGesture:" destination="DgW-0h-SlA" id="Ldo-6v-fZf"/>
+                    </connections>
+                </panGestureRecognizer>
+                <tapGestureRecognizer id="B4e-X3-iAX">
+                    <connections>
+                        <action selector="containerViewTapped:" destination="DgW-0h-SlA" id="AOd-OL-2KZ"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-12" y="-232.53373313343329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CloseIconWhite" width="26" height="26"/>
+    </resources>
+</document>
