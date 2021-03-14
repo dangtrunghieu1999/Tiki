@@ -19,14 +19,14 @@ class Dimension {
         return Static.instance
     }
     
-    var widthScreen: CGFloat = 1.0
+    var widthScreen:  CGFloat = 1.0
     var heightScreen: CGFloat = 1.0
-    var widthScale: CGFloat = 1.0
-    var heightScale: CGFloat = 1.0
+    var widthScale:   CGFloat = 1.0
+    var heightScale:  CGFloat = 1.0
     
     // MARK: - Initialize
     private init() {
-        self.widthScreen = UIScreen.main.bounds.width
+        self.widthScreen  = UIScreen.main.bounds.width
         self.heightScreen = UIScreen.main.bounds.height
     }
     
@@ -37,6 +37,10 @@ class Dimension {
     
     var mediumMargin: CGFloat {
         return 8 * self.widthScale
+    }
+    
+    var mediumMargin_12: CGFloat {
+        return 12 * self.widthScale
     }
     
     var normalMargin: CGFloat {
@@ -76,6 +80,7 @@ class Dimension {
     }
     
     // MARK: - Button
+    
     var largeHeightButton: CGFloat {
         return 54 * self.widthScale
     }
@@ -140,6 +145,14 @@ class Dimension {
     
     var defaultHeightTextField: CGFloat {
         return 40 * heightScale
+    }
+    
+    var cornerRadiusSmall: CGFloat {
+        return 2 * self.widthScale
+    }
+    
+    var conerRadiusMedium: CGFloat {
+        return 10 * self.widthScale
     }
     
 }

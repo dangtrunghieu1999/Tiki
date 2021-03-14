@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SnapKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
