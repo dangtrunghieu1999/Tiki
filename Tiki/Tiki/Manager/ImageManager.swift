@@ -32,9 +32,6 @@ final class ImageManager {
     static let closeIconWhite                       = UIImage(named: "CloseIconWhite")
     static let next                                 = UIImage(named: "next")
     
-    static let logoTransparent                      = UIImage(named: "logoTransparent")
-    static let logoTransparentSmall                 = UIImage(named: "logoTransparentSmall")
-    static let logoTransparentTabbar                = UIImage(named: "logoTransparentTabbar")
     
     // MARK: - Users
     static let connectFriend                        = UIImage(named: "connectFriend")
@@ -52,6 +49,7 @@ final class ImageManager {
     static let profile                              = UIImage(named: "profile")
     static let setting                              = UIImage(named: "setting")
     static let notifications                        = UIImage(named: "notifications")
+    static let home                                 = UIImage(named: "home")
     
     // MARK: - Shop
     

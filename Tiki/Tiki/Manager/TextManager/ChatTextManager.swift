@@ -10,4 +10,5 @@ import Foundation
 
 extension TextManager {
     static let chatHistory                              = "Lịch sử chat"
+    static let chat                                     = "Chat"
 }

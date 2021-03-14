@@ -42,7 +42,6 @@ extension TextManager {
     static let addTo                        = "THÊM VÀO"
     static let searchProduct                = "Tìm kiếm sản phẩm"
     static let addNewProduct                = "Thêm sản phẩm"
-    static let chat                         = "Nhắn tin"
     static let follow                       = "Theo dõi"
     static let refreshProduct               = "Làm mới"
     static let updateCover                  = "Cập nhật ảnh bìa"
