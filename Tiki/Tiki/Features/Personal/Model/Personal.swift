@@ -7,6 +7,13 @@
 
 import UIKit
 
+enum PersonalType {
+    case welcome
+    case manager
+    case promotion
+    case support
+}
+
 class Personal {
     
 }

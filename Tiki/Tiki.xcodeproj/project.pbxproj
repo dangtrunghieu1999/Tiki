@@ -13,6 +13,9 @@
 		CFA5BB5025EB89BE00AC20D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */; };
 		CFA5BB5525EB89BF00AC20D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA5BB5425EB89BF00AC20D1 /* Assets.xcassets */; };
 		CFA5BB5825EB89BF00AC20D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA5BB5625EB89BF00AC20D1 /* LaunchScreen.storyboard */; };
+		CFA7F68525FDB9CA0026FCAA /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7F68425FDB9CA0026FCAA /* PersonalViewModel.swift */; };
+		CFA7F68B25FDBA6B0026FCAA /* PersonalViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7F68A25FDBA6B0026FCAA /* PersonalViewProtocol.swift */; };
+		CFA7F68E25FDBB290026FCAA /* PersonalViewAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7F68D25FDBB290026FCAA /* PersonalViewAdapter.swift */; };
 		CFAF8E1925FC4EDD000E2CCA /* ServiceErrorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8DBC25FC4EDC000E2CCA /* ServiceErrorAPI.swift */; };
 		CFAF8E1A25FC4EDD000E2CCA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8DBD25FC4EDC000E2CCA /* APIService.swift */; };
 		CFAF8E1B25FC4EDD000E2CCA /* CartEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8DBF25FC4EDC000E2CCA /* CartEndPoint.swift */; };
@@ -224,6 +227,9 @@
 		CFA5BB5425EB89BF00AC20D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFA5BB5725EB89BF00AC20D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFA5BB5925EB89BF00AC20D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFA7F68425FDB9CA0026FCAA /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
+		CFA7F68A25FDBA6B0026FCAA /* PersonalViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewProtocol.swift; sourceTree = "<group>"; };
+		CFA7F68D25FDBB290026FCAA /* PersonalViewAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewAdapter.swift; sourceTree = "<group>"; };
 		CFAF8DBC25FC4EDC000E2CCA /* ServiceErrorAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceErrorAPI.swift; sourceTree = "<group>"; };
 		CFAF8DBD25FC4EDC000E2CCA /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CFAF8DBF25FC4EDC000E2CCA /* CartEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEndPoint.swift; sourceTree = "<group>"; };
@@ -492,13 +498,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		CF88CEAF25FDB5DA00E30BD1 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		CF88CEB125FDB5E000E30BD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -587,6 +586,30 @@
 			children = (
 			);
 			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		CFA7F68325FDB9AC0026FCAA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CFA7F68425FDB9CA0026FCAA /* PersonalViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CFA7F68825FDB9CD0026FCAA /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				CFA7F68D25FDBB290026FCAA /* PersonalViewAdapter.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		CFA7F68925FDBA560026FCAA /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CFA7F68A25FDBA6B0026FCAA /* PersonalViewProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		CFAF8DBB25FC4EDC000E2CCA /* APIServices */ = {
@@ -1186,8 +1209,10 @@
 		CFAF8FFB25FC5EB0000E2CCA /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				CFA7F68925FDBA560026FCAA /* Protocol */,
+				CFA7F68825FDB9CD0026FCAA /* Adapter */,
+				CFA7F68325FDB9AC0026FCAA /* ViewModel */,
 				CF88CEB125FDB5E000E30BD1 /* Model */,
-				CF88CEAF25FDB5DA00E30BD1 /* ViewModel */,
 				CF88CEAA25FDB5C000E30BD1 /* View */,
 			);
 			path = Personal;
@@ -1359,6 +1384,7 @@
 				CFAF8FC825FC545D000E2CCA /* TagCollectionViewCell.swift in Sources */,
 				CFAF8E6325FC4EDD000E2CCA /* ProductTextManager.swift in Sources */,
 				CFAF8F0925FC507C000E2CCA /* NIFoundationMethods.m in Sources */,
+				CFA7F68E25FDBB290026FCAA /* PersonalViewAdapter.swift in Sources */,
 				CFAF8F1025FC507C000E2CCA /* FLAnimatedImageView.m in Sources */,
 				CFAF8E5D25FC4EDD000E2CCA /* UploadManager.swift in Sources */,
 				CFAF8E5E25FC4EDD000E2CCA /* AlertManager.swift in Sources */,
@@ -1451,6 +1477,7 @@
 				CFAF8F2225FC507C000E2CCA /* SlideUpPresentingAnimator.swift in Sources */,
 				CFAF8E3825FC4EDD000E2CCA /* BageButton.swift in Sources */,
 				CFAF8F2A25FC507C000E2CCA /* SlideUpPresentation.swift in Sources */,
+				CFA7F68B25FDBA6B0026FCAA /* PersonalViewProtocol.swift in Sources */,
 				CFAF8F1225FC507C000E2CCA /* ImageCropperConfigurator.swift in Sources */,
 				CFAF8E5F25FC4EDD000E2CCA /* UserSessionManager.swift in Sources */,
 				CFAF8E2325FC4EDD000E2CCA /* APIConfig.swift in Sources */,
@@ -1458,6 +1485,7 @@
 				CFAF8F2425FC507C000E2CCA /* GalleryPhotoCell.swift in Sources */,
 				CFAF8F1825FC507C000E2CCA /* ImageCropperRouter.swift in Sources */,
 				CFAF8F2D25FC507C000E2CCA /* PhotoGalleryViewController.swift in Sources */,
+				CFA7F68525FDB9CA0026FCAA /* PersonalViewModel.swift in Sources */,
 				CFAF8FD625FC545D000E2CCA /* TitleCollectionViewHeaderCell.swift in Sources */,
 				CFAF8E1D25FC4EDD000E2CCA /* CommonEndpoint.swift in Sources */,
 				CFAF8FD325FC545D000E2CCA /* GrayCollectionViewFooterCell.swift in Sources */,
