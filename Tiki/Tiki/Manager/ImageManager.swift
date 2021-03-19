@@ -116,4 +116,6 @@ final class ImageManager {
     static let sendMessageEnable                     = UIImage(named: "sendMessageEnable")
     static let sendMessageDisable                    = UIImage(named: "sendMessageDisable")
     
+    static let avatarDefault                         = UIImage(named: "avatarDefault")
+        
 }

@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import SnapKit
+import IGListKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

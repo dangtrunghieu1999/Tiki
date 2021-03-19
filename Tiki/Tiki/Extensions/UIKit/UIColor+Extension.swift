@@ -11,7 +11,7 @@ import UIKit
 // MARK: - App Color
 extension UIColor {
     class var background: UIColor {
-        return UIColor(hex: "#026AA7")
+        return UIColor(hex: "#1BA8FF")
     }
     
     class var lightBackground: UIColor {
@@ -39,7 +39,7 @@ extension UIColor {
     }
     
     class var separator: UIColor {
-        return UIColor(hex: "#D6D6D6")
+        return UIColor(hex: "#EEEEEE")
     }
 
     class var ratingColor: UIColor {

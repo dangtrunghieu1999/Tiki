@@ -1,14 +1,13 @@
 //
-//  PersonCollectCollectionViewCell.swift
+//  ItemTextCollectionViewCell.swift
 //  Tiki
 //
-//  Created by Dang Trung Hieu on 3/14/21.
+//  Created by Dang Trung Hieu on 3/19/21.
 //
 
 import UIKit
 
-class PersonCollectCollectionViewCell: BaseCollectionViewCell {
-    
+class ItemTextCollectionViewCell: BaseCollectionViewCell {
     // MARK: - Variables
     
     // MARK: - UI Elements
@@ -17,7 +16,7 @@ class PersonCollectCollectionViewCell: BaseCollectionViewCell {
     // MARK: - View LifeCycles
     
     override func initialize() {
-        
+        super.initialize()
     }
     
     // MARK: - Helper Method

@@ -10,6 +10,11 @@ import UIKit
 class PersonalViewController: BaseViewController {
 
     // MARK: - Variables
+        
+    fileprivate lazy var personalViewModel: PersonalViewModel = {
+        let personal = PersonalViewModel()
+        return personal
+    }()
     
     // MARK: - UI Elements
     
@@ -19,21 +24,33 @@ class PersonalViewController: BaseViewController {
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = personalViewModel
+        collectionView.dataSource = personalViewModel
+        collectionView.backgroundColor = UIColor.separator
         return collectionView
     }()
-    
     
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutPersonalCollectionView()
+        registerCollectionView()
+        personalViewModel.reloadData()
     }
     
     // MARK: - Helper Method
+    
+    func registerCollectionView() {
+        self.personalCollectionView.registerReusableCell(PersonCollectionViewCell.self)
+        self.personalCollectionView.registerReusableCell(InfomationCollectionViewCell.self)
+        self.personalCollectionView.registerReusableCell(LogoutCollectionViewCell.self)
+        self.personalCollectionView
+            .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
+                                               forSupplementaryViewOfKind:
+                                                UICollectionView.elementKindSectionFooter)
+    }
     
     // MARK: - GET API
     
@@ -51,26 +68,20 @@ class PersonalViewController: BaseViewController {
             }
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview()
-                .offset(-Dimension.shared.largeMargin_56)
         }
     }
-
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-extension PersonalViewController: UICollectionViewDelegateFlowLayout {
+extension PersonalViewController: PersonalViewModelDelegate {
     
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension PersonalViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+    func reloadCollectionView() {
+        DispatchQueue.main.async {
+            self.personalCollectionView.reloadData()
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PersonCollectCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        return cell
+    func itemSelected(at: IndexPath) {
+        
     }
+    
 }

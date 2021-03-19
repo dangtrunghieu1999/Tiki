@@ -116,6 +116,8 @@ final class  TextManager {
     // MARK: - User Profile
     
     static let userProfile                  = "Thông tin cá nhân"
+    static let welcome                      = "Chào mừng bạn đến với tiki"
+    static let welcomeSignInUp              = "Đăng nhập/Đăng ký"
     
     
 }

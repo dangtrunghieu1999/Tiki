@@ -1,0 +1,44 @@
+[
+{
+        "type": "SlideWidget",
+        "data": {
+            "title": "Banner",
+            "link": "",
+            "list": [
+                {
+                    "title": "DGS_VOUCHER_NAPTIEN0321",
+                    "background_color": "#2606A7",
+                    "url": "https://help.senpay.vn/hc/vi/articles/900004678826-GI%E1%BA%A2M-20K-KHI-N%E1%BA%A0P-TI%E1%BB%80N-%C4%90I%E1%BB%86N-THO%E1%BA%A0I-MUA-TH%E1%BA%BA-C%C3%80O-01-31-03-2021-?is_app=1",
+                    "image": "https://media3.scdn.vn/img4/2021/03_01/MrBMFZWne0971imvoIdO.jpg"
+                },
+                {
+                    "title": "All_Shop mới lên sàn",
+                    "background_color": "#85E2FF",
+                    "url": "https://www.sendo.vn/su-kien/shop-moi-len-san/?ref=home_slider_app&is_app=1",
+                    "image": "https://media3.scdn.vn/img4/2021/03_04/lE3560nIbwa4geeH07kQ.jpg"
+                },
+                {
+                    "title": "HV_EventT3_Rước xe sành điệu",
+                    "background_color": "#e5101d",
+                    "url": "https://www.sendo.vn/su-kien/deal-soc-xe-may/?ref=home_slider_app&is_app=1",
+                    "image": "https://media3.scdn.vn/img4/2021/03_01/IWRuld5KPeDnZkdIPQyp.png"
+                },
+                {
+                    "title": "All_Gian hàng Việt_25.11",
+                    "background_color": "#980402",
+                    "url": "https://www.sendo.vn/su-kien/gian-hang-viet/?ref=home_slider_app&is_app=1",
+                    "image": "https://media3.scdn.vn/img4/2020/11_24/pX7psDFBc0Nm1PaVskoH.jpg"
+                }
+            ],
+            "header_info": {
+                "background_image": "",
+                "background_color": [
+                    "#D40000"
+                ],
+                "more_text_color": "",
+                "icon_image": "",
+                "title_text_color": ""
+            }
+        }
+    }
+]
