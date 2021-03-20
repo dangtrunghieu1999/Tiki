@@ -12,19 +12,21 @@ class InfomationCollectionViewCell: BaseCollectionViewCell {
     // MARK: - Variables
     
     fileprivate lazy var arrayTitle: [String] = []
+    fileprivate lazy var arrayImage: [UIImage?] = []
     
     // MARK: - UI Elements
     
-    fileprivate lazy var personalCollectionView: UICollectionView = {
+    fileprivate lazy var infomationCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.separator
+        collectionView.backgroundColor = UIColor.white
+        collectionView.isScrollEnabled = false
         collectionView.registerReusableCell(ItemTextCollectionViewCell.self)
         return collectionView
     }()
@@ -33,24 +35,37 @@ class InfomationCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         super.initialize()
+        layoutInfomationCollectionView()
     }
     
     // MARK: - Helper Method
     
-    func parseDataString(data: [String]) {
-        self.arrayTitle = data
+    func parseDataString(titles: [String],images: [UIImage?]) {
+        self.arrayTitle = titles
+        self.arrayImage = images
     }
     
     // MARK: - GET API
     
     // MARK: - Layout
     
+    private func layoutInfomationCollectionView() {
+        addSubview(infomationCollectionView)
+        infomationCollectionView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension InfomationCollectionViewCell: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -68,6 +83,7 @@ extension InfomationCollectionViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ItemTextCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.configCell(arrayTitle[indexPath.row], arrayImage[indexPath.row])
         return cell
     }
 }

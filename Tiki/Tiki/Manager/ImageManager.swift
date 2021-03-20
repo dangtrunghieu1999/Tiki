@@ -117,5 +117,27 @@ final class ImageManager {
     static let sendMessageDisable                    = UIImage(named: "sendMessageDisable")
     
     static let avatarDefault                         = UIImage(named: "avatarDefault")
+    static let more                                  = UIImage(named: "more")
         
+    
+    // MARK: - Order
+    static let managerOrder                          = UIImage(named: "managerOrder")
+    static let reciveOrder                           = UIImage(named: "reciveOrder")
+    static let paymentAgain                          = UIImage(named: "paymentAgain")
+    static let transportWaiting                      = UIImage(named: "transportWaiting")
+    static let successOrder                          = UIImage(named: "successOrder")
+    static let cancelOrder                           = UIImage(named: "cancelOrder")
+    
+    // MARK: - Address
+    
+    static let addressLocation                      = UIImage(named: "addressLocation")
+    static let infoPayment                          = UIImage(named: "infoPayment")
+    
+    // MARK: - Product Manager
+    
+    static let buyProducted                      = UIImage(named: "buyProducted")
+    static let loveProduct                       = UIImage(named: "loveProduct")
+    static let ratingProduct                     = UIImage(named: "ratingProduct")
+
+    
 }

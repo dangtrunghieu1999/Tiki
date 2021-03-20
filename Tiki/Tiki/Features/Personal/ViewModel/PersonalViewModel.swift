@@ -39,11 +39,11 @@ extension PersonalViewModel: UICollectionViewDelegateFlowLayout {
         case .welcome:
             return CGSize(width: width, height: 80)
         case .managerOrder:
-            return CGSize(width: width, height: 420)
+            return CGSize(width: width, height: 300)
         case .address:
-            return CGSize(width: width, height: 140)
+            return CGSize(width: width, height: 100)
         case .managerProduct:
-            return CGSize(width: width, height: 210)
+            return CGSize(width: width, height: 150)
         default:
             return CGSize(width: width, height: 50)
         }
@@ -86,15 +86,15 @@ extension PersonalViewModel: UICollectionViewDataSource {
             return cell
         case .managerOrder:
             let cell: InfomationCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.parseDataString(data: personal.managerOrder)
+            cell.parseDataString(titles: personal.managerOrder, images: personal.orderImage)
             return cell
         case .address:
             let cell: InfomationCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.parseDataString(data: personal.address)
+            cell.parseDataString(titles: personal.address, images: personal.orderAddress)
             return cell
         case .managerProduct:
             let cell: InfomationCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.parseDataString(data: personal.managerProduct)
+            cell.parseDataString(titles: personal.managerProduct, images: personal.productImage)
             return cell
         default:
             let cell: LogoutCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)

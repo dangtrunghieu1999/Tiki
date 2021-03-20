@@ -34,7 +34,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         let label = UILabel()
         label.text = TextManager.welcomeSignInUp
         label.textColor = UIColor.background
-        label.font = UIFont.systemFont(ofSize: FontSize.title.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .bold)
         label.textAlignment = .left
         return label
     }()

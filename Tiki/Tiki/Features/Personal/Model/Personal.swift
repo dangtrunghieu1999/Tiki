@@ -28,11 +28,24 @@ class Personal {
                                     "Đơn hàng thành công",
                                     "Đơn hàng đã huỷ"]
     
+    var orderImage: [UIImage?] = [ImageManager.managerOrder,
+                                  ImageManager.reciveOrder,
+                                  ImageManager.paymentAgain,
+                                  ImageManager.transportWaiting,
+                                  ImageManager.successOrder,
+                                  ImageManager.cancelOrder]
+    
+    
     var address:        [String] =  ["Số địa chỉ",
                                      "Thông tin thanh toán"]
+    
+    var orderAddress: [UIImage?] = [ImageManager.addressLocation, ImageManager.infoPayment]
     
     var managerProduct: [String] = ["Sản phẩm đã mua",
                                     "Sản phẩm yêu thích",
                                     "Sản phẩm đã đánh giá"]
     
+    var productImage: [UIImage?] = [ImageManager.buyProducted,
+                                    ImageManager.loveProduct,
+                                    ImageManager.ratingProduct]
 }
