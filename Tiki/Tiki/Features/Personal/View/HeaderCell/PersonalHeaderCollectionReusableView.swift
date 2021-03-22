@@ -1,13 +1,13 @@
 //
-//  PersonCollectCollectionViewCell.swift
+//  PersonalHeaderCollectionReusableView.swift
 //  Tiki
 //
-//  Created by Dang Trung Hieu on 3/14/21.
+//  Created by Dang Trung Hieu on 3/22/21.
 //
 
 import UIKit
 
-class PersonCollectionViewCell: BaseCollectionViewCell {
+class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Variables
     
@@ -30,7 +30,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    fileprivate lazy var descriptionLabel: UILabel = {
+    fileprivate lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = TextManager.welcomeSignInUp
         label.textColor = UIColor.background
@@ -46,7 +46,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         backgroundColor = .white
         layoutAvatarImageView()
         layoutTitleLabel()
-        layoutDescriptionLabel()
+        layoutSubTitleLabel()
     }
     
     // MARK: - Helper Method
@@ -73,9 +73,9 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    private func layoutDescriptionLabel() {
-        addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints { (make) in
+    private func layoutSubTitleLabel() {
+        addSubview(subTitleLabel)
+        subTitleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
         }

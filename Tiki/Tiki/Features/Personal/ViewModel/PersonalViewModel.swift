@@ -9,14 +9,11 @@ import UIKit
 
 protocol PersonalViewModelDelegate: class {
     func reloadCollectionView()
-    func itemSelected(at: IndexPath)
 }
 
 class PersonalViewModel: NSObject {
-        
-    // MARK: - Properties
     
-    var personal = Personal()
+    // MARK: - Properties
     
     weak var delegate: PersonalViewModelDelegate?
     
@@ -30,37 +27,34 @@ class PersonalViewModel: NSObject {
 
 extension PersonalViewModel: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
-                            UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width = collectionView.frame.width
-        let type = PersonalType(rawValue: indexPath.section)
+        let type = PersonalType(rawValue: indexPath.row)
         switch type {
-        case .welcome:
-            return CGSize(width: width, height: 80)
-        case .managerOrder:
-            return CGSize(width: width, height: 300)
-        case .address:
-            return CGSize(width: width, height: 100)
-        case .managerProduct:
-            return CGSize(width: width, height: 150)
+        case .section1, .section2, .section3, .section4:
+            return CGSize(width: width, height: 10)
         default:
             return CGSize(width: width, height: 50)
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
-                            UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width, height: 10.0)
+        return CGSize(width: collectionView.frame.width, height: 80.0)
     }
+    
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension PersonalViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.itemSelected(at: indexPath)
+        
     }
 }
 
@@ -69,49 +63,31 @@ extension PersonalViewModel: UICollectionViewDelegate {
 extension PersonalViewModel: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return PersonalType.numberOfSection()
+        return PersonalType.numberOfSections()
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return PersonalType.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let type = PersonalType(rawValue: indexPath.section)
-        switch type {
-        case .welcome:
-            let cell: PersonCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
-        case .managerOrder:
-            let cell: InfomationCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.parseDataString(titles: personal.managerOrder, images: personal.orderImage)
-            return cell
-        case .address:
-            let cell: InfomationCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.parseDataString(titles: personal.address, images: personal.orderAddress)
-            return cell
-        case .managerProduct:
-            let cell: InfomationCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.parseDataString(titles: personal.managerProduct, images: personal.productImage)
-            return cell
-        default:
-            let cell: LogoutCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
-        }
+        
+        let cell: PersonCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        cell.configCell(personal: Personal.cellObject[indexPath.row])
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionFooter {
-            let footer: BaseCollectionViewHeaderFooterCell =
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header: PersonalHeaderCollectionReusableView =
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-            return footer
+            return header
         } else {
             return UICollectionReusableView()
         }
     }
-    
 }

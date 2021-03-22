@@ -1,13 +1,13 @@
 //
-//  ItemTextCollectionViewCell.swift
+//  PersonCollectCollectionViewCell.swift
 //  Tiki
 //
-//  Created by Dang Trung Hieu on 3/19/21.
+//  Created by Dang Trung Hieu on 3/14/21.
 //
 
 import UIKit
 
-class ItemTextCollectionViewCell: BaseCollectionViewCell {
+class PersonCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
@@ -49,9 +49,22 @@ class ItemTextCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Helper Method
     
-    func configCell(_ title: String,_ image: UIImage?) {
-        imageView.image = image
-        titleLabel.text = title
+    func configCell(personal: Personal?) {
+        let type = personal?.cellType
+        switch type {
+        case .section1, .section2, .section3, .section4:
+            layoutCellSection()
+        default:
+            imageView.image = personal?.icon
+            titleLabel.text = personal?.title
+        }
+    }
+    
+    func layoutCellSection() {
+        imageView.isHidden = true
+        titleLabel.isHidden = true
+        nextButton.isHidden = true
+        backgroundColor = UIColor.separator
     }
     
     // MARK: - GET API

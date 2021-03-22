@@ -8,9 +8,9 @@
 import UIKit
 
 class PersonalViewController: BaseViewController {
-
+    
     // MARK: - Variables
-        
+    
     fileprivate lazy var personalViewModel: PersonalViewModel = {
         let personal = PersonalViewModel()
         return personal
@@ -38,18 +38,16 @@ class PersonalViewController: BaseViewController {
         layoutPersonalCollectionView()
         registerCollectionView()
         personalViewModel.reloadData()
+        personalViewModel.delegate = self
     }
     
     // MARK: - Helper Method
     
     func registerCollectionView() {
         self.personalCollectionView.registerReusableCell(PersonCollectionViewCell.self)
-        self.personalCollectionView.registerReusableCell(InfomationCollectionViewCell.self)
-        self.personalCollectionView.registerReusableCell(LogoutCollectionViewCell.self)
         self.personalCollectionView
-            .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
-                                               forSupplementaryViewOfKind:
-                                                UICollectionView.elementKindSectionFooter)
+            .registerReusableSupplementaryView(PersonalHeaderCollectionReusableView.self,
+                                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
     }
     
     // MARK: - GET API
@@ -79,9 +77,4 @@ extension PersonalViewController: PersonalViewModelDelegate {
             self.personalCollectionView.reloadData()
         }
     }
-    
-    func itemSelected(at: IndexPath) {
-        
-    }
-    
 }

@@ -21,7 +21,7 @@ class BaseCollectionViewHeaderFooterCell: UICollectionReusableView, Reusable {
     }
     
     func initialize() {
-        backgroundColor = UIColor.separator
+        
     }
     
 }

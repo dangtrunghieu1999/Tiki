@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF4C323326035FB1008CFCF9 /* InfomationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C323226035FB1008CFCF9 /* InfomationCollectionViewCell.swift */; };
-		CF4C323726035FFF008CFCF9 /* LogoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4C323626035FFF008CFCF9 /* LogoutCollectionViewCell.swift */; };
+		CF47214826082E6600200FDC /* PersonalHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */; };
 		CF88CEAC25FDB5D800E30BD1 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */; };
 		CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEB225FDB5EE00E30BD1 /* Personal.swift */; };
 		CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */; };
@@ -213,7 +212,6 @@
 		CFAF8FF525FC5E38000E2CCA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */; };
 		CFAF8FF925FC5E51000E2CCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */; };
 		CFAF8FFD25FC5EBF000E2CCA /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */; };
-		CFC009852604AA880067BEDD /* ItemTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC009842604AA880067BEDD /* ItemTextCollectionViewCell.swift */; };
 		CFC7F7A225FEF0FE00D986D0 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC7F7A125FEF0FE00D986D0 /* Home.json */; };
 		D3D31FCBF7CFFB2FE02B1431 /* Pods_Tiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89804318629FE70AB5E51062 /* Pods_Tiki.framework */; };
 /* End PBXBuildFile section */
@@ -221,8 +219,7 @@
 /* Begin PBXFileReference section */
 		89804318629FE70AB5E51062 /* Pods_Tiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B436648191770830A2E126B8 /* Pods-Tiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.release.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.release.xcconfig"; sourceTree = "<group>"; };
-		CF4C323226035FB1008CFCF9 /* InfomationCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfomationCollectionViewCell.swift; sourceTree = "<group>"; };
-		CF4C323626035FFF008CFCF9 /* LogoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF88CEB225FDB5EE00E30BD1 /* Personal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
 		CFA5BB4825EB89BE00AC20D1 /* Tiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -468,7 +465,6 @@
 		CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
-		CFC009842604AA880067BEDD /* ItemTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFC7F7A125FEF0FE00D986D0 /* Home.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -493,14 +489,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF47214626082D8E00200FDC /* HeaderCell */ = {
+			isa = PBXGroup;
+			children = (
+				CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */,
+			);
+			path = HeaderCell;
+			sourceTree = "<group>";
+		};
+		CF76289A2605EDFB00C3D1AF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CF88CEAA25FDB5C000E30BD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF47214626082D8E00200FDC /* HeaderCell */,
+				CF76289A2605EDFB00C3D1AF /* ViewController */,
 				CFC009832604AA560067BEDD /* ViewCell */,
-				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
-				CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */,
-				CF4C323226035FB1008CFCF9 /* InfomationCollectionViewCell.swift */,
-				CF4C323626035FFF008CFCF9 /* LogoutCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1211,7 +1221,7 @@
 		CFC009832604AA560067BEDD /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				CFC009842604AA880067BEDD /* ItemTextCollectionViewCell.swift */,
+				CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -1462,6 +1472,7 @@
 				CFAF8F0B25FC507C000E2CCA /* NIInMemoryCache.m in Sources */,
 				CFAF8E2525FC4EDD000E2CCA /* EndPointType.swift in Sources */,
 				CFAF8FD425FC545D000E2CCA /* EmptyCollectionViewCell.swift in Sources */,
+				CF47214826082E6600200FDC /* PersonalHeaderCollectionReusableView.swift in Sources */,
 				CFAF8F2825FC507C000E2CCA /* PhotoDetailViewController.swift in Sources */,
 				CFAF8FD725FC545D000E2CCA /* ImageCollectionViewCell.swift in Sources */,
 				CFAF8E6525FC4EDD000E2CCA /* OrderTextManager.swift in Sources */,
@@ -1490,7 +1501,6 @@
 				CFAF8F2425FC507C000E2CCA /* GalleryPhotoCell.swift in Sources */,
 				CFAF8F1825FC507C000E2CCA /* ImageCropperRouter.swift in Sources */,
 				CFAF8F2D25FC507C000E2CCA /* PhotoGalleryViewController.swift in Sources */,
-				CFC009852604AA880067BEDD /* ItemTextCollectionViewCell.swift in Sources */,
 				CFA7F68525FDB9CA0026FCAA /* PersonalViewModel.swift in Sources */,
 				CFAF8FD625FC545D000E2CCA /* TitleCollectionViewHeaderCell.swift in Sources */,
 				CFAF8E1D25FC4EDD000E2CCA /* CommonEndpoint.swift in Sources */,
@@ -1517,7 +1527,6 @@
 				CFAF8E5825FC4EDD000E2CCA /* AppInfo.swift in Sources */,
 				CFAF8F3525FC507C000E2CCA /* PhotoAlbumsViewController.swift in Sources */,
 				CFAF8EFF25FC507C000E2CCA /* NIDeviceOrientation.m in Sources */,
-				CF4C323326035FB1008CFCF9 /* InfomationCollectionViewCell.swift in Sources */,
 				CFAF8F0F25FC507C000E2CCA /* FLAnimatedImage.m in Sources */,
 				CFAF8E6225FC4EDD000E2CCA /* CommonTextManager.swift in Sources */,
 				CFAF8E5C25FC4EDD000E2CCA /* ImageManager.swift in Sources */,
@@ -1551,7 +1560,6 @@
 				CFAF8E3325FC4EDD000E2CCA /* TitleAndContent.swift in Sources */,
 				CFAF8F2C25FC507C000E2CCA /* ImagePickerConfigurable.swift in Sources */,
 				CFAF8F1125FC507C000E2CCA /* ImageCropperConfiguration.swift in Sources */,
-				CF4C323726035FFF008CFCF9 /* LogoutCollectionViewCell.swift in Sources */,
 				CFAF8E3D25FC4EDD000E2CCA /* UIColor+Extension.swift in Sources */,
 				CFAF8E4725FC4EDD000E2CCA /* UITableView+Extension.swift in Sources */,
 				CFAF8F0725FC507C000E2CCA /* NIImageUtilities.m in Sources */,
