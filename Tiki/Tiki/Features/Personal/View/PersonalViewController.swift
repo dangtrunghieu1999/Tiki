@@ -70,11 +70,38 @@ class PersonalViewController: BaseViewController {
     }
 }
 
+// MARK: - PersonalViewModelDelegate
+
 extension PersonalViewController: PersonalViewModelDelegate {
     
     func reloadCollectionView() {
         DispatchQueue.main.async {
             self.personalCollectionView.reloadData()
+        }
+    }
+    
+    func didTapOnCellRow(type: PersonalType) {
+        switch type {
+        case .managerOrder, .recive, .paymentAgain, .transport, .successOrder, .canccelOrder:
+            let vc = ManagerOrderViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .address:
+            let vc = DeliveryAddressViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .infoPayment:
+            let vc = InfoPaymentViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .productedBuy:
+            let vc = ProductedBuyViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .productedLove:
+            let vc = ProductedLoveViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .productRating:
+            let vc = RaitingProductViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
         }
     }
 }

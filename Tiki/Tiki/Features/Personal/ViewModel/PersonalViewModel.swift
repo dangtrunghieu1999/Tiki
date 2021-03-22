@@ -9,6 +9,7 @@ import UIKit
 
 protocol PersonalViewModelDelegate: class {
     func reloadCollectionView()
+    func didTapOnCellRow(type: PersonalType)
 }
 
 class PersonalViewModel: NSObject {
@@ -54,7 +55,8 @@ extension PersonalViewModel: UICollectionViewDelegateFlowLayout {
 
 extension PersonalViewModel: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        guard let type = Personal.cellObject[indexPath.row].cellType else { return }
+        delegate?.didTapOnCellRow(type: type)
     }
 }
 

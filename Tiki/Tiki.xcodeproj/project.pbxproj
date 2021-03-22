@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CF47214826082E6600200FDC /* PersonalHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */; };
+		CF540B3526083FC8003CDC6D /* ManagerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */; };
+		CF540B392608403B003CDC6D /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */; };
+		CF540B3E2608407A003CDC6D /* InfoPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B3D2608407A003CDC6D /* InfoPaymentViewController.swift */; };
+		CF540B42260840FD003CDC6D /* ProductedBuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */; };
+		CF540B452608412D003CDC6D /* ProductedLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */; };
+		CF540B4926084177003CDC6D /* RaitingProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B4826084177003CDC6D /* RaitingProductViewController.swift */; };
 		CF88CEAC25FDB5D800E30BD1 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */; };
 		CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEB225FDB5EE00E30BD1 /* Personal.swift */; };
 		CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */; };
@@ -220,6 +226,12 @@
 		89804318629FE70AB5E51062 /* Pods_Tiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B436648191770830A2E126B8 /* Pods-Tiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.release.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.release.xcconfig"; sourceTree = "<group>"; };
 		CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerOrderViewController.swift; sourceTree = "<group>"; };
+		CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
+		CF540B3D2608407A003CDC6D /* InfoPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPaymentViewController.swift; sourceTree = "<group>"; };
+		CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductedBuyViewController.swift; sourceTree = "<group>"; };
+		CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductedLoveViewController.swift; sourceTree = "<group>"; };
+		CF540B4826084177003CDC6D /* RaitingProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingProductViewController.swift; sourceTree = "<group>"; };
 		CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF88CEB225FDB5EE00E30BD1 /* Personal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
 		CFA5BB4825EB89BE00AC20D1 /* Tiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -497,19 +509,17 @@
 			path = HeaderCell;
 			sourceTree = "<group>";
 		};
-		CF76289A2605EDFB00C3D1AF /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
 		CF88CEAA25FDB5C000E30BD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
+				CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */,
+				CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */,
+				CF540B3D2608407A003CDC6D /* InfoPaymentViewController.swift */,
+				CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */,
+				CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */,
+				CF540B4826084177003CDC6D /* RaitingProductViewController.swift */,
 				CF47214626082D8E00200FDC /* HeaderCell */,
-				CF76289A2605EDFB00C3D1AF /* ViewController */,
 				CFC009832604AA560067BEDD /* ViewCell */,
 			);
 			path = View;
@@ -1405,6 +1415,7 @@
 				CFAF8E5D25FC4EDD000E2CCA /* UploadManager.swift in Sources */,
 				CFAF8E5E25FC4EDD000E2CCA /* AlertManager.swift in Sources */,
 				CFAF8E2B25FC4EDD000E2CCA /* BaseCollectionViewCel.swift in Sources */,
+				CF540B42260840FD003CDC6D /* ProductedBuyViewController.swift in Sources */,
 				CFAF8E1B25FC4EDD000E2CCA /* CartEndPoint.swift in Sources */,
 				CFAF8FD925FC545D000E2CCA /* SearchResultUserTableViewCell.swift in Sources */,
 				CFAF8E5B25FC4EDD000E2CCA /* AppConfig.swift in Sources */,
@@ -1447,6 +1458,7 @@
 				CFAF8F3625FC507C000E2CCA /* LiveView.swift in Sources */,
 				CFAF8E5325FC4EDD000E2CCA /* Comparable+Clamp.swift in Sources */,
 				CFAF8F0D25FC507C000E2CCA /* NISnapshotRotation.m in Sources */,
+				CF540B4926084177003CDC6D /* RaitingProductViewController.swift in Sources */,
 				CFAF8EFD25FC507C000E2CCA /* NIOperations.m in Sources */,
 				CFAF8F2725FC507C000E2CCA /* PhotoAlbumsTableView.swift in Sources */,
 				CFAF8F1D25FC507C000E2CCA /* UIFont+Style.swift in Sources */,
@@ -1479,9 +1491,11 @@
 				CFAF8F4325FC507C000E2CCA /* CAPSPageMenu+UIConfiguration.swift in Sources */,
 				CFAF8E3225FC4EDD000E2CCA /* BaseViewModel.swift in Sources */,
 				CFAF8EFB25FC507C000E2CCA /* NICommonMetrics.m in Sources */,
+				CF540B452608412D003CDC6D /* ProductedLoveViewController.swift in Sources */,
 				CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */,
 				CFAF8F4525FC507C000E2CCA /* CAPSPageMenu.swift in Sources */,
 				CFAF8FC325FC545D000E2CCA /* BaseProductView.swift in Sources */,
+				CF540B3526083FC8003CDC6D /* ManagerOrderViewController.swift in Sources */,
 				CFAF8E3725FC4EDD000E2CCA /* PaddingLabel.swift in Sources */,
 				CFAF8E5025FC4EDD000E2CCA /* CGFloat+Additions.swift in Sources */,
 				CFAF8F1F25FC507C000E2CCA /* CameraSessionHandler.swift in Sources */,
@@ -1511,6 +1525,7 @@
 				CFAF8E2025FC4EDD000E2CCA /* ShoppingEndPoint.swift in Sources */,
 				CFAF8E4425FC4EDD000E2CCA /* UICollectionView+Extension.swift in Sources */,
 				CFAF8F1325FC507C000E2CCA /* ImageCropperModel.swift in Sources */,
+				CF540B3E2608407A003CDC6D /* InfoPaymentViewController.swift in Sources */,
 				CFAF8E5925FC4EDD000E2CCA /* Dimension.swift in Sources */,
 				CFAF8FCB25FC545D000E2CCA /* CategoryStcikerView.swift in Sources */,
 				CFAF8F0C25FC507C000E2CCA /* NIActions.m in Sources */,
@@ -1551,6 +1566,7 @@
 				CFAF8E3525FC4EDD000E2CCA /* TitleTextField.swift in Sources */,
 				CFAF8FBC25FC545D000E2CCA /* PopUpSlideImageController.swift in Sources */,
 				CFAF8F3125FC507C000E2CCA /* PhotoAlbumCell.swift in Sources */,
+				CF540B392608403B003CDC6D /* DeliveryAddressViewController.swift in Sources */,
 				CFAF8F0225FC507C000E2CCA /* NINonRetainingCollections.m in Sources */,
 				CFAF8FC525FC545D000E2CCA /* ProductListViewController.swift in Sources */,
 				CFAF8F1C25FC507C000E2CCA /* UINavigationController+ImagePickerConfigurable.swift in Sources */,
