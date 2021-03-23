@@ -33,7 +33,7 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     fileprivate lazy var subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = TextManager.welcomeSignInUp
-        label.textColor = UIColor.background
+        label.textColor = UIColor.subTitle
         label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .bold)
         label.textAlignment = .left
         return label

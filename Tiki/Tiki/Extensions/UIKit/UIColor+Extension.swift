@@ -11,7 +11,11 @@ import UIKit
 // MARK: - App Color
 extension UIColor {
     class var background: UIColor {
-        return UIColor(hex: "#017FFF")
+        return UIColor(hex: "#00A5FF")
+    }
+    
+    class var subTitle: UIColor {
+        return UIColor(hex: "#13B7FF")
     }
     
     class var lightBackground: UIColor {

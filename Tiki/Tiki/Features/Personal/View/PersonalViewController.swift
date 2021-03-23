@@ -60,12 +60,13 @@ class PersonalViewController: BaseViewController {
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide)
                     .offset(Dimension.shared.smallMargin)
+                make.bottom.equalTo(view.snp_bottomMargin)
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
                     .offset(Dimension.shared.smallMargin)
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
             }
             make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview()
         }
     }
 }
@@ -75,9 +76,7 @@ class PersonalViewController: BaseViewController {
 extension PersonalViewController: PersonalViewModelDelegate {
     
     func reloadCollectionView() {
-        DispatchQueue.main.async {
-            self.personalCollectionView.reloadData()
-        }
+        self.personalCollectionView.reloadData()
     }
     
     func didTapOnCellRow(type: PersonalType) {

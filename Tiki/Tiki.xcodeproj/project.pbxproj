@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF1AEF6726097BE600269C54 /* PersonalFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */; };
 		CF47214826082E6600200FDC /* PersonalHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */; };
 		CF540B3526083FC8003CDC6D /* ManagerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */; };
 		CF540B392608403B003CDC6D /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */; };
@@ -225,6 +226,7 @@
 /* Begin PBXFileReference section */
 		89804318629FE70AB5E51062 /* Pods_Tiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B436648191770830A2E126B8 /* Pods-Tiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.release.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.release.xcconfig"; sourceTree = "<group>"; };
+		CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerOrderViewController.swift; sourceTree = "<group>"; };
 		CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
@@ -501,12 +503,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CF47214626082D8E00200FDC /* HeaderCell */ = {
+		CF47214626082D8E00200FDC /* HeaderFooterCell */ = {
 			isa = PBXGroup;
 			children = (
 				CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */,
+				CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */,
 			);
-			path = HeaderCell;
+			path = HeaderFooterCell;
 			sourceTree = "<group>";
 		};
 		CF88CEAA25FDB5C000E30BD1 /* View */ = {
@@ -519,7 +522,7 @@
 				CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */,
 				CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */,
 				CF540B4826084177003CDC6D /* RaitingProductViewController.swift */,
-				CF47214626082D8E00200FDC /* HeaderCell */,
+				CF47214626082D8E00200FDC /* HeaderFooterCell */,
 				CFC009832604AA560067BEDD /* ViewCell */,
 			);
 			path = View;
@@ -1416,6 +1419,7 @@
 				CFAF8E5E25FC4EDD000E2CCA /* AlertManager.swift in Sources */,
 				CFAF8E2B25FC4EDD000E2CCA /* BaseCollectionViewCel.swift in Sources */,
 				CF540B42260840FD003CDC6D /* ProductedBuyViewController.swift in Sources */,
+				CF1AEF6726097BE600269C54 /* PersonalFooterCollectionReusableView.swift in Sources */,
 				CFAF8E1B25FC4EDD000E2CCA /* CartEndPoint.swift in Sources */,
 				CFAF8FD925FC545D000E2CCA /* SearchResultUserTableViewCell.swift in Sources */,
 				CFAF8E5B25FC4EDD000E2CCA /* AppConfig.swift in Sources */,
