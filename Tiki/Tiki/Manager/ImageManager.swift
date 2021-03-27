@@ -22,7 +22,7 @@ final class ImageManager {
     static let whiteCart                            = UIImage(named: "whiteCart")
     static let imagePlaceHolder                     = UIImage(named: "imagePlaceHolder")
     static let searchGray                           = UIImage(named: "searchGray")
-    static let closeCircle                          = UIImage(named: "closeCircle")
+    static let close                                = UIImage(named: "close")
     static let empty                                = UIImage(named: "empty")
     static let optionIcon                           = UIImage(named: "optionIcon")
     static let like                                 = UIImage(named: "like")
@@ -115,5 +115,33 @@ final class ImageManager {
     
     static let sendMessageEnable                     = UIImage(named: "sendMessageEnable")
     static let sendMessageDisable                    = UIImage(named: "sendMessageDisable")
+    
+    static let avatarDefault                         = UIImage(named: "avatarDefault")
+    static let more                                  = UIImage(named: "more")
+        
+    
+    // MARK: - Order
+    static let managerOrder                          = UIImage(named: "managerOrder")
+    static let reciveOrder                           = UIImage(named: "reciveOrder")
+    static let paymentAgain                          = UIImage(named: "paymentAgain")
+    static let transportWaiting                      = UIImage(named: "transportWaiting")
+    static let successOrder                          = UIImage(named: "successOrder")
+    static let cancelOrder                           = UIImage(named: "cancelOrder")
+    
+    // MARK: - Address
+    
+    static let addressLocation                      = UIImage(named: "addressLocation")
+    static let infoPayment                          = UIImage(named: "infoPayment")
+    
+    // MARK: - Product Manager
+    
+    static let buyProducted                      = UIImage(named: "buyProducted")
+    static let loveProduct                       = UIImage(named: "loveProduct")
+    static let ratingProduct                     = UIImage(named: "ratingProduct")
+    static let back_gray                         = UIImage(named: "back_gray")
+    
+    static let facebook                          = UIImage(named: "facebook")
+    static let google                            = UIImage(named: "google")
+    
     
 }

@@ -8,8 +8,13 @@
 import UIKit
 
 class PersonalViewController: BaseViewController {
-
+    
     // MARK: - Variables
+    
+    fileprivate lazy var personalViewModel: PersonalViewModel = {
+        let personal = PersonalViewModel()
+        return personal
+    }()
     
     // MARK: - UI Elements
     
@@ -19,21 +24,31 @@ class PersonalViewController: BaseViewController {
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.delegate = personalViewModel
+        collectionView.dataSource = personalViewModel
+        collectionView.backgroundColor = UIColor.separator
         return collectionView
     }()
-    
     
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutPersonalCollectionView()
+        registerCollectionView()
+        personalViewModel.reloadData()
+        personalViewModel.delegate = self
     }
     
     // MARK: - Helper Method
+    
+    func registerCollectionView() {
+        self.personalCollectionView.registerReusableCell(PersonCollectionViewCell.self)
+        self.personalCollectionView
+            .registerReusableSupplementaryView(PersonalHeaderCollectionReusableView.self,
+                                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+    }
     
     // MARK: - GET API
     
@@ -45,32 +60,52 @@ class PersonalViewController: BaseViewController {
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide)
                     .offset(Dimension.shared.smallMargin)
+                make.bottom.equalTo(view.snp_bottomMargin)
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
                     .offset(Dimension.shared.smallMargin)
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
             }
             make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-                .offset(-Dimension.shared.largeMargin_56)
         }
     }
-
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-extension PersonalViewController: UICollectionViewDelegateFlowLayout {
+// MARK: - PersonalViewModelDelegate
+
+extension PersonalViewController: PersonalViewModelDelegate {
     
-}
-
-// MARK: - UICollectionViewDataSource
-
-extension PersonalViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+    func reloadCollectionView() {
+        self.personalCollectionView.reloadData()
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: PersonCollectCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        return cell
+    func didTapOnCellRow(type: PersonalType) {
+        switch type {
+        case .managerOrder, .recive, .paymentAgain, .transport, .successOrder, .canccelOrder:
+            let vc = ManagerOrderViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .address:
+            let vc = DeliveryAddressViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .infoPayment:
+            let vc = InfoPaymentViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .productedBuy:
+            let vc = ProductedBuyViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .productedLove:
+            let vc = ProductedLoveViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        case .productRating:
+            let vc = RaitingProductViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        default:
+            break
+        }
     }
+    
+    func didTapOnSignIn() {
+        AppRouter.presentViewToSignIn(viewController: self)
+    }
+
 }

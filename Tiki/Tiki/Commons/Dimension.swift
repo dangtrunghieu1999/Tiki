@@ -82,7 +82,7 @@ class Dimension {
     // MARK: - Button
     
     var largeHeightButton: CGFloat {
-        return 54 * self.widthScale
+        return 50 * self.widthScale
     }
     
     var defaultHeightButton: CGFloat {
@@ -148,7 +148,7 @@ class Dimension {
     }
     
     var cornerRadiusSmall: CGFloat {
-        return 2 * self.widthScale
+        return 5 * self.widthScale
     }
     
     var conerRadiusMedium: CGFloat {

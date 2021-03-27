@@ -105,3 +105,13 @@ open class PaddingTextField: UITextField {
     }
     
 }
+
+extension UITextField {
+    
+    func fontSizePlaceholder(text: String, size: CGFloat) {
+        attributedPlaceholder = NSAttributedString(string: text, attributes: [
+            .foregroundColor: UIColor.lightBodyText,
+            .font: UIFont.systemFont(ofSize: size)
+        ])
+    }
+}

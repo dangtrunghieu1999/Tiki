@@ -21,6 +21,7 @@ class BaseCollectionViewHeaderFooterCell: UICollectionReusableView, Reusable {
     }
     
     func initialize() {
+        
     }
     
 }

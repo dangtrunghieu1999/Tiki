@@ -103,11 +103,11 @@ open class BaseViewController: UIViewController {
         if let navCtrl = navigationController {
             navCtrl.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         }
+        setupTabbar()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setupTabbar()
     }
     
     override open func viewDidLoad() {
@@ -298,6 +298,14 @@ open class BaseViewController: UIViewController {
             let rightBarItemTarget: Target = (target: self, selector: #selector(touchUpInRightBarButtonItem))
             let rightBarButtonModel = BarButtonItemModel(image, rightBarItemTarget)
             addBarItems(with: [rightBarButtonModel], type: .right)
+        }
+    }
+    
+    func setLeftNavigationBar(_ image: UIImage? = nil) {
+        if image != nil {
+            let leftBarItemTarget: Target = (target: self, selector: #selector(touchUpInLeftBarButtonItem))
+            let leftBarButtonModel = BarButtonItemModel(image, leftBarItemTarget)
+            addBarItems(with: [leftBarButtonModel], type: .left)
         }
     }
     

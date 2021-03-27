@@ -1,13 +1,13 @@
 //
-//  PersonCollectCollectionViewCell.swift
+//  EnterNewPWViewController.swift
 //  Tiki
 //
-//  Created by Dang Trung Hieu on 3/14/21.
+//  Created by Dang Trung Hieu on 3/27/21.
 //
 
 import UIKit
 
-class PersonCollectCollectionViewCell: BaseCollectionViewCell {
+class EnterNewPWViewController: BaseViewController {
     
     // MARK: - Variables
     
@@ -16,7 +16,8 @@ class PersonCollectCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - View LifeCycles
     
-    override func initialize() {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
     }
     
@@ -25,4 +26,5 @@ class PersonCollectCollectionViewCell: BaseCollectionViewCell {
     // MARK: - GET API
     
     // MARK: - Layout
+    
 }
