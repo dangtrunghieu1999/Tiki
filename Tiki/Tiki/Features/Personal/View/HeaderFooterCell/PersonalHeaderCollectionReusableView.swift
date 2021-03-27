@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol PersonalHeaderCollectionViewDelegate: class {
+    func tapOnSignIn()
+}
+
 class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Variables
+    
+    weak var delegate: PersonalHeaderCollectionViewDelegate?
     
     // MARK: - UI Elements
     
@@ -39,6 +45,14 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         return label
     }()
     
+    fileprivate lazy var nextButton: UIButton = {
+        let button = UIButton()
+        button.layer.masksToBounds = true
+        button.setImage(ImageManager.more, for: .normal)
+        button.backgroundColor = UIColor.clear
+        return button
+    }()
+    
     // MARK: - View LifeCycles
     
     override func initialize() {
@@ -47,6 +61,19 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         layoutAvatarImageView()
         layoutTitleLabel()
         layoutSubTitleLabel()
+        layoutNextButton()
+        tapGestureHeaderCell()
+    }
+    
+    private func tapGestureHeaderCell() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnSignIn))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func tapOnSignIn() {
+        delegate?.tapOnSignIn()
     }
     
     // MARK: - Helper Method
@@ -78,6 +105,15 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         subTitleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
+        }
+    }
+    
+    private func layoutNextButton() {
+        addSubview(nextButton)
+        nextButton.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(12)
         }
     }
 }

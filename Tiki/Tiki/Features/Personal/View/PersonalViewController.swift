@@ -103,4 +103,9 @@ extension PersonalViewController: PersonalViewModelDelegate {
             break
         }
     }
+    
+    func didTapOnSignIn() {
+        AppRouter.presentViewToSignIn(viewController: self)
+    }
+
 }

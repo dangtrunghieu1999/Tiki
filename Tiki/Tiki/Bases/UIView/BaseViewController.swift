@@ -301,6 +301,14 @@ open class BaseViewController: UIViewController {
         }
     }
     
+    func setLeftNavigationBar(_ image: UIImage? = nil) {
+        if image != nil {
+            let leftBarItemTarget: Target = (target: self, selector: #selector(touchUpInLeftBarButtonItem))
+            let leftBarButtonModel = BarButtonItemModel(image, leftBarItemTarget)
+            addBarItems(with: [leftBarButtonModel], type: .left)
+        }
+    }
+    
     func layoutScrollView() {
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in

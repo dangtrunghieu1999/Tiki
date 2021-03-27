@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF1AEF6726097BE600269C54 /* PersonalFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */; };
+		CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */; };
 		CF47214826082E6600200FDC /* PersonalHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */; };
 		CF540B3526083FC8003CDC6D /* ManagerOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */; };
 		CF540B392608403B003CDC6D /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */; };
@@ -220,6 +221,10 @@
 		CFAF8FF925FC5E51000E2CCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */; };
 		CFAF8FFD25FC5EBF000E2CCA /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */; };
 		CFC7F7A225FEF0FE00D986D0 /* Home.json in Resources */ = {isa = PBXBuildFile; fileRef = CFC7F7A125FEF0FE00D986D0 /* Home.json */; };
+		CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794C7260EE783004DE431 /* SignUpViewController.swift */; };
+		CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */; };
+		CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */; };
+		CFEC28A7260C9C3A008B90E7 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */; };
 		D3D31FCBF7CFFB2FE02B1431 /* Pods_Tiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89804318629FE70AB5E51062 /* Pods_Tiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -227,6 +232,7 @@
 		89804318629FE70AB5E51062 /* Pods_Tiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B436648191770830A2E126B8 /* Pods-Tiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.release.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.release.xcconfig"; sourceTree = "<group>"; };
 		CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		CF47214726082E6600200FDC /* PersonalHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerOrderViewController.swift; sourceTree = "<group>"; };
 		CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
@@ -480,6 +486,10 @@
 		CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		CFC7F7A125FEF0FE00D986D0 /* Home.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Home.json; sourceTree = "<group>"; };
+		CFD794C7260EE783004DE431 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
+		CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPWViewController.swift; sourceTree = "<group>"; };
+		CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -501,6 +511,14 @@
 				89804318629FE70AB5E51062 /* Pods_Tiki.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF3ADC65260F1C7900987199 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPassword;
 			sourceTree = "<group>";
 		};
 		CF47214626082D8E00200FDC /* HeaderFooterCell */ = {
@@ -1169,6 +1187,10 @@
 		CFAF8FDF25FC55BF000E2CCA /* User */ = {
 			isa = PBXGroup;
 			children = (
+				CF3ADC65260F1C7900987199 /* ForgotPassword */,
+				CFD794D0260EED6B004DE431 /* EnterNewPW */,
+				CFD794CB260EED00004DE431 /* VerifyOTP */,
+				CFD794CA260EECF9004DE431 /* Password */,
 				CFAF8FE525FC55E1000E2CCA /* SignUp */,
 				CFAF8FE425FC55DD000E2CCA /* SignIn */,
 			);
@@ -1179,6 +1201,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAF8FE125FC55D1000E2CCA /* SignInViewController.swift */,
+				CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -1186,6 +1209,7 @@
 		CFAF8FE525FC55E1000E2CCA /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				CFD794C7260EE783004DE431 /* SignUpViewController.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -1245,6 +1269,29 @@
 				CFC7F7A125FEF0FE00D986D0 /* Home.json */,
 			);
 			name = MockData;
+			sourceTree = "<group>";
+		};
+		CFD794CA260EECF9004DE431 /* Password */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Password;
+			sourceTree = "<group>";
+		};
+		CFD794CB260EED00004DE431 /* VerifyOTP */ = {
+			isa = PBXGroup;
+			children = (
+				CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */,
+			);
+			path = VerifyOTP;
+			sourceTree = "<group>";
+		};
+		CFD794D0260EED6B004DE431 /* EnterNewPW */ = {
+			isa = PBXGroup;
+			children = (
+				CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */,
+			);
+			path = EnterNewPW;
 			sourceTree = "<group>";
 		};
 		E3A1ECCA103076A915AB7FA2 /* Pods */ = {
@@ -1404,6 +1451,7 @@
 				CFAF8E2925FC4EDD000E2CCA /* BaseTableViewHeaderFooter.swift in Sources */,
 				CFAF8F2525FC507C000E2CCA /* ImagePickerParameters.swift in Sources */,
 				CFAF8FCC25FC545D000E2CCA /* ListStickerCollectionViewCell.swift in Sources */,
+				CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */,
 				CFAF8E2425FC4EDD000E2CCA /* NetworkLogger.swift in Sources */,
 				CFAF8E4925FC4EDD000E2CCA /* Int+Extension.swift in Sources */,
 				CFAF8E4F25FC4EDD000E2CCA /* CGPoint+Extensions.swift in Sources */,
@@ -1433,6 +1481,7 @@
 				CFAF8FC925FC545D000E2CCA /* InputContainerView.swift in Sources */,
 				CFAF8E4E25FC4EDD000E2CCA /* String+Extension.swift in Sources */,
 				CFAF8FBE25FC545D000E2CCA /* Comment.swift in Sources */,
+				CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */,
 				CFAF8F2E25FC507C000E2CCA /* PhotoAlbumTitleButton.swift in Sources */,
 				CFAF8F3E25FC507C000E2CCA /* ACTabScrollView+Protocol.swift in Sources */,
 				CFAF8F3C25FC507C000E2CCA /* NSMutableAttributedString+NimbusAttributedLabel.m in Sources */,
@@ -1492,6 +1541,7 @@
 				CFAF8F2825FC507C000E2CCA /* PhotoDetailViewController.swift in Sources */,
 				CFAF8FD725FC545D000E2CCA /* ImageCollectionViewCell.swift in Sources */,
 				CFAF8E6525FC4EDD000E2CCA /* OrderTextManager.swift in Sources */,
+				CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */,
 				CFAF8F4325FC507C000E2CCA /* CAPSPageMenu+UIConfiguration.swift in Sources */,
 				CFAF8E3225FC4EDD000E2CCA /* BaseViewModel.swift in Sources */,
 				CFAF8EFB25FC507C000E2CCA /* NICommonMetrics.m in Sources */,
@@ -1571,6 +1621,7 @@
 				CFAF8FBC25FC545D000E2CCA /* PopUpSlideImageController.swift in Sources */,
 				CFAF8F3125FC507C000E2CCA /* PhotoAlbumCell.swift in Sources */,
 				CF540B392608403B003CDC6D /* DeliveryAddressViewController.swift in Sources */,
+				CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */,
 				CFAF8F0225FC507C000E2CCA /* NINonRetainingCollections.m in Sources */,
 				CFAF8FC525FC545D000E2CCA /* ProductListViewController.swift in Sources */,
 				CFAF8F1C25FC507C000E2CCA /* UINavigationController+ImagePickerConfigurable.swift in Sources */,
@@ -1581,6 +1632,7 @@
 				CFAF8F2C25FC507C000E2CCA /* ImagePickerConfigurable.swift in Sources */,
 				CFAF8F1125FC507C000E2CCA /* ImageCropperConfiguration.swift in Sources */,
 				CFAF8E3D25FC4EDD000E2CCA /* UIColor+Extension.swift in Sources */,
+				CFEC28A7260C9C3A008B90E7 /* PasswordViewController.swift in Sources */,
 				CFAF8E4725FC4EDD000E2CCA /* UITableView+Extension.swift in Sources */,
 				CFAF8F0725FC507C000E2CCA /* NIImageUtilities.m in Sources */,
 				CFAF8E4525FC4EDD000E2CCA /* UIApplication+Exension.swift in Sources */,

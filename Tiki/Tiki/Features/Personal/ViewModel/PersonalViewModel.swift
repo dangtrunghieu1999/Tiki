@@ -10,6 +10,7 @@ import UIKit
 protocol PersonalViewModelDelegate: class {
     func reloadCollectionView()
     func didTapOnCellRow(type: PersonalType)
+    func didTapOnSignIn()
 }
 
 class PersonalViewModel: NSObject {
@@ -87,9 +88,16 @@ extension PersonalViewModel: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader {
             let header: PersonalHeaderCollectionReusableView =
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
+            header.delegate = self
             return header
         } else {
             return UICollectionReusableView()
         }
+    }
+}
+
+extension PersonalViewModel: PersonalHeaderCollectionViewDelegate {
+    func tapOnSignIn() {
+        delegate?.didTapOnSignIn()
     }
 }

@@ -43,7 +43,7 @@ class TagCollectionViewCell: BaseCollectionViewCell {
     
     private lazy var button: UIButton = {
         let button = UIButton()
-        button.setImage(ImageManager.closeCircle, for: .normal)
+        button.setImage(ImageManager.close, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.addTarget(self, action: #selector(tapInButton), for: .touchUpInside)
         return button

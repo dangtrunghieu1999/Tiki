@@ -10,6 +10,23 @@ import UIKit
 import Photos
 
 class AppRouter: NSObject {
+    
+    class func presentViewToSignIn(viewController: UIViewController) {
+        let vc = SignInViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        viewController.present(nvc, animated: true, completion: nil)
+    }
+    
+    class func pushToPasswordVC() {
+        let vc = PasswordViewController()
+        UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    class func pushToWebView(config byURL: URL) {
+        let webVC = WebViewViewController()
+        webVC.configWebView(by: byURL)
+        UIViewController.topViewController()?.navigationController?.pushViewController(webVC, animated: true)
+    }
 
     class func pushToGuideEranMoneyWebView(config byURL: URL) {
         

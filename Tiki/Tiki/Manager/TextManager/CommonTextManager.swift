@@ -59,7 +59,7 @@ final class  TextManager {
     static let buyAndSave                   = "Mua sắm được tích luỹ tiền"
     static let earnMoney                    = "Kiếm tiền"
     static let bussinessAndEarnMoney        = "Kinh doanh, kiếm tiền"
-    static let signIn                       = "Đăng nhập"
+    static let signIn                       = "Đăng nhập hoặc Tạo tài khoản"
     static let signInUserNamePlaceHolder    = "Điện thoại, email"
     static let password                     = "Mật khẩu"
     static let confirmPassword              = "Nhập lại mật khẩu"
@@ -83,8 +83,8 @@ final class  TextManager {
     static let pwNotEnoughLength            = "Mật khẩu phải dài hơn \(AppConfig.minPasswordLenght) kí tự"
     
     // ForgotPassword
-    static let resetPWTitle                 = "Khôi phục tài khoản"
-    static let weWillSendCodeToEmail        = "Bạn quên tài khoản ư! \n Vui lòng nhập email hoặc số điện thoại để tìm kiếm tài khoản"
+    static let resetPWTitle                 = "Quên mật khẩu"
+    static let weWillSendCodeToEmail        = "Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu"
     static let next                         = "Tiếp tục"
     
     static let sendCodeRecoverPWInEmail     = "Chúng tôi đã gửi cho bạn mã code qua email, hãy check mail bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
@@ -119,5 +119,12 @@ final class  TextManager {
     static let welcome                      = "Chào mừng bạn đến với tiki"
     static let welcomeSignInUp              = "Đăng nhập/Đăng ký"
     
-    
+    static let welcomeSignIn                = "Xin chào,"
+    static let continueSignIn               = "Tiếp Tục"
+    static let titlePassword                = "Mật khẩu"
+    static let inputPassword                = "Nhập mật khẩu"
+    static let pleaseInputPW                = "Vui lòng nhập mật khẩu Tiki của số điện thoại "
+    static let signInAccount                = "Đăng nhập"
+    static let continueRules                = "Bằng việc tiếp tục, bạn đã chấp nhận điều khoản sử dụng"
+    static let optionSignIn                 = "Hoặc tiếp tục bằng"
 }

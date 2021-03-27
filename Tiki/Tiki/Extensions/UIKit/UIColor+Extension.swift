@@ -23,7 +23,11 @@ extension UIColor {
     }
     
     class var primary: UIColor {
-        return UIColor(hex: "#006699")
+        return UIColor(hex: "#FF424E")
+    }
+    
+    class var second: UIColor {
+        return UIColor(hex: "#276DBD")
     }
     
     class var titleText: UIColor {
