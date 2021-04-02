@@ -16,5 +16,6 @@ target 'Tiki' do
     pod 'IGListKit', '~> 3.4.0'
     pod 'GooglePlaces'
     pod 'HCSStarRatingView', '~> 1.5'
+    pod 'FSPagerView'
 
 end

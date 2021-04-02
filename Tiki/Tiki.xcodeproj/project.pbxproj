@@ -16,6 +16,18 @@
 		CF540B42260840FD003CDC6D /* ProductedBuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */; };
 		CF540B452608412D003CDC6D /* ProductedLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */; };
 		CF540B4926084177003CDC6D /* RaitingProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B4826084177003CDC6D /* RaitingProductViewController.swift */; };
+		CF61044F2610ADA300FBB983 /* EnumHomeDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61044E2610ADA300FBB983 /* EnumHomeDefine.swift */; };
+		CF6104532610B2D900FBB983 /* BannerFeedSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6104522610B2D900FBB983 /* BannerFeedSectionModel.swift */; };
+		CF6104562610B48900FBB983 /* MenuFeedSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6104552610B48900FBB983 /* MenuFeedSectionModel.swift */; };
+		CF6104592610B4EF00FBB983 /* BannerEventSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6104582610B4EF00FBB983 /* BannerEventSectionModel.swift */; };
+		CF61045C2610B59B00FBB983 /* ProductRecommendSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61045B2610B59B00FBB983 /* ProductRecommendSectionModel.swift */; };
+		CF6104612610B71700FBB983 /* BannerFeedSectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6104602610B71700FBB983 /* BannerFeedSectionController.swift */; };
+		CF6104652610B76D00FBB983 /* MenuFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6104642610B76D00FBB983 /* MenuFeedViewController.swift */; };
+		CF6104692610B7B200FBB983 /* BannerEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6104682610B7B200FBB983 /* BannerEventViewController.swift */; };
+		CF61046C2610B7FE00FBB983 /* ProductRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61046B2610B7FE00FBB983 /* ProductRecommendViewController.swift */; };
+		CF6E812E26107D6500FDB5BF /* BannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E812D26107D6500FDB5BF /* BannerViewController.swift */; };
+		CF6E813226107DA700FDB5BF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E813126107DA700FDB5BF /* HomeViewModel.swift */; };
+		CF6E81352610937100FDB5BF /* BaseHomeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */; };
 		CF88CEAC25FDB5D800E30BD1 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */; };
 		CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEB225FDB5EE00E30BD1 /* Personal.swift */; };
 		CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */; };
@@ -225,6 +237,8 @@
 		CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */; };
 		CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */; };
 		CFEC28A7260C9C3A008B90E7 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */; };
+		CFF9A0022616B11D00F702F0 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0012616B11D00F702F0 /* BannerModel.swift */; };
+		CFF9A0072616CB6300F702F0 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */; };
 		D3D31FCBF7CFFB2FE02B1431 /* Pods_Tiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89804318629FE70AB5E51062 /* Pods_Tiki.framework */; };
 /* End PBXBuildFile section */
 
@@ -240,6 +254,18 @@
 		CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductedBuyViewController.swift; sourceTree = "<group>"; };
 		CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductedLoveViewController.swift; sourceTree = "<group>"; };
 		CF540B4826084177003CDC6D /* RaitingProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingProductViewController.swift; sourceTree = "<group>"; };
+		CF61044E2610ADA300FBB983 /* EnumHomeDefine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumHomeDefine.swift; sourceTree = "<group>"; };
+		CF6104522610B2D900FBB983 /* BannerFeedSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFeedSectionModel.swift; sourceTree = "<group>"; };
+		CF6104552610B48900FBB983 /* MenuFeedSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFeedSectionModel.swift; sourceTree = "<group>"; };
+		CF6104582610B4EF00FBB983 /* BannerEventSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerEventSectionModel.swift; sourceTree = "<group>"; };
+		CF61045B2610B59B00FBB983 /* ProductRecommendSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecommendSectionModel.swift; sourceTree = "<group>"; };
+		CF6104602610B71700FBB983 /* BannerFeedSectionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerFeedSectionController.swift; sourceTree = "<group>"; };
+		CF6104642610B76D00FBB983 /* MenuFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuFeedViewController.swift; sourceTree = "<group>"; };
+		CF6104682610B7B200FBB983 /* BannerEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerEventViewController.swift; sourceTree = "<group>"; };
+		CF61046B2610B7FE00FBB983 /* ProductRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecommendViewController.swift; sourceTree = "<group>"; };
+		CF6E812D26107D6500FDB5BF /* BannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerViewController.swift; sourceTree = "<group>"; };
+		CF6E813126107DA700FDB5BF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHomeSectionModel.swift; sourceTree = "<group>"; };
 		CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF88CEB225FDB5EE00E30BD1 /* Personal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
 		CFA5BB4825EB89BE00AC20D1 /* Tiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -490,6 +516,8 @@
 		CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPWViewController.swift; sourceTree = "<group>"; };
 		CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
+		CFF9A0012616B11D00F702F0 /* BannerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -528,6 +556,36 @@
 				CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */,
 			);
 			path = HeaderFooterCell;
+			sourceTree = "<group>";
+		};
+		CF6104512610B2B300FBB983 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				CF6104522610B2D900FBB983 /* BannerFeedSectionModel.swift */,
+				CF6104552610B48900FBB983 /* MenuFeedSectionModel.swift */,
+				CF6104582610B4EF00FBB983 /* BannerEventSectionModel.swift */,
+				CF61045B2610B59B00FBB983 /* ProductRecommendSectionModel.swift */,
+			);
+			name = Sections;
+			sourceTree = "<group>";
+		};
+		CF61045F2610B66700FBB983 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CF6104602610B71700FBB983 /* BannerFeedSectionController.swift */,
+				CF6104642610B76D00FBB983 /* MenuFeedViewController.swift */,
+				CF6104682610B7B200FBB983 /* BannerEventViewController.swift */,
+				CF61046B2610B7FE00FBB983 /* ProductRecommendViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		CF6E812C26107D4F00FDB5BF /* Banner */ = {
+			isa = PBXGroup;
+			children = (
+				CF6E812D26107D6500FDB5BF /* BannerViewController.swift */,
+			);
+			name = Banner;
 			sourceTree = "<group>";
 		};
 		CF88CEAA25FDB5C000E30BD1 /* View */ = {
@@ -607,11 +665,16 @@
 		CFA5BBB425EB8EA700AC20D1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CFF9A0052616CB4600F702F0 /* ViewCell */,
+				CF61045F2610B66700FBB983 /* ViewController */,
+				CF6104512610B2B300FBB983 /* Sections */,
 				CFC7F7A025FEF0EB00D986D0 /* MockData */,
 				CFA5BBB525EB8EAE00AC20D1 /* Model */,
 				CFA5BBB625EB8EB600AC20D1 /* View */,
 				CFA5BBB725EB8EC700AC20D1 /* ViewModel */,
 				CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */,
+				CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */,
+				CF61044E2610ADA300FBB983 /* EnumHomeDefine.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -619,6 +682,8 @@
 		CFA5BBB525EB8EAE00AC20D1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CFF9A0012616B11D00F702F0 /* BannerModel.swift */,
+				CF6E813126107DA700FDB5BF /* HomeViewModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -626,6 +691,7 @@
 		CFA5BBB625EB8EB600AC20D1 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CF6E812C26107D4F00FDB5BF /* Banner */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1294,6 +1360,14 @@
 			path = EnterNewPW;
 			sourceTree = "<group>";
 		};
+		CFF9A0052616CB4600F702F0 /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */,
+			);
+			name = ViewCell;
+			sourceTree = "<group>";
+		};
 		E3A1ECCA103076A915AB7FA2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1455,6 +1529,7 @@
 				CFAF8E2425FC4EDD000E2CCA /* NetworkLogger.swift in Sources */,
 				CFAF8E4925FC4EDD000E2CCA /* Int+Extension.swift in Sources */,
 				CFAF8E4F25FC4EDD000E2CCA /* CGPoint+Extensions.swift in Sources */,
+				CF6104652610B76D00FBB983 /* MenuFeedViewController.swift in Sources */,
 				CFAF8F0E25FC507C000E2CCA /* NISDKAvailability.m in Sources */,
 				CFAF8E2A25FC4EDD000E2CCA /* BaseAlertViewController.swift in Sources */,
 				CFAF8E1E25FC4EDD000E2CCA /* ShopEndPoint.swift in Sources */,
@@ -1462,12 +1537,15 @@
 				CFAF8FC825FC545D000E2CCA /* TagCollectionViewCell.swift in Sources */,
 				CFAF8E6325FC4EDD000E2CCA /* ProductTextManager.swift in Sources */,
 				CFAF8F0925FC507C000E2CCA /* NIFoundationMethods.m in Sources */,
+				CF6104612610B71700FBB983 /* BannerFeedSectionController.swift in Sources */,
 				CFAF8F1025FC507C000E2CCA /* FLAnimatedImageView.m in Sources */,
 				CFAF8E5D25FC4EDD000E2CCA /* UploadManager.swift in Sources */,
 				CFAF8E5E25FC4EDD000E2CCA /* AlertManager.swift in Sources */,
+				CF61044F2610ADA300FBB983 /* EnumHomeDefine.swift in Sources */,
 				CFAF8E2B25FC4EDD000E2CCA /* BaseCollectionViewCel.swift in Sources */,
 				CF540B42260840FD003CDC6D /* ProductedBuyViewController.swift in Sources */,
 				CF1AEF6726097BE600269C54 /* PersonalFooterCollectionReusableView.swift in Sources */,
+				CF61045C2610B59B00FBB983 /* ProductRecommendSectionModel.swift in Sources */,
 				CFAF8E1B25FC4EDD000E2CCA /* CartEndPoint.swift in Sources */,
 				CFAF8FD925FC545D000E2CCA /* SearchResultUserTableViewCell.swift in Sources */,
 				CFAF8E5B25FC4EDD000E2CCA /* AppConfig.swift in Sources */,
@@ -1539,6 +1617,7 @@
 				CFAF8FD425FC545D000E2CCA /* EmptyCollectionViewCell.swift in Sources */,
 				CF47214826082E6600200FDC /* PersonalHeaderCollectionReusableView.swift in Sources */,
 				CFAF8F2825FC507C000E2CCA /* PhotoDetailViewController.swift in Sources */,
+				CF6E81352610937100FDB5BF /* BaseHomeSectionModel.swift in Sources */,
 				CFAF8FD725FC545D000E2CCA /* ImageCollectionViewCell.swift in Sources */,
 				CFAF8E6525FC4EDD000E2CCA /* OrderTextManager.swift in Sources */,
 				CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */,
@@ -1552,12 +1631,15 @@
 				CF540B3526083FC8003CDC6D /* ManagerOrderViewController.swift in Sources */,
 				CFAF8E3725FC4EDD000E2CCA /* PaddingLabel.swift in Sources */,
 				CFAF8E5025FC4EDD000E2CCA /* CGFloat+Additions.swift in Sources */,
+				CF6E812E26107D6500FDB5BF /* BannerViewController.swift in Sources */,
 				CFAF8F1F25FC507C000E2CCA /* CameraSessionHandler.swift in Sources */,
 				CFAF8E4225FC4EDD000E2CCA /* URL+Extension.swift in Sources */,
 				CFAF8FF025FC5D48000E2CCA /* TKTabBarViewController.swift in Sources */,
 				CFAF8F2F25FC507C000E2CCA /* PhotoGalleryTagLabel.swift in Sources */,
 				CFAF8FFD25FC5EBF000E2CCA /* PersonalViewController.swift in Sources */,
 				CFAF8F3425FC507C000E2CCA /* PhotoGalleryViewController+UIViewControllerPreviewing.swift in Sources */,
+				CF6104532610B2D900FBB983 /* BannerFeedSectionModel.swift in Sources */,
+				CF6104692610B7B200FBB983 /* BannerEventViewController.swift in Sources */,
 				CFAF8E4825FC4EDD000E2CCA /* NSAttributedString+Extension.swift in Sources */,
 				CFAF8F2225FC507C000E2CCA /* SlideUpPresentingAnimator.swift in Sources */,
 				CFAF8E3825FC4EDD000E2CCA /* BageButton.swift in Sources */,
@@ -1567,6 +1649,7 @@
 				CFAF8E2325FC4EDD000E2CCA /* APIConfig.swift in Sources */,
 				CFAF8E3925FC4EDD000E2CCA /* PaddingTextView.swift in Sources */,
 				CFAF8F2425FC507C000E2CCA /* GalleryPhotoCell.swift in Sources */,
+				CF6104592610B4EF00FBB983 /* BannerEventSectionModel.swift in Sources */,
 				CFAF8F1825FC507C000E2CCA /* ImageCropperRouter.swift in Sources */,
 				CFAF8F2D25FC507C000E2CCA /* PhotoGalleryViewController.swift in Sources */,
 				CFA7F68525FDB9CA0026FCAA /* PersonalViewModel.swift in Sources */,
@@ -1586,6 +1669,7 @@
 				CFAF8F0825FC507C000E2CCA /* NIPaths.m in Sources */,
 				CFAF8FCF25FC545D000E2CCA /* StickerCollectionViewCell.swift in Sources */,
 				CFAF8F3A25FC507C000E2CCA /* ImageScrollView.swift in Sources */,
+				CFF9A0072616CB6300F702F0 /* BannerCollectionViewCell.swift in Sources */,
 				CFAF8E2625FC4EDD000E2CCA /* BaseViewController.swift in Sources */,
 				CFAF8E6825FC4EDD000E2CCA /* PermissionManager.swift in Sources */,
 				CFAF8F3925FC507C000E2CCA /* UIColor+Palette.swift in Sources */,
@@ -1619,6 +1703,7 @@
 				CFAF8FC725FC545D000E2CCA /* CollectionTagView.swift in Sources */,
 				CFAF8E3525FC4EDD000E2CCA /* TitleTextField.swift in Sources */,
 				CFAF8FBC25FC545D000E2CCA /* PopUpSlideImageController.swift in Sources */,
+				CF6E813226107DA700FDB5BF /* HomeViewModel.swift in Sources */,
 				CFAF8F3125FC507C000E2CCA /* PhotoAlbumCell.swift in Sources */,
 				CF540B392608403B003CDC6D /* DeliveryAddressViewController.swift in Sources */,
 				CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */,
@@ -1632,6 +1717,7 @@
 				CFAF8F2C25FC507C000E2CCA /* ImagePickerConfigurable.swift in Sources */,
 				CFAF8F1125FC507C000E2CCA /* ImageCropperConfiguration.swift in Sources */,
 				CFAF8E3D25FC4EDD000E2CCA /* UIColor+Extension.swift in Sources */,
+				CFF9A0022616B11D00F702F0 /* BannerModel.swift in Sources */,
 				CFEC28A7260C9C3A008B90E7 /* PasswordViewController.swift in Sources */,
 				CFAF8E4725FC4EDD000E2CCA /* UITableView+Extension.swift in Sources */,
 				CFAF8F0725FC507C000E2CCA /* NIImageUtilities.m in Sources */,
@@ -1644,7 +1730,9 @@
 				CFAF8F1E25FC507C000E2CCA /* ImagePickerController.swift in Sources */,
 				CFAF8FC025FC545D000E2CCA /* Photo.swift in Sources */,
 				CFAF8E4125FC4EDD000E2CCA /* UINavigationController+Extension.swift in Sources */,
+				CF6104562610B48900FBB983 /* MenuFeedSectionModel.swift in Sources */,
 				CFAF8FBB25FC545D000E2CCA /* ScrollImageCollectionViewCell.swift in Sources */,
+				CF61046C2610B7FE00FBB983 /* ProductRecommendViewController.swift in Sources */,
 				CFAF8E2125FC4EDD000E2CCA /* UserEndPoint.swift in Sources */,
 				CFAF8FD125FC545D000E2CCA /* EmptyTableViewCell.swift in Sources */,
 				CFAF8E3125FC4EDD000E2CCA /* ShimmerLabel.swift in Sources */,
