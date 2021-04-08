@@ -143,5 +143,8 @@ final class ImageManager {
     static let facebook                          = UIImage(named: "facebook")
     static let google                            = UIImage(named: "google")
     
-    
+    static let notification                      = UIImage(named: "notification")
+    static let chat                              = UIImage(named: "chat")
+    static let person                            = UIImage(named: "person")
+    static let category                          = UIImage(named: "category")
 }

@@ -11,15 +11,15 @@ import SwiftyJSON
 
 class HomeViewController: BaseViewController {
     
-    
     // MARK: - Variables
-    
+
     private lazy var adapter: ListAdapter = {
         let updater = ListAdapterUpdater()
         let adapter = ListAdapter(updater: updater,
                                   viewController: self,
-                                  workingRangeSize: 0)
+                                  workingRangeSize: 4)
         adapter.collectionView = collectionView
+        adapter.dataSource = self
         return adapter
     }()
     
@@ -30,8 +30,8 @@ class HomeViewController: BaseViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 4
-        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.frame = view.bounds
@@ -42,17 +42,15 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItems = [cartBarButtonItem, notifiBarButtonItem]
+        navigationItem.titleView = searchBar
         view.addSubview(collectionView)
         requestHomeAPI()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        collectionView.frame = view.bounds
-    }
-    
     
     // MARK: - Helper Method
+    
     
     func requestHomeAPI() {
         guard let path = Bundle.main.path(forResource: "Home", ofType: "json") else {
@@ -92,7 +90,7 @@ extension HomeViewController: ListAdapterDataSource {
         case .SlideWidget:
             return BannerFeedSectionController()
         case .ShortcutWidget:
-            return MenuFeedViewController()
+            return MenuFeedSectionViewController()
         case .BannerEventWidget:
             return BannerEventViewController()
         case .ProductRecommendWidget:

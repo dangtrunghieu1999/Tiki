@@ -1,5 +1,5 @@
 [
-{
+    {
         "type": "SlideWidget",
         "data": {
             "title": "Banner",
@@ -34,6 +34,179 @@
                 "background_image": "",
                 "background_color": [
                     "#D40000"
+                ],
+                "more_text_color": "",
+                "icon_image": "",
+                "title_text_color": ""
+            }
+        }
+    },
+    {
+        "type": "ShortcutWidget",
+        "data": {
+            "title": "menu",
+            "link": "",
+            "list": [
+                {
+                    "title": "Giờ vàng săn sale",
+                    "image": "https://media3.scdn.vn/img4/2021/01_20/YikCHObnWqhM6OS2xSfO.png",
+                    "url": "https://www.sendo.vn/su-kien/gio-vang-san-sale/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_gio_vang_san_sale"
+                    }
+                },
+                {
+                    "title": "Mã giảm giá & Freeship",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/VqbzYqtyt3CLOf7JBOge.png",
+                    "url": "https://www.sendo.vn/su-kien/ma-giam-gia/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_ma_giam_gia"
+                    }
+                },
+                {
+                    "title": "Sale thời trang -70%",
+                    "image": "https://media3.scdn.vn/img4/2021/03_31/T1vja44nz0gq2wMKje9F.png",
+                    "url": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_san_deal_thoi_trang"
+                    }
+                },
+                {
+                    "title": "Gian hàng Việt",
+                    "image": "https://media3.scdn.vn/img4/2021/04_06/AvAiRJ7kXjrqa50e6isE.png",
+                    "url": "https://www.sendo.vn/su-kien/gian-hang-viet",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_gian_hang_viet"
+                    }
+                },
+                {
+                    "title": "Triệu voucher shop",
+                    "image": "https://media3.scdn.vn/img4/2021/03_15/613JAmfvxgBkph9SkTCr.png",
+                    "url": "https://www.sendo.vn/su-kien/voucher-shop/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_voucher_shop"
+                    }
+                },
+                {
+                    "title": "Số Đỏ 1K",
+                    "image": "https://media3.scdn.vn/img4/2021/04_07/R7zebd3NLip1AlO5NdIv.png",
+                    "url": "https://www.sendo.vn/su-kien/sodo1K/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_so_do_1K"
+                    }
+                },
+                {
+                    "title": "Nạp điện thoại -3%",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/mUMbiPWhBTYO1XjpnlNH.png",
+                    "url": "https://www.sendo.vn/tien-ich/nap-tien/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_nap_tien_dien_thoai"
+                    }
+                },
+                {
+                    "title": "Thanh toán Tiện ích",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/Aj1owyhWkIHyA3kCoYxt.png",
+                    "url": "https://www.sendo.vn/tien-ich/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_tien_ich"
+                    }
+                },
+                {
+                    "title": "Bao bay Giá rẻ",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/c404W1vXChPNPwcfzHAN.png",
+                    "url": "https://www.sendo.vn/tien-ich/ve-may-bay/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_ve_may_bay"
+                    }
+                },
+                {
+                    "title": "Đồ nam sale sốc",
+                    "image": "https://media3.scdn.vn/img4/2021/04_07/03l1JkZdMTcRvkL1A8Cc.png",
+                    "url": "https://www.sendo.vn/thoi-trang-nam/?is_mega_voucher=1&sortType=norder_30_desc",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_san_deal_gia_dung"
+                    }
+                }
+            ],
+            "header_info": {
+                "background_color": [
+                    "#ffffff"
+                ],
+                "title_text_color": "#000000",
+                "background_image": "",
+                "more_text_color": "",
+                "icon_image": ""
+            }
+        },
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "background_image": ""
+    },
+    {
+        "type": "BannerEventWidget",
+        "data": {
+            "title": "08.4 0H-12H",
+            "link": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/?ref=widget_app",
+            "list": [
+                {
+                    "image": "https://media3.scdn.vn/img4/2021/04_07/ba3rBfhBmQLzm2i2FrST.png",
+                    "url": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/?ref=widget_app",
+                    "links": [
+                        {
+                            "top": 0,
+                            "left": 0,
+                            "width": 60,
+                            "height": 100,
+                            "url": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/?ref=widget_app"
+                        },
+                        {
+                            "top": 0,
+                            "left": 60,
+                            "width": 40,
+                            "height": 100,
+                            "url": "https://www.sendo.vn/su-kien/gio-vang-san-sale/?ref=widget_app"
+                        }
+                    ],
+                    "name": "08.4 0H-12H",
+                    "ratio_image": 3.6,
+                    "start_time": 1617814800,
+                    "end_time": 1617857999
+                }
+            ],
+            "header_info": {
+                "background_image": "",
+                "background_color": [
+                    "#ffffff"
                 ],
                 "more_text_color": "",
                 "icon_image": "",

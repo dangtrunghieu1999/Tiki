@@ -1,5 +1,5 @@
 //
-//  BannerEventViewController.swift
+//  MenuFeedViewController.swift
 //  Tiki
 //
 //  Created by Dang Trung Hieu on 3/28/21.
@@ -8,9 +8,9 @@
 import UIKit
 import IGListKit
 
-class BannerEventViewController: ListSectionController {
+class MenuFeedSectionViewController: ListSectionController{
 
-    var event: BannerEventSectionModel?
+    var menu: MenuFeedSectionModel?
     
     override init() {
         super.init()
@@ -34,14 +34,14 @@ class BannerEventViewController: ListSectionController {
         else {
             return UICollectionViewCell()
         }
-        if let cell = cell as? MenuCollectionViewCellDelegate, let event = self.event {
-            
+        if let cell = cell as? MenuCollectionViewCellDelegate, let menu = self.menu {
+            cell.configData(menu: menu.menuModel ?? MenuModel())
         }
         return cell
     }
     
     override func didUpdate(to object: Any) {
-        self.event = object as? BannerEventSectionModel
+        self.menu = object as? MenuFeedSectionModel
     }
     
 }

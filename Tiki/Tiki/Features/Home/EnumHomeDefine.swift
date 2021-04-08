@@ -7,9 +7,9 @@
 
 import Foundation
 
-enum HomeFeedType: Int {
-    case SlideWidget                = 0
-    case ShortcutWidget             = 1
-    case BannerEventWidget          = 2
-    case ProductRecommendWidget     = 3
+enum HomeFeedType: String {
+    case SlideWidget                = "SlideWidget"
+    case ShortcutWidget             = "ShortcutWidget"
+    case BannerEventWidget          = "BannerEventWidget"
+    case ProductRecommendWidget     = "ProductRecommendWidget"
 }

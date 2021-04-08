@@ -20,7 +20,7 @@ class BaseHomeSectionModel: NSObject, JSONParsable {
     }
     
     required init(json: JSON) {
-        feedType            = HomeFeedType(rawValue: json["type"].intValue) ?? .SlideWidget
+        feedType            = HomeFeedType(rawValue: json["type"].stringValue) ?? .SlideWidget
     }
 
     

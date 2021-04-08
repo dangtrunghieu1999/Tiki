@@ -141,6 +141,10 @@ class Dimension {
         return 4 * widthScale
     }
     
+    var pageControlHeight: CGFloat {
+        return 15 * heightScale
+    }
+    
     // MARK: - TextField
     
     var defaultHeightTextField: CGFloat {
@@ -155,4 +159,5 @@ class Dimension {
         return 10 * self.widthScale
     }
     
+
 }

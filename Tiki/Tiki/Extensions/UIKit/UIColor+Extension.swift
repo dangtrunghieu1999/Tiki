@@ -18,6 +18,10 @@ extension UIColor {
         return UIColor(hex: "#13B7FF")
     }
     
+    class var tabbarIcon: UIColor {
+        return UIColor(hex: "#157CDB")
+    }
+    
     class var lightBackground: UIColor {
         return UIColor(hex: "#EFEFEF")
     }

@@ -47,7 +47,7 @@ open class BaseViewController: UIViewController {
     lazy var searchBar: PaddingTextField = {
         let searchBar = PaddingTextField()
         searchBar.setDefaultBackgroundColor()
-        searchBar.layer.cornerRadius = 18
+        searchBar.layer.cornerRadius = 5
         searchBar.layer.masksToBounds = true
         searchBar.placeholder = TextManager.search.localized()
         searchBar.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
@@ -86,7 +86,18 @@ open class BaseViewController: UIViewController {
         return button
     }()
     
+    private (set) lazy var notifiButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        button.setImage(ImageManager.notification, for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(touchInNotificationButton), for: .touchUpInside)
+        return button
+    }()
+
+    
     private (set) lazy var cartBarButtonItem = UIBarButtonItem(customView: cartButton)
+    private (set) lazy var notifiBarButtonItem = UIBarButtonItem(customView: notifiButton)
     private (set) lazy var tapGestureOnSuperView = UITapGestureRecognizer(target: self,
                                                                           action: #selector(touchInScrollView))
     
@@ -163,6 +174,10 @@ open class BaseViewController: UIViewController {
     
     @objc func touchInCartButton() {
         AppRouter.pushToCart()
+    }
+    
+    @objc func touchInNotificationButton() {
+        AppRouter.pushToNotificationVC()
     }
     
     // MARK: - Public methods

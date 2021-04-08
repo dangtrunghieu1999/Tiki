@@ -9,14 +9,18 @@ import UIKit
 import IGListKit
 
 class BannerFeedSectionController: ListSectionController{
-    var banner: BannerModel?
+    var banner: BannerFeedSectionModel?
     
     override init() {
         super.init()
+        self.inset = UIEdgeInsets(top: Dimension.shared.mediumMargin_12,
+                                  left: Dimension.shared.mediumMargin_12,
+                                  bottom: 0,
+                                  right: Dimension.shared.mediumMargin_12)
     }
     
     override func numberOfItems() -> Int {
-        return banner?.list.count ?? 0
+        return 1
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
@@ -24,15 +28,23 @@ class BannerFeedSectionController: ListSectionController{
           return .zero
         }
         
-        let width = context.containerSize.width
-        return CGSize(width: width, height: 50)
+        let width = context.containerSize.width - ( Dimension.shared.mediumMargin_12 * 2 )
+        return CGSize(width: width, height: 140)
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        return BannerCollectionViewCell()
+        guard let cell = collectionContext?.dequeueReusableCell(of: BannerCollectionViewCell.self, for: self, at: index)
+        else {
+            return UICollectionViewCell()
+        }
+        
+        if let cell = cell as? BannerCollectionViewDelegate, let banner = self.banner {
+            cell.configData(banner: banner.bannerModel ?? BannerModel())
+        }
+        return cell
     }
     
     override func didUpdate(to object: Any) {
-        self.banner = object as? BannerModel
+        self.banner = object as? BannerFeedSectionModel
     }
 }
