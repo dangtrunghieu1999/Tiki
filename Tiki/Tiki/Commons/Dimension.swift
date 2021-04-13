@@ -159,5 +159,9 @@ class Dimension {
         return 10 * self.widthScale
     }
     
+    // MARK: - Height
 
+    var mediumViewHeight: CGFloat {
+        return 8 * widthScale
+    }
 }

@@ -33,8 +33,9 @@ class HomeViewController: BaseViewController {
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.lightBackground
         collectionView.frame = view.bounds
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
     
@@ -94,7 +95,9 @@ extension HomeViewController: ListAdapterDataSource {
         case .BannerEventWidget:
             return BannerEventViewController()
         case .ProductRecommendWidget:
-            return ProductRecommendViewController()
+            let vc = ProductRecommendViewController()
+            vc.delegate = self
+            return vc
         }
     }
     
@@ -106,4 +109,12 @@ extension HomeViewController: ListAdapterDataSource {
         return dataSource
     }
 
+}
+
+extension HomeViewController: ProductRecommendDelagte {
+    func tapProductDetail(title: String) {
+        let vc = ProductDetailViewController()
+        vc.navigationItem.title = title
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

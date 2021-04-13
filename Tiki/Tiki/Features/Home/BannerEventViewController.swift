@@ -9,7 +9,7 @@ import UIKit
 import IGListKit
 
 class BannerEventViewController: ListSectionController {
-
+    
     var event: BannerEventSectionModel?
     
     override init() {
@@ -17,31 +17,46 @@ class BannerEventViewController: ListSectionController {
     }
     
     override func numberOfItems() -> Int {
-        return 1
+        return 2
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
         guard let context = collectionContext else {
-          return .zero
+            return .zero
         }
         
         let width = context.containerSize.width
-        return CGSize(width: width, height: 180)
+        
+        if index == 0 {
+            return CGSize(width: width, height: Dimension.shared.largeMargin_120)
+        } else {
+            return CGSize(width: width, height: Dimension.shared.mediumViewHeight)
+        }
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell = collectionContext?.dequeueReusableCell(of: MenuCollectionViewCell.self, for: self, at: index)
-        else {
-            return UICollectionViewCell()
+        if index == 0 {
+            guard let cell = collectionContext?.dequeueReusableCell(of: EventCollectionViewCell.self,
+                                                                    for: self,
+                                                                    at: index)
+            else {
+                return UICollectionViewCell()
+            }
+            if let cell = cell as? EventCollectionViewCellDelegate, let event = self.event {
+                cell.configData(event: event.eventModel ?? EventModel())
+            }
+            return cell
+        } else {
+            guard let cell = collectionContext?.dequeueReusableCell(of: FeedSectionSecparatorCollectionViewCell.self,
+                                                                    for: self,
+                                                                    at: index) else {
+                return UICollectionViewCell()
+            }
+            return cell
         }
-        if let cell = cell as? MenuCollectionViewCellDelegate, let event = self.event {
-            
-        }
-        return cell
     }
     
     override func didUpdate(to object: Any) {
         self.event = object as? BannerEventSectionModel
     }
-    
 }

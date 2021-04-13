@@ -343,6 +343,7 @@ open class BaseViewController: UIViewController {
 extension BaseViewController: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchBar.endEditing(true)
+        searchBar.resignFirstResponder()
         return true
     }
 }
