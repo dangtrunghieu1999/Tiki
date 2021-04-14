@@ -38,8 +38,8 @@ class BannerFeedSectionController: ListSectionController{
             return UICollectionViewCell()
         }
         
-        if let cell = cell as? BannerCollectionViewDelegate, let banner = self.banner {
-            cell.configData(banner: banner.bannerModel ?? BannerModel())
+        if let cell = cell as? HomeViewProtocol, let banner = self.banner {
+            cell.configDataBanner?(banner: banner.bannerModel)
         }
         return cell
     }

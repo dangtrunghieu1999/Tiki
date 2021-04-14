@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol EventCollectionViewCellDelegate {
-    func configData(event: EventModel)
-}
-
 class EventCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
@@ -46,8 +42,10 @@ class EventCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-extension EventCollectionViewCell: EventCollectionViewCellDelegate {
-    func configData(event: EventModel) {
-        self.imageView.sd_setImage(with: event.list[0].image.url, completed: nil)
+// MARK: - HomeViewProtocol
+
+extension EventCollectionViewCell: HomeViewProtocol {
+    func configDataEvent(event: EventModel?) {
+        self.imageView.sd_setImage(with: event?.list[0].image.url, completed: nil)
     }
 }

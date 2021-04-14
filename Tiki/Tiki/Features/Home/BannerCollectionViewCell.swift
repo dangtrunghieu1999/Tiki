@@ -8,10 +8,6 @@
 import UIKit
 import FSPagerView
 
-protocol BannerCollectionViewDelegate {
-    func configData(banner: BannerModel)
-}
-
 class BannerCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
@@ -73,6 +69,8 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
+// MARK: - FSPagerViewDataSource
+
 extension BannerCollectionViewCell: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return bannerModel?.list.count ?? 0
@@ -87,6 +85,8 @@ extension BannerCollectionViewCell: FSPagerViewDataSource {
         return cell
     }
 }
+
+// MARK: - FSPagerViewDelegate
 
 extension BannerCollectionViewCell: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
@@ -103,8 +103,10 @@ extension BannerCollectionViewCell: FSPagerViewDelegate {
     }
 }
 
-extension BannerCollectionViewCell: BannerCollectionViewDelegate {
-    func configData(banner: BannerModel) {
+// MARK: - HomeViewProtocol
+
+extension BannerCollectionViewCell: HomeViewProtocol {
+    func configDataBanner(banner: BannerModel?) {
         self.bannerModel = banner
         self.pageControl.numberOfPages = bannerModel?.list.count ?? 0
     }

@@ -8,10 +8,6 @@
 import UIKit
 import HCSStarRatingView
 
-protocol ProductRecommendCollectionViewCellDelegate {
-    func configData(productRecommend: ProductRecommendModel?,at index: Int)
-}
-
 class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
@@ -159,9 +155,9 @@ class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-extension ProductRecommendCollectionViewCell: ProductRecommendCollectionViewCellDelegate {
-    func configData(productRecommend: ProductRecommendModel?, at index: Int) {
-        guard let product = productRecommend?.list[index] else { return }
+extension ProductRecommendCollectionViewCell: HomeViewProtocol {
+    func configDataProductRecommend(product: ProductRecommendModel?, at index: Int) {
+        guard let product = product?.list[index] else { return }
         self.productImageView.sd_setImage(with: product.image.url, completed: nil)
         self.titleLabel.text  = product.name.capitalized
         self.ratingView.value = 3.5
@@ -169,8 +165,4 @@ extension ProductRecommendCollectionViewCell: ProductRecommendCollectionViewCell
         self.finalPriceLabel.text = product.price.currencyFormat
         self.promotionPercentLabel.text = "-\(product.promotion_percent)%"
     }
-}
-
-extension ProductRecommendCollectionViewCell: HomeViewProtocol {
-    
 }

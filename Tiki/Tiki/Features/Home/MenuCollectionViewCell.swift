@@ -7,15 +7,14 @@
 
 import UIKit
 
-
-protocol MenuCollectionViewCellDelegate {
-    func configData(menu: MenuModel)
-}
-
 class MenuCollectionViewCell: BaseCollectionViewCell {
+    
+    // MARK: - Variables
     
     var menuModel: MenuModel?
     
+    // MARK: - UI Elements
+
     fileprivate lazy var menuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 35
@@ -29,10 +28,14 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
         return collectionView
     }()
     
+    // MARK: - View LifeCycles
+    
     override func initialize() {
         super.initialize()
         layoutMenuCollectionView()
     }
+    
+    // MARK: - Layout
     
     private func layoutMenuCollectionView() {
         addSubview(menuCollectionView)
@@ -45,6 +48,8 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension MenuCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -53,6 +58,8 @@ extension MenuCollectionViewCell: UICollectionViewDelegateFlowLayout {
         return CGSize(width: width, height: 50)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension MenuCollectionViewCell: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -73,8 +80,10 @@ extension MenuCollectionViewCell: UICollectionViewDataSource {
     }
 }
 
-extension MenuCollectionViewCell: MenuCollectionViewCellDelegate {
-    func configData(menu: MenuModel) {
+// MARK: - HomeViewProtocol
+
+extension MenuCollectionViewCell: HomeViewProtocol {
+    func configDataMenu(menu: MenuModel?) {
         self.menuModel = menu
     }
 }

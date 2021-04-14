@@ -7,6 +7,7 @@
 
 import UIKit
 import IGListKit
+
 protocol ProductRecommendDelagte: class {
     func tapProductDetail(title: String)
 }
@@ -36,8 +37,8 @@ class ProductRecommendViewController: ListSectionController, ListSupplementaryVi
             return UICollectionViewCell()
         }
         
-        if let cell = cell as? ProductRecommendCollectionViewCellDelegate, let productSection = self.productSection {
-            cell.configData(productRecommend: productSection.productRecommend, at: index)
+        if let cell = cell as? HomeViewProtocol, let productSection = self.productSection {
+            cell.configDataProductRecommend?(product: productSection.productRecommend, at: index)
         }
         
         return cell
@@ -78,5 +79,4 @@ class ProductRecommendViewController: ListSectionController, ListSupplementaryVi
     override func didSelectItem(at index: Int) {
         self.delegate?.tapProductDetail(title: productSection?.productRecommend?.title ?? "")
     }
-
 }

@@ -42,8 +42,8 @@ class BannerEventViewController: ListSectionController {
             else {
                 return UICollectionViewCell()
             }
-            if let cell = cell as? EventCollectionViewCellDelegate, let event = self.event {
-                cell.configData(event: event.eventModel ?? EventModel())
+            if let cell = cell as? HomeViewProtocol, let event = self.event {
+                cell.configDataEvent?(event: event.eventModel)
             }
             return cell
         } else {
