@@ -7,48 +7,110 @@
 
 import UIKit
 import IGListKit
+import SwiftyJSON
 
 class HomeViewController: BaseViewController {
     
-    
     // MARK: - Variables
-    
+
     private lazy var adapter: ListAdapter = {
         let updater = ListAdapterUpdater()
         let adapter = ListAdapter(updater: updater,
                                   viewController: self,
-                                  workingRangeSize: 0)
+                                  workingRangeSize: 4)
         adapter.collectionView = collectionView
+        adapter.dataSource = self
         return adapter
     }()
+    
+    private var dataSource: [BaseHomeSectionModel] = []
     
     // MARK: - UI Elements
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 4
-        layout.minimumInteritemSpacing = 4
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.white
+        collectionView.backgroundColor = UIColor.lightBackground
         collectionView.frame = view.bounds
+        collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
-
+    
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItems = [cartBarButtonItem, notifiBarButtonItem]
+        navigationItem.titleView = searchBar
         view.addSubview(collectionView)
+        requestHomeAPI()
     }
     
     // MARK: - Helper Method
     
-    // MARK: - GET API
-    
-    // MARK: - Layout
-    
-    
-    
-    
+    func requestHomeAPI() {
+        guard let path = Bundle.main.path(forResource: "Home", ofType: "json") else {
+            fatalError("Not available json")
+        }
+        
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+        let json = try! JSON(data: data)
+        
+        let homeSectionModels = json.arrayValue.compactMap { (json) -> BaseHomeSectionModel? in
+            let model = BaseHomeSectionModel(json: json)
+            switch model.feedType {
+            case .SlideWidget:
+                return BannerFeedSectionModel(json: json)
+            case .ShortcutWidget:
+                return MenuFeedSectionModel(json: json)
+            case .BannerEventWidget:
+                return BannerEventSectionModel(json: json)
+            case .ProductRecommendWidget:
+                return ProductRecommendSectionModel(json: json)
+            }
+        }
+        
+        dataSource.append(contentsOf: homeSectionModels)
+        adapter.reloadData(completion: nil)
+    }
 }
 
+extension HomeViewController: ListAdapterDataSource {
+    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
+        
+        guard let model = object as? BaseHomeSectionModel else {
+            return ListSectionController()
+        }
+        switch model.feedType {
+        case .SlideWidget:
+            return BannerFeedSectionController()
+        case .ShortcutWidget:
+            return MenuFeedSectionViewController()
+        case .BannerEventWidget:
+            return BannerEventViewController()
+        case .ProductRecommendWidget:
+            let vc = ProductRecommendViewController()
+            vc.delegate = self
+            return vc
+        }
+    }
+    
+    func emptyView(for listAdapter: ListAdapter) -> UIView? {
+        return nil
+    }
+    
+    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
+        return dataSource
+    }
+
+}
+
+extension HomeViewController: ProductRecommendDelagte {
+    func tapProductDetail(title: String?) {
+        let vc = ProductDetailViewController()
+        vc.navigationItem.title = title
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+}

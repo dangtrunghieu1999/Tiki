@@ -1,5 +1,5 @@
 [
-{
+    {
         "type": "SlideWidget",
         "data": {
             "title": "Banner",
@@ -39,6 +39,577 @@
                 "icon_image": "",
                 "title_text_color": ""
             }
+        }
+    },
+    {
+        "type": "ShortcutWidget",
+        "data": {
+            "title": "menu",
+            "link": "",
+            "list": [
+                {
+                    "title": "Giờ vàng săn sale",
+                    "image": "https://media3.scdn.vn/img4/2021/01_20/YikCHObnWqhM6OS2xSfO.png",
+                    "url": "https://www.sendo.vn/su-kien/gio-vang-san-sale/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_gio_vang_san_sale"
+                    }
+                },
+                {
+                    "title": "Mã giảm giá & Freeship",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/VqbzYqtyt3CLOf7JBOge.png",
+                    "url": "https://www.sendo.vn/su-kien/ma-giam-gia/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_ma_giam_gia"
+                    }
+                },
+                {
+                    "title": "Sale thời trang -70%",
+                    "image": "https://media3.scdn.vn/img4/2021/03_31/T1vja44nz0gq2wMKje9F.png",
+                    "url": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_san_deal_thoi_trang"
+                    }
+                },
+                {
+                    "title": "Gian hàng Việt",
+                    "image": "https://media3.scdn.vn/img4/2021/04_06/AvAiRJ7kXjrqa50e6isE.png",
+                    "url": "https://www.sendo.vn/su-kien/gian-hang-viet",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_gian_hang_viet"
+                    }
+                },
+                {
+                    "title": "Triệu voucher shop",
+                    "image": "https://media3.scdn.vn/img4/2021/03_15/613JAmfvxgBkph9SkTCr.png",
+                    "url": "https://www.sendo.vn/su-kien/voucher-shop/",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_voucher_shop"
+                    }
+                },
+                {
+                    "title": "Số Đỏ 1K",
+                    "image": "https://media3.scdn.vn/img4/2021/04_07/R7zebd3NLip1AlO5NdIv.png",
+                    "url": "https://www.sendo.vn/su-kien/sodo1K/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_so_do_1K"
+                    }
+                },
+                {
+                    "title": "Nạp điện thoại -3%",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/mUMbiPWhBTYO1XjpnlNH.png",
+                    "url": "https://www.sendo.vn/tien-ich/nap-tien/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_nap_tien_dien_thoai"
+                    }
+                },
+                {
+                    "title": "Thanh toán Tiện ích",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/Aj1owyhWkIHyA3kCoYxt.png",
+                    "url": "https://www.sendo.vn/tien-ich/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_top_tien_ich"
+                    }
+                },
+                {
+                    "title": "Bao bay Giá rẻ",
+                    "image": "https://media3.scdn.vn/img4/2021/01_12/c404W1vXChPNPwcfzHAN.png",
+                    "url": "https://www.sendo.vn/tien-ich/ve-may-bay/?ref=homebutton_app",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_ve_may_bay"
+                    }
+                },
+                {
+                    "title": "Đồ nam sale sốc",
+                    "image": "https://media3.scdn.vn/img4/2021/04_07/03l1JkZdMTcRvkL1A8Cc.png",
+                    "url": "https://www.sendo.vn/thoi-trang-nam/?is_mega_voucher=1&sortType=norder_30_desc",
+                    "textColor": "#000000",
+                    "tracking": {
+                        "category": "home_group",
+                        "action": "touch",
+                        "lable": "home_menu_san_deal_gia_dung"
+                    }
+                }
+            ],
+            "header_info": {
+                "background_color": [
+                    "#ffffff"
+                ],
+                "title_text_color": "#000000",
+                "background_image": "",
+                "more_text_color": "",
+                "icon_image": ""
+            }
+        },
+        "background_color": "#ffffff",
+        "text_color": "#000000",
+        "background_image": ""
+    },
+    {
+        "type": "BannerEventWidget",
+        "data": {
+            "title": "08.4 0H-12H",
+            "link": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/?ref=widget_app",
+            "list": [
+                {
+                    "image": "https://media3.scdn.vn/img4/2021/04_07/ba3rBfhBmQLzm2i2FrST.png",
+                    "url": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/?ref=widget_app",
+                    "links": [
+                        {
+                            "top": 0,
+                            "left": 0,
+                            "width": 60,
+                            "height": 100,
+                            "url": "https://www.sendo.vn/su-kien/tray-hoi-cung-tam/?ref=widget_app"
+                        },
+                        {
+                            "top": 0,
+                            "left": 60,
+                            "width": 40,
+                            "height": 100,
+                            "url": "https://www.sendo.vn/su-kien/gio-vang-san-sale/?ref=widget_app"
+                        }
+                    ],
+                    "name": "08.4 0H-12H",
+                    "ratio_image": 3.6,
+                    "start_time": 1617814800,
+                    "end_time": 1617857999
+                }
+            ],
+            "header_info": {
+                "background_image": "",
+                "background_color": [
+                    "#ffffff"
+                ],
+                "more_text_color": "",
+                "icon_image": "",
+                "title_text_color": ""
+            }
+        }
+    },
+    {
+        "type": "ProductRecommendWidget",
+        "data": {
+            "title": "Sản phẩm đề cử",
+            "link": "https://www.sendo.vn/flash-sale/?is_app=1",
+            "list": [
+                {
+                    "deal_id": 67139167,
+                    "name": "Combo 4 Gói Comfor t Thái 580ml",
+                    "stock_status": 1,
+                    "final_price": 49000,
+                    "price": 59000,
+                    "promotion_percent": 17,
+                    "img_url_mob": "https://media3.scdn.vn/img3/2019/6_1/daAf5E_simg_ab1f47_350x350_maxb.jpg",
+                    "product_id": 18914938,
+                    "product_url": "https://www.sendo.vn/combo-4-goi-comfor-t-thai-580ml-18914938.html?fromItem=67139167&source_block_id=flash-sale&source_page_id=flash-sale&source_position=1&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 500,
+                    "stock_number": 456,
+                    "stock_description": "Đã bán 44",
+                    "stock_percent": 9,
+                    "stock_title": "Đã bán 44",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139167&slotId=0",
+                    "buy_number": 44
+                },
+                {
+                    "deal_id": 67139209,
+                    "name": "KHĂN GIẤY ƯỚT KHÔNG MÙI LOVE SKY 80GR/GÓI - HSD 5/4/2024",
+                    "stock_status": 1,
+                    "final_price": 8000,
+                    "price": 25000,
+                    "promotion_percent": 68,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_05/G9LwVxvBe9zd0PEmj1IY_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 42233069,
+                    "product_url": "https://www.sendo.vn/khan-giay-uot-khong-mui-love-sky-80grgoi-hsd-542024-42233069.html?fromItem=67139209&source_block_id=flash-sale&source_page_id=flash-sale&source_position=2&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 200,
+                    "stock_number": 113,
+                    "stock_description": "Đã bán 87",
+                    "stock_percent": 44,
+                    "stock_title": "Đã bán 87",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139209&slotId=0",
+                    "buy_number": 87
+                },
+                {
+                    "deal_id": 67139168,
+                    "name": "Dép Sục Nam Nữ Siêu Nhẹ Siêu Bền đủ size",
+                    "stock_status": 1,
+                    "final_price": 9000,
+                    "price": 69000,
+                    "promotion_percent": 87,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_07/8w1wjnIaViAIc77m9oUL_simg_b5529c_250x250_maxb.png",
+                    "product_id": 42272303,
+                    "product_url": "https://www.sendo.vn/dep-suc-nam-nu-sieu-nhe-sieu-ben-du-size-42272303.html?fromItem=67139168&source_block_id=flash-sale&source_page_id=flash-sale&source_position=3&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 600,
+                    "stock_number": 524,
+                    "stock_description": "Đã bán 76",
+                    "stock_percent": 13,
+                    "stock_title": "Đã bán 76",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139168&slotId=0",
+                    "buy_number": 76
+                },
+                {
+                    "deal_id": 67139166,
+                    "name": "ÁO MƯA CÁNH DƠI NHỰA PVC HONDA",
+                    "stock_status": 1,
+                    "final_price": 14000,
+                    "price": 39000,
+                    "promotion_percent": 65,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_06/LlL1ufDa7LJclkdFE8wp_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 42243041,
+                    "product_url": "https://www.sendo.vn/ao-mua-canh-doi-nhua-pvc-honda-42243041.html?fromItem=67139166&source_block_id=flash-sale&source_page_id=flash-sale&source_position=4&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 500,
+                    "stock_number": 453,
+                    "stock_description": "Đã bán 47",
+                    "stock_percent": 9,
+                    "stock_title": "Đã bán 47",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139166&slotId=0",
+                    "buy_number": 47
+                },
+                {
+                    "deal_id": 67139164,
+                    "name": "LON LỚN 110G KHOAI TÂY PRINGLES - [Date 08/2021]",
+                    "stock_status": 1,
+                    "final_price": 15000,
+                    "price": 39000,
+                    "promotion_percent": 62,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_04/Utzcv73qOlHm54q1EkkZ_simg_b5529c_250x250_maxb.png",
+                    "product_id": 42198209,
+                    "product_url": "https://www.sendo.vn/lon-lon-110g-khoai-tay-pringles-date-082021-42198209.html?fromItem=67139164&source_block_id=flash-sale&source_page_id=flash-sale&source_position=5&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 700,
+                    "stock_number": 626,
+                    "stock_description": "Đã bán 74",
+                    "stock_percent": 11,
+                    "stock_title": "Đã bán 74",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139164&slotId=0",
+                    "buy_number": 74
+                },
+                {
+                    "deal_id": 67133663,
+                    "name": "Đồ vắt cam Rico cao cấp",
+                    "stock_status": 1,
+                    "final_price": 15000,
+                    "price": 59000,
+                    "promotion_percent": 75,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_23/nhcOPziBgfypjQwPbWxP_simg_b5529c_250x250_maxb.png",
+                    "product_id": 41655146,
+                    "product_url": "https://www.sendo.vn/do-vat-cam-rico-cao-cap-41655146.html?fromItem=67133663&source_block_id=flash-sale&source_page_id=flash-sale&source_position=6&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 100,
+                    "stock_description": "Đang bán",
+                    "stock_percent": 0,
+                    "stock_title": "Đang bán",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67133663&slotId=0",
+                    "buy_number": 0
+                },
+                {
+                    "deal_id": 67131830,
+                    "name": "Robot lau nhà thông minh Sweep",
+                    "stock_status": 1,
+                    "final_price": 49000,
+                    "price": 200000,
+                    "promotion_percent": 76,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_06/Niu77OjRTq8cN5QXwFWE_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 42242434,
+                    "product_url": "https://www.sendo.vn/robot-lau-nha-thong-minh-sweep-42242434.html?fromItem=67131830&source_block_id=flash-sale&source_page_id=flash-sale&source_position=7&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 66,
+                    "stock_description": "Đã bán 34",
+                    "stock_percent": 34,
+                    "stock_title": "Đã bán 34",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67131830&slotId=0",
+                    "buy_number": 34
+                },
+                {
+                    "deal_id": 67116116,
+                    "name": "(Mua 3 hộp Free ship) Cần Tây Mật Ong Collagen hộp 15 gói",
+                    "stock_status": 1,
+                    "final_price": 39000,
+                    "price": 70000,
+                    "promotion_percent": 45,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_16/qY5ox9Xscg00yjrPIePW_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 41542736,
+                    "product_url": "https://www.sendo.vn/mua-3-hop-free-ship-can-tay-mat-ong-collagen-hop-15-goi-41542736.html?fromItem=67116116&source_block_id=flash-sale&source_page_id=flash-sale&source_position=8&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 100,
+                    "stock_description": "Đang bán",
+                    "stock_percent": 0,
+                    "stock_title": "Đang bán",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67116116&slotId=0",
+                    "buy_number": 0
+                },
+                {
+                    "deal_id": 67132840,
+                    "name": "Ủ Tóc Collagen Karseell 500ml Siêu Mượt Phục Hồi Tóc Hư Tổn  Cấp Ẩm  Dưỡng Tóc Mềm Mượt",
+                    "stock_status": 1,
+                    "final_price": 39000,
+                    "price": 245000,
+                    "promotion_percent": 85,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_03/NCstyZV6Juhr7jEP4NTB_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 41238618,
+                    "product_url": "https://www.sendo.vn/u-toc-collagen-karseell-500ml-sieu-muot-phuc-hoi-toc-hu-ton-cap-am-duong-toc-mem-muot-41238618.html?fromItem=67132840&source_block_id=flash-sale&source_page_id=flash-sale&source_position=9&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 85,
+                    "stock_description": "Đã bán 15",
+                    "stock_percent": 15,
+                    "stock_title": "Đã bán 15",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67132840&slotId=0",
+                    "buy_number": 15
+                },
+                {
+                    "deal_id": 67135109,
+                    "name": "Bình Giữ Nhiệt Inox Hot And Cool 600ml - Bình Giữ Nhiệt 600ml, Bình Inox Giữ Nhiệt",
+                    "stock_status": 1,
+                    "final_price": 38000,
+                    "price": 119000,
+                    "promotion_percent": 69,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_19/TTlPwpQRaRxIpfvdRNTf_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 41600237,
+                    "product_url": "https://www.sendo.vn/binh-giu-nhiet-inox-hot-and-cool-600ml-binh-giu-nhiet-600ml-binh-inox-giu-nhiet-41600237.html?fromItem=67135109&source_block_id=flash-sale&source_page_id=flash-sale&source_position=10&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 50,
+                    "stock_number": 40,
+                    "stock_description": "Đã bán 10",
+                    "stock_percent": 20,
+                    "stock_title": "Đã bán 10",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67135109&slotId=0",
+                    "buy_number": 10
+                },
+                {
+                    "deal_id": 67137037,
+                    "name": "COMBO 10 GÓI 300 TỜ GIẤY ĂN GẤU TRÚC SIPIAO",
+                    "stock_status": 1,
+                    "final_price": 25000,
+                    "price": 80000,
+                    "promotion_percent": 69,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_02/DcGw0i239HYjdc5iQzcG_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 41905248,
+                    "product_url": "https://www.sendo.vn/combo-10-goi-300-to-giay-an-gau-truc-sipiao-41905248.html?fromItem=67137037&source_block_id=flash-sale&source_page_id=flash-sale&source_position=11&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 78,
+                    "stock_description": "Đã bán 22",
+                    "stock_percent": 22,
+                    "stock_title": "Đã bán 22",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67137037&slotId=0",
+                    "buy_number": 22
+                },
+                {
+                    "deal_id": 67131846,
+                    "name": "Kệ để giày dép 4 tầng nhựa - Giá để giày thông minh",
+                    "stock_status": 1,
+                    "final_price": 23000,
+                    "price": 63000,
+                    "promotion_percent": 64,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_14/6S2TZFe6JziUKfVeuedu_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 14099125,
+                    "product_url": "https://www.sendo.vn/ke-de-giay-dep-4-tang-nhua-gia-de-giay-thong-minh-14099125.html?fromItem=67131846&source_block_id=flash-sale&source_page_id=flash-sale&source_position=12&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 98,
+                    "stock_description": "Đã bán 2",
+                    "stock_percent": 2,
+                    "stock_title": "Đã bán 2",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67131846&slotId=0",
+                    "buy_number": 2
+                },
+                {
+                    "deal_id": 67133536,
+                    "name": "Set Bộ Thể Thao Nam Sang Chảnh",
+                    "stock_status": 1,
+                    "final_price": 39000,
+                    "price": 115000,
+                    "promotion_percent": 67,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_03/qYBRq8Tl2nnXspp0NIBk_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 41231212,
+                    "product_url": "https://www.sendo.vn/set-bo-the-thao-nam-sang-chanh-41231212.html?fromItem=67133536&source_block_id=flash-sale&source_page_id=flash-sale&source_position=13&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 250,
+                    "stock_number": 243,
+                    "stock_description": "Đã bán 7",
+                    "stock_percent": 3,
+                    "stock_title": "Đã bán 7",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67133536&slotId=0",
+                    "buy_number": 7
+                },
+                {
+                    "deal_id": 67137437,
+                    "name": "Một Lon Sữa Đặc ABLE FARM 380G Nhập Khẩu Malaysia",
+                    "stock_status": 1,
+                    "final_price": 12500,
+                    "price": 25000,
+                    "promotion_percent": 50,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_05/IV1RvPTVpdQmhWZKXtk0_simg_b5529c_250x250_maxb.png",
+                    "product_id": 41276425,
+                    "product_url": "https://www.sendo.vn/mot-lon-sua-dac-able-farm-380g-nhap-khau-malaysia-41276425.html?fromItem=67137437&source_block_id=flash-sale&source_page_id=flash-sale&source_position=14&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 100,
+                    "stock_description": "Đang bán",
+                    "stock_percent": 0,
+                    "stock_title": "Đang bán",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67137437&slotId=0",
+                    "buy_number": 0
+                },
+                {
+                    "deal_id": 67137851,
+                    "name": "Nước Dừa Tươi Coco Fresh Vinamilk 330ml",
+                    "stock_status": 1,
+                    "final_price": 8500,
+                    "price": 25000,
+                    "promotion_percent": 66,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_07/bFbqaIVDaPCSICwtieed_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 42273461,
+                    "product_url": "https://www.sendo.vn/nuoc-dua-tuoi-coco-fresh-vinamilk-330ml-42273461.html?fromItem=67137851&source_block_id=flash-sale&source_page_id=flash-sale&source_position=15&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 100,
+                    "stock_number": 70,
+                    "stock_description": "Đã bán 30",
+                    "stock_percent": 30,
+                    "stock_title": "Đã bán 30",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67137851&slotId=0",
+                    "buy_number": 30
+                },
+                {
+                    "deal_id": 67131647,
+                    "name": "QUẠT LỠ CÔNG NGHIỆP",
+                    "stock_status": 1,
+                    "final_price": 149000,
+                    "price": 203300,
+                    "promotion_percent": 27,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2020/08_21/n5823KIruAWsVQm3g4hO_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 17763546,
+                    "product_url": "https://www.sendo.vn/quat-lo-cong-nghiep-17763546.html?fromItem=67131647&source_block_id=flash-sale&source_page_id=flash-sale&source_position=16&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 60,
+                    "stock_number": 49,
+                    "stock_description": "Đã bán 11",
+                    "stock_percent": 18,
+                    "stock_title": "Đã bán 11",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67131647&slotId=0",
+                    "buy_number": 11
+                },
+                {
+                    "deal_id": 67133717,
+                    "name": "Bộ Quần Áo Đũi Nam chất vải đũi hàng cao cấp dày dặn",
+                    "stock_status": 1,
+                    "final_price": 99000,
+                    "price": 215000,
+                    "promotion_percent": 54,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/04_06/wwTZPIYNScQFqFOQbjjO_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 42243492,
+                    "product_url": "https://www.sendo.vn/bo-quan-ao-dui-nam-chat-vai-dui-hang-cao-cap-day-dan-42243492.html?fromItem=67133717&source_block_id=flash-sale&source_page_id=flash-sale&source_position=17&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 450,
+                    "stock_number": 440,
+                    "stock_description": "Đã bán 10",
+                    "stock_percent": 2,
+                    "stock_title": "Đã bán 10",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67133717&slotId=0",
+                    "buy_number": 10
+                },
+                {
+                    "deal_id": 67133532,
+                    "name": "Áo ba lỗ nam vải co giãn đẹp thun cao cấp siều bền TS564 Tronshop",
+                    "stock_status": 1,
+                    "final_price": 25000,
+                    "price": 29000,
+                    "promotion_percent": 14,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2020/06_15/RdSKhMMEcpKVIgJAt0y4_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 30908439,
+                    "product_url": "https://www.sendo.vn/ao-ba-lo-nam-vai-co-gian-dep-thun-cao-cap-sieu-ben-ts564-tronshop-30908439.html?fromItem=67133532&source_block_id=flash-sale&source_page_id=flash-sale&source_position=18&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 150,
+                    "stock_number": 139,
+                    "stock_description": "Đã bán 11",
+                    "stock_percent": 7,
+                    "stock_title": "Đã bán 11",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67133532&slotId=0",
+                    "buy_number": 11
+                },
+                {
+                    "deal_id": 67133537,
+                    "name": "[Freeship] Áo lót cài trước bàn tay nâng ngực không gọng cao cấp 40-60kg",
+                    "stock_status": 1,
+                    "final_price": 19000,
+                    "price": 89000,
+                    "promotion_percent": 79,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2020/06_26/jheVavcw693kuwLLI1R1_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 31131536,
+                    "product_url": "https://www.sendo.vn/freeship-ao-lot-cai-truoc-ban-tay-nang-nguc-khong-gong-cao-cap-40-60kg-31131536.html?fromItem=67133537&source_block_id=flash-sale&source_page_id=flash-sale&source_position=19&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 150,
+                    "stock_number": 134,
+                    "stock_description": "Đã bán 16",
+                    "stock_percent": 11,
+                    "stock_title": "Đã bán 16",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67133537&slotId=0",
+                    "buy_number": 16
+                },
+                {
+                    "deal_id": 67133533,
+                    "name": "quần lót nam boxer thun lạnh hiệu Jarta thông hơi cao cấp mặc cực kỳ mát loại quần sịp đùi nam thun lạnh bản lớn",
+                    "stock_status": 1,
+                    "final_price": 15000,
+                    "price": 69000,
+                    "promotion_percent": 79,
+                    "img_url_mob": "https://media3.scdn.vn/img4/2021/03_29/2C34jdLzb8M7XDftneBL_simg_b5529c_250x250_maxb.jpg",
+                    "product_id": 41862364,
+                    "product_url": "https://www.sendo.vn/quan-lot-nam-boxer-thun-lanh-hieu-jarta-thong-hoi-cao-cap-mac-cuc-ky-mat-loai-quan-sip-dui-nam-thun-lanh-ban-lon-41862364.html?fromItem=67133533&source_block_id=flash-sale&source_page_id=flash-sale&source_position=20&source_slot_id=50213900&source_category_group_id=0",
+                    "sale_stock_number": 200,
+                    "stock_number": 188,
+                    "stock_description": "Đã bán 12",
+                    "stock_percent": 6,
+                    "stock_title": "Đã bán 12",
+                    "hidden_price_display": "",
+                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67133533&slotId=0",
+                    "buy_number": 12
+                }
+            ],
+            "end_time": 1617858000,
+            "header_info": {
+                "background_image": "",
+                "background_color": [],
+                "more_text_color": "",
+                "icon_image": "",
+                "title_text_color": ""
+            },
+            "slot_id": 50213900
         }
     }
 ]

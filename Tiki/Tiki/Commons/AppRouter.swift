@@ -73,7 +73,8 @@ class AppRouter: NSObject {
     }
     
     class func pushToCart() {
-
+        let viewController = CartViewController()
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
     class func pushToChatHistory() {
@@ -86,6 +87,11 @@ class AppRouter: NSObject {
     
     class func pushToCategory(categoryId: Int, categoryName: String) {
 
+    }
+    
+    class func pushToNotificationVC() {
+        let viewController = NotificationViewController()
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
 

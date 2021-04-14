@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.1)
+  - FSPagerView (0.8.3)
   - GoogleMaps/Base (4.1.0)
   - GooglePlaces (4.1.0):
     - GoogleMaps/Base (= 4.1.0)
@@ -31,6 +32,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (= 4.8.1)
+  - FSPagerView
   - GooglePlaces
   - HCSStarRatingView (~> 1.5)
   - IGListKit (~> 3.4.0)
@@ -48,6 +50,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FSPagerView
     - GoogleMaps
     - GooglePlaces
     - HCSStarRatingView
@@ -65,6 +68,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
   HCSStarRatingView: 1d18f79654735514cd6f00e6d90e38cb6320dc31
@@ -80,6 +84,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 31bbb454e547f428a5d0f14e9bc36de101ac9000
+PODFILE CHECKSUM: fdb07955284af618b1fe0933d253a49acda51bba
 
 COCOAPODS: 1.10.0

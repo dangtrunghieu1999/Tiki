@@ -1,0 +1,97 @@
+{
+  "success": true,
+  "data": {
+    "Product": {
+      "id": 1,
+      "createdDate": null,
+      "createdBy": null,
+      "modifiedDate": null,
+      "modifedBy": null,
+      "name": "Điện thoại Samsum Galaxy M31 (6GB/128/GB) - Hàng Chính Hãng",
+      "price": "6490",
+      "sale": "null",
+      "description": "Mở rộng không gian trãie nghiệm với màn hình Infinity-U thỏa thích làm mọi điều bạn muốn với màn hình Infinity-U 6.4 inch ",
+      "subCategory": {
+        "id": 1,
+        "name": "Điện thoại Smartphone",
+        "imgae": null,
+        "categoryId": 3
+      },
+      "photos": [
+        {
+          "id": 1,
+          "name": "poster1.jpg",
+          "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster1.jpg?alt=media&token=6d0a847d-7350-46aa-9dfc-5b7388fbd87e"
+        },
+        {
+          "id": 2,
+          "name": "poster3.jpg",
+          "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster3.jpg?alt=media&token=b563d544-3d1e-4ce5-a782-28eac6d66134"
+        }
+      ],
+      "detail": {
+        "id": 1,
+        "createdDate": null,
+        "createdBy": null,
+        "modifiedDate": null,
+        "modifedBy": null,
+        "provideByShop": "Tiki Trading",
+        "trademark": "Samsung",
+        "madeBy": "Tiki Trading",
+        "size": null,
+        "color": null,
+        "material": null
+      },
+      "shopId": 1,
+      "quantity": 1
+    },
+    "ProductRef": [
+      {
+        "id": 1,
+        "createdDate": null,
+        "createdBy": null,
+        "modifiedDate": null,
+        "modifedBy": null,
+        "name": "Điện thoại Samsum Galaxy M31 (6GB/128/GB) - Hàng Chính Hãng",
+        "price": "6490",
+        "sale": "null",
+        "description": "Mở rộng không gian trãie nghiệm với màn hình Infinity-U thỏa thích làm mọi điều bạn muốn với màn hình Infinity-U 6.4 inch ",
+        "subCategory": {
+          "id": 1,
+          "name": "Điện thoại Smartphone",
+          "imgae": null,
+          "categoryId": 3
+        },
+        "photos": [
+          {
+            "id": 1,
+            "name": "poster1.jpg",
+            "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster1.jpg?alt=media&token=6d0a847d-7350-46aa-9dfc-5b7388fbd87e"
+          },
+          {
+            "id": 2,
+            "name": "poster3.jpg",
+            "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster3.jpg?alt=media&token=b563d544-3d1e-4ce5-a782-28eac6d66134"
+          }
+        ],
+        "detail": {
+          "id": 1,
+          "createdDate": null,
+          "createdBy": null,
+          "modifiedDate": null,
+          "modifedBy": null,
+          "provideByShop": "Tiki Trading",
+          "trademark": "Samsung",
+          "madeBy": "Tiki Trading",
+          "size": null,
+          "color": null,
+          "material": null
+        },
+        "shopId": 1,
+        "quantity": 1
+      }
+    ]
+  },
+  "code": 200,
+  "message": "success"
+}

@@ -40,8 +40,8 @@ class Photo: NSObject, JSONParsable {
         base64String    = json["Base64String"].string
         createdBy       = json["CreatedBy"].stringValue
         createdOn       = json["CreatedOn"].dateValue
-        id              = json["Id"].intValue
-        name            = json["Name"].stringValue
+        id              = json["id"].intValue
+        name            = json["name"].stringValue
         note            = json["Note"].stringValue
         order           = json["Order"].intValue
         photoTypeId     = json["PhotoTypeId"].intValue
@@ -49,7 +49,7 @@ class Photo: NSObject, JSONParsable {
         status          = json["Status"].intValue
         updatedBy       = json["UpdatedBy"].stringValue
         updatedOn       = json["UpdatedOn"].dateValue
-        url             = json["Url"].stringValue
+        url             = json["link"].stringValue
     }
     
 }

@@ -12,7 +12,7 @@ class TKTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        tabBar.tintColor = UIColor.background
+        tabBar.tintColor = UIColor.tabbarIcon
         let insets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
         
         let homeNavigationVC = UINavigationController(rootViewController: HomeViewController())
@@ -20,16 +20,16 @@ class TKTabBarViewController: UITabBarController {
         homeNavigationVC.tabBarItem.imageInsets = insets
         
         let categorygNavigationVC = UINavigationController(rootViewController: CategoryViewController())
-        categorygNavigationVC.tabBarItem = UITabBarItem(title: TextManager.category, image: ImageManager.home, tag: 1)
+        categorygNavigationVC.tabBarItem = UITabBarItem(title: TextManager.category, image: ImageManager.category, tag: 1)
         categorygNavigationVC.tabBarItem.imageInsets = insets
     
         
         let chatNavigationVC = UINavigationController(rootViewController: ChatViewController())
-        chatNavigationVC.tabBarItem = UITabBarItem(title: TextManager.chat, image: ImageManager.home, tag:3)
+        chatNavigationVC.tabBarItem = UITabBarItem(title: TextManager.chat, image: ImageManager.chat, tag:3)
         chatNavigationVC.tabBarItem.imageInsets = insets
         
         let personalNavigationVC = UINavigationController(rootViewController: PersonalViewController())
-        personalNavigationVC.tabBarItem = UITabBarItem(title: TextManager.person, image: ImageManager.home, tag: 4)
+        personalNavigationVC.tabBarItem = UITabBarItem(title: TextManager.person, image: ImageManager.person, tag: 4)
         personalNavigationVC.tabBarItem.imageInsets = insets
         
         viewControllers = [homeNavigationVC, categorygNavigationVC, chatNavigationVC, personalNavigationVC]
