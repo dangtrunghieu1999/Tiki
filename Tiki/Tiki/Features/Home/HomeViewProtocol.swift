@@ -12,5 +12,5 @@ import UIKit
     @objc optional func configDataMenu(menu: MenuModel?)
     @objc optional func configDataEvent(event: EventModel?)
     @objc optional func configDataProductRecommend(product: ProductRecommendModel?, at index: Int)
-    
+    @objc optional func configTitleHeader(title: String?)
 }

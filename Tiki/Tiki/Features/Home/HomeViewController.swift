@@ -25,7 +25,6 @@ class HomeViewController: BaseViewController {
     
     private var dataSource: [BaseHomeSectionModel] = []
     
-    
     // MARK: - UI Elements
     
     private lazy var collectionView: UICollectionView = {
@@ -49,9 +48,7 @@ class HomeViewController: BaseViewController {
         requestHomeAPI()
     }
     
-    
     // MARK: - Helper Method
-    
     
     func requestHomeAPI() {
         guard let path = Bundle.main.path(forResource: "Home", ofType: "json") else {
@@ -79,7 +76,6 @@ class HomeViewController: BaseViewController {
         adapter.reloadData(completion: nil)
     }
 }
-
 
 extension HomeViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
@@ -112,7 +108,7 @@ extension HomeViewController: ListAdapterDataSource {
 }
 
 extension HomeViewController: ProductRecommendDelagte {
-    func tapProductDetail(title: String) {
+    func tapProductDetail(title: String?) {
         let vc = ProductDetailViewController()
         vc.navigationItem.title = title
         self.navigationController?.pushViewController(vc, animated: true)

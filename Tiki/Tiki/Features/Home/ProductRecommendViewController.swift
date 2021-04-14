@@ -9,7 +9,7 @@ import UIKit
 import IGListKit
 
 protocol ProductRecommendDelagte: class {
-    func tapProductDetail(title: String)
+    func tapProductDetail(title: String?)
 }
 
 class ProductRecommendViewController: ListSectionController, ListSupplementaryViewSource {
@@ -66,8 +66,9 @@ class ProductRecommendViewController: ListSectionController, ListSupplementaryVi
                                                                                    class: HeaderTitleCollectionReusableView.self, at: index) else {
                 return UICollectionReusableView()
             }
-            if let header = header as? HeaderTitleCollectionViewDelegate, let productSection = self.productSection {
-                header.configCell(title: productSection.productRecommend?.title ?? "")
+            
+            if let header = header as? HomeViewProtocol, let productSection = self.productSection {
+                header.configTitleHeader?(title: productSection.productRecommend?.title)
             }
             
             return header
@@ -77,6 +78,6 @@ class ProductRecommendViewController: ListSectionController, ListSupplementaryVi
     }
     
     override func didSelectItem(at index: Int) {
-        self.delegate?.tapProductDetail(title: productSection?.productRecommend?.title ?? "")
+        self.delegate?.tapProductDetail(title: productSection?.productRecommend?.title)
     }
 }

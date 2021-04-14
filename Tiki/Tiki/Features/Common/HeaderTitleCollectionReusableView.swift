@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol HeaderTitleCollectionViewDelegate {
-    func configCell(title: String)
-}
-
 class HeaderTitleCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Variables
@@ -49,9 +45,11 @@ class HeaderTitleCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     }
 }
 
-// MARK: - HeaderTitleCollectionViewDelegate
-extension HeaderTitleCollectionReusableView: HeaderTitleCollectionViewDelegate {
-    func configCell(title: String) {
+// MARK: - HomeViewProtocol
+
+extension HeaderTitleCollectionReusableView: HomeViewProtocol {
+    func configTitleHeader(title: String?) {
         self.titleLabel.text = title
     }
 }
+
