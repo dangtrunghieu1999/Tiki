@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 class Product: NSObject, JSONParsable{
-
+    
     var id: Int?
     var name                = ""
     var createdDate         = Date()
@@ -22,7 +22,10 @@ class Product: NSObject, JSONParsable{
     var sale                = ""
     var photos: [Photo]     = []
     var detailProduct       = ""
+    var rating              = 0
     var status              = 0
+    var number_comment      = 0
+    var promotion_percent   = 0
     var comments: [Comment] = []
     var json                = JSON()
     
@@ -49,15 +52,15 @@ class Product: NSObject, JSONParsable{
     required init(json: JSON) {
         super.init()
         self.json = json
-        id              = json["id"].int
-        name            = json["name"].stringValue
-        photos          = json["photo"].arrayValue.map { Photo(json: $0) }
-        promoPrice      = json["promotion_price"].doubleValue
-        status          = json["Status"].intValue
-        detailProduct   = json["description"].stringValue
-        unitPrice       = json["unit_price"].doubleValue
-        comments        = json["Comments"].arrayValue.map { Comment(json: $0) }
-        
+        id                  = json["id"].int
+        name                = json["name"].stringValue
+        photos              = json["photos"].arrayValue.map { Photo(json: $0) }
+        detailProduct       = json["description"].stringValue
+        unitPrice           = json["unit_price"].doubleValue
+        promoPrice          = json["promotion_price"].doubleValue
+        rating              = json["rating"].intValue
+        number_comment      = json["number_comment"].intValue
+        promotion_percent   = json["promotion_percent"].intValue
     }
 }
 
@@ -112,9 +115,9 @@ extension Product {
         dict["name"]                = name
         dict["UnitPrice"]           = unitPrice
         dict["PromoPrice"]          = promoPrice
-       
-       
-
+        
+        
+        
         dict["Status"]              = status
         dict["Comments"]            = comments.map { $0.toDictionary() }
         dict["Photos"]              = photos.map { $0.toDictionary() }

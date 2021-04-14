@@ -53,13 +53,17 @@ extension UIColor {
     class var separator: UIColor {
         return UIColor(hex: "#EEEEEE")
     }
-
-    class var ratingColor: UIColor {
-        return UIColor(hex: "#E9D700")
-    }
     
+    class var grayBoder: UIColor {
+        return UIColor(hex: "#919191")
+    }
+
     class var accentColor: UIColor {
         return UIColor(hex: "#FF6639")
+    }
+    
+    class var ratingColor: UIColor {
+        return UIColor(hex: "#FDD835")
     }
     
     class var darkAccentColor: UIColor {

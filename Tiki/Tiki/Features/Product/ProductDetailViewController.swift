@@ -42,14 +42,14 @@ class ProductDetailViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestProductDetailAPI()
         view.addSubview(collectionView)
+        requestProductDetailAPI()
     }
     
     // MARK: - Helper Method
     
     func requestProductDetailAPI() {
-        guard let path = Bundle.main.path(forResource: "Home", ofType: "json") else {
+        guard let path = Bundle.main.path(forResource: "ProductDetail", ofType: "json") else {
             fatalError("Not available json")
         }
         
@@ -66,7 +66,7 @@ class ProductDetailViewController: BaseViewController {
                 return InfomationSectionModel(json: json)
             case .description:
                 return InfomationSectionModel(json: json)
-            case .recoment:
+            case .recomment:
                 return InfomationSectionModel(json: json)
             }
         }

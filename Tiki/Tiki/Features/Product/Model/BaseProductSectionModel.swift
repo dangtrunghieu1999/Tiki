@@ -21,7 +21,7 @@ class BaseProductSectionModel: NSObject, JSONParsable {
     }
     
     required init(json: JSON) {
-        productType         = ProductDetailType(rawValue: json["type"].intValue) ?? .infomation
+        productType         = ProductDetailType(rawValue: json["type"].stringValue) ?? .infomation
     }
     
     func buildAllSection() -> [ListDiffable] {

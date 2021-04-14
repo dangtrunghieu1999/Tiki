@@ -3,32 +3,31 @@
     {
         "type": "Infomation",
         "data": {
-            "Product": {
-                "id": 1,
-                "createdDate": null,
-                "createdBy": null,
-                "modifiedDate": null,
-                "modifedBy": null,
-                "name": "Điện thoại Samsum Galaxy M31 (6GB/128/GB) - Hàng Chính Hãng",
-                "unit_price": 13000000,
-                "promotion_price": 750000,
-                "sale": "null",
-                "description": "Mở rộng không gian trãie nghiệm với màn hình Infinity-U thỏa thích làm mọi điều bạn muốn với màn hình Infinity-U 6.4 inch ",
-                "rating": 5,
-                "photos": [
-                    {
-                        "id": 1,
-                        "name": "poster1.jpg",
-                        "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster1.jpg?alt=media&token=6d0a847d-7350-46aa-9dfc-5b7388fbd87e"
-                    },
-                    {
-                        "id": 2,
-                        "name": "poster3.jpg",
-                        "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster3.jpg?alt=media&token=b563d544-3d1e-4ce5-a782-28eac6d66134"
-                    }
-                ]
-                
-            }
+            "id": 1,
+            "createdDate": null,
+            "createdBy": null,
+            "modifiedDate": null,
+            "modifedBy": null,
+            "name": "Điện thoại Samsum Galaxy M31 (6GB/128/GB) - Hàng Chính Hãng",
+            "unit_price": 13000000,
+            "promotion_price": 750000,
+            "sale": "null",
+            "description": "Mở rộng không gian trãie nghiệm với màn hình Infinity-U thỏa thích làm mọi điều bạn muốn với màn hình Infinity-U 6.4 inch ",
+            "rating": 5,
+            "number_comment": 41,
+            "promotion_percent": 25,
+            "photos": [
+                {
+                    "id": 1,
+                    "name": "poster1.jpg",
+                    "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster1.jpg?alt=media&token=6d0a847d-7350-46aa-9dfc-5b7388fbd87e"
+                },
+                {
+                    "id": 2,
+                    "name": "poster3.jpg",
+                    "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster3.jpg?alt=media&token=b563d544-3d1e-4ce5-a782-28eac6d66134"
+                }
+            ]
         }
     }
 ]

@@ -7,12 +7,12 @@
 
 import UIKit
 
-enum ProductDetailType: Int {
-    case infomation   = 0
-    case benefits     = 1
-    case preferential = 2
-    case description  = 3
-    case recoment     = 4
+enum ProductDetailType: String {
+    case infomation   = "Infomation"
+    case benefits     = "benefits"
+    case preferential = "preferential"
+    case description  = "description"
+    case recomment    = "recomment"
     
     static func numberSection() -> Int {
         return 5

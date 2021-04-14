@@ -43,6 +43,7 @@
 		CF6E81352610937100FDB5BF /* BaseHomeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */; };
 		CF7DB6DD2625FF8B00D47759 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */; };
 		CF81999B26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81999A26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift */; };
+		CF86AD8026267C48000753B1 /* ProductDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF86AD7F26267C48000753B1 /* ProductDetailProtocol.swift */; };
 		CF88CEAC25FDB5D800E30BD1 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */; };
 		CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEB225FDB5EE00E30BD1 /* Personal.swift */; };
 		CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */; };
@@ -252,7 +253,7 @@
 		CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794C7260EE783004DE431 /* SignUpViewController.swift */; };
 		CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */; };
 		CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */; };
-		CFEB73FD261FFA14001E18ED /* FeedSectionSecparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB73FC261FFA14001E18ED /* FeedSectionSecparatorCollectionViewCell.swift */; };
+		CFEB73FD261FFA14001E18ED /* SecparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEB73FC261FFA14001E18ED /* SecparatorCollectionViewCell.swift */; };
 		CFEC28A7260C9C3A008B90E7 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */; };
 		CFF9A0022616B11D00F702F0 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0012616B11D00F702F0 /* BannerModel.swift */; };
 		CFF9A0072616CB6300F702F0 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */; };
@@ -298,6 +299,7 @@
 		CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHomeSectionModel.swift; sourceTree = "<group>"; };
 		CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		CF81999A26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTitleCollectionReusableView.swift; sourceTree = "<group>"; };
+		CF86AD7F26267C48000753B1 /* ProductDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailProtocol.swift; sourceTree = "<group>"; };
 		CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF88CEB225FDB5EE00E30BD1 /* Personal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
 		CFA5BB4825EB89BE00AC20D1 /* Tiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -548,7 +550,7 @@
 		CFD794C7260EE783004DE431 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPWViewController.swift; sourceTree = "<group>"; };
-		CFEB73FC261FFA14001E18ED /* FeedSectionSecparatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedSectionSecparatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFEB73FC261FFA14001E18ED /* SecparatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecparatorCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		CFF9A0012616B11D00F702F0 /* BannerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -586,6 +588,7 @@
 		CF3DA2CB2625296B00A35EED /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				CFFA867826273B64008E164A /* Address */,
 				CF3DA2D4262536AA00A35EED /* Infomation */,
 			);
 			path = Sections;
@@ -750,6 +753,14 @@
 				CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */,
 			);
 			name = Protocol;
+			sourceTree = "<group>";
+		};
+		CF86AD7E26267C05000753B1 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				CF86AD7F26267C48000753B1 /* ProductDetailProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 		CF88CEAA25FDB5C000E30BD1 /* View */ = {
@@ -1287,7 +1298,7 @@
 		CFAF8F8925FC545D000E2CCA /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				CFEB73FC261FFA14001E18ED /* FeedSectionSecparatorCollectionViewCell.swift */,
+				CFEB73FC261FFA14001E18ED /* SecparatorCollectionViewCell.swift */,
 				CF81999A26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift */,
 				CFAF8F8A25FC545D000E2CCA /* UserProfileHeaderView.swift */,
 				CFAF8F8B25FC545D000E2CCA /* UpdateCoverViewController.swift */,
@@ -1490,6 +1501,7 @@
 		CFBC17A52624058D0016A223 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				CF86AD7E26267C05000753B1 /* Protocol */,
 				CF3DA2CC2625297300A35EED /* MockData */,
 				CF3DA2CB2625296B00A35EED /* Sections */,
 				CFBC17AC2624104D0016A223 /* View */,
@@ -1569,6 +1581,13 @@
 				CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */,
 			);
 			path = EnterNewPW;
+			sourceTree = "<group>";
+		};
+		CFFA867826273B64008E164A /* Address */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Address;
 			sourceTree = "<group>";
 		};
 		E3A1ECCA103076A915AB7FA2 /* Pods */ = {
@@ -1768,6 +1787,7 @@
 				CFAF8FC925FC545D000E2CCA /* InputContainerView.swift in Sources */,
 				CFAF8E4E25FC4EDD000E2CCA /* String+Extension.swift in Sources */,
 				CFAF8FBE25FC545D000E2CCA /* Comment.swift in Sources */,
+				CF86AD8026267C48000753B1 /* ProductDetailProtocol.swift in Sources */,
 				CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */,
 				CFAF8F2E25FC507C000E2CCA /* PhotoAlbumTitleButton.swift in Sources */,
 				CFAF8F3E25FC507C000E2CCA /* ACTabScrollView+Protocol.swift in Sources */,
@@ -1950,7 +1970,7 @@
 				CFAF8FC025FC545D000E2CCA /* Photo.swift in Sources */,
 				CFAF8E4125FC4EDD000E2CCA /* UINavigationController+Extension.swift in Sources */,
 				CF6104562610B48900FBB983 /* MenuFeedSectionModel.swift in Sources */,
-				CFEB73FD261FFA14001E18ED /* FeedSectionSecparatorCollectionViewCell.swift in Sources */,
+				CFEB73FD261FFA14001E18ED /* SecparatorCollectionViewCell.swift in Sources */,
 				CFAF8FBB25FC545D000E2CCA /* ScrollImageCollectionViewCell.swift in Sources */,
 				CF61046C2610B7FE00FBB983 /* ProductRecommendViewController.swift in Sources */,
 				CFAF8E2125FC4EDD000E2CCA /* UserEndPoint.swift in Sources */,

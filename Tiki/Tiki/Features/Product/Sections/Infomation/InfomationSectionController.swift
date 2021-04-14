@@ -16,30 +16,43 @@ class InfomationSectionController: ListSectionController {
     }
     
     override func numberOfItems() -> Int {
-        return 1
+        return 2
     }
     
     override func sizeForItem(at index: Int) -> CGSize {
         guard let context = collectionContext else {
-          return .zero
+            return .zero
         }
         
-        let width = context.containerSize.width - ( Dimension.shared.mediumMargin_12 * 2 )
-        return CGSize(width: width, height: 140)
+        let width = context.containerSize.width
+        
+        if index == 0 {
+            return CGSize(width: width, height: 500)
+        } else {
+            return CGSize(width: width, height: Dimension.shared.mediumViewHeight)
+        }
     }
     
     override func cellForItem(at index: Int) -> UICollectionViewCell {
-        guard let cell = collectionContext?.dequeueReusableCell(of: InfomationProductCollectionViewCell.self, for: self, at: index)
-        else {
-            return UICollectionViewCell()
+        if index == 0 {
+            guard let cell = collectionContext?.dequeueReusableCell(of: InfomationProductCollectionViewCell.self, for: self, at: index)
+            else {
+                return UICollectionViewCell()
+            }
+            
+            if let cell = cell as? ProductDetailProtocol, let infomation = self.infomation {
+                cell.configDataInfomation?(product: infomation.productDetail)
+            }
+            
+            return cell
+        } else {
+            guard let cell = collectionContext?.dequeueReusableCell(of: SecparatorCollectionViewCell.self, for: self, at: index)
+            else {
+                return UICollectionViewCell()
+            }
+            
+            return cell
         }
-        
-//        if let cell = cell as? BannerCollectionViewDelegate, let infomation = self.infomation {
-//            cell.configData(banner: banner.bannerModel ?? BannerModel())
-//        }
-        
-       
-        return cell
     }
     
     override func didUpdate(to object: Any) {
