@@ -77,6 +77,8 @@ class HomeViewController: BaseViewController {
     }
 }
 
+// MARK: - ListAdapterDataSource
+
 extension HomeViewController: ListAdapterDataSource {
     func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
         
@@ -106,6 +108,8 @@ extension HomeViewController: ListAdapterDataSource {
     }
 
 }
+
+// MARK: - ProductRecommendDelagte
 
 extension HomeViewController: ProductRecommendDelagte {
     func tapProductDetail(title: String?) {

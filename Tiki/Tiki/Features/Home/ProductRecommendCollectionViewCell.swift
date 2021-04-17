@@ -11,7 +11,21 @@ import HCSStarRatingView
 class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
+
+    var fontSize: UIFont? {
+        didSet {
+            titleLabel.font = fontSize
+            finalPriceLabel.font = fontSize
+            promotionPercentLabel.isHidden = true
+        }
+    }
     
+    var colorCoverView: UIColor? = .white {
+        didSet {
+            coverView.backgroundColor = colorCoverView
+        }
+    }
+        
     // MARK: - UI Elements
     
     fileprivate lazy var coverView: BaseView = {
@@ -85,7 +99,6 @@ class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Helper Method
     
-    
     // MARK: - GET API
     
     // MARK: - Layout
@@ -104,7 +117,7 @@ class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
             make.top.equalToSuperview().offset(Dimension.shared.smallMargin)
             make.left.equalToSuperview().offset(Dimension.shared.smallMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.smallMargin)
-            make.height.equalTo(200)
+            make.height.equalTo(self.snp.width).multipliedBy(Dimension.shared.productImageRatio)
         }
     }
     
@@ -156,13 +169,13 @@ class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
 }
 
 extension ProductRecommendCollectionViewCell: HomeViewProtocol {
-    func configDataProductRecommend(product: ProductRecommendModel?, at index: Int) {
-        guard let product = product?.list[index] else { return }
-        self.productImageView.sd_setImage(with: product.image.url, completed: nil)
+    func configDataProductRecommend(product: [Product]?, at index: Int) {
+        guard let product = product?[index] else { return }
+        self.productImageView.sd_setImage(with: product.photos[0].url.url, completed: nil)
         self.titleLabel.text  = product.name.capitalized
-        self.ratingView.value = 3.5
-        self.numberReviewLabel.text = "(\(6))"
-        self.finalPriceLabel.text = product.price.currencyFormat
+        self.ratingView.value = CGFloat(product.rating)
+        self.numberReviewLabel.text = "(\(product.number_comment))"
+        self.finalPriceLabel.text = product.promoPrice.currencyFormat
         self.promotionPercentLabel.text = "-\(product.promotion_percent)%"
     }
 }

@@ -164,4 +164,6 @@ class Dimension {
     var mediumViewHeight: CGFloat {
         return 8 * widthScale
     }
+    
+    let productImageRatio: CGFloat   = 0.92
 }

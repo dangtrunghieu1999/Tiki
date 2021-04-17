@@ -47,7 +47,7 @@ class BannerEventViewController: ListSectionController {
             }
             return cell
         } else {
-            guard let cell = collectionContext?.dequeueReusableCell(of: FeedSectionSecparatorCollectionViewCell.self,
+            guard let cell = collectionContext?.dequeueReusableCell(of: SecparatorCollectionViewCell.self,
                                                                     for: self,
                                                                     at: index) else {
                 return UICollectionViewCell()

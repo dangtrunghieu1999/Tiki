@@ -9,7 +9,7 @@
 import UIKit
 import IGListKit
 
-class FeedSectionSecparatorCollectionViewCell: BaseCollectionViewCell {
+class SecparatorCollectionViewCell: BaseCollectionViewCell {
     override func initialize() {
         super.initialize()
         backgroundColor = UIColor.separator
@@ -18,7 +18,7 @@ class FeedSectionSecparatorCollectionViewCell: BaseCollectionViewCell {
 
 // MARK: - ListBindable
 
-extension FeedSectionSecparatorCollectionViewCell {
+extension SecparatorCollectionViewCell {
     override func bindViewModel(_ viewModel: Any) {
         
     }

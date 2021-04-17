@@ -1,34 +1,35 @@
 
-[
-    {
-        "type": "Infomation",
-        "data": {
-            "Product": {
+{
+    "data": {
+        "id": 1,
+        "createdDate": null,
+        "createdBy": null,
+        "modifiedDate": null,
+        "modifedBy": null,
+        "name": "Điện thoại Samsum Galaxy M31 (6GB/128/GB) - Hàng Chính Hãng",
+        "unit_price": 13000000,
+        "promotion_price": 750000,
+        "sale": "null",
+        "description": "Mở rộng không gian trãie nghiệm với màn hình Infinity-U thỏa thích làm mọi điều bạn muốn với màn hình Infinity-U 6.4 inch ",
+        "rating": 5,
+        "number_comment": 41,
+        "promotion_percent": 25,
+        "photos": [
+            {
                 "id": 1,
-                "createdDate": null,
-                "createdBy": null,
-                "modifiedDate": null,
-                "modifedBy": null,
-                "name": "Điện thoại Samsum Galaxy M31 (6GB/128/GB) - Hàng Chính Hãng",
-                "unit_price": 13000000,
-                "promotion_price": 750000,
-                "sale": "null",
-                "description": "Mở rộng không gian trãie nghiệm với màn hình Infinity-U thỏa thích làm mọi điều bạn muốn với màn hình Infinity-U 6.4 inch ",
-                "rating": 5,
-                "photos": [
-                    {
-                        "id": 1,
-                        "name": "poster1.jpg",
-                        "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster1.jpg?alt=media&token=6d0a847d-7350-46aa-9dfc-5b7388fbd87e"
-                    },
-                    {
-                        "id": 2,
-                        "name": "poster3.jpg",
-                        "link": "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/poster3.jpg?alt=media&token=b563d544-3d1e-4ce5-a782-28eac6d66134"
-                    }
-                ]
-                
+                "name": "poster1.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/c8bbd9bcbb744d60b47fff545dcc5852.jpg"
+            },
+            {
+                "id": 2,
+                "name": "poster3.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/c1/da/21/b05d3a5991770463674284c8d989f39a.PNG"
+            },
+            {
+                "id": 3,
+                "name": "poster2.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/e7/f9/79/cb88a67f068a7dd9ddd5ba33f8348e18.jpg"
             }
-        }
+        ]
     }
-]
+}
