@@ -27,6 +27,9 @@ class Product: NSObject, JSONParsable{
     var number_comment      = 0
     var promotion_percent   = 0
     var comments: [Comment] = []
+    var shopId: Int?
+    var shopName            = ""
+    var shopAvatar          = ""
     var json                = JSON()
     
     /// Use this model to create and edit size
@@ -61,6 +64,9 @@ class Product: NSObject, JSONParsable{
         rating              = json["rating"].doubleValue
         number_comment      = json["number_comment"].intValue
         promotion_percent   = json["promotion_percent"].intValue
+        shopName            = json["shopName"].stringValue
+        shopAvatar          = json["shopAvatar"].stringValue
+        shopId              = json["shopId"].intValue
     }
 }
 

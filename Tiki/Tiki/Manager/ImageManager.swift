@@ -147,4 +147,6 @@ final class ImageManager {
     static let chat                              = UIImage(named: "chat")
     static let person                            = UIImage(named: "person")
     static let category                          = UIImage(named: "category")
+    
+    static let shop_home                         = UIImage(named: "shop_home")
 }

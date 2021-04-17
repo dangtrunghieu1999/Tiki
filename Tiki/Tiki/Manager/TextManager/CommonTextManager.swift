@@ -127,4 +127,6 @@ final class  TextManager {
     static let signInAccount                = "Đăng nhập"
     static let continueRules                = "Bằng việc tiếp tục, bạn đã chấp nhận điều khoản sử dụng"
     static let optionSignIn                 = "Hoặc tiếp tục bằng"
+    static let seeShop                      = "Xem Shop"
+    static let followShop                   = "Theo dõi Shop"
 }

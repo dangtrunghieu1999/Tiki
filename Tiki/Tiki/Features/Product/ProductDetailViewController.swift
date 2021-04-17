@@ -150,9 +150,9 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
         case .infomation:
             return CGSize(width: collectionView.frame.width, height: 470)
         case .sameProduct:
-            return CGSize(width: collectionView.frame.width, height: 313)
+            return CGSize(width: collectionView.frame.width, height: 283)
         case .stallShop:
-            return CGSize(width: collectionView.frame.width, height: 200)
+            return CGSize(width: collectionView.frame.width, height: 135)
         case .advanedShop:
             return CGSize(width: collectionView.frame.width, height: 200)
         case .infoDetail:
@@ -192,9 +192,11 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return cell
         case .stallShop:
             let cell: ProductStallShopCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configDataShop(avatar: product.shopAvatar, name: product.shopName)
             return cell
         case .advanedShop:
             let cell: ProductAdvanedShopCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            
             return cell
         case .infoDetail:
             let cell: ProductDetailsCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)

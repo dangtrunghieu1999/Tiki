@@ -14,6 +14,10 @@ extension UIColor {
         return UIColor(hex: "#00A5FF")
     }
     
+    class var thirdColor: UIColor {
+        return UIColor(hex: "#0D5CB6")
+    }
+    
     class var subTitle: UIColor {
         return UIColor(hex: "#13B7FF")
     }

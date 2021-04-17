@@ -86,7 +86,7 @@ extension ProductSameProductCollectionViewCell: UICollectionViewDelegateFlowLayo
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 3 * Dimension.shared.normalMargin) / 3
-        return CGSize(width: width, height: 230)
+        return CGSize(width: width, height: 200)
     }
 }
 
