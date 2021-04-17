@@ -22,7 +22,7 @@ class Product: NSObject, JSONParsable{
     var sale                = ""
     var photos: [Photo]     = []
     var detailProduct       = ""
-    var rating              = 0
+    var rating:Double       = 0.0
     var status              = 0
     var number_comment      = 0
     var promotion_percent   = 0
@@ -58,7 +58,7 @@ class Product: NSObject, JSONParsable{
         detailProduct       = json["description"].stringValue
         unitPrice           = json["unit_price"].doubleValue
         promoPrice          = json["promotion_price"].doubleValue
-        rating              = json["rating"].intValue
+        rating              = json["rating"].doubleValue
         number_comment      = json["number_comment"].intValue
         promotion_percent   = json["promotion_percent"].intValue
     }

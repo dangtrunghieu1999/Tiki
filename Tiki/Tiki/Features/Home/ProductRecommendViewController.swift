@@ -38,7 +38,7 @@ class ProductRecommendViewController: ListSectionController, ListSupplementaryVi
         }
         
         if let cell = cell as? HomeViewProtocol, let productSection = self.productSection {
-            cell.configDataProductRecommend?(product: productSection.productRecommend, at: index)
+            cell.configDataProductRecommend?(product: productSection.productRecommend?.list, at: index)
         }
         
         return cell

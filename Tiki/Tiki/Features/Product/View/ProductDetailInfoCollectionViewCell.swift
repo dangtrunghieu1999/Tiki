@@ -1,5 +1,5 @@
 //
-//  InfomationProductCollectionViewCell.swift
+//  ProductDetailInfoCollectionViewCell.swift
 //  Tiki
 //
 //  Created by Dang Trung Hieu on 4/13/21.
@@ -9,7 +9,7 @@ import UIKit
 import FSPagerView
 import HCSStarRatingView
 
-class InfomationProductCollectionViewCell: BaseCollectionViewCell {
+class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
@@ -184,7 +184,7 @@ class InfomationProductCollectionViewCell: BaseCollectionViewCell {
 
 // MARK: - FSPagerViewDataSource
 
-extension InfomationProductCollectionViewCell: FSPagerViewDataSource {
+extension ProductDetailInfoCollectionViewCell: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return product?.photos.count ?? 0
     }
@@ -201,7 +201,7 @@ extension InfomationProductCollectionViewCell: FSPagerViewDataSource {
 
 // MARK: - FSPagerViewDelegate
 
-extension InfomationProductCollectionViewCell: FSPagerViewDelegate {
+extension ProductDetailInfoCollectionViewCell: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true)
         pagerView.scrollToItem(at: index, animated: true)
@@ -218,7 +218,7 @@ extension InfomationProductCollectionViewCell: FSPagerViewDelegate {
 
 // MARK: - ProductDetailProtocol
 
-extension InfomationProductCollectionViewCell: ProductDetailProtocol {
+extension ProductDetailInfoCollectionViewCell: ProductDetailProtocol {
     func configDataInfomation(product: Product?) {
         self.product = product
         self.pageView.reloadData()

@@ -1,0 +1,129 @@
+[
+    {
+        "id": 1112,
+        "name": "Điện Thoại iPhone 11 64GB - Hàng Chính Hãng",
+        "unit_price": 22990000,
+        "promotion_price": 16290000,
+        "number_comment": 1990,
+        "promotion_percent": 25,
+        "rating": 4.5,
+        "photos": [
+            {
+                "id": 1,
+                "name": "poster1.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/c9/89/90/0a0810e0a738b543f94985ec9ee80894.jpg"
+            },
+            {
+                "id": 2,
+                "name": "poster3.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
+            }
+        ]
+    },
+    {
+        "id": 1113,
+        "name": "Điện Thoại iPhone 12 Pro Max 128GB - Hàng Chính Hãng",
+        "unit_price": 33990000,
+        "promotion_price": 29950000,
+        "number_comment": 435,
+        "promotion_percent": 12,
+        "rating": 5,
+        "photos": [
+            {
+                "id": 1,
+                "name": "poster1.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/c9/89/90/0a0810e0a738b543f94985ec9ee80894.jpg"
+            },
+            {
+                "id": 2,
+                "name": "poster3.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
+            }
+        ]
+    },
+    {
+        "id": 1114,
+        "name": "Điện Thoại iPhone SE 2020 128GB - Hàng Chính Hãng",
+        "unit_price": 14990000,
+        "promotion_price": 12490000,
+        "number_comment": 435,
+        "promotion_percent": 12,
+        "rating": 5,
+        "photos": [
+            {
+                "id": 1,
+                "name": "poster1.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/c9/89/90/0a0810e0a738b543f94985ec9ee80894.jpg"
+            },
+            {
+                "id": 2,
+                "name": "poster3.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
+            }
+        ]
+    },
+    {
+        "id": 1115,
+        "name": "Điện Thoại iPhone 12 Pro Max 128GB - Hàng Chính Hãng",
+        "unit_price": 33990000 ,
+        "promotion_price": 29950000,
+        "number_comment": 435,
+        "promotion_percent": 12,
+        "rating": 5,
+        "photos": [
+            {
+                "id": 1,
+                "name": "poster1.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/c9/89/90/0a0810e0a738b543f94985ec9ee80894.jpg"
+            },
+            {
+                "id": 2,
+                "name": "poster3.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
+            }
+        ]
+    },
+    {
+        "id": 1116,
+        "name": "Điện Thoại Samsung Galaxy M31 (6GB/128GB) - Hàng Chính Hãng",
+        "unit_price": 6490000,
+        "promotion_price": 4959000,
+        "number_comment": 435,
+        "promotion_percent": 12,
+        "rating": 5,
+        "photos": [
+            {
+                "id": 1,
+                "name": "poster1.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/c9/89/90/0a0810e0a738b543f94985ec9ee80894.jpg"
+            },
+            {
+                "id": 2,
+                "name": "poster3.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
+            }
+        ]
+    },
+    {
+        "id": 1117,
+        "name": "Điện Thoại iPhone 12 Pro Max 128GB - Hàng Chính Hãng",
+        "unit_price": 33990000 ,
+        "promotion_price": 29950000,
+        "number_comment": 435,
+        "promotion_percent": 12,
+        "rating": 5,
+        "photos": [
+            {
+                "id": 1,
+                "name": "poster1.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/c9/89/90/0a0810e0a738b543f94985ec9ee80894.jpg"
+            },
+            {
+                "id": 2,
+                "name": "poster3.jpg",
+                "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
+            }
+        ]
+    }
+    
+]

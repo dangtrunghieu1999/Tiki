@@ -12,7 +12,7 @@ final class  TextManager {
     
     // MARK: - Common
     
-    static let search                       = "Tìm kiếm"
+    static let search                       = "Bạn tìm gì hôm nay?"
     static let cancel                       = "Huỷ"
     static let save                         = "Lưu"
     static let preview                      = "Xem trước"

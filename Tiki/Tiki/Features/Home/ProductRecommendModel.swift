@@ -12,7 +12,7 @@ class ProductRecommendModel: BaseHomeSectionModel {
     
     var title = ""
     var link  = ""
-    var list: [ListRecommend] = []
+    var list: [Product] = []
     
     required init() {
         super.init()
@@ -22,7 +22,7 @@ class ProductRecommendModel: BaseHomeSectionModel {
         super.init(json: json)
         title = json["title"].stringValue
         link  = json["link"].stringValue
-        list  = json["list"].arrayValue.map{ ListRecommend(json: $0) }
+        list  = json["list"].arrayValue.map{ Product(json: $0) }
     }
 }
 
