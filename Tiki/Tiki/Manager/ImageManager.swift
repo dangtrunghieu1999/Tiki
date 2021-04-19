@@ -22,7 +22,7 @@ final class ImageManager {
     static let whiteCart                            = UIImage(named: "whiteCart")
     static let imagePlaceHolder                     = UIImage(named: "imagePlaceHolder")
     static let searchGray                           = UIImage(named: "searchGray")
-    static let close                                = UIImage(named: "close")
+    
     static let empty                                = UIImage(named: "empty")
     static let optionIcon                           = UIImage(named: "optionIcon")
     static let like                                 = UIImage(named: "like")
@@ -149,4 +149,9 @@ final class ImageManager {
     static let category                          = UIImage(named: "category")
     
     static let shop_home                         = UIImage(named: "shop_home")
+    static let guarantee                         = UIImage(named: "guarantee")
+    static let refund                            = UIImage(named: "refund")
+    static let compensation                      = UIImage(named: "compensation")
+    
+    static let dismiss_close                     = UIImage(named: "dismiss_close")
 }

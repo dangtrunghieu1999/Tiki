@@ -30,6 +30,7 @@ class Product: NSObject, JSONParsable{
     var shopId: Int?
     var shopName            = ""
     var shopAvatar          = ""
+    var parameter: [String] = []
     var json                = JSON()
     
     /// Use this model to create and edit size
@@ -67,6 +68,7 @@ class Product: NSObject, JSONParsable{
         shopName            = json["shopName"].stringValue
         shopAvatar          = json["shopAvatar"].stringValue
         shopId              = json["shopId"].intValue
+        parameter           = json["parameter"].arrayValue.map{$0.stringValue}
     }
 }
 

@@ -23,7 +23,7 @@ class SignInViewController: BaseViewController {
     
     fileprivate lazy var closeViewButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageManager.close, for: .normal)
+        button.setImage(ImageManager.dismiss_close, for: .normal)
         button.backgroundColor = .clear
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(touchUpInLeftBarButtonItem), for: .touchUpInside)

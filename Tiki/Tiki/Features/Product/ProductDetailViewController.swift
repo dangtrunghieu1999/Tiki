@@ -154,9 +154,9 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
         case .stallShop:
             return CGSize(width: collectionView.frame.width, height: 135)
         case .advanedShop:
-            return CGSize(width: collectionView.frame.width, height: 200)
+            return CGSize(width: collectionView.frame.width, height: 140)
         case .infoDetail:
-            return CGSize(width: collectionView.frame.width, height: 200)
+            return CGSize(width: collectionView.frame.width, height: 300)
         case .description:
             return CGSize(width: collectionView.frame.width, height: 200)
         case .comment:
@@ -196,10 +196,11 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return cell
         case .advanedShop:
             let cell: ProductAdvanedShopCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            
             return cell
         case .infoDetail:
             let cell: ProductDetailsCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.delegate = self
+            cell.configValueTitle(values: product.parameter)
             return cell
         case .description:
             let cell: ProductDetailDescriptionCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
@@ -218,5 +219,11 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             cell.backgroundColor = UIColor.separator
             return cell
         }
+    }
+}
+
+extension ProductDetailViewController: ProductDetailsDelegate {
+    func didTapSeemoreParamter() {
+        AppRouter.presentViewParameterProduct(viewController: self)
     }
 }

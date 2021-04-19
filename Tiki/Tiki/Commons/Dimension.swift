@@ -165,5 +165,5 @@ class Dimension {
         return 8 * widthScale
     }
     
-    let productImageRatio: CGFloat   = 0.92
+    let productImageRatio: CGFloat   = 0.94
 }

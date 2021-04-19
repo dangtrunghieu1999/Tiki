@@ -51,7 +51,7 @@ class ProductRecommendViewController: ListSectionController, ListSupplementaryVi
     // MARK: - ListSupplementaryViewSource
     
     func sizeForSupplementaryView(ofKind elementKind: String, at index: Int) -> CGSize {
-        return CGSize(width: collectionContext!.containerSize.width, height: 30)
+        return CGSize(width: collectionContext!.containerSize.width, height: 50)
     }
     
     func supportedElementKinds() -> [String] {

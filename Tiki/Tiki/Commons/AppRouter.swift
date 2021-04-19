@@ -17,6 +17,12 @@ class AppRouter: NSObject {
         viewController.present(nvc, animated: true, completion: nil)
     }
     
+    class func presentViewParameterProduct(viewController: UIViewController) {
+        let vc = ProductParameterViewController()
+        let nvc = UINavigationController(rootViewController: vc)
+        viewController.present(nvc, animated: true, completion: nil)
+    }
+    
     class func pushToPasswordVC() {
         let vc = PasswordViewController()
         UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)

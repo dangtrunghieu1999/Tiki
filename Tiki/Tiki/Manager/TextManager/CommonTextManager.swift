@@ -129,4 +129,5 @@ final class  TextManager {
     static let optionSignIn                 = "Hoặc tiếp tục bằng"
     static let seeShop                      = "Xem Shop"
     static let followShop                   = "Theo dõi Shop"
+    static let detailProduct                = "Thông tin chi tiết"
 }
