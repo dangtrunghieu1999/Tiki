@@ -17,7 +17,18 @@ class ProductDetailViewController: BaseViewController {
     fileprivate lazy var product = Product()
     fileprivate lazy var productSame: [Product] = []
     fileprivate var productInfoCellHeight:  CGFloat?
+    fileprivate var desciptionCellHeight:   CGFloat?
+
     fileprivate var isExpandDescriptionCell = false
+    
+    var canExpendDescriptionCell: Bool {
+        return (desciptionCellHeight ?? 0 > CGFloat(ProductDetailDescriptionCollectionViewCell.defaultHeightToExpand))
+    }
+    
+    var colapseDescriptionCellHeight: CGFloat {
+        return ProductDetailDescriptionCollectionViewCell.esitmateColapseHeight(product)
+    }
+    
     
     // MARK: - UI Elements
     
@@ -75,6 +86,7 @@ class ProductDetailViewController: BaseViewController {
         productCollectionView.registerReusableCell(ProductDetailRecommendCollectionViewCell.self)
         productCollectionView.registerReusableCell(ProductDetailDescriptionCollectionViewCell.self)
         productCollectionView.registerReusableCell(BaseCollectionViewCell.self)
+        productCollectionView.registerReusableCell(EmptyCollectionViewCell.self)
         productCollectionView.registerReusableSupplementaryView(TitleCollectionViewHeaderCell.self,
                                                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
     }
@@ -168,11 +180,25 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
         case .infoDetail:
             return CGSize(width: collectionView.frame.width, height: 250)
         case .description:
-            return CGSize(width: collectionView.frame.width, height: 200)
+            if canExpendDescriptionCell && !isExpandDescriptionCell {
+                return CGSize(width: collectionView.frame.width, height: colapseDescriptionCellHeight)
+            }
+            
+            if let desciptionCellHeight = desciptionCellHeight {
+                return CGSize(width: collectionView.frame.width, height: desciptionCellHeight)
+            } else {
+                desciptionCellHeight = ProductDetailDescriptionCollectionViewCell.estimateHeight(product)
+                return CGSize(width: collectionView.frame.width, height: desciptionCellHeight ?? 0)
+            }
         case .comment:
-            return CGSize(width: collectionView.frame.width, height: 200)
-        case .recomment:
-            return CGSize(width: collectionView.frame.width, height: 200)
+            if product.comments.isEmpty {
+                return CGSize(width: collectionView.frame.width, height: 140)
+            } else {
+                guard let comment = product.commentInProductDetail[safe: indexPath.row] else { return .zero }
+                return CGSize(width: collectionView.frame.width,
+                              height: ProductParentCommentCollectionViewCell.estimateHeight(comment))
+            }
+
         case .recommend:
             return CGSize(width: collectionView.frame.width, height: 200)
         default:
@@ -239,13 +265,32 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return cell
         case .description:
             let cell: ProductDetailDescriptionCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configData(product, canExpand: canExpendDescriptionCell, isExpand: isExpandDescriptionCell)
+            cell.delegate = self
             return cell
         case .comment:
-            let cell: ProductParentCommentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
-        case .recomment:
-            let cell: ProductDetailRecommendCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
+            if product.comments.isEmpty {
+                let emptyCell: EmptyCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+                emptyCell.imageSize = CGSize(width: 40, height: 40)
+                emptyCell.messageFont = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+                emptyCell.image = ImageManager.comment
+                emptyCell.message = TextManager.emptyComment.localized()
+                return emptyCell
+            } else {
+                let comment = product.commentInProductDetail[indexPath.row]
+                
+                if comment.isParrentComment {
+                    let cell: ProductParentCommentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+                    cell.configData(comment: comment)
+                    cell.delegate = self
+                    return cell
+                } else {
+                    let cell: ProductChildCommentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+                    cell.configData(comment: comment)
+                    cell.delegate = self
+                    return cell
+                }
+            }
         case .recommend:
             let cell: ProductDetailRecommendCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
@@ -278,5 +323,39 @@ extension ProductDetailViewController: UICollectionViewDataSource {
 extension ProductDetailViewController: ProductDetailsDelegate {
     func didTapSeemoreParamter(values: [String]) {
         AppRouter.presentViewParameterProduct(viewController: self, values: values)
+    }
+}
+
+// MARK: - ProductDetailDesciptionCollectionViewCellDelegate
+
+extension ProductDetailViewController: ProductDetailDesciptionCollectionViewCellDelegate {
+    func didSelectSeeMore() {
+        isExpandDescriptionCell = !isExpandDescriptionCell
+        productCollectionView.reloadSections(IndexSet(integer: ProductDetailType.description.rawValue))
+    }
+}
+
+// MARK: - ProductCommentViewControllerDelegate
+
+extension ProductDetailViewController: ProductCommentViewControllerDelegate {
+    func updateNewComments(_ comments: [Comment]) {
+        product.comments = comments
+        productCollectionView.reloadData()
+    }
+}
+
+// MARK: - ProductDetailCommentCollectionViewCellDelegate
+
+extension ProductDetailViewController: ProductDetailCommentCollectionViewCellDelegate {
+    func didSelectLikeComment(_ comment: Comment) {
+        
+    }
+    
+    func didSelectReplyComment(_ comment: Comment) {
+        let commentVC = ProductCommentViewController()
+        commentVC.delegate = self
+        commentVC.configData(comments: product.comments)
+        commentVC.configData(productId: product.id, replyComment: comment)
+        navigationController?.pushViewController(commentVC, animated: true)
     }
 }

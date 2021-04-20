@@ -21,13 +21,12 @@ enum ProductDetailType: Int {
     case description       = 11
     case section6          = 12
     case comment           = 13
-    case recomment         = 14
-    case section7          = 15
-    case recommend         = 16
-    case section8          = 17
+    case section7          = 14
+    case recommend         = 15
+    case section8          = 16
     
     static func numberSection() -> Int {
-        return 18
+        return 17
     }
     
     func sizeForHeader() -> CGSize {

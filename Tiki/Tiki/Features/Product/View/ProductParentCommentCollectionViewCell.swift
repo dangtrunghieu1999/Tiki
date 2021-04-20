@@ -7,6 +7,9 @@
 
 import UIKit
 
-class ProductParentCommentCollectionViewCell: BaseCollectionViewCell {
-    
+class ProductParentCommentCollectionViewCell: BaseCommentCollectionViewCell {
+    override func initialize() {
+        super.initialize()
+        setupLayout(isParentComment: true)
+    }
 }

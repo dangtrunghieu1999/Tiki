@@ -90,7 +90,7 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
     private func layoutSeemoreButton() {
         addSubview(seemoreButton)
         seemoreButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(Dimension.shared.mediumMargin)
+            make.bottom.equalToSuperview()
             make.centerX.equalToSuperview()
             make.height.equalTo(50)
             make.width.equalTo(100)

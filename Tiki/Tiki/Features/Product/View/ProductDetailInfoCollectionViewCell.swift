@@ -232,33 +232,14 @@ extension ProductDetailInfoCollectionViewCell: ProductDetailProtocol {
         self.pageView.reloadData()
         self.numberLabel.text = "1/\(product?.photos.count ?? 0)"
         let productName = product?.name ?? ""
-        self.titleLabel.attributedText = lineSpacingLabel(title: productName)
+        self.titleLabel.attributedText = Ultilities.lineSpacingLabel(title: productName)
         self.ratingView.value = CGFloat(product?.rating ?? 0)
         self.numberReviewLabel.text = "(Xem \(product?.number_comment ?? 0) đánh giá)"
         self.promotionPriceLabel.text = product?.promoPrice.currencyFormat
         let originalPrice = product?.unitPrice
-        self.originalPriceLabel.attributedText = drawLineBetween(price: originalPrice)
+        self.originalPriceLabel.attributedText = Ultilities.drawLineBetween(price: originalPrice)
         let promotionPercent = product?.promotion_percent ?? 0
         self.promotionPercentLabel.text = "-\(promotionPercent)%"
     }
-    
-    func lineSpacingLabel(title: String) -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: title)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 5
-        paragraphStyle.minimumLineHeight = 5
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle,
-                                      value:paragraphStyle,
-                                      range:NSMakeRange(0, attributedString.length))
-        return attributedString
-    }
-    
-    func drawLineBetween(price: Double?) -> NSMutableAttributedString  {
-        let myString = price?.currencyFormat ?? ""
-        let attributeString = NSMutableAttributedString(string: myString)
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                     value: 1,
-                                     range: NSMakeRange(0, attributeString.length))
-        return attributeString
-    }
+
 }

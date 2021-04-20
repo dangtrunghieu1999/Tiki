@@ -48,6 +48,9 @@
 		CF61046C2610B7FE00FBB983 /* ProductRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61046B2610B7FE00FBB983 /* ProductRecommendViewController.swift */; };
 		CF6E81352610937100FDB5BF /* BaseHomeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */; };
 		CF6F553A262C732D00ED6F64 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F5539262C732D00ED6F64 /* TitleTableViewCell.swift */; };
+		CF730921262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730920262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift */; };
+		CF730924262E8DCF0026C0B3 /* ProductCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730923262E8DCF0026C0B3 /* ProductCommentViewController.swift */; };
+		CF730927262E8DFF0026C0B3 /* ReplyCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730926262E8DFF0026C0B3 /* ReplyCommentView.swift */; };
 		CF7DB6DD2625FF8B00D47759 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */; };
 		CF81999B26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81999A26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift */; };
 		CF86AD8026267C48000753B1 /* ProductDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF86AD7F26267C48000753B1 /* ProductDetailProtocol.swift */; };
@@ -314,6 +317,9 @@
 		CF61046B2610B7FE00FBB983 /* ProductRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecommendViewController.swift; sourceTree = "<group>"; };
 		CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHomeSectionModel.swift; sourceTree = "<group>"; };
 		CF6F5539262C732D00ED6F64 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		CF730920262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCommentCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF730923262E8DCF0026C0B3 /* ProductCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCommentViewController.swift; sourceTree = "<group>"; };
+		CF730926262E8DFF0026C0B3 /* ReplyCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentView.swift; sourceTree = "<group>"; };
 		CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		CF81999A26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTitleCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF86AD7F26267C48000753B1 /* ProductDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailProtocol.swift; sourceTree = "<group>"; };
@@ -747,6 +753,16 @@
 				CF55F1B8261EBA4600635F80 /* Product */,
 			);
 			name = Sections;
+			sourceTree = "<group>";
+		};
+		CF73091F262E8CF90026C0B3 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				CF730920262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift */,
+				CF730923262E8DCF0026C0B3 /* ProductCommentViewController.swift */,
+				CF730926262E8DFF0026C0B3 /* ReplyCommentView.swift */,
+			);
+			path = Comment;
 			sourceTree = "<group>";
 		};
 		CF7DB6DB2625FF7900D47759 /* Protocol */ = {
@@ -1506,6 +1522,7 @@
 		CFBC17A52624058D0016A223 /* Product */ = {
 			isa = PBXGroup;
 			children = (
+				CF73091F262E8CF90026C0B3 /* Comment */,
 				CF86AD7E26267C05000753B1 /* Protocol */,
 				CF3DA2CC2625297300A35EED /* MockData */,
 				CFBC17AC2624104D0016A223 /* View */,
@@ -1788,9 +1805,11 @@
 				CFAF8E5B25FC4EDD000E2CCA /* AppConfig.swift in Sources */,
 				CFAF8F0025FC507C000E2CCA /* NIError.m in Sources */,
 				CFAF8F3F25FC507C000E2CCA /* CAPSPageMenu+UIGestureRecognizerDelegate.swift in Sources */,
+				CF730924262E8DCF0026C0B3 /* ProductCommentViewController.swift in Sources */,
 				CFAF8FEA25FC5647000E2CCA /* Shop.swift in Sources */,
 				CFAF8FCE25FC545D000E2CCA /* StickerModel.swift in Sources */,
 				CFAF8FB825FC545D000E2CCA /* UserProfileHeaderView.swift in Sources */,
+				CF730921262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift in Sources */,
 				CFAF8FC425FC545D000E2CCA /* AddToCartView.swift in Sources */,
 				CFAF8FE225FC55D1000E2CCA /* SignInViewController.swift in Sources */,
 				CFAF8FC925FC545D000E2CCA /* InputContainerView.swift in Sources */,
@@ -1907,6 +1926,7 @@
 				CF55F1B2261EB9B400635F80 /* HomeViewModel.swift in Sources */,
 				CFAF8F1725FC507C000E2CCA /* UIImage+NormalizeOrientation.swift in Sources */,
 				CFAF8E2025FC4EDD000E2CCA /* ShoppingEndPoint.swift in Sources */,
+				CF730927262E8DFF0026C0B3 /* ReplyCommentView.swift in Sources */,
 				CFAF8E4425FC4EDD000E2CCA /* UICollectionView+Extension.swift in Sources */,
 				CFAF8F1325FC507C000E2CCA /* ImageCropperModel.swift in Sources */,
 				CF540B3E2608407A003CDC6D /* InfoPaymentViewController.swift in Sources */,
