@@ -9,7 +9,7 @@ import UIKit
 import IGListKit
 
 protocol ProductRecommendDelagte: class {
-    func tapProductDetail(title: String?)
+    func tapProductDetail(product: Product?)
 }
 
 class ProductRecommendViewController: ListSectionController, ListSupplementaryViewSource {
@@ -78,6 +78,6 @@ class ProductRecommendViewController: ListSectionController, ListSupplementaryVi
     }
     
     override func didSelectItem(at index: Int) {
-        self.delegate?.tapProductDetail(title: productSection?.productRecommend?.title)
+        self.delegate?.tapProductDetail(product: productSection?.productRecommend?.list[index])
     }
 }

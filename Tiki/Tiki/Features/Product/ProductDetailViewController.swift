@@ -16,6 +16,8 @@ class ProductDetailViewController: BaseViewController {
     
     fileprivate lazy var product = Product()
     fileprivate lazy var productSame: [Product] = []
+    fileprivate var productInfoCellHeight:  CGFloat?
+    fileprivate var isExpandDescriptionCell = false
     
     // MARK: - UI Elements
     
@@ -77,6 +79,11 @@ class ProductDetailViewController: BaseViewController {
                                                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
     }
     
+    func configData(_ product: Product) {
+        self.product = product
+        productCollectionView.reloadData()
+    }
+    
     func requestProductDetailAPI() {
         guard let path = Bundle.main.path(forResource: "ProductDetail", ofType: "json") else {
             fatalError("Not available json")
@@ -112,7 +119,6 @@ class ProductDetailViewController: BaseViewController {
         }
     }
     
-    
     // MARK: - GET API
     
     // MARK: - Layout
@@ -123,11 +129,7 @@ class ProductDetailViewController: BaseViewController {
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
             make.height.equalTo(Dimension.shared.defaultHeightButton)
-            if #available(iOS 11, *) {
-                make.bottom.equalTo(view.safeAreaLayoutGuide).offset(-Dimension.shared.mediumMargin)
-            } else {
-                make.bottom.equalToSuperview().offset(-Dimension.shared.mediumMargin)
-            }
+            make.bottom.equalToSuperview().offset(-Dimension.shared.mediumMargin)
         }
     }
     
@@ -138,8 +140,9 @@ class ProductDetailViewController: BaseViewController {
             make.bottom.equalTo(buyButton.snp.top).offset(-Dimension.shared.mediumMargin)
         }
     }
-    
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -150,7 +153,12 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
         
         switch sectionType {
         case .infomation:
-            return CGSize(width: collectionView.frame.width, height: 470)
+            if let productInfoCellHeight = productInfoCellHeight {
+                return CGSize(width: collectionView.frame.width, height: productInfoCellHeight)
+            } else {
+                productInfoCellHeight = ProductDetailInfoCollectionViewCell.estimateHeight(product)
+                return CGSize(width: collectionView.frame.width, height: productInfoCellHeight ?? 0)
+            }
         case .sameProduct:
             return CGSize(width: collectionView.frame.width, height: 230)
         case .stallShop:
@@ -181,6 +189,8 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
         return sectionType.sizeForHeader()
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension ProductDetailViewController: UICollectionViewDataSource {
     
@@ -262,6 +272,8 @@ extension ProductDetailViewController: UICollectionViewDataSource {
         }
     }
 }
+
+// MARK: - ProductDetailsDelegate
 
 extension ProductDetailViewController: ProductDetailsDelegate {
     func didTapSeemoreParamter(values: [String]) {

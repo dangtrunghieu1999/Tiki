@@ -130,4 +130,6 @@ final class  TextManager {
     static let seeShop                      = "Xem Shop"
     static let followShop                   = "Theo dõi Shop"
     static let detailProduct                = "Thông tin chi tiết"
+    static let refundMoney                  = "RẺ HƠN HOÀN TIỀN"
+    
 }

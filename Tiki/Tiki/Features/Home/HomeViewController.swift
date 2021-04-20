@@ -112,9 +112,8 @@ extension HomeViewController: ListAdapterDataSource {
 // MARK: - ProductRecommendDelagte
 
 extension HomeViewController: ProductRecommendDelagte {
-    func tapProductDetail(title: String?) {
-        let vc = ProductDetailViewController()
-        vc.navigationItem.title = title
-        self.navigationController?.pushViewController(vc, animated: true)
+    func tapProductDetail(product: Product?) {
+        AppRouter.pushToProductDetail(product ?? Product())
     }
+    
 }

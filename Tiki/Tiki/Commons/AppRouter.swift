@@ -69,7 +69,9 @@ class AppRouter: NSObject {
     }
     
     class func pushToProductDetail(_ product: Product) {
-
+        let viewController = ProductDetailViewController()
+        viewController.configData(product)
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
     class func pushToShopHome(_ shopId: Int) {
