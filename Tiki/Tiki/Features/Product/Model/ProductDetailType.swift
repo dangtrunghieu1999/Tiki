@@ -30,6 +30,30 @@ enum ProductDetailType: Int {
         return 18
     }
     
+    func sizeForHeader() -> CGSize {
+        switch self {
+        case .sameProduct, .infoDetail, .description, .comment:
+            return CGSize(width: ScreenSize.SCREEN_WIDTH, height: 50)
+        default:
+            return .zero
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .sameProduct:
+            return TextManager.sameProudct
+        case .infoDetail:
+            return TextManager.detailProduct
+        case .description:
+            return TextManager.detailDes
+        case .comment:
+            return TextManager.comment
+        default:
+            return ""
+        }
+    }
+    
 }
 
 class ProductParameterModel {

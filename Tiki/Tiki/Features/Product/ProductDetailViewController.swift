@@ -73,6 +73,8 @@ class ProductDetailViewController: BaseViewController {
         productCollectionView.registerReusableCell(ProductDetailRecommendCollectionViewCell.self)
         productCollectionView.registerReusableCell(ProductDetailDescriptionCollectionViewCell.self)
         productCollectionView.registerReusableCell(BaseCollectionViewCell.self)
+        productCollectionView.registerReusableSupplementaryView(TitleCollectionViewHeaderCell.self,
+                                                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
     }
     
     func requestProductDetailAPI() {
@@ -142,7 +144,7 @@ class ProductDetailViewController: BaseViewController {
 extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        guard let sectionType = ProductDetailType(rawValue: indexPath.row) else {
+        guard let sectionType = ProductDetailType(rawValue: indexPath.section) else {
             return .zero
         }
         
@@ -150,13 +152,13 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
         case .infomation:
             return CGSize(width: collectionView.frame.width, height: 470)
         case .sameProduct:
-            return CGSize(width: collectionView.frame.width, height: 283)
+            return CGSize(width: collectionView.frame.width, height: 230)
         case .stallShop:
             return CGSize(width: collectionView.frame.width, height: 135)
         case .advanedShop:
             return CGSize(width: collectionView.frame.width, height: 140)
         case .infoDetail:
-            return CGSize(width: collectionView.frame.width, height: 300)
+            return CGSize(width: collectionView.frame.width, height: 250)
         case .description:
             return CGSize(width: collectionView.frame.width, height: 200)
         case .comment:
@@ -169,15 +171,38 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.frame.width, height: 8)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        guard let sectionType = ProductDetailType(rawValue: section) else {
+            return .zero
+        }
+        return sectionType.sizeForHeader()
+    }
 }
 
 extension ProductDetailViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return ProductDetailType.numberSection()
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let sectionType = ProductDetailType(rawValue: section) else { return 0 }
+        switch sectionType {
+        case .comment:
+            if (product.comments.isEmpty) {
+                return 1
+            } else {
+                return product.numberCommentInProductDetail
+            }
+        default:
+            return 1
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let sectionType = ProductDetailType(rawValue: indexPath.row) else {
+        guard let sectionType = ProductDetailType(rawValue: indexPath.section) else {
             return UICollectionViewCell()
         }
         
@@ -220,10 +245,26 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        guard let sectionType = ProductDetailType(rawValue: indexPath.section) else {
+            return UICollectionReusableView()
+        }
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header: TitleCollectionViewHeaderCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
+            header.title = sectionType.title
+            return header
+        } else {
+            return UICollectionReusableView()
+        }
+    }
 }
 
 extension ProductDetailViewController: ProductDetailsDelegate {
-    func didTapSeemoreParamter() {
-        AppRouter.presentViewParameterProduct(viewController: self)
+    func didTapSeemoreParamter(values: [String]) {
+        AppRouter.presentViewParameterProduct(viewController: self, values: values)
     }
 }

@@ -154,4 +154,5 @@ final class ImageManager {
     static let compensation                      = UIImage(named: "compensation")
     
     static let dismiss_close                     = UIImage(named: "dismiss_close")
+    static let see_more                          = UIImage(named: "see_more")
 }

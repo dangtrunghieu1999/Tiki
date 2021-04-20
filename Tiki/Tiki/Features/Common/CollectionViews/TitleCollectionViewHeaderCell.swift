@@ -36,9 +36,8 @@ class TitleCollectionViewHeaderCell: BaseCollectionViewHeaderFooterCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.titleText
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue)
         return label
     }()
     

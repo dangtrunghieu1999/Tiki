@@ -24,9 +24,7 @@ class TitleTableViewCell: BaseTableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.textColor = UIColor.black
-
         label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        label.text = "Xuất xứ thương hiệu"
         return label
     }()
     
@@ -42,7 +40,6 @@ class TitleTableViewCell: BaseTableViewCell {
         label.numberOfLines = 0
         label.textColor = UIColor.black
         label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        label.text = "Bình nước bình giữ nhiệt"
         return label
     }()
     

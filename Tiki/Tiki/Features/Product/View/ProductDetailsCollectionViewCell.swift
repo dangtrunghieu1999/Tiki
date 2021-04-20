@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProductDetailsDelegate: class {
-    func didTapSeemoreParamter()
+    func didTapSeemoreParamter(values: [String])
 }
 
 class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
@@ -24,17 +24,7 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate lazy var valueTitles: [String] = []
     
-    
     // MARK: - UI Elements
-    
-    fileprivate lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.detailProduct
-        label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        label.textAlignment = .left
-        return label
-    }()
     
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
@@ -54,6 +44,7 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
         button.backgroundColor = UIColor.clear
         button.setTitleColor(UIColor.thirdColor, for: .normal)
         button.titleLabel?.textAlignment = .center
+        button.addRightIcon(image: ImageManager.see_more ?? UIImage())
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         button.addTarget(self, action: #selector(tapSeeMore), for: .touchUpInside)
         return button
@@ -63,7 +54,6 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         super.initialize()
-        layoutTitleLabel()
         layoutTableView()
         layoutSeemoreButton()
         tableView.estimatedRowHeight = 50
@@ -73,9 +63,8 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
     // MARK: - UI Action
     
     @objc private func tapSeeMore() {
-        delegate?.didTapSeemoreParamter()
+        delegate?.didTapSeemoreParamter(values: valueTitles)
     }
-    
     
     // MARK: - Helper Method
     
@@ -87,18 +76,11 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Layout
     
-    private func layoutTitleLabel() {
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.top.equalToSuperview().offset(Dimension.shared.normalMargin )
-        }
-    }
     
     private func layoutTableView() {
         addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.normalMargin)
+            make.top.equalToSuperview()
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
             make.height.equalTo(200)

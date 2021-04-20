@@ -14,15 +14,6 @@ class ProductSameProductCollectionViewCell: BaseCollectionViewCell {
     fileprivate lazy var products: [Product] = []
     
     // MARK: - UI Elements
-    
-    fileprivate lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.sameProudct.capitalized
-        label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        label.textAlignment = .left
-        return label
-    }()
 
     private lazy var sameProductcollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -47,7 +38,6 @@ class ProductSameProductCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         super.initialize()
-        layoutTitleLabel()
         layoutSameProductCollectionView()
     }
     
@@ -63,18 +53,10 @@ class ProductSameProductCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Layout
     
-    private func layoutTitleLabel() {
-        addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.top.equalToSuperview().offset(Dimension.shared.normalMargin )
-        }
-    }
-    
     private func layoutSameProductCollectionView() {
         addSubview(sameProductcollectionView)
         sameProductcollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.largeMargin)
+            make.top.equalToSuperview()
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-Dimension.shared.mediumMargin)
         }
@@ -86,7 +68,7 @@ extension ProductSameProductCollectionViewCell: UICollectionViewDelegateFlowLayo
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 3 * Dimension.shared.normalMargin) / 3
-        return CGSize(width: width, height: 200)
+        return CGSize(width: width, height: 220)
     }
 }
 
