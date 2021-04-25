@@ -81,6 +81,10 @@ class Dimension {
     
     // MARK: - Button
     
+    var smalltHeightButton_28: CGFloat {
+        return 28 * self.widthScale
+    }
+    
     var largeHeightButton: CGFloat {
         return 50 * self.widthScale
     }

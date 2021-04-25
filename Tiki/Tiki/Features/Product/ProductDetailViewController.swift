@@ -52,6 +52,7 @@ class ProductDetailViewController: BaseViewController {
         button.addTarget(self, action: #selector(tapOnBuyButton), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
+        button.addTarget(self, action: #selector(tapOnBuyButton), for: .touchUpInside)
         return button
     }()
     
@@ -253,7 +254,7 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return cell
         case .stallShop:
             let cell: ProductStallShopCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configDataShop(avatar: product.shopAvatar, name: product.shopName)
+            cell.configDataShop(product)
             return cell
         case .advanedShop:
             let cell: ProductAdvanedShopCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)

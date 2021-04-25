@@ -75,7 +75,10 @@ class AppRouter: NSObject {
     }
     
     class func pushToShopHome(_ shopId: Int) {
-
+        let viewController = ShopHomeViewController()
+//        viewController.loadShop(by: shopId)
+        viewController.requestLoadShop()
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
     class func pushToUserProfile(_ userId: String) {
@@ -103,5 +106,6 @@ class AppRouter: NSObject {
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
+
 
 }

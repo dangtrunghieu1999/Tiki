@@ -29,16 +29,7 @@
                     "url": "https://www.sendo.vn/su-kien/gian-hang-viet/?ref=home_slider_app&is_app=1",
                     "image": "https://media3.scdn.vn/img4/2020/11_24/pX7psDFBc0Nm1PaVskoH.jpg"
                 }
-            ],
-            "header_info": {
-                "background_image": "",
-                "background_color": [
-                    "#D40000"
-                ],
-                "more_text_color": "",
-                "icon_image": "",
-                "title_text_color": ""
-            }
+            ]
         }
     },
     {
@@ -157,20 +148,8 @@
                         "lable": "home_menu_san_deal_gia_dung"
                     }
                 }
-            ],
-            "header_info": {
-                "background_color": [
-                    "#ffffff"
-                ],
-                "title_text_color": "#000000",
-                "background_image": "",
-                "more_text_color": "",
-                "icon_image": ""
-            }
-        },
-        "background_color": "#ffffff",
-        "text_color": "#000000",
-        "background_image": ""
+            ]
+        }
     },
     {
         "type": "BannerEventWidget",
@@ -202,16 +181,7 @@
                     "start_time": 1617814800,
                     "end_time": 1617857999
                 }
-            ],
-            "header_info": {
-                "background_image": "",
-                "background_color": [
-                    "#ffffff"
-                ],
-                "more_text_color": "",
-                "icon_image": "",
-                "title_text_color": ""
-            }
+            ]
         }
     },
     {

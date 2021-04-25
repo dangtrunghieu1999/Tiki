@@ -16,7 +16,7 @@ final class ImageManager {
     static let playWhite                            = UIImage(named: "playWhite")
     static let searchWhite                          = UIImage(named: "searchWhite")
     static let defaultAvatar                        = UIImage(named: "defaultAvatar")
-    static let defaultCoverImage                    = UIImage(named: "defaultBackground")
+    static let defaultCoverImage                    = UIImage(named: "shop_background")
     static let back                                 = UIImage(named: "back_icon")
     static let coverGradient                        = UIImage(named: "coverGradient")
     static let whiteCart                            = UIImage(named: "whiteCart")

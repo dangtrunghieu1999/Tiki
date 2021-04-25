@@ -10,6 +10,7 @@ import UIKit
 class ProductStallShopCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
+    private var shopId: Int?
     
     let widthButton = (ScreenSize.SCREEN_WIDTH - Dimension.shared.normalMargin * 3) / 2
     
@@ -46,6 +47,7 @@ class ProductStallShopCollectionViewCell: BaseCollectionViewCell {
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         button.setTitleColor(UIColor.thirdColor, for: .normal)
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
+        button.addTarget(self, action: #selector(tapOnViewDetailButton), for: .touchUpInside)
         return button
     }()
     
@@ -77,9 +79,15 @@ class ProductStallShopCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Helper Method
     
-    func configDataShop(avatar: String, name: String) {
-        self.avatarShopImageView.sd_setImage(with: avatar.url, completed: nil)
-        self.nameShopLabel.text = name
+    func configDataShop(_ product: Product) {
+        self.avatarShopImageView.sd_setImage(with: product.shopAvatar.url, completed: nil)
+        self.nameShopLabel.text = product.shopName
+        self.shopId = product.shopId
+    }
+    
+    @objc private func tapOnViewDetailButton() {
+        guard let shopId = shopId else {return}
+        AppRouter.pushToShopHome(shopId)
     }
     
     // MARK: - GET API

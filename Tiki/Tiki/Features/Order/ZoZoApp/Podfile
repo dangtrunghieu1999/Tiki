@@ -1,0 +1,25 @@
+use_frameworks!
+platform :ios, '9.0'
+
+target 'ZoZoApp' do
+
+  pod 'SnapKit', '~>4.2.0'
+  pod 'IQKeyboardManagerSwift',  '6.2.0'
+  pod 'Localize-Swift', '2.0.0'
+  pod 'KeychainAccess', '4.0.0'
+  pod 'SDWebImage', '4.4.6'
+  pod 'Alamofire', '4.8.1'
+  pod 'SwiftyJSON', '4.2.0'
+  pod 'JGProgressHUD', '2.0.3'
+  pod 'HCSStarRatingView', '~> 1.5'
+  pod 'Shimmer', '~> 1.0.2'
+  pod 'Toast-Swift', '~> 4.0.1'
+  pod 'IGListKit', '~> 3.4.0'
+  pod 'GooglePlaces'
+
+  target 'ZoZoAppTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
