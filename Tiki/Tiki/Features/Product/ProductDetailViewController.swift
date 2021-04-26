@@ -18,7 +18,7 @@ class ProductDetailViewController: BaseViewController {
     fileprivate lazy var productSame: [Product] = []
     fileprivate var productInfoCellHeight:  CGFloat?
     fileprivate var desciptionCellHeight:   CGFloat?
-
+    
     fileprivate var isExpandDescriptionCell = false
     
     var canExpendDescriptionCell: Bool {
@@ -66,12 +66,31 @@ class ProductDetailViewController: BaseViewController {
         layoutCollectionView()
         requestProductDetailAPI()
         requestProductSameAPI()
+        
+        let target: Target = (target: self, selector: #selector(tapOnShareExternalButton))
+        let shareExtenalButton = buildBarButton(from: BarButtonItemModel(ImageManager.shareExternal, target))
+        navigationItem.rightBarButtonItems = [cartBarButtonItem, shareExtenalButton]
+        navigationItem.title = TextManager.productDetail.localized()
     }
     
     // MARK: - UI Action
     
     @objc private func tapOnBuyButton() {
         
+        CartManager.shared.addProductToCart(product) {
+            NotificationCenter.default.post(name: Notification.Name.reloadCartBadgeNumber, object: nil)
+            AlertManager.shared.showToast(message: TextManager.addToCartSuccess.localized())
+        } error: {
+            AlertManager.shared.showToast()
+        }
+    }
+    
+    @objc private func tapOnShareExternalButton() {
+        AlertManager.shared.show(TextManager.shareProduct.localized(), message: TextManager.guideShareProduct, acceptMessage: TextManager.IUnderstand.localized()) {
+            let urlString = "https://tiki.vn/dien-thoai-iphone-6s-plus-32gb-vn-a-hang-chinh-hang-p1823081.html?src=recently-viewed&spid=1823109"
+            let viewController = UIActivityViewController(activityItems: [urlString], applicationActivities: [])
+            self.present(viewController, animated: true)
+        }
     }
     
     // MARK: - Helper Method
@@ -199,7 +218,7 @@ extension ProductDetailViewController: UICollectionViewDelegateFlowLayout {
                 return CGSize(width: collectionView.frame.width,
                               height: ProductParentCommentCollectionViewCell.estimateHeight(comment))
             }
-
+            
         case .recommend:
             return CGSize(width: collectionView.frame.width, height: 200)
         default:

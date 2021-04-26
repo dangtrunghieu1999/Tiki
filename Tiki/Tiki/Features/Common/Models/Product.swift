@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 
-class Product: NSObject, JSONParsable{
+class Product: NSObject, JSONParsable, NSCopying{
     
     var id: Int?
     var name                = ""
@@ -19,14 +19,12 @@ class Product: NSObject, JSONParsable{
     var modifedBy           = Date()
     var unitPrice: Double   = 0.0
     var promoPrice: Double  = 0.0
-    var sale                = ""
     var photos: [Photo]     = []
-    var descriptions       = ""
+    var descriptions        = ""
     var rating:Double       = 0.0
     var status              = 0
     var number_comment      = 0
     var promotion_percent   = 0
-    var details             = ""
     var comments: [Comment] = []
     var shopId: Int?
     var shopName            = ""
@@ -34,14 +32,6 @@ class Product: NSObject, JSONParsable{
     var parameter: [String] = []
     var json                = JSON()
     
-    /// Use this model to create and edit size
-    private (set) var sizeModels: [String] = []
-    
-    /// Use this model to create and edit color
-    private (set) var colorModels: [String] = []
-    
-    var selectedSize: String?
-    var selectedColor: String?
     var quantity = 1
     
     var defaultImage: String {
@@ -60,8 +50,7 @@ class Product: NSObject, JSONParsable{
         id                  = json["id"].int
         name                = json["name"].stringValue
         photos              = json["photos"].arrayValue.map { Photo(json: $0) }
-        descriptions        = json["description"].stringValue
-        details             = json["details"].stringValue
+        descriptions        = json["descriptions"].stringValue
         unitPrice           = json["unit_price"].doubleValue
         promoPrice          = json["promotion_price"].doubleValue
         rating              = json["rating"].doubleValue
@@ -72,30 +61,19 @@ class Product: NSObject, JSONParsable{
         shopId              = json["shopId"].intValue
         parameter           = json["parameter"].arrayValue.map{$0.stringValue}
     }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = Product(json: json)
+        copy.name = name
+        copy.promoPrice = promoPrice
+        copy.unitPrice = unitPrice
+        return copy
+    }
 }
 
 // MARK: - Update
 
 extension Product {
-    func addNewSize(size: String) {
-        sizeModels.append(size)
-    }
-    
-    func removeSize(at index: Int) {
-        if index < sizeModels.count {
-            sizeModels.remove(at: index)
-        }
-    }
-    
-    func addNewColor(color: String) {
-        colorModels.append(color)
-    }
-    
-    func removeColor(at index: Int) {
-        if index < colorModels.count {
-            colorModels.remove(at: index)
-        }
-    }
     
     func addNewPhoto(photos: [Photo]) {
         self.photos.append(contentsOf: photos)
@@ -126,35 +104,8 @@ extension Product {
         dict["UnitPrice"]           = unitPrice
         dict["PromoPrice"]          = promoPrice
         
-        
-        
-        dict["Status"]              = status
         dict["Comments"]            = comments.map { $0.toDictionary() }
         dict["Photos"]              = photos.map { $0.toDictionary() }
-        
-        // Add Size params
-        var newSize = ""
-        for (index, size) in sizeModels.enumerated() {
-            if index == 0 {
-                newSize += size
-            } else {
-                newSize += ",\(size)"
-            }
-        }
-        
-        dict["Sizes"] = newSize
-        
-        // Add Color params
-        var newColor = ""
-        for (index, color) in colorModels.enumerated() {
-            if index == 0 {
-                newColor += color
-            } else {
-                newColor += ";\(color)"
-            }
-        }
-        
-        dict["Colors"] = newColor;
         
         return dict
     }
@@ -166,9 +117,7 @@ extension Product {
                 "TotalAmount": totalMoney,
                 "Discount": "",
                 "Name": name,
-                "UnitPrice": unitPrice,
-                "ColorSelected": selectedColor ?? "",
-                "SizeSelected": selectedSize ?? ""]
+                "UnitPrice": unitPrice]
     }
 }
 
@@ -189,14 +138,6 @@ extension Product {
         } else {
             return []
         }
-    }
-    
-    var isSelectSize: Bool {
-        return !sizeModels.isEmpty && selectedSize != nil && selectedSize != ""
-    }
-    
-    var isSelectColor: Bool {
-        return !colorModels.isEmpty && selectedColor != nil && selectedColor != ""
     }
 }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CartEditPropertyViewControllerDelegate: class {
-    func didSelectCofirmEditProperties(for product: Product, size: String?, color: String?)
+    func didSelectCofirmEditProperties(for product: Product)
 }
 
 class CartEditPropertyViewController: BaseAlertViewController {
@@ -111,11 +111,7 @@ class CartEditPropertyViewController: BaseAlertViewController {
 
     func configData(_ product: Product) {
         self.product = product
-        listSizeView.selectedValue = product.selectedSize
-        listSizeView.setTag(tags: product.sizeModels)
-        listColorView.selectedValue = product.selectedColor
-        listColorView.setTag(tags: product.colorModels)
-        
+
         productImageView.loadImage(by: product.defaultImage,
                                    defaultImage: ImageManager.imagePlaceHolder)
     }
@@ -123,20 +119,14 @@ class CartEditPropertyViewController: BaseAlertViewController {
     // MARK: - UI Actions
     
     @objc private func touchInConfirmButton() {
-        delegate?.didSelectCofirmEditProperties(for: product,
-                                                size: selectedSize,
-                                                color: selectedColor)
+        delegate?.didSelectCofirmEditProperties(for: product)
         dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Helper Methods
     
     fileprivate func getText(at indexPath: IndexPath) -> String? {
-        if indexPath.section == 0 {
-            return product.sizeModels[safe: indexPath.row]
-        } else {
-            return product.colorModels[safe: indexPath.row]
-        }
+        return ""
     }
     
     // MARK: - Layout

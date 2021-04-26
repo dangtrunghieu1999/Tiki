@@ -54,46 +54,6 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         return button
     }()
     
-    fileprivate lazy var productColorLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.color.localized()
-        label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        return label
-    }()
-    
-    fileprivate lazy var selectColorLabel: PaddingLabel = {
-        let label = PaddingLabel()
-        label.layer.borderColor = UIColor.background.cgColor
-        label.layer.borderWidth = 0.3
-        label.layer.cornerRadius = 12.5
-        label.leftInset = 10
-        label.rightInset = 10
-        label.textColor = UIColor.background
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        return label
-    }()
-    
-    fileprivate lazy var productSizeLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.size.localized()
-        label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        return label
-    }()
-    
-    fileprivate lazy var selectSizeLabel: PaddingLabel = {
-        let label = PaddingLabel()
-        label.layer.borderColor = UIColor.background.cgColor
-        label.layer.borderWidth = 0.3
-        label.layer.cornerRadius = 12.5
-        label.leftInset = 10
-        label.rightInset = 10
-        label.textColor = UIColor.background
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        return label
-    }()
-    
     fileprivate lazy var decreaseButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.decrease, for: .normal)
@@ -163,18 +123,13 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         
         layoutProductImageView()
         layoutProductNameLabel()
-        layoutProductColorLabel()
         layoutSettingButton()
-        layoutSelectColorLabel()
-        layoutProductSizeLabel()
-        layoutSelectSizeLabel()
         layoutDecreaseButton()
         layoutQuantilyLabel()
         layoutIncreaseButton()
         layoutProductPriceLabel()
         layoutDeleteButton()
         layoutLineView()
-        
         layoutOrderQuantityLabel()
     }
     
@@ -186,8 +141,6 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         productImageView.loadImage(by: product.defaultImage,
                                    defaultImage: ImageManager.imagePlaceHolder)
         productNameLabel.text       = product.name
-        selectSizeLabel.text        = product.selectedSize
-        selectColorLabel.text       = product.selectedColor
         productPriceLabel.text      = product.finalPrice.currencyFormat
         productQuantityLabel.text   = product.quantity.description
     }
@@ -253,43 +206,11 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    private func layoutProductColorLabel() {
-        addSubview(productColorLabel)
-        productColorLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(productNameLabel.snp.bottom).offset(Dimension.shared.normalMargin)
-            make.left.equalTo(productNameLabel)
-        }
-    }
-    
-    private func layoutSelectColorLabel() {
-        addSubview(selectColorLabel)
-        selectColorLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(productColorLabel.snp.right).offset(Dimension.shared.smallMargin)
-            make.centerY.equalTo(productColorLabel)
-        }
-    }
-    
-    private func layoutProductSizeLabel() {
-        addSubview(productSizeLabel)
-        productSizeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(productColorLabel)
-            make.left.equalTo(selectColorLabel.snp.right).offset(Dimension.shared.mediumMargin)
-        }
-    }
-    
-    private func layoutSelectSizeLabel() {
-        addSubview(selectSizeLabel)
-        selectSizeLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(selectColorLabel)
-            make.left.equalTo(productSizeLabel.snp.right).offset(Dimension.shared.smallMargin)
-        }
-    }
-    
     private func layoutDecreaseButton() {
         addSubview(decreaseButton)
         decreaseButton.snp.makeConstraints { (make) in
-            make.top.equalTo(productColorLabel.snp.bottom).offset(Dimension.shared.normalMargin)
-            make.left.equalTo(productColorLabel)
+            make.top.equalTo(productNameLabel.snp.bottom).offset(Dimension.shared.normalMargin)
+            make.left.equalTo(productNameLabel)
             make.height.width.equalTo(25)
         }
     }

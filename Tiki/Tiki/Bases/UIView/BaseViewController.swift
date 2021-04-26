@@ -81,7 +81,7 @@ open class BaseViewController: UIViewController {
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.setImage(ImageManager.whiteCart, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-//        button.badgeNumber = CartManager.shared.totalProducts
+        button.badgeNumber = CartManager.shared.totalProducts
         button.addTarget(self, action: #selector(touchInCartButton), for: .touchUpInside)
         return button
     }()
@@ -209,7 +209,7 @@ open class BaseViewController: UIViewController {
     }
     
     @objc func handleCartBadgeChange() {
-//        cartButton.badgeNumber = CartManager.shared.totalProducts
+        cartButton.badgeNumber = CartManager.shared.totalProducts
     }
     
     func addEmptyView(message: String? = nil, image: UIImage? = nil) {

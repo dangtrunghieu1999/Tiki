@@ -54,7 +54,7 @@ class ProductDetailDescriptionCollectionViewCell: BaseCollectionViewCell {
     
     static func estimateHeight(_ product: Product) -> CGFloat {
         let textWidth = ScreenSize.SCREEN_WIDTH - 2 * Dimension.shared.normalMargin
-        let textHeight = product.details.height(withConstrainedWidth: textWidth,
+        let textHeight = product.descriptions.height(withConstrainedWidth: textWidth,
                                                font: UIFont.systemFont(ofSize: FontSize.h1.rawValue))
         if textHeight > 180 {
             return textHeight + 50
@@ -65,7 +65,7 @@ class ProductDetailDescriptionCollectionViewCell: BaseCollectionViewCell {
     
     static func esitmateColapseHeight(_ product: Product) -> CGFloat {
         let textWidth = ScreenSize.SCREEN_WIDTH - 2 * Dimension.shared.normalMargin
-        let text = String(product.details.prefix(500))
+        let text = String(product.descriptions.prefix(500))
         return text.height(withConstrainedWidth: textWidth,
                            font: UIFont.systemFont(ofSize: FontSize.h1.rawValue)) + 50
     }
@@ -73,11 +73,11 @@ class ProductDetailDescriptionCollectionViewCell: BaseCollectionViewCell {
     func configData(_ product: Product, canExpand: Bool, isExpand: Bool) {
         if isExpand {
             seemoreButton.setTitle(TextManager.colapse.localized(), for: .normal)
-            let name = product.details
+            let name = product.descriptions
             titleLabel.attributedText = Ultilities.lineSpacingLabel(title: name)
         } else {
             seemoreButton.setTitle(TextManager.seemore.localized(), for: .normal)
-            titleLabel.text = String(product.details.prefix(500))
+            titleLabel.text = String(product.descriptions.prefix(500))
         }
         
         seemoreButton.isHidden = !canExpand

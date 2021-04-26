@@ -52,10 +52,7 @@ class CartShopInfo: NSObject {
     
     func addProduct(_ product: Product) {
         if let existProductIndex = products.firstIndex(where: { $0.id == product.id }),
-            let existProduct = products[safe: existProductIndex],
-            existProduct.selectedSize == product.selectedSize,
-            existProduct.selectedColor == product.selectedColor {
-            
+            let existProduct = products[safe: existProductIndex] {
             existProduct.quantity += 1
             products[existProductIndex] = existProduct
         } else {
