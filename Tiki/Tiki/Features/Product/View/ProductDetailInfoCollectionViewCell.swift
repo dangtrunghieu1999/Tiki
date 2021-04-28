@@ -169,7 +169,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         promotionPriceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
             make.top.equalTo(ratingView.snp.bottom).offset(Dimension.shared.smallMargin)
-            make.bottom.equalToSuperview().offset(-Dimension.shared.normalMargin      )
+            make.bottom.equalToSuperview().offset(-Dimension.shared.normalMargin)
         }
     }
     

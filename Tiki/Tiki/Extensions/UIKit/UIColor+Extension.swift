@@ -18,6 +18,10 @@ extension UIColor {
         return UIColor(hex: "#0D5CB6")
     }
     
+    class var superLightColor: UIColor {
+        return UIColor(hex: "#F3F3F3")
+    }
+    
     class var subTitle: UIColor {
         return UIColor(hex: "#13B7FF")
     }

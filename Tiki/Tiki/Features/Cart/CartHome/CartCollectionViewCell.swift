@@ -12,7 +12,6 @@ protocol CartProductCellDelegate: class {
     func didSelectIncreaseNumber(product : Product)
     func didSelectDecreaseNumber(product : Product)
     func didSelectDeleteProduct(product : Product)
-    func didSelectEditProduct(product : Product)
     func didSelectShopAvatar(id: Int?)
 }
 
@@ -25,6 +24,32 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     private var product = Product()
     
     // MARK: - UI Elements
+    
+    fileprivate lazy var thumbnailShopImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderWidth = 1.0
+        imageView.layer.borderColor = UIColor.lightSeparator.withAlphaComponent(0.5).cgColor
+        imageView.layer.cornerRadius = 15
+        imageView.layer.masksToBounds = true
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnShopAvatar))
+        imageView.addGestureRecognizer(tapGesture)
+        return imageView
+    }()
+    
+    fileprivate lazy var shopNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        label.textColor = UIColor.bodyText
+        return label
+    }()
+    
+    private let lineView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.separator
+        return view
+    }()
     
     fileprivate lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
@@ -40,26 +65,15 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .medium)
         label.textColor = UIColor.bodyText
-        label.numberOfLines = 1
+        label.numberOfLines = 2
         return label
-    }()
-    
-    fileprivate lazy var editButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(TextManager.edit, for: .normal)
-        button.backgroundColor = UIColor.clear
-        button.setTitleColor(UIColor.lightBodyText, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        button.addTarget(self, action: #selector(touchInEditButton), for: .touchUpInside)
-        return button
     }()
     
     fileprivate lazy var decreaseButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.decrease, for: .normal)
-        button.backgroundColor = UIColor.clear
+        button.backgroundColor = UIColor.lightSeparator
         button.layer.masksToBounds = true
-        button.layer.borderWidth = 0.3
         button.addTarget(self, action: #selector(decreaseFunc), for: .touchUpInside)
         return button
     }()
@@ -67,9 +81,8 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     fileprivate lazy var increaseButton: UIButton = {
         let button = UIButton()
         button.setImage(ImageManager.increase, for: .normal)
-        button.backgroundColor = UIColor.clear
+        button.backgroundColor = UIColor.lightSeparator
         button.layer.masksToBounds = true
-        button.layer.borderWidth = 0.3
         button.addTarget(self, action: #selector(increaseFunc), for: .touchUpInside)
         return button
     }()
@@ -80,7 +93,7 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         label.textAlignment = .center
         label.leftInset = 10
         label.rightInset = 10
-        label.layer.borderWidth = 0.3
+        label.layer.backgroundColor = UIColor.superLightColor.cgColor
         label.textColor = UIColor.bodyText
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .medium)
         return label
@@ -97,8 +110,16 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate lazy var productPriceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
+        label.textColor = UIColor.primary
+        return label
+    }()
+    
+    fileprivate lazy var originalPriceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.lightBodyText
+        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        label.textAlignment = .left
         return label
     }()
     
@@ -109,27 +130,22 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         button.addTarget(self, action: #selector(touchInDeleteButton), for: .touchUpInside)
       return button
     }()
-    
-    private let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.lightSeparator
-        return view
-    }()
 
     // MARK: - View LifeCycles
     
     override func initialize() {
         super.initialize()
-        
+        layoutThumbnailShopImageView()
+        layoutShopNameLabel()
+        layoutLineView()
         layoutProductImageView()
         layoutProductNameLabel()
-        layoutSettingButton()
+        layoutProductPriceLabel()
+        layoutOriginalPriceLabel()
         layoutDecreaseButton()
         layoutQuantilyLabel()
         layoutIncreaseButton()
-        layoutProductPriceLabel()
         layoutDeleteButton()
-        layoutLineView()
         layoutOrderQuantityLabel()
     }
     
@@ -142,11 +158,18 @@ class CartCollectionViewCell: BaseCollectionViewCell {
                                    defaultImage: ImageManager.imagePlaceHolder)
         productNameLabel.text       = product.name
         productPriceLabel.text      = product.finalPrice.currencyFormat
+        let originalPrice           = product.unitPrice
+        self.originalPriceLabel.attributedText = Ultilities.drawLineBetween(price: originalPrice)
         productQuantityLabel.text   = product.quantity.description
+    }
+    
+    func configData(_ cartShopInfo: CartShopInfo) {
+        shopId = cartShopInfo.id
+        thumbnailShopImageView.loadImage(by: cartShopInfo.avatar)
+        shopNameLabel.text = cartShopInfo.name
     }
 
     func setupLayoutForCartButton() {
-        editButton.isHidden             = true
         deleteButton.isHidden           = true
         productQuantityLabel.isHidden   = true
         decreaseButton.isHidden         = true
@@ -173,11 +196,35 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         delegate?.didSelectDeleteProduct(product: product)
     }
     
-    @objc private func touchInEditButton() {
-        delegate?.didSelectEditProduct(product: product)
+    // MARK: - Setup Layouts
+    
+    private func layoutThumbnailShopImageView() {
+        addSubview(thumbnailShopImageView)
+        thumbnailShopImageView.snp.makeConstraints { (make) in
+            make.height.width.equalTo(30)
+            make.left.equalToSuperview().offset(Dimension.shared.smallMargin)
+            make.top.equalToSuperview().offset(Dimension.shared.normalMargin)
+        }
     }
     
-    // MARK: - Setup Layouts
+    private func layoutShopNameLabel() {
+        addSubview(shopNameLabel)
+        shopNameLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(thumbnailShopImageView)
+            make.left.equalTo(thumbnailShopImageView.snp.right).offset(Dimension.shared.smallMargin)
+            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.centerY.equalTo(thumbnailShopImageView)
+        }
+    }
+    
+    private func layoutLineView() {
+        addSubview(lineView)
+        lineView.snp.makeConstraints { (make) in
+            make.top.equalTo(thumbnailShopImageView.snp.bottom).offset(Dimension.shared.mediumMargin)
+            make.height.equalTo(1)
+            make.width.equalToSuperview()
+        }
+    }
     
     private func layoutProductImageView() {
         addSubview(productImageView)
@@ -188,28 +235,35 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    private func layoutSettingButton() {
-        addSubview(editButton)
-        editButton.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Dimension.shared.smallMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.mediumMargin)
-            make.height.equalTo(20)
-        }
-    }
-    
     private func layoutProductNameLabel() {
         addSubview(productNameLabel)
         productNameLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Dimension.shared.largeMargin)
+            make.top.equalTo(lineView.snp.bottom).offset(Dimension.shared.largeMargin)
             make.left.equalTo(productImageView.snp.right).offset(Dimension.shared.mediumMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+        }
+    }
+    
+    private func layoutProductPriceLabel() {
+        addSubview(productPriceLabel)
+        productPriceLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(productNameLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
+            make.left.equalTo(productNameLabel)
+        }
+    }
+    
+    private func layoutOriginalPriceLabel() {
+        addSubview(originalPriceLabel)
+        originalPriceLabel.snp.makeConstraints { (make) in
+            make.bottom.equalTo(productPriceLabel)
+            make.left.equalTo(productPriceLabel.snp.right).offset(Dimension.shared.mediumMargin)
         }
     }
     
     private func layoutDecreaseButton() {
         addSubview(decreaseButton)
         decreaseButton.snp.makeConstraints { (make) in
-            make.top.equalTo(productNameLabel.snp.bottom).offset(Dimension.shared.normalMargin)
+            make.top.equalTo(productPriceLabel.snp.bottom).offset(Dimension.shared.normalMargin)
             make.left.equalTo(productNameLabel)
             make.height.width.equalTo(25)
         }
@@ -240,30 +294,13 @@ class CartCollectionViewCell: BaseCollectionViewCell {
             make.left.top.equalTo(decreaseButton)
         }
     }
-    
-    private func layoutProductPriceLabel() {
-        addSubview(productPriceLabel)
-        productPriceLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(decreaseButton.snp.bottom).offset(Dimension.shared.mediumMargin)
-            make.left.equalTo(decreaseButton)
-            make.right.equalToSuperview().offset(-Dimension.shared.largeMargin_42)
-        }
-    }
-    
+
     private func layoutDeleteButton() {
         addSubview(deleteButton)
         deleteButton.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.mediumMargin)
             make.width.height.equalTo(25)
-        }
-    }
-
-    private func layoutLineView() {
-        addSubview(lineView)
-        lineView.snp.makeConstraints { (make) in
-            make.width.bottom.centerX.equalToSuperview()
-            make.height.equalTo(1)
         }
     }
     

@@ -13,6 +13,7 @@
 		CF2EC697261DA6CB00161AF3 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EC696261DA6CB00161AF3 /* MenuCollectionViewCell.swift */; };
 		CF2EC69A261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EC699261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift */; };
 		CF2F7C1F261F8E3100F64925 /* ProductRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F7C1E261F8E3100F64925 /* ProductRecommendCollectionViewCell.swift */; };
+		CF31F6F52639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */; };
 		CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */; };
 		CF3DA2C92625232F00A35EED /* ProductDetailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DA2C82625232F00A35EED /* ProductDetailType.swift */; };
 		CF3DA2D92625391300A35EED /* ProductDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = CF3DA2D82625391300A35EED /* ProductDetail.json */; };
@@ -283,7 +284,6 @@
 		CFD56FF82635CBE800B17AEA /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE72635CBE800B17AEA /* Province.swift */; };
 		CFD56FF92635CBE800B17AEA /* DeliveryInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */; };
 		CFD56FFA2635CBE800B17AEA /* OrderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */; };
-		CFD56FFD2635CCEB00B17AEA /* CartEditPropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FFC2635CCEB00B17AEA /* CartEditPropertyViewController.swift */; };
 		CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794C7260EE783004DE431 /* SignUpViewController.swift */; };
 		CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */; };
 		CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */; };
@@ -313,6 +313,7 @@
 		CF2EC696261DA6CB00161AF3 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF2EC699261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF2F7C1E261F8E3100F64925 /* ProductRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressReciveCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		CF3DA2C82625232F00A35EED /* ProductDetailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailType.swift; sourceTree = "<group>"; };
 		CF3DA2D82625391300A35EED /* ProductDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductDetail.json; sourceTree = "<group>"; };
@@ -624,7 +625,6 @@
 		CFD56FE72635CBE800B17AEA /* Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInfomationViewController.swift; sourceTree = "<group>"; };
 		CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSettingViewController.swift; sourceTree = "<group>"; };
-		CFD56FFC2635CCEB00B17AEA /* CartEditPropertyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEditPropertyViewController.swift; sourceTree = "<group>"; };
 		CFD794C7260EE783004DE431 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPWViewController.swift; sourceTree = "<group>"; };
@@ -1685,6 +1685,7 @@
 				CFD015422635CA6700850ADB /* CartCollectionHeaderView.swift */,
 				CFD015442635CA6700850ADB /* CartCollectionViewCell.swift */,
 				CFD015452635CA6700850ADB /* CartViewController.swift */,
+				CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */,
 			);
 			path = CartHome;
 			sourceTree = "<group>";
@@ -1692,7 +1693,6 @@
 		CFD0153B2635C5A200850ADB /* CartEditProperty */ = {
 			isa = PBXGroup;
 			children = (
-				CFD56FFC2635CCEB00B17AEA /* CartEditPropertyViewController.swift */,
 			);
 			path = CartEditProperty;
 			sourceTree = "<group>";
@@ -2044,6 +2044,7 @@
 				CFAF8FCA25FC545D000E2CCA /* ExpandableTextView.swift in Sources */,
 				CFD56FF82635CBE800B17AEA /* Province.swift in Sources */,
 				CFAF8FC625FC545D000E2CCA /* ProductCollectionViewCell.swift in Sources */,
+				CF31F6F52639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift in Sources */,
 				CFAF8E3F25FC4EDD000E2CCA /* UIView+Extension.swift in Sources */,
 				CFAF8F3325FC507C000E2CCA /* VideoPropertyView.swift in Sources */,
 				CFAF8E3B25FC4EDD000E2CCA /* UIFont+Extension.swift in Sources */,
@@ -2183,7 +2184,6 @@
 				CFAF8E4325FC4EDD000E2CCA /* UIViewController+Extenstion.swift in Sources */,
 				CFAF8E3E25FC4EDD000E2CCA /* UILabel+Extension.swift in Sources */,
 				CF588793262826510041A595 /* ProductDetailRecommendCollectionViewCell.swift in Sources */,
-				CFD56FFD2635CCEB00B17AEA /* CartEditPropertyViewController.swift in Sources */,
 				CFAF8E4A25FC4EDD000E2CCA /* Date+Extension.swift in Sources */,
 				CFAF8E3C25FC4EDD000E2CCA /* GradientPoint.swift in Sources */,
 				CFAF8E4C25FC4EDD000E2CCA /* JSON+Parser.swift in Sources */,

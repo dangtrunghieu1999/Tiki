@@ -49,7 +49,6 @@ class ProductDetailViewController: BaseViewController {
         button.setTitle(TextManager.selectToBuy.localized(), for: .normal)
         button.backgroundColor = UIColor.primary
         button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(tapOnBuyButton), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         button.addTarget(self, action: #selector(tapOnBuyButton), for: .touchUpInside)
@@ -334,6 +333,27 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return header
         } else {
             return UICollectionReusableView()
+        }
+    }
+}
+
+extension ProductDetailViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let sectionType = ProductDetailType(rawValue: indexPath.section) else { return }
+        
+        switch sectionType {
+        case .comment:
+            let commentVC = ProductCommentViewController()
+            commentVC.delegate = self
+            commentVC.configData(comments: product.comments)
+            commentVC.configData(productId: product.id)
+            navigationController?.pushViewController(commentVC, animated: true)
+            break
+        case .infomation:
+            AppRouter.pushToShopHome(product.shopId ?? 0)
+            break
+        default:
+            break
         }
     }
 }

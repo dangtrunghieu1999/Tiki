@@ -131,5 +131,8 @@ final class  TextManager {
     static let followShop                   = "Theo dõi Shop"
     static let detailProduct                = "Thông tin chi tiết"
     static let refundMoney                  = "RẺ HƠN HOÀN TIỀN"
+    static let changeAction                 = "Thay đổi"
+    static let addressRecive                = "Địa chỉ nhận hàng"
+    static let processOrder                 = "Tiến hành đặt hàng"
     
 }
