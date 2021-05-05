@@ -52,7 +52,7 @@ class SignInViewController: BaseViewController {
         let textField = PaddingTextField()
         textField.keyboardType = .numberPad
         textField.fontSizePlaceholder(text: TextManager.phoneNumber,
-                                      size: FontSize.headline.rawValue)
+                                      size: FontSize.title.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return textField
     }()
@@ -254,7 +254,7 @@ class SignInViewController: BaseViewController {
         view.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { (make) in
             make.top.equalTo(continueButton.snp.bottom)
-                .offset(Dimension.shared.normalMargin)
+                .offset(Dimension.shared.mediumMargin_12)
             make.centerX.equalToSuperview()
             make.width.equalTo(100)
             make.height.equalTo(20)

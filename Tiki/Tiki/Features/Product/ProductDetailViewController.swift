@@ -47,7 +47,7 @@ class ProductDetailViewController: BaseViewController {
     private lazy var buyButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.selectToBuy.localized(), for: .normal)
-        button.backgroundColor = UIColor.primary
+        button.backgroundColor = UIColor.background
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall

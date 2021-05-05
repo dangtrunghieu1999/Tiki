@@ -28,6 +28,7 @@ class PasswordViewController: BaseViewController {
         let label = UILabel()
         label.attributedText = getRequiredAttibuted(from: TextManager.pleaseInputPW,
                                                     to: "0336665653")
+        label.numberOfLines = 0
         return label
     }()
     

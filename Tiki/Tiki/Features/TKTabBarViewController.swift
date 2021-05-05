@@ -12,7 +12,7 @@ class TKTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        tabBar.tintColor = UIColor.tabbarIcon
+        tabBar.tintColor = UIColor.background
         let insets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
         
         let homeNavigationVC = UINavigationController(rootViewController: HomeViewController())

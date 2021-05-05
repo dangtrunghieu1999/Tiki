@@ -32,7 +32,7 @@ class ForgotPasswordViewController: BaseViewController {
     fileprivate lazy var phoneTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.fontSizePlaceholder(text: TextManager.signInUserNamePlaceHolder,
-                                      size: FontSize.title.rawValue)
+                                      size: FontSize.body.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return textField
     }()
@@ -45,7 +45,7 @@ class ForgotPasswordViewController: BaseViewController {
     
     fileprivate lazy var nextButton: UIButton = {
         let button = UIButton()
-        button.setTitle(TextManager.next.uppercased().localized(), for: .normal)
+        button.setTitle(TextManager.next, for: .normal)
         button.backgroundColor = UIColor.primary
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         button.layer.masksToBounds = true
@@ -65,7 +65,7 @@ class ForgotPasswordViewController: BaseViewController {
     
     fileprivate lazy var signUpButton: UIButton = {
         let button = UIButton()
-        button.setTitle(TextManager.signUp.uppercased().localized(), for: .normal)
+        button.setTitle(TextManager.signUp, for: .normal)
         button.setTitleColor(UIColor.link, for: .normal)
         button.addTarget(self, action: #selector(tapOnSignUp), for: .touchUpInside)
         return button

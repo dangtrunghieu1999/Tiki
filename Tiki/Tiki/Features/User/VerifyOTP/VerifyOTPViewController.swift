@@ -59,7 +59,6 @@ class VerifyOTPViewController: BaseViewController {
         let button = UIButton()
         button.setTitle(TextManager.next, for: .normal)
         button.backgroundColor = UIColor.primary
-        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .medium)
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(tapOnNextButton), for: .touchUpInside)
