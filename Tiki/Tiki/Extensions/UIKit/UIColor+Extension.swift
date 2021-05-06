@@ -11,7 +11,7 @@ import UIKit
 // MARK: - App Color
 extension UIColor {
     class var background: UIColor {
-        return UIColor(hex: "#EF4D2D")
+        return UIColor(hex: "#C8102E")
     }
     
     class var thirdColor: UIColor {
@@ -35,7 +35,7 @@ extension UIColor {
     }
     
     class var primary: UIColor {
-        return UIColor(hex: "#FF424E")
+        return UIColor(hex: "#C8102E")
     }
     
     class var second: UIColor {

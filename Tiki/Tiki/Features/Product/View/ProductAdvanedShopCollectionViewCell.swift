@@ -70,7 +70,7 @@ class ProductAdvanedShopCollectionViewCell: BaseCollectionViewCell {
         var attributedString = NSMutableAttributedString(string:firstText, attributes:attrs1)
         
         var attrs2 = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: FontSize.h2.rawValue, weight: .bold),
-                      NSAttributedString.Key.foregroundColor: UIColor.thirdColor]
+                      NSAttributedString.Key.foregroundColor: UIColor.primary]
         var secondBoldText = NSMutableAttributedString(string: secondText, attributes:attrs2)
         attributedString.append(secondBoldText)
         let paragraphStyle = NSMutableParagraphStyle()

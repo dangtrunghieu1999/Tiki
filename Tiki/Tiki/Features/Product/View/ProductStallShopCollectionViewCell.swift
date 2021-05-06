@@ -38,14 +38,14 @@ class ProductStallShopCollectionViewCell: BaseCollectionViewCell {
     fileprivate lazy var seeShopButton: UIButton = {
         let button = UIButton()
         button.layer.masksToBounds = true
-        button.layer.borderColor = UIColor.thirdColor.cgColor
+        button.layer.borderColor = UIColor.primary.cgColor
         button.layer.borderWidth = 1.0
         button.setTitle(TextManager.seeShop, for: .normal)
         button.setImage(ImageManager.shop_home, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        button.setTitleColor(UIColor.thirdColor, for: .normal)
+        button.setTitleColor(UIColor.primary, for: .normal)
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         button.addTarget(self, action: #selector(tapOnViewDetailButton), for: .touchUpInside)
         return button
@@ -54,14 +54,14 @@ class ProductStallShopCollectionViewCell: BaseCollectionViewCell {
     fileprivate lazy var followShopButton: UIButton = {
         let button = UIButton()
         button.layer.masksToBounds = true
-        button.layer.borderColor = UIColor.thirdColor.cgColor
+        button.layer.borderColor = UIColor.primary.cgColor
         button.layer.borderWidth = 1.0
         button.setTitle(TextManager.followShop, for: .normal)
         button.setImage(ImageManager.addCircle, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
         button.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        button.setTitleColor(UIColor.thirdColor, for: .normal)
+        button.setTitleColor(UIColor.primary, for: .normal)
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         return button
     }()

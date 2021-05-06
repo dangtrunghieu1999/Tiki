@@ -33,7 +33,7 @@ class ShopProfileHeaderView: UserProfileHeaderView {
         button.setTitle(TextManager.follow, for: .normal)
         button.titleLabel?.textColor = UIColor.white
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        button.backgroundColor = UIColor.tabbarIcon
+        button.backgroundColor = UIColor.primary
         button.layer.borderColor = UIColor.white.cgColor
         button.layer.cornerRadius = Dimension.shared.smalltHeightButton_28 / 2
         return button

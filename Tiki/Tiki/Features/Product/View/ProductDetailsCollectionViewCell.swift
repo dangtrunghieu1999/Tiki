@@ -42,7 +42,7 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
         let button = UIButton()
         button.setTitle(TextManager.seemore, for: .normal)
         button.backgroundColor = UIColor.clear
-        button.setTitleColor(UIColor.thirdColor, for: .normal)
+        button.setTitleColor(UIColor.primary, for: .normal)
         button.titleLabel?.textAlignment = .center
         button.addRightIcon(image: ImageManager.see_more ?? UIImage())
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)

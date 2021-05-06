@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "unbox.png",
+      "filename" : "guarantee.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "unbox@2x.png",
+      "filename" : "guarantee@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "unbox@3x.png",
+      "filename" : "guarantee@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

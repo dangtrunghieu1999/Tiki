@@ -116,14 +116,14 @@ final class  TextManager {
     // MARK: - User Profile
     
     static let userProfile                  = "Thông tin cá nhân"
-    static let welcome                      = "Chào mừng bạn đến với tiki"
+    static let welcome                      = "Chào mừng bạn đến với HiShop"
     static let welcomeSignInUp              = "Đăng nhập/Đăng ký"
     
     static let welcomeSignIn                = "Xin chào,"
     static let continueSignIn               = "Tiếp tục"
     static let titlePassword                = "Mật khẩu"
     static let inputPassword                = "Nhập mật khẩu"
-    static let pleaseInputPW                = "Vui lòng nhập mật khẩu Tiki của số điện thoại "
+    static let pleaseInputPW                = "Vui lòng nhập mật khẩu HiShop của số điện thoại "
     static let signInAccount                = "Đăng nhập"
     static let continueRules                = "Bằng việc tiếp tục, bạn đã chấp nhận điều khoản sử dụng"
     static let optionSignIn                 = "Hoặc tiếp tục bằng"
@@ -134,5 +134,6 @@ final class  TextManager {
     static let changeAction                 = "Thay đổi"
     static let addressRecive                = "Địa chỉ nhận hàng"
     static let processOrder                 = "Tiến hành đặt hàng"
-    
+    static let shipAddress                  = "Giao đến địa chỉ này"
+    static let selectShipAddress            = "Chọn địa chỉ giao hàng"
 }

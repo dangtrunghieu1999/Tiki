@@ -43,13 +43,13 @@ public class BadgeButton: UIButton {
         }
     }
     
-    public var badgeBackgroundColor = UIColor.accentColor {
+    public var badgeBackgroundColor = UIColor.white {
         didSet {
             badgeLabel.backgroundColor = badgeBackgroundColor
         }
     }
     
-    public var badgeTextColor = UIColor.white {
+    public var badgeTextColor = UIColor.primary {
         didSet {
             badgeLabel.textColor = badgeTextColor
         }
@@ -117,6 +117,8 @@ public class BadgeButton: UIButton {
         badgeLabel.backgroundColor = badgeBackgroundColor
         badgeLabel.textColor = badgeTextColor
         badgeLabel.layer.cornerRadius = badgeLabel.bounds.size.height / 2
+        badgeLabel.layer.borderWidth = 1
+        badgeLabel.layer.borderColor = UIColor.background.cgColor
     }
 }
 

@@ -202,7 +202,7 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         addSubview(thumbnailShopImageView)
         thumbnailShopImageView.snp.makeConstraints { (make) in
             make.height.width.equalTo(30)
-            make.left.equalToSuperview().offset(Dimension.shared.smallMargin)
+            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.top.equalToSuperview().offset(Dimension.shared.normalMargin)
         }
     }
@@ -229,7 +229,7 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     private func layoutProductImageView() {
         addSubview(productImageView)
         productImageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.smallMargin)
+            make.left.equalToSuperview().offset(Dimension.shared.mediumMargin)
             make.height.width.equalTo(65)
             make.centerY.equalToSuperview()
         }

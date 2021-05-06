@@ -16,6 +16,12 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - UI Elements
     
+    fileprivate lazy var topView: BaseView = {
+        let view = BaseView()
+        view.backgroundColor = UIColor.white
+        return view
+    }()
+    
     fileprivate lazy var pageView: FSPagerView = {
         let view = FSPagerView()
         view.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -42,6 +48,7 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         super.initialize()
+        layoutTopView()
         layoutPageView()
         layoutPageControl()
     }
@@ -52,10 +59,20 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Layout
     
+    private func layoutTopView() {
+        addSubview(topView)
+        topView.snp.makeConstraints { (make) in
+            make.left.bottom.right.equalToSuperview()
+            make.top.equalToSuperview().offset(Dimension.shared.mediumMargin_12)
+        }
+    }
+    
     private func layoutPageView() {
-        addSubview(pageView)
+        topView.addSubview(pageView)
         pageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.bottom.equalToSuperview()
+            make.left.equalToSuperview().offset(Dimension.shared.mediumMargin_12)
+            make.right.equalToSuperview().offset(-Dimension.shared.mediumMargin_12)
         }
     }
     

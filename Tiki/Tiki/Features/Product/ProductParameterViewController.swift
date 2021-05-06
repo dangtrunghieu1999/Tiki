@@ -38,7 +38,7 @@ class ProductParameterViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setLeftNavigationBar(ImageManager.dismiss_close)
-        navigationItem.title = TextManager.detailProduct.capitalized
+        navigationItem.title = TextManager.detailProduct
         tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableView.automaticDimension
         layoutTableView()

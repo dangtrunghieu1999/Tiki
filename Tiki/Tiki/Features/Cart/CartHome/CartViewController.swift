@@ -17,6 +17,47 @@ class CartViewController: BaseViewController {
         return view
     }()
     
+    fileprivate lazy var addressTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextManager.addressRecive
+        label.textColor = UIColor.bodyText
+        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        return label
+    }()
+    
+    fileprivate lazy var infoUserLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
+        label.text = "Đặng Trung Hiếu - 0336665653"
+        label.textAlignment = .left
+        return label
+    }()
+
+    fileprivate lazy var changeButton: UIButton = {
+        let button = UIButton()
+        button.layer.backgroundColor = UIColor.clear.cgColor
+        button.setTitle(TextManager.changeAction, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        button.setTitleColor(UIColor.tabbarIcon, for: .normal)
+        button.addTarget(self, action: #selector(tapOnChangeAddress), for: .touchUpInside)
+        return button
+    }()
+    
+    fileprivate lazy var lineView: BaseView = {
+        let view = BaseView()
+        view.backgroundColor = UIColor.separator
+        return view
+    }()
+    
+    fileprivate lazy var addressDetailLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Hẻm 457 Huỳnh Tấn Phát, phường Tân Thuận Đông, Quận7, Hồ Chí Minh"
+        label.textColor = UIColor.bodyText
+        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        label.numberOfLines = 0
+        return label
+    }()
+    
     fileprivate lazy var cartCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 8
@@ -58,10 +99,9 @@ class CartViewController: BaseViewController {
     
     private lazy var buyButton: UIButton = {
         let button = UIButton()
-        button.setTitle(TextManager.processOrder.localized(), for: .normal)
+        button.setTitle(TextManager.processOrder, for: .normal)
         button.backgroundColor = UIColor.primary
         button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(self, action: #selector(tapOnBuyButton), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         button.addTarget(self, action: #selector(tapOnBuyButton), for: .touchUpInside)
@@ -73,7 +113,13 @@ class CartViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = TextManager.cart.localized()
+        navigationItem.title = TextManager.cart
+        layoutTopView()
+        layoutLineView()
+        layoutAddressTitleLabel()
+        layoutChangeButton()
+        layoutInfoUserLabel()
+        layoutAddressDetailLabel()
         layoutBottomView()
         layoutBuyButton()
         layoutIntoMoneyTitleLabel()
@@ -81,13 +127,72 @@ class CartViewController: BaseViewController {
         layoutCartCollectionView()
     }
     
-    
     @objc private func tapOnBuyButton() {
         
     }
     
+    @objc private func tapOnChangeAddress() {
+        let vc = DeliveryAddressViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     // MARK: - Layouts
+    
+    private func layoutTopView() {
+        view.addSubview(topView)
+        topView.snp.makeConstraints { (make) in
+            if #available(iOS 11, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide)
+            } else {
+                make.top.equalTo(topLayoutGuide.snp.bottom)
+            }
+            make.left.right.equalToSuperview()
+            make.height.equalTo(120)
+        }
+    }
+    
+    private func layoutAddressTitleLabel() {
+        topView.addSubview(addressTitleLabel)
+        addressTitleLabel.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
+            make.top.equalToSuperview().offset(Dimension.shared.normalMargin)
+        }
+    }
+    
+    private func layoutChangeButton() {
+        topView.addSubview(changeButton)
+        changeButton.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.height.equalTo(40)
+            make.top.equalToSuperview().offset(Dimension.shared.smallMargin)
+        }
+    }
+    
+    private func layoutInfoUserLabel() {
+        topView.addSubview(infoUserLabel)
+        infoUserLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(addressTitleLabel)
+            make.top.equalTo(addressTitleLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
+        }
+    }
+    
+    private func layoutAddressDetailLabel() {
+        topView.addSubview(addressDetailLabel)
+        addressDetailLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(addressTitleLabel)
+            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.top.equalTo(infoUserLabel.snp.bottom).offset(Dimension.shared.smallMargin)
+        }
+    }
+    
+    private func layoutLineView() {
+        topView.addSubview(lineView)
+        lineView.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.height.equalTo(8)
+        }
+    }
     
     private func layoutBottomView() {
         view.addSubview(bottomView)
@@ -126,7 +231,8 @@ class CartViewController: BaseViewController {
     private func layoutCartCollectionView() {
         view.addSubview(cartCollectionView)
         cartCollectionView.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview()
+            make.top.equalTo(topView.snp.bottom)
+            make.left.right.equalToSuperview()
             make.bottom.equalTo(bottomView.snp.top)
         }
     }
@@ -171,6 +277,7 @@ extension CartViewController: UICollectionViewDataSource {
             cell.image = ImageManager.empty
             cartCollectionView.backgroundColor = UIColor.clear
             bottomView.isHidden = true
+            topView.isHidden = true
             return cell
         } else {
             let cell: CartCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)

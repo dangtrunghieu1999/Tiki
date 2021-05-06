@@ -90,7 +90,7 @@ class Dimension {
     }
     
     var defaultHeightButton: CGFloat {
-        return 42 * self.widthScale
+        return 48 * self.widthScale
     }
     
     var smalltHeightButton: CGFloat {
