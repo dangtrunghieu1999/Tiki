@@ -155,4 +155,5 @@ final class ImageManager {
     
     static let dismiss_close                     = UIImage(named: "dismiss_close")
     static let see_more                          = UIImage(named: "see_more")
+    static let config_address                    = UIImage(named: "config_address")
 }

@@ -117,7 +117,9 @@ class DeliveryAddressViewController: BaseViewController {
 // MARK: - UITableViewDelegate
 
 extension DeliveryAddressViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
 }
 
 // MARK: - UITableViewDataSource
