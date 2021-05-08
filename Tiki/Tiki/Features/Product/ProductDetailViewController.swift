@@ -43,6 +43,13 @@ class ProductDetailViewController: BaseViewController {
         return collectionView
     }()
     
+    fileprivate lazy var bottomView: BaseView = {
+        let view = BaseView()
+        view.addTopBorder(with: UIColor.separator, andWidth: 1)
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
     private lazy var buyButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.selectToBuy, for: .normal)
@@ -60,6 +67,7 @@ class ProductDetailViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         registerReusableCell()
+        layoutBottomView()
         layoutBuyButton()
         layoutCollectionView()
         requestProductDetailAPI()
@@ -153,8 +161,21 @@ class ProductDetailViewController: BaseViewController {
     
     // MARK: - Layout
     
+    private func layoutBottomView() {
+        view.addSubview(bottomView)
+        bottomView.snp.makeConstraints { (make) in
+            if #available(iOS 11, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            }
+            make.height.equalTo(70)
+            make.left.right.equalToSuperview()
+        }
+    }
+    
     private func layoutBuyButton() {
-        view.addSubview(buyButton)
+        bottomView.addSubview(buyButton)
         buyButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
@@ -167,7 +188,7 @@ class ProductDetailViewController: BaseViewController {
         view.addSubview(productCollectionView)
         productCollectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
-            make.bottom.equalTo(buyButton.snp.top).offset(-Dimension.shared.mediumMargin)
+            make.bottom.equalTo(bottomView.snp.top)
         }
     }
 }

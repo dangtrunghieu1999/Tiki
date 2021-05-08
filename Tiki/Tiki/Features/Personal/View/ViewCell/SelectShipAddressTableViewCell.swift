@@ -7,30 +7,34 @@
 
 import UIKit
 
+protocol SelectShipAddressTableViewCellDelegate: class {
+    func tapChangeShipAddress()
+}
+
 class SelectShipAddressTableViewCell: BaseTableViewCell {
 
     // MARK: - Variables
+    
+    weak var delegate: SelectShipAddressTableViewCellDelegate?
     
     // MARK: - UI Elements
     
     private lazy var checkImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = ImageManager.checkMarkCheck
+        imageView.image = ImageManager.checkMarkUnCheck
         return imageView
     }()
     
     fileprivate lazy var infoUserLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        label.text = "Đặng Trung Hiếu - 0336665653"
         label.textAlignment = .left
         return label
     }()
 
     fileprivate lazy var addressDetailLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hẻm 457 Huỳnh Tấn Phát, phường Tân Thuận Đông, Quận7, Hồ Chí Minh"
         label.textColor = UIColor.bodyText
         label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         label.numberOfLines = 0
@@ -61,7 +65,27 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
         layoutbottomLineView()
     }
     
+    // MARK: - UI Action
+    
     // MARK: - Helper Method
+
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                checkImageView.image = ImageManager.checkMarkCheck
+            } else {
+                checkImageView.image = ImageManager.checkMarkUnCheck
+            }
+        }
+    }
+
+    func configData(_ address: Address) {
+        let title = address.fullName + " - " + address.phoneNumber
+        self.infoUserLabel.text      = title
+        self.addressDetailLabel.text = address.address
+    }
+    
+
     
     // MARK: - GET API
     

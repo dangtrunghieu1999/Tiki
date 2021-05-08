@@ -74,8 +74,7 @@ class CartViewController: BaseViewController {
     
     fileprivate lazy var bottomView: BaseView = {
         let view = BaseView()
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.separator.cgColor
+        view.addTopBorder(with: UIColor.separator, andWidth: 1)
         view.layer.masksToBounds = true
         return view
     }()
@@ -133,6 +132,7 @@ class CartViewController: BaseViewController {
     
     @objc private func tapOnChangeAddress() {
         let vc = DeliveryAddressViewController()
+        vc.requestShipAddressAPI()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -197,7 +197,12 @@ class CartViewController: BaseViewController {
     private func layoutBottomView() {
         view.addSubview(bottomView)
         bottomView.snp.makeConstraints { (make) in
-            make.left.bottom.right.equalToSuperview()
+            if #available(iOS 11, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            }
+            make.left.right.equalToSuperview()
             make.height.equalTo(100)
         }
     }

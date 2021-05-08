@@ -6,10 +6,15 @@
 //
 
 import UIKit
-
+import Alamofire
+import SwiftyJSON
+ 
 class DeliveryAddressViewController: BaseViewController {
     
     // MARK: - Variables
+    fileprivate var selectedAddress: Bool = false
+    fileprivate var arrayAdress: [Address] = []
+    var selectIndex : Int?
     
     // MARK: - UI Elements
     
@@ -23,8 +28,7 @@ class DeliveryAddressViewController: BaseViewController {
     
     fileprivate lazy var bottomView: BaseView = {
         let view = BaseView()
-        view.layer.borderWidth = 1
-        view.layer.borderColor = UIColor.separator.cgColor
+        view.addTopBorder(with: UIColor.separator, andWidth: 1)
         view.layer.masksToBounds = true
         return view
     }()
@@ -69,6 +73,23 @@ class DeliveryAddressViewController: BaseViewController {
     
     // MARK: - GET API
     
+    func requestShipAddressAPI() {
+        guard let path = Bundle.main.path(forResource: "ShipAddress", ofType: "json") else {
+            fatalError("Not available json")
+        }
+        let url = URL(fileURLWithPath: path)
+        Alamofire.request(url).responseJSON { (response) in
+            switch response.result {
+            case.success(let value):
+                let json = JSON(value)
+                self.arrayAdress = json.arrayValue.map{Address(json: $0)}
+                self.shipAdressTableView.reloadData()
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // MARK: - Layout
     
     private func layoutTitleLabel() {
@@ -89,7 +110,8 @@ class DeliveryAddressViewController: BaseViewController {
     private func layoutShipAddressTableView() {
         view.addSubview(shipAdressTableView)
         shipAdressTableView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.largeMargin_32)
+            make.top.equalTo(titleLabel.snp.bottom)
+                .offset(Dimension.shared.largeMargin)
             make.left.right.equalToSuperview()
             make.bottom.equalTo(bottomView.snp.top)
         }
@@ -98,7 +120,12 @@ class DeliveryAddressViewController: BaseViewController {
     private func layoutBottomView() {
         view.addSubview(bottomView)
         bottomView.snp.makeConstraints { (make) in
-            make.left.right.bottom.equalToSuperview()
+            if #available(iOS 11, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            }
+            make.left.right.equalToSuperview()
             make.height.equalTo(68)
         }
     }
@@ -118,7 +145,12 @@ class DeliveryAddressViewController: BaseViewController {
 
 extension DeliveryAddressViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectIndex = indexPath.row
+        tableView.reloadData()
     }
 }
 
@@ -126,11 +158,14 @@ extension DeliveryAddressViewController: UITableViewDelegate {
 
 extension DeliveryAddressViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return arrayAdress.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SelectShipAddressTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        cell.configData(arrayAdress[indexPath.row])
+        cell.isSelected = (indexPath.row == selectIndex)
         return cell
     }
 }
+

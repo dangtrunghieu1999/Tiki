@@ -10,9 +10,11 @@
 		CF1AEF6726097BE600269C54 /* PersonalFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */; };
 		CF1CC29C2644436A00CFA22A /* SelectShipAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CC29B2644436A00CFA22A /* SelectShipAddressTableViewCell.swift */; };
 		CF2A17E8262A8DBC00990EA7 /* ProductRecommend.json in Resources */ = {isa = PBXBuildFile; fileRef = CF2A17E7262A8DBC00990EA7 /* ProductRecommend.json */; };
+		CF2A204C26464C5100EDCDB0 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2A204B26464C5100EDCDB0 /* Address.swift */; };
 		CF2EC693261DA4F300161AF3 /* MenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EC692261DA4F300161AF3 /* MenuModel.swift */; };
 		CF2EC697261DA6CB00161AF3 /* MenuCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EC696261DA6CB00161AF3 /* MenuCollectionViewCell.swift */; };
 		CF2EC69A261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EC699261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift */; };
+		CF2F67CE2646738C00D693CA /* ShipAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = CF2F67CD2646738C00D693CA /* ShipAddress.json */; };
 		CF2F7C1F261F8E3100F64925 /* ProductRecommendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F7C1E261F8E3100F64925 /* ProductRecommendCollectionViewCell.swift */; };
 		CF31F6F52639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */; };
 		CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */; };
@@ -312,9 +314,11 @@
 		CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF1CC29B2644436A00CFA22A /* SelectShipAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShipAddressTableViewCell.swift; sourceTree = "<group>"; };
 		CF2A17E7262A8DBC00990EA7 /* ProductRecommend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductRecommend.json; sourceTree = "<group>"; };
+		CF2A204B26464C5100EDCDB0 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		CF2EC692261DA4F300161AF3 /* MenuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuModel.swift; sourceTree = "<group>"; };
 		CF2EC696261DA6CB00161AF3 /* MenuCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF2EC699261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		CF2F67CD2646738C00D693CA /* ShipAddress.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ShipAddress.json; sourceTree = "<group>"; };
 		CF2F7C1E261F8E3100F64925 /* ProductRecommendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecommendCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressReciveCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -669,6 +673,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		CF2A204A26464B2000EDCDB0 /* DataJson */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataJson;
+			sourceTree = "<group>";
+		};
 		CF3ADC65260F1C7900987199 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,6 +921,7 @@
 		CFA5BBB125EB8E8B00AC20D1 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				CF2A204A26464B2000EDCDB0 /* DataJson */,
 				CFBC17A52624058D0016A223 /* Product */,
 				CF4A0202261EAE48003734EC /* Cart */,
 				CF4A01FD261EADBE003734EC /* Notification */,
@@ -968,6 +980,7 @@
 			isa = PBXGroup;
 			children = (
 				CFA7F68425FDB9CA0026FCAA /* PersonalViewModel.swift */,
+				CF2F67CD2646738C00D693CA /* ShipAddress.json */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1430,6 +1443,7 @@
 				CFAF8F9625FC545D000E2CCA /* Product.swift */,
 				CFAF8F9725FC545D000E2CCA /* LoadMoreModel.swift */,
 				CFBA8024262D765C000E1ED2 /* ProductParameter.swift */,
+				CF2A204B26464C5100EDCDB0 /* Address.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1894,6 +1908,7 @@
 				CFA5BB5825EB89BF00AC20D1 /* LaunchScreen.storyboard in Resources */,
 				CFC7F7A225FEF0FE00D986D0 /* Home.json in Resources */,
 				CFAF8F3825FC507C000E2CCA /* Images.xcassets in Resources */,
+				CF2F67CE2646738C00D693CA /* ShipAddress.json in Resources */,
 				CFAF8F3725FC507C000E2CCA /* Localizable.strings in Resources */,
 				CFAF8FBA25FC545D000E2CCA /* ScrollImageCollectionViewCell.xib in Resources */,
 				CFA5BB5525EB89BF00AC20D1 /* Assets.xcassets in Resources */,
@@ -2230,6 +2245,7 @@
 				CF3DA2E02625549700A35EED /* ProductDetailInfoCollectionViewCell.swift in Sources */,
 				CF58878D262826110041A595 /* ProductParentCommentCollectionViewCell.swift in Sources */,
 				CFAF8F1B25FC507C000E2CCA /* SlideUpPresentationController.swift in Sources */,
+				CF2A204C26464C5100EDCDB0 /* Address.swift in Sources */,
 				CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */,
 				CFAF8F1E25FC507C000E2CCA /* ImagePickerController.swift in Sources */,
 				CFD56FEF2635CBE800B17AEA /* PaymentMethodCollectionViewCell.swift in Sources */,
