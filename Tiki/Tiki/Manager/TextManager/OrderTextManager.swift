@@ -42,4 +42,5 @@ extension TextManager {
     static let quantity                                 = "Số lượng"
     static let orderSuccess                             = "Bạn đã đặt hàng thành công!"
     static let VTCPayPaymentGuideMessage                = "Bạn đã đặt hàng thành công, hãy thanh toán bằng VTCPay!"
+    static let addressDefault                           = "Địa chỉ mặc định"
 }

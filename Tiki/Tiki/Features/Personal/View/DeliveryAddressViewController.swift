@@ -14,7 +14,7 @@ class DeliveryAddressViewController: BaseViewController {
     // MARK: - Variables
     fileprivate var selectedAddress: Bool = false
     fileprivate var arrayAdress: [Address] = []
-    var selectIndex : Int?
+    var selectIndex : Int? = 0
     
     // MARK: - UI Elements
     
@@ -163,7 +163,8 @@ extension DeliveryAddressViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SelectShipAddressTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.configData(arrayAdress[indexPath.row])
+        let index = indexPath.row
+        cell.configData(arrayAdress[indexPath.row], index: index)
         cell.isSelected = (indexPath.row == selectIndex)
         return cell
     }

@@ -12,7 +12,7 @@ protocol SelectShipAddressTableViewCellDelegate: class {
 }
 
 class SelectShipAddressTableViewCell: BaseTableViewCell {
-
+    
     // MARK: - Variables
     
     weak var delegate: SelectShipAddressTableViewCellDelegate?
@@ -32,7 +32,7 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
         label.textAlignment = .left
         return label
     }()
-
+    
     fileprivate lazy var addressDetailLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.bodyText
@@ -45,7 +45,7 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
         let button = UIButton()
         button.setImage(ImageManager.config_address, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-      return button
+        return button
     }()
     
     fileprivate lazy var bottomLineView: BaseView = {
@@ -53,7 +53,23 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
         view.backgroundColor = UIColor.separator
         return view
     }()
-
+    
+    private lazy var flagImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = ImageManager.icon_flag
+        return imageView
+    }()
+    
+    fileprivate lazy var addressDefaultLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextManager.addressDefault
+        label.textColor = UIColor.background
+        label.textAlignment = .left
+        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        return label
+    }()
+    
     // MARK: - View LifeCycles
     
     override func initialize() {
@@ -63,12 +79,14 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
         layoutConfigAddressButton()
         layoutAddressDetailLabel()
         layoutbottomLineView()
+        layoutFlagImageView()
+        layoutAddressDefaultLabel()
     }
     
     // MARK: - UI Action
     
     // MARK: - Helper Method
-
+    
     override var isSelected: Bool {
         didSet {
             if isSelected {
@@ -78,14 +96,16 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
             }
         }
     }
-
-    func configData(_ address: Address) {
+    
+    func configData(_ address: Address, index: Int) {
+        if index != 0 {
+            flagImageView.isHidden = true
+            addressDefaultLabel.isHidden = true
+        }
         let title = address.fullName + " - " + address.phoneNumber
         self.infoUserLabel.text      = title
         self.addressDetailLabel.text = address.address
     }
-    
-
     
     // MARK: - GET API
     
@@ -130,7 +150,27 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
             make.top.equalTo(infoUserLabel.snp.bottom)
                 .offset(Dimension.shared.mediumMargin)
             make.right.equalTo(configAddressButton.snp.left)
-                .offset(Dimension.shared.normalMargin)
+                .offset(-Dimension.shared.normalMargin)
+        }
+    }
+    
+    private func layoutFlagImageView() {
+        addSubview(flagImageView)
+        flagImageView.snp.makeConstraints { (make) in
+            make.left.equalTo(infoUserLabel)
+            make.width.height.equalTo(14)
+            make.top.equalTo(addressDetailLabel.snp.bottom)
+                .offset(Dimension.shared.mediumMargin)
+        }
+    }
+    
+    private func layoutAddressDefaultLabel() {
+        addSubview(addressDefaultLabel)
+        addressDefaultLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(flagImageView.snp.right)
+                .offset(Dimension.shared.mediumMargin)
+            make.right.equalToSuperview()
+            make.top.equalTo(flagImageView)
         }
     }
     
@@ -144,4 +184,5 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
             make.right.equalToSuperview()
         }
     }
+    
 }
