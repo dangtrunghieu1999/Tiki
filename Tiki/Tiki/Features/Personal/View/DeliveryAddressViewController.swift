@@ -56,16 +56,14 @@ class DeliveryAddressViewController: BaseViewController {
         return tableView
     }()
     
-    
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.addressRecive
         layoutTitleLabel()
-        layoutShipAddress()
+        layoutShipAddressButton()
         layoutBottomView()
-        layoutShipAddress()
         layoutShipAddressTableView()
     }
     
@@ -130,7 +128,7 @@ class DeliveryAddressViewController: BaseViewController {
         }
     }
     
-    private func layoutShipAddress() {
+    private func layoutShipAddressButton() {
         bottomView.addSubview(shipAddressButton)
         shipAddressButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
@@ -145,12 +143,16 @@ class DeliveryAddressViewController: BaseViewController {
 
 extension DeliveryAddressViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 110
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectIndex = indexPath.row
         tableView.reloadData()
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 58
     }
 }
 
@@ -168,5 +170,19 @@ extension DeliveryAddressViewController: UITableViewDataSource {
         cell.isSelected = (indexPath.row == selectIndex)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer: ShipAddressTableViewFooter = tableView.dequeueReusableHeaderFooterView()
+        footer.delegateShip = self
+        return footer
+    }
 }
 
+// MARK: - SelectShipAddressTableViewCellDelegate
+
+extension DeliveryAddressViewController: ShipAddressTableViewFooterDelegate {
+    func didTapView() {
+        let vc = DeliveryInfomationViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}

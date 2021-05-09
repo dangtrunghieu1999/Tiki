@@ -34,6 +34,7 @@ class ForgotPasswordViewController: BaseViewController {
         textField.fontSizePlaceholder(text: TextManager.signInUserNamePlaceHolder,
                                       size: FontSize.body.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textField.delegate = self
         return textField
     }()
     

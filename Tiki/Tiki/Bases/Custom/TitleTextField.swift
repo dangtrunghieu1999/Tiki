@@ -63,23 +63,33 @@ class TitleTextField: BaseView {
         }
     }
     
+    var colorLine: UIColor? {
+        didSet {
+            lineView.backgroundColor = colorLine
+        }
+    }
+    
     // MARK: - UI Elements
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         return label
     }()
     
     private (set) lazy var textField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.placeholder = TextManager.signInUserNamePlaceHolder.localized()
-        textField.layer.borderColor = UIColor.separator.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = Dimension.shared.defaultHeightTextField / 2
+        textField.placeholder = TextManager.signInUserNamePlaceHolder
+        textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.layer.masksToBounds = true
         return textField
+    }()
+    
+    lazy var lineView: BaseView = {
+        let view = BaseView()
+        view.backgroundColor = UIColor.separator
+        return view
     }()
     
     // MARK: - LifeCycles
@@ -87,6 +97,7 @@ class TitleTextField: BaseView {
     override func initialize() {
         layoutTitleLabel()
         layoutTextField()
+        layoutLineView()
     }
     
     func addTarget(_ target: Any?, action: Selector, for event: UIControl.Event) {
@@ -109,6 +120,16 @@ class TitleTextField: BaseView {
             make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
             make.height.equalTo(Dimension.shared.defaultHeightTextField)
             make.bottom.equalToSuperview()
+        }
+    }
+    
+    private func layoutLineView() {
+        addSubview(lineView)
+        lineView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(textField)
+            make.bottom.equalToSuperview()
+                .offset(-1)
+            make.height.equalTo(1)
         }
     }
     

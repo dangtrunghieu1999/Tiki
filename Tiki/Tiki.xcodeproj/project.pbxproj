@@ -263,6 +263,7 @@
 		CFAF8FF525FC5E38000E2CCA /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */; };
 		CFAF8FF925FC5E51000E2CCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */; };
 		CFAF8FFD25FC5EBF000E2CCA /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */; };
+		CFB41DFA26476EA9006A323D /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB41DF926476EA9006A323D /* UITextField+Extension.swift */; };
 		CFBA8025262D765C000E1ED2 /* ProductParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA8024262D765C000E1ED2 /* ProductParameter.swift */; };
 		CFBA8028262D963F000E1ED2 /* ProductParameterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA8027262D963F000E1ED2 /* ProductParameterViewController.swift */; };
 		CFBC17A72624059D0016A223 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC17A62624059D0016A223 /* ProductDetailViewController.swift */; };
@@ -608,6 +609,7 @@
 		CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		CFB41DF926476EA9006A323D /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		CFBA8024262D765C000E1ED2 /* ProductParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductParameter.swift; sourceTree = "<group>"; };
 		CFBA8027262D963F000E1ED2 /* ProductParameterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductParameterViewController.swift; sourceTree = "<group>"; };
 		CFBC17A62624059D0016A223 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
@@ -1077,6 +1079,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAF8DE425FC4EDC000E2CCA /* UIImageView+Extension.swift */,
+				CFB41DF926476EA9006A323D /* UITextField+Extension.swift */,
 				CFAF8DE525FC4EDC000E2CCA /* UIFont+Extension.swift */,
 				CFAF8DE625FC4EDC000E2CCA /* GradientPoint.swift */,
 				CFAF8DE725FC4EDC000E2CCA /* UIColor+Extension.swift */,
@@ -2097,6 +2100,7 @@
 				CF6F553A262C732D00ED6F64 /* TitleTableViewCell.swift in Sources */,
 				CFAF8E4625FC4EDD000E2CCA /* PHAsset+Extension.swift in Sources */,
 				CF58877D262823F60041A595 /* ProductAdvanedShopCollectionViewCell.swift in Sources */,
+				CFB41DFA26476EA9006A323D /* UITextField+Extension.swift in Sources */,
 				CF55F1AB261EB73500635F80 /* EventModel.swift in Sources */,
 				CF58877A262823E70041A595 /* ProductStallShopCollectionViewCell.swift in Sources */,
 				CFAF8F2B25FC507C000E2CCA /* ImagePickerControllerDelegate.swift in Sources */,

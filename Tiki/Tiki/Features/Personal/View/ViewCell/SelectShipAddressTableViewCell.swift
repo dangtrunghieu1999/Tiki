@@ -7,15 +7,9 @@
 
 import UIKit
 
-protocol SelectShipAddressTableViewCellDelegate: class {
-    func tapChangeShipAddress()
-}
-
 class SelectShipAddressTableViewCell: BaseTableViewCell {
     
     // MARK: - Variables
-    
-    weak var delegate: SelectShipAddressTableViewCellDelegate?
     
     // MARK: - UI Elements
     

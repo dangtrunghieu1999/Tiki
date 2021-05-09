@@ -54,6 +54,7 @@ class SignInViewController: BaseViewController {
         textField.fontSizePlaceholder(text: TextManager.phoneNumber,
                                       size: FontSize.title.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textField.delegate = self
         return textField
     }()
     
@@ -303,9 +304,12 @@ class SignInViewController: BaseViewController {
     }
 }
 
+// MARK: - NIAttributedLabelDelegate
+
 extension SignInViewController: NIAttributedLabelDelegate {
     func attributedLabel(_ attributedLabel: NIAttributedLabel!, didSelect result: NSTextCheckingResult!, at point: CGPoint) {
         guard let url = result.url else { return }
         AppRouter.pushToWebView(config: url)
     }
 }
+
