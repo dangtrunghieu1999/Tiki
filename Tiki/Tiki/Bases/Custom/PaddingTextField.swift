@@ -52,15 +52,15 @@ open class PaddingTextField: UITextField {
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: correctPadding)
     }
-
+    
     override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: correctPadding)
     }
-
+    
     override open func editingRect(forBounds bounds: CGRect) -> CGRect {
         return bounds.inset(by: correctPadding)
     }
-
+    
     override open func layoutSubviews() {
         super.layoutSubviews()
         setupViewImagesIfNeeded()
@@ -104,14 +104,4 @@ open class PaddingTextField: UITextField {
         }
     }
     
-}
-
-extension UITextField {
-    
-    func fontSizePlaceholder(text: String, size: CGFloat) {
-        attributedPlaceholder = NSAttributedString(string: text, attributes: [
-            .foregroundColor: UIColor.lightBodyText,
-            .font: UIFont.systemFont(ofSize: size)
-        ])
-    }
 }

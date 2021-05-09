@@ -17,7 +17,7 @@ class HeaderTitleCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         let label = UILabel()
         label.textColor = UIColor.red
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .bold)
         return label
     }()
     

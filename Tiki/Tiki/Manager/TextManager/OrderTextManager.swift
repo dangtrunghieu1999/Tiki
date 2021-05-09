@@ -31,8 +31,11 @@ extension TextManager {
     static let address                                  = "Địa chỉ"
     static let addressPlaceholder                       = "Nhập địa giao hàng"
     static let provinceCity                             = "Tỉnh/Thành Phố"
+    static let provinceCityPlaceholder                  = "Chọn Tỉnh/ Thành Phố"
     static let district                                 = "Quận/Huyện"
+    static let districteCityPlaceholder                 = "Chọn Quận/ Huyện"
     static let ward                                     = "Xã/Phường"
+    static let wardPlaceholder                          = "Chọn Xã/Phường"
     static let apartmentNumberStreet                    = "Số nhà, đường"
     static let expectDelivery                           = "Giao hàng dự kiến"
     static let shippingFee                              = "Phí giao hàng"
@@ -42,4 +45,14 @@ extension TextManager {
     static let quantity                                 = "Số lượng"
     static let orderSuccess                             = "Bạn đã đặt hàng thành công!"
     static let VTCPayPaymentGuideMessage                = "Bạn đã đặt hàng thành công, hãy thanh toán bằng VTCPay!"
+    static let addressDefault                           = "Địa chỉ mặc định"
+    static let addAddress                               = "Thêm địa chỉ mới"
+    static let enterAddressRecive                       = "Nhập địa chỉ nhận hàng"
+    static let fullNameRecive                           = "Tên người nhận"
+    static let fullNameRecivePlaceholder                = "Nhập họ & tên người nhận"
+    static let phoneRecivePlaceholder                   = "Nhập số điện thoại nhận hàng"
+    static let addressRecivePlaceholder                 = "Nhập số nhà, tên đường..."
+    
+
+
 }

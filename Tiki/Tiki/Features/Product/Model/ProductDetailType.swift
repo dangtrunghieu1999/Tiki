@@ -21,13 +21,49 @@ enum ProductDetailType: Int {
     case description       = 11
     case section6          = 12
     case comment           = 13
-    case recomment         = 14
-    case section7          = 15
-    case recommend         = 16
-    case section8          = 17
+    case section7          = 14
+    case recommend         = 15
+    case section8          = 16
     
     static func numberSection() -> Int {
-        return 18
+        return 17
     }
     
+    func sizeForHeader() -> CGSize {
+        switch self {
+        case .sameProduct, .infoDetail, .description, .comment:
+            return CGSize(width: ScreenSize.SCREEN_WIDTH, height: 50)
+        default:
+            return .zero
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .sameProduct:
+            return TextManager.sameProudct
+        case .infoDetail:
+            return TextManager.detailProduct
+        case .description:
+            return TextManager.detailDes
+        case .comment:
+            return TextManager.comment
+        default:
+            return ""
+        }
+    }
+    
+}
+
+class ProductParameterModel {
+    let keyTitle: [String]  =         ["Danh mục",
+                                       "Cung cấp bởi",
+                                       "Thương hiệu",
+                                       "Xuất xứ thương hiệu",
+                                       "Hướng dẫn",
+                                       "Model",
+                                       "Xuất xứ",
+                                       "SKU",
+                                       "Hoá đơn VAT",
+                                       "Bảo hành"]
 }

@@ -63,7 +63,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    fileprivate var promotionPriceLabel: UILabel = {
+    fileprivate lazy var promotionPriceLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.bodyText
         label.font = UIFont.systemFont(ofSize: FontSize.title.rawValue, weight: .bold)
@@ -71,7 +71,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    fileprivate var originalPriceLabel: UILabel = {
+    fileprivate lazy var originalPriceLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.bodyText
         label.layer.cornerRadius = 5
@@ -80,7 +80,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    fileprivate var promotionPercentLabel: UILabel = {
+    fileprivate lazy var promotionPercentLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.bodyText
         label.layer.cornerRadius = 5
@@ -89,6 +89,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
+     
     // MARK: - View LifeCycles
     
     override func initialize() {
@@ -105,6 +106,14 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Helper Method
     
+    static func estimateHeight(_ product: Product) -> CGFloat {
+        let nameHeight = product.name.height(
+            withConstrainedWidth: ScreenSize.SCREEN_WIDTH - 2 * Dimension.shared.normalMargin,
+            font: UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold))
+        
+        return ScreenSize.SCREEN_WIDTH + nameHeight + 140
+    }
+    
     // MARK: - GET API
     
     // MARK: - Layout
@@ -112,10 +121,8 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
     private func layoutPageView() {
         addSubview(pageView)
         pageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.right.equalToSuperview().offset(-Dimension.shared.largeMargin_32)
-            make.left.equalToSuperview().offset(Dimension.shared.largeMargin_32)
-            make.height.equalTo(320)
+            make.width.centerX.top.equalToSuperview()
+            make.height.equalTo(ScreenSize.SCREEN_WIDTH)
         }
     }
     
@@ -142,7 +149,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         addSubview(ratingView)
         ratingView.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
-            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
+            make.top.equalTo(titleLabel.snp.bottom)
             make.width.equalTo(100)
             make.height.equalTo(30)
         }
@@ -162,6 +169,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         promotionPriceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
             make.top.equalTo(ratingView.snp.bottom).offset(Dimension.shared.smallMargin)
+            make.bottom.equalToSuperview().offset(-Dimension.shared.normalMargin)
         }
     }
     
@@ -224,33 +232,14 @@ extension ProductDetailInfoCollectionViewCell: ProductDetailProtocol {
         self.pageView.reloadData()
         self.numberLabel.text = "1/\(product?.photos.count ?? 0)"
         let productName = product?.name ?? ""
-        self.titleLabel.attributedText = lineSpacingLabel(title: productName)
+        self.titleLabel.attributedText = Ultilities.lineSpacingLabel(title: productName)
         self.ratingView.value = CGFloat(product?.rating ?? 0)
         self.numberReviewLabel.text = "(Xem \(product?.number_comment ?? 0) đánh giá)"
         self.promotionPriceLabel.text = product?.promoPrice.currencyFormat
         let originalPrice = product?.unitPrice
-        self.originalPriceLabel.attributedText = drawLineBetween(price: originalPrice)
+        self.originalPriceLabel.attributedText = Ultilities.drawLineBetween(price: originalPrice)
         let promotionPercent = product?.promotion_percent ?? 0
         self.promotionPercentLabel.text = "-\(promotionPercent)%"
     }
-    
-    func lineSpacingLabel(title: String) -> NSMutableAttributedString {
-        let attributedString = NSMutableAttributedString(string: title)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 5
-        paragraphStyle.minimumLineHeight = 5
-        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle,
-                                      value:paragraphStyle,
-                                      range:NSMakeRange(0, attributedString.length))
-        return attributedString
-    }
-    
-    func drawLineBetween(price: Double?) -> NSMutableAttributedString  {
-        let myString = price?.currencyFormat ?? ""
-        let attributeString = NSMutableAttributedString(string: myString)
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle,
-                                     value: 1,
-                                     range: NSMakeRange(0, attributeString.length))
-        return attributeString
-    }
+
 }

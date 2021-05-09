@@ -16,13 +16,13 @@ final class ImageManager {
     static let playWhite                            = UIImage(named: "playWhite")
     static let searchWhite                          = UIImage(named: "searchWhite")
     static let defaultAvatar                        = UIImage(named: "defaultAvatar")
-    static let defaultCoverImage                    = UIImage(named: "defaultBackground")
+    static let defaultCoverImage                    = UIImage(named: "shop_background")
     static let back                                 = UIImage(named: "back_icon")
     static let coverGradient                        = UIImage(named: "coverGradient")
     static let whiteCart                            = UIImage(named: "whiteCart")
     static let imagePlaceHolder                     = UIImage(named: "imagePlaceHolder")
     static let searchGray                           = UIImage(named: "searchGray")
-    static let close                                = UIImage(named: "close")
+    
     static let empty                                = UIImage(named: "empty")
     static let optionIcon                           = UIImage(named: "optionIcon")
     static let like                                 = UIImage(named: "like")
@@ -147,4 +147,14 @@ final class ImageManager {
     static let chat                              = UIImage(named: "chat")
     static let person                            = UIImage(named: "person")
     static let category                          = UIImage(named: "category")
+    
+    static let shop_home                         = UIImage(named: "shop_home")
+    static let guarantee                         = UIImage(named: "guarantee")
+    static let refund                            = UIImage(named: "refund")
+    static let compensation                      = UIImage(named: "compensation")
+    
+    static let dismiss_close                     = UIImage(named: "dismiss_close")
+    static let see_more                          = UIImage(named: "see_more")
+    static let config_address                    = UIImage(named: "config_address")
+    static let icon_flag                         = UIImage(named: "icon_flag")
 }

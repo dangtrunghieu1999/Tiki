@@ -51,7 +51,7 @@ class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate lazy var ratingView: HCSStarRatingView = {
         let ratingView = HCSStarRatingView()
-        ratingView.tintColor = UIColor.accentColor
+        ratingView.tintColor = UIColor.ratingColor
         ratingView.allowsHalfStars = true
         ratingView.isUserInteractionEnabled = false
         return ratingView

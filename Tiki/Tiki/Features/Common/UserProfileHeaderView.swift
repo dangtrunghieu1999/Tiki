@@ -8,21 +8,15 @@
 
 import UIKit
 
-protocol UserProfileHeaderViewDelegate: class {
-    func didSelectBackgroundImage()
-    func didSelectAvatar()
-}
-
 class UserProfileHeaderView: BaseView {
     
     // MARK: - Variables
     
-    weak var delegate: UserProfileHeaderViewDelegate?
-    static var avatarImageHeight: CGFloat = 120
+    static var avatarImageHeight: CGFloat = 80
     
     static var estimatedHeight: CGFloat {
         let coverHeight = ScreenSize.SCREEN_WIDTH * AppConfig.coverImageRatio
-        return coverHeight + 30 + 14
+        return coverHeight
     }
     
     // MARK: - UI Elements
@@ -32,9 +26,6 @@ class UserProfileHeaderView: BaseView {
         imageView.image = ImageManager.defaultCoverImage
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
-        imageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnBackgroundImage))
-        imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
     
@@ -43,9 +34,6 @@ class UserProfileHeaderView: BaseView {
         imageView.image = ImageManager.coverGradient
         imageView.contentMode = .bottom
         imageView.layer.masksToBounds = true
-        imageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnBackgroundImage))
-        imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
     
@@ -57,9 +45,6 @@ class UserProfileHeaderView: BaseView {
         imageView.layer.masksToBounds = true
         imageView.layer.borderColor = UIColor.lightSeparator.cgColor
         imageView.layer.borderWidth = 3
-        imageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnAvatarImage))
-        imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
     
@@ -67,7 +52,16 @@ class UserProfileHeaderView: BaseView {
         let label = UILabel()
         label.textColor = UIColor.white
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: FontSize.title.rawValue, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .semibold)
+        return label
+    }()
+    
+    let numberFollowLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.numberOfLines = 0
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        label.text = "543 người theo dõi"
         return label
     }()
     
@@ -78,20 +72,20 @@ class UserProfileHeaderView: BaseView {
         layoutCoverGradientImageView()
         layoutAvatarImageView()
         layoutShopNameLabel()
+        layoutNumberFollowLabel()
     }
     
     // MARK: - Public methods
     
-//    func configShop(by shopInfo: Shop) {
-//        if shopInfo.displayName != "" {
-//            shopNameLabel.text = shopInfo.displayName
-//        } else {
-//            shopNameLabel.text = shopInfo.name
-//        }
-//        
-//        avatarImageView.loadImage(by: shopInfo.avatar, defaultImage: ImageManager.defaultAvatar)
-//        coverImageView.loadImage(by: shopInfo.cardImage, defaultImage: ImageManager.defaultCoverImage)
-//    }
+    func configShop(by shopInfo: Shop) {
+        if shopInfo.displayName != "" {
+            shopNameLabel.text = shopInfo.displayName
+        } else {
+            shopNameLabel.text = shopInfo.name
+        }
+        
+        avatarImageView.loadImage(by: shopInfo.avatar, defaultImage: ImageManager.defaultAvatar)
+    }
     
     func setAvatarImage(by image: UIImage) {
         avatarImageView.image = image
@@ -111,16 +105,6 @@ class UserProfileHeaderView: BaseView {
         coverImageView.stopShimmer()
     }
     
-    // MARK: - UIActions
-    
-    @objc private func tapOnBackgroundImage() {
-        delegate?.didSelectBackgroundImage()
-    }
-    
-    @objc private func tapOnAvatarImage() {
-        delegate?.didSelectAvatar()
-    }
-
     // MARK: - Layouts
     
     private func layoutCoverImageView() {
@@ -143,7 +127,7 @@ class UserProfileHeaderView: BaseView {
         avatarImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(UserProfileHeaderView.avatarImageHeight)
             make.left.equalToSuperview().offset(Dimension.shared.largeMargin)
-            make.bottom.equalTo(coverImageView.snp.bottom).offset(30)
+            make.centerY.equalToSuperview()
         }
     }
     
@@ -152,7 +136,15 @@ class UserProfileHeaderView: BaseView {
         shopNameLabel.snp.makeConstraints { (make) in
             make.left.equalTo(avatarImageView.snp.right).offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.mediumMargin)
-            make.bottom.equalTo(coverImageView).offset(-Dimension.shared.normalMargin)
+            make.top.equalTo(avatarImageView).offset(Dimension.shared.normalMargin)
+        }
+    }
+    
+    private func layoutNumberFollowLabel() {
+        addSubview(numberFollowLabel)
+        numberFollowLabel.snp.makeConstraints { (make) in
+            make.left.right.equalTo(shopNameLabel)
+            make.top.equalTo(shopNameLabel.snp.bottom).offset(Dimension.shared.smallMargin)
         }
     }
     

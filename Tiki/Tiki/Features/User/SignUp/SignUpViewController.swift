@@ -17,9 +17,9 @@ class SignUpViewController: BaseViewController {
     
     fileprivate let signUpTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = TextManager.createNewAccount.localized()
+        label.text = TextManager.createNewAccount
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.superHeadline.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .semibold)
         return label
     }()
      
@@ -33,7 +33,7 @@ class SignUpViewController: BaseViewController {
     
     fileprivate lazy var firstNameTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.placeholder = TextManager.firstName.localized()
+        textField.placeholder = TextManager.firstName
         textField.layer.borderColor = UIColor.separator.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.conerRadiusMedium
@@ -44,7 +44,7 @@ class SignUpViewController: BaseViewController {
     
     fileprivate lazy var lastNameTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.placeholder = TextManager.lastName.localized()
+        textField.placeholder = TextManager.lastName
         textField.layer.borderColor = UIColor.separator.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.conerRadiusMedium
@@ -68,7 +68,7 @@ class SignUpViewController: BaseViewController {
     fileprivate lazy var passwordTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.isSecureTextEntry = true
-        textField.placeholder = TextManager.password.localized()
+        textField.placeholder = TextManager.password
         textField.layer.borderColor = UIColor.separator.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.conerRadiusMedium
@@ -80,7 +80,7 @@ class SignUpViewController: BaseViewController {
     fileprivate lazy var confirmpasswordTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.isSecureTextEntry = true
-        textField.placeholder = TextManager.confirmPassword.localized()
+        textField.placeholder = TextManager.confirmPassword
         textField.layer.borderColor = UIColor.separator.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.conerRadiusMedium
@@ -91,7 +91,7 @@ class SignUpViewController: BaseViewController {
     
     fileprivate let DOBTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = TextManager.dateOfBirth.localized()
+        label.text = TextManager.dateOfBirth
         label.textColor = UIColor.titleText
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         return label
@@ -110,7 +110,7 @@ class SignUpViewController: BaseViewController {
     
     fileprivate lazy var DOBTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.placeholder = TextManager.dateOfBirth.localized()
+        textField.placeholder = TextManager.dateOfBirth
         textField.layer.borderColor = UIColor.separator.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.conerRadiusMedium

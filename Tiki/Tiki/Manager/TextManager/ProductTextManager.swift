@@ -51,7 +51,7 @@ extension TextManager {
     static let emptyComment                 = "Chưa có bình luận nào \n Hãy là người đầu tiên bình luận"
     static let recommendProduct             = "Sản phẩm gợi ý"
     static let sameProudct                  = "Sản phẩm tương tự"
-    static let selectToBuy                  = "Chọn Mua"
+    static let selectToBuy                  = "Chọn mua"
     static let selectSize                   = "Chọn kích thước"
     static let selectColor                  = "Chọn màu sắc"
     static let shopInfo                     = "Thông tin shop"

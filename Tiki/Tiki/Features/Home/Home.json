@@ -29,16 +29,7 @@
                     "url": "https://www.sendo.vn/su-kien/gian-hang-viet/?ref=home_slider_app&is_app=1",
                     "image": "https://media3.scdn.vn/img4/2020/11_24/pX7psDFBc0Nm1PaVskoH.jpg"
                 }
-            ],
-            "header_info": {
-                "background_image": "",
-                "background_color": [
-                    "#D40000"
-                ],
-                "more_text_color": "",
-                "icon_image": "",
-                "title_text_color": ""
-            }
+            ]
         }
     },
     {
@@ -157,20 +148,8 @@
                         "lable": "home_menu_san_deal_gia_dung"
                     }
                 }
-            ],
-            "header_info": {
-                "background_color": [
-                    "#ffffff"
-                ],
-                "title_text_color": "#000000",
-                "background_image": "",
-                "more_text_color": "",
-                "icon_image": ""
-            }
-        },
-        "background_color": "#ffffff",
-        "text_color": "#000000",
-        "background_image": ""
+            ]
+        }
     },
     {
         "type": "BannerEventWidget",
@@ -202,16 +181,7 @@
                     "start_time": 1617814800,
                     "end_time": 1617857999
                 }
-            ],
-            "header_info": {
-                "background_image": "",
-                "background_color": [
-                    "#ffffff"
-                ],
-                "more_text_color": "",
-                "icon_image": "",
-                "title_text_color": ""
-            }
+            ]
         }
     },
     {
@@ -221,11 +191,9 @@
             "link": "https://www.sendo.vn/flash-sale/?is_app=1",
             "list": [
                 {
-                    "deal_id": 67139167,
-                    "name": "Combo 4 Gói Comfor t Thái 580ml",
-                    "stock_status": 1,
+                    "id": 67139167,
+                    "name": "Combo 4 Gói Comfor Thái 580ml",
                     "promotion_price": 49000,
-                    "unit_unit_price": 59000,
                     "promotion_percent": 17,
                     "photos": [
                         {
@@ -239,21 +207,12 @@
                             "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
                         }
                     ],
-                    "id": 18914938,
-                    "product_url": "https://www.sendo.vn/combo-4-goi-comfor-t-thai-580ml-18914938.html?fromItem=67139167&source_block_id=flash-sale&source_page_id=flash-sale&source_position=1&source_slot_id=50213900&source_category_group_id=0",
-                    "sale_stock_number": 500,
-                    "stock_number": 456,
-                    "stock_description": "Đã bán 44",
-                    "stock_percent": 9,
-                    "stock_title": "Đã bán 44",
-                    "hidden_unit_price_display": "",
-                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139167&slotId=0",
-                    "buy_number": 44
+                    "number_comment": "22",
+                    "rating": 3.5
                 },
                 {
-                    "deal_id": 67139209,
-                    "name": "KHĂN GIẤY ƯỚT KHÔNG MÙI LOVE SKY 80GR/GÓI - HSD 5/4/2024",
-                    "stock_status": 1,
+                    "id": 42233069,
+                    "name": "Bình Giữ Nhiệt Lock&Lock Colorful Tumbler LHC32222BLU (390ml) Ruột Bằng Thép Không Gỉ Inox304 - Màu Xanh",
                     "promotion_price": 8000,
                     "unit_price": 25000,
                     "promotion_percent": 68,
@@ -269,21 +228,12 @@
                             "link": "https://salt.tikicdn.com/cache/w444/ts/product/86/dd/0c/116f1383ebab5e5af8e71301a80d1b17.jpg"
                         }
                     ],
-                    "id": 42233069,
-                    "product_url": "https://www.sendo.vn/khan-giay-uot-khong-mui-love-sky-80grgoi-hsd-542024-42233069.html?fromItem=67139209&source_block_id=flash-sale&source_page_id=flash-sale&source_position=2&source_slot_id=50213900&source_category_group_id=0",
-                    "sale_stock_number": 200,
-                    "stock_number": 113,
-                    "stock_description": "Đã bán 87",
-                    "stock_percent": 44,
-                    "stock_title": "Đã bán 87",
-                    "hidden_unit_price_display": "",
-                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139209&slotId=0",
-                    "buy_number": 87
+                    "number_comment": "11",
+                    "rating": 4.5,
+                    "details": "Hàng chính hãng VN/A Bộ nhớ trong 128 GB Loại SIM Dual SIM (nano‑SIM and eSIM) Loại màn hình Super Retina XDR OLED, HDR10, Dolby Vision, Wide color gamut, True-tone Kích thước màn hình 6.7 inches Độ phân giải màn hình 1284 x 2778 pixels Hệ điều hành iOS Phiên bản hệ điều hành iOS 14 iPhone 12 Pro Max 128GB - Nâng tầm đẳng cấp sử dụng Ngày 14/10 vừa qua, Apple đã trình làng iPhone 12 với các phiên bản làm điên đảo các tín đồ của nhà Táo. Apple năm nay lại ra thêm một chiếc iPhone mới với tên gọi mới là iPhone 12 Pro Max 128GB, đây là một dòng điện thoại mới và mạnh mẽ nhất của nhà Apple năm nay. Với thiết kế nguyên khối vuông vắn cùng nhiều màu sắc đẹp mắt hứa hẹn sẽ mang đến trải nghiệm thú vị cho người dùng.",
                 },
                 {
-                    "deal_id": 67139168,
                     "name": "Dép Sục Nam Nữ Siêu Nhẹ Siêu Bền đủ size",
-                    "stock_status": 1,
                     "promotion_price": 9000,
                     "unit_price": 69000,
                     "promotion_percent": 87,
@@ -300,20 +250,9 @@
                         }
                     ],
                     "id": 42272303,
-                    "product_url": "https://www.sendo.vn/dep-suc-nam-nu-sieu-nhe-sieu-ben-du-size-42272303.html?fromItem=67139168&source_block_id=flash-sale&source_page_id=flash-sale&source_position=3&source_slot_id=50213900&source_category_group_id=0",
-                    "sale_stock_number": 600,
-                    "stock_number": 524,
-                    "stock_description": "Đã bán 76",
-                    "stock_percent": 13,
-                    "stock_title": "Đã bán 76",
-                    "hidden_unit_price_display": "",
-                    "deeplink": "https://www.sendo.vn/flash_sale/?trackid=67139168&slotId=0",
-                    "buy_number": 76
                 },
                 {
-                    "deal_id": 67139166,
                     "name": "ÁO MƯA CÁNH DƠI NHỰA PVC HONDA",
-                    "stock_status": 1,
                     "promotion_price": 14000,
                     "unit_price": 39000,
                     "promotion_percent": 65,
@@ -341,9 +280,7 @@
                     "buy_number": 47
                 },
                 {
-                    "deal_id": 67139164,
                     "name": "LON LỚN 110G KHOAI TÂY PRINGLES - [Date 08/2021]",
-                    "stock_status": 1,
                     "promotion_price": 15000,
                     "unit_price": 39000,
                     "promotion_percent": 62,
@@ -371,9 +308,7 @@
                     "buy_number": 74
                 },
                 {
-                    "deal_id": 67133663,
                     "name": "Đồ vắt cam Rico cao cấp",
-                    "stock_status": 1,
                     "promotion_price": 15000,
                     "unit_price": 59000,
                     "promotion_percent": 75,
@@ -401,9 +336,7 @@
                     "buy_number": 0
                 },
                 {
-                    "deal_id": 67131830,
                     "name": "Robot lau nhà thông minh Sweep",
-                    "stock_status": 1,
                     "promotion_price": 49000,
                     "unit_price": 200000,
                     "promotion_percent": 76,
@@ -431,9 +364,7 @@
                     "buy_number": 34
                 },
                 {
-                    "deal_id": 67116116,
                     "name": "(Mua 3 hộp Free ship) Cần Tây Mật Ong Collagen hộp 15 gói",
-                    "stock_status": 1,
                     "promotion_price": 39000,
                     "unit_price": 70000,
                     "promotion_percent": 45,
@@ -461,9 +392,7 @@
                     "buy_number": 0
                 },
                 {
-                    "deal_id": 67132840,
                     "name": "Ủ Tóc Collagen Karseell 500ml Siêu Mượt Phục Hồi Tóc Hư Tổn  Cấp Ẩm  Dưỡng Tóc Mềm Mượt",
-                    "stock_status": 1,
                     "promotion_price": 39000,
                     "unit_price": 245000,
                     "promotion_percent": 85,
@@ -491,9 +420,7 @@
                     "buy_number": 15
                 },
                 {
-                    "deal_id": 67135109,
                     "name": "Bình Giữ Nhiệt Inox Hot And Cool 600ml - Bình Giữ Nhiệt 600ml, Bình Inox Giữ Nhiệt",
-                    "stock_status": 1,
                     "promotion_price": 38000,
                     "unit_price": 119000,
                     "promotion_percent": 69,
@@ -521,9 +448,7 @@
                     "buy_number": 10
                 },
                 {
-                    "deal_id": 67137037,
                     "name": "COMBO 10 GÓI 300 TỜ GIẤY ĂN GẤU TRÚC SIPIAO",
-                    "stock_status": 1,
                     "promotion_price": 25000,
                     "unit_price": 80000,
                     "promotion_percent": 69,
@@ -551,9 +476,7 @@
                     "buy_number": 22
                 },
                 {
-                    "deal_id": 67131846,
                     "name": "Kệ để giày dép 4 tầng nhựa - Giá để giày thông minh",
-                    "stock_status": 1,
                     "promotion_price": 23000,
                     "unit_price": 63000,
                     "promotion_percent": 64,
@@ -581,9 +504,7 @@
                     "buy_number": 2
                 },
                 {
-                    "deal_id": 67133536,
                     "name": "Set Bộ Thể Thao Nam Sang Chảnh",
-                    "stock_status": 1,
                     "promotion_price": 39000,
                     "unit_price": 115000,
                     "promotion_percent": 67,
@@ -611,9 +532,7 @@
                     "buy_number": 7
                 },
                 {
-                    "deal_id": 67137437,
                     "name": "Một Lon Sữa Đặc ABLE FARM 380G Nhập Khẩu Malaysia",
-                    "stock_status": 1,
                     "promotion_price": 12500,
                     "unit_price": 25000,
                     "promotion_percent": 50,
@@ -641,9 +560,7 @@
                     "buy_number": 0
                 },
                 {
-                    "deal_id": 67137851,
                     "name": "Nước Dừa Tươi Coco Fresh Vinamilk 330ml",
-                    "stock_status": 1,
                     "promotion_price": 8500,
                     "unit_price": 25000,
                     "promotion_percent": 66,
@@ -671,9 +588,7 @@
                     "buy_number": 30
                 },
                 {
-                    "deal_id": 67131647,
                     "name": "QUẠT LỠ CÔNG NGHIỆP",
-                    "stock_status": 1,
                     "promotion_price": 149000,
                     "unit_price": 203300,
                     "promotion_percent": 27,
@@ -701,9 +616,7 @@
                     "buy_number": 11
                 },
                 {
-                    "deal_id": 67133717,
                     "name": "Bộ Quần Áo Đũi Nam chất vải đũi hàng cao cấp dày dặn",
-                    "stock_status": 1,
                     "promotion_price": 99000,
                     "unit_price": 215000,
                     "promotion_percent": 54,
@@ -731,9 +644,7 @@
                     "buy_number": 10
                 },
                 {
-                    "deal_id": 67133532,
                     "name": "Áo ba lỗ nam vải co giãn đẹp thun cao cấp siều bền TS564 Tronshop",
-                    "stock_status": 1,
                     "promotion_price": 25000,
                     "unit_price": 29000,
                     "promotion_percent": 14,
@@ -761,9 +672,7 @@
                     "buy_number": 11
                 },
                 {
-                    "deal_id": 67133537,
                     "name": "[Freeship] Áo lót cài trước bàn tay nâng ngực không gọng cao cấp 40-60kg",
-                    "stock_status": 1,
                     "promotion_price": 19000,
                     "unit_price": 89000,
                     "promotion_percent": 79,
@@ -791,7 +700,6 @@
                     "buy_number": 16
                 },
                 {
-                    "deal_id": 67133533,
                     "name": "quần lót nam boxer thun lạnh hiệu Jarta thông hơi cao cấp mặc cực kỳ mát loại quần sịp đùi nam thun lạnh bản lớn",
                     "stock_status": 1,
                     "promotion_price": 15000,

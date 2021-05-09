@@ -56,7 +56,7 @@ extension Personal {
         Personal(icon: ImageManager.managerOrder, title: "Quản lý đơn hàng",
                  cellType: .managerOrder),
         
-        Personal(icon: ImageManager.reciveOrder, title: "TiKi đã tiếp nhận",
+        Personal(icon: ImageManager.reciveOrder, title: "HiShop đã tiếp nhận",
                  cellType: .recive),
 
         Personal(icon: ImageManager.paymentAgain, title: "Đơn hàng chờ thanh toán lại",

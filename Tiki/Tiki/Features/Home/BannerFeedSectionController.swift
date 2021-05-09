@@ -13,10 +13,6 @@ class BannerFeedSectionController: ListSectionController{
     
     override init() {
         super.init()
-        self.inset = UIEdgeInsets(top: Dimension.shared.mediumMargin_12,
-                                  left: Dimension.shared.mediumMargin_12,
-                                  bottom: 0,
-                                  right: Dimension.shared.mediumMargin_12)
     }
     
     override func numberOfItems() -> Int {
@@ -28,7 +24,7 @@ class BannerFeedSectionController: ListSectionController{
           return .zero
         }
         
-        let width = context.containerSize.width - ( Dimension.shared.mediumMargin_12 * 2 )
+        let width = context.containerSize.width
         return CGSize(width: width, height: 140)
     }
     

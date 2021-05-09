@@ -17,6 +17,13 @@ class AppRouter: NSObject {
         viewController.present(nvc, animated: true, completion: nil)
     }
     
+    class func presentViewParameterProduct(viewController: UIViewController, values: [String]) {
+        let vc = ProductParameterViewController()
+        vc.configValueTitle(values: values)
+        let nvc = UINavigationController(rootViewController: vc)
+        viewController.present(nvc, animated: true, completion: nil)
+    }
+    
     class func pushToPasswordVC() {
         let vc = PasswordViewController()
         UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
@@ -62,11 +69,16 @@ class AppRouter: NSObject {
     }
     
     class func pushToProductDetail(_ product: Product) {
-
+        let viewController = ProductDetailViewController()
+        viewController.configData(product)
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
     class func pushToShopHome(_ shopId: Int) {
-
+        let viewController = ShopHomeViewController()
+//        viewController.loadShop(by: shopId)
+        viewController.requestLoadShop()
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
     class func pushToUserProfile(_ userId: String) {
@@ -94,5 +106,6 @@ class AppRouter: NSObject {
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
+
 
 }

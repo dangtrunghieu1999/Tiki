@@ -28,6 +28,7 @@ class PasswordViewController: BaseViewController {
         let label = UILabel()
         label.attributedText = getRequiredAttibuted(from: TextManager.pleaseInputPW,
                                                     to: "0336665653")
+        label.numberOfLines = 0
         return label
     }()
     
@@ -37,6 +38,7 @@ class PasswordViewController: BaseViewController {
         textField.fontSizePlaceholder(text: TextManager.password,
                                       size: FontSize.title.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textField.delegate = self
         return textField
     }()
     

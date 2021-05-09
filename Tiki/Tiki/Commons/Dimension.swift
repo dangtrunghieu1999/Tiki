@@ -81,12 +81,16 @@ class Dimension {
     
     // MARK: - Button
     
+    var smalltHeightButton_28: CGFloat {
+        return 28 * self.widthScale
+    }
+    
     var largeHeightButton: CGFloat {
         return 50 * self.widthScale
     }
     
     var defaultHeightButton: CGFloat {
-        return 42 * self.widthScale
+        return 48 * self.widthScale
     }
     
     var smalltHeightButton: CGFloat {
@@ -165,5 +169,5 @@ class Dimension {
         return 8 * widthScale
     }
     
-    let productImageRatio: CGFloat   = 0.92
+    let productImageRatio: CGFloat   = 0.94
 }

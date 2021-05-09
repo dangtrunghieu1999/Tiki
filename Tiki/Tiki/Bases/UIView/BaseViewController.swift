@@ -49,9 +49,10 @@ open class BaseViewController: UIViewController {
         searchBar.setDefaultBackgroundColor()
         searchBar.layer.cornerRadius = 5
         searchBar.layer.masksToBounds = true
-        searchBar.placeholder = TextManager.search.localized()
+        searchBar.placeholder = TextManager.search
         searchBar.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         searchBar.returnKeyType = .search
+        searchBar.fontSizePlaceholder(text: TextManager.search, size: FontSize.h2.rawValue)
         var rect = navigationController?.navigationBar.frame ?? CGRect.zero
         rect.size.height = 36
         searchBar.frame = rect
@@ -81,7 +82,7 @@ open class BaseViewController: UIViewController {
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.setImage(ImageManager.whiteCart, for: .normal)
         button.imageView?.contentMode = .scaleAspectFit
-//        button.badgeNumber = CartManager.shared.totalProducts
+        button.badgeNumber = CartManager.shared.totalProducts
         button.addTarget(self, action: #selector(touchInCartButton), for: .touchUpInside)
         return button
     }()
@@ -209,7 +210,7 @@ open class BaseViewController: UIViewController {
     }
     
     @objc func handleCartBadgeChange() {
-//        cartButton.badgeNumber = CartManager.shared.totalProducts
+        cartButton.badgeNumber = CartManager.shared.totalProducts
     }
     
     func addEmptyView(message: String? = nil, image: UIImage? = nil) {
@@ -345,6 +346,14 @@ extension BaseViewController: UITextFieldDelegate {
         searchBar.endEditing(true)
         searchBar.resignFirstResponder()
         return true
+    }
+    
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.addBottomBorder(UIColor.background)
+    }
+    
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.addBottomBorder(UIColor.separator)
     }
 }
 
