@@ -54,6 +54,7 @@ class SignInViewController: BaseViewController {
         textField.fontSizePlaceholder(text: TextManager.phoneNumber,
                                       size: FontSize.title.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self
         return textField
     }()
@@ -67,9 +68,10 @@ class SignInViewController: BaseViewController {
     fileprivate lazy var continueButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.continueSignIn, for: .normal)
-        button.backgroundColor = UIColor.primary
+        button.backgroundColor = UIColor.disable
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5
+        button.isUserInteractionEnabled = false
         button.addTarget(self, action: #selector(tapOnPassword), for: .touchUpInside)
         return button
     }()
@@ -156,6 +158,17 @@ class SignInViewController: BaseViewController {
         self.navigationController?.navigationBar.isHidden = false
     }
     
+    @objc private func textFieldValueChange(_ textField: UITextField) {
+        guard let phoneNumber = self.phoneTextField.text else { return }
+        if phoneNumber != "" {
+            continueButton.isUserInteractionEnabled = true
+            continueButton.backgroundColor = UIColor.primary
+        } else {
+            continueButton.isUserInteractionEnabled = false
+            continueButton.backgroundColor = UIColor.disable
+        }
+    }
+    
     // MARK: - Helper Method
     
     override func touchUpInLeftBarButtonItem() {
@@ -164,6 +177,7 @@ class SignInViewController: BaseViewController {
     
     @objc func tapOnPassword() {
         let vc = PasswordViewController()
+        vc.username = self.phoneTextField.text ?? ""
         self.navigationController?.pushViewController(vc, animated: true)
         
     }

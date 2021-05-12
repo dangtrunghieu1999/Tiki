@@ -60,7 +60,7 @@ final class  TextManager {
     static let earnMoney                    = "Kiếm tiền"
     static let bussinessAndEarnMoney        = "Kinh doanh, kiếm tiền"
     static let signIn                       = "Đăng nhập hoặc Tạo tài khoản"
-    static let signInUserNamePlaceHolder    = "Điện thoại, email"
+    static let signInUserNamePlaceHolder    = "Điện thoại"
     static let password                     = "Mật khẩu"
     static let confirmPassword              = "Nhập lại mật khẩu"
     static let forgotPassword               = "Quên mật khẩu"

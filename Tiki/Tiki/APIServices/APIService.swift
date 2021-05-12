@@ -69,6 +69,7 @@ public final class APIService<EndPoint: EndPointType> {
                                         onRequestFail: @escaping () -> Void) {
         
         dataRequest.responseData { (dataResponse) in
+            
             #if DEBUG
             if let request = dataRequest.request, let response = dataResponse.response, let data = dataResponse.data {
                 NetworkLogger.log(request: request,
@@ -88,7 +89,7 @@ public final class APIService<EndPoint: EndPointType> {
             
             if dataResponse.response?.isSuccess ?? false {
                 let apiResponse = APIResponse(response: dataResponse)
-                if apiResponse.data != nil && apiResponse.success {
+                if apiResponse.data != nil {
                     onSuccess(apiResponse)
                 } else {
                     onFailure(apiResponse.error)

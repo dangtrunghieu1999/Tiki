@@ -78,6 +78,13 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Helper Method
     
+    func configData(image: String, title: String) {
+        let url = URL(string: image)
+        self.avatarImageView.sd_setImage(with: url)
+        self.subTitleLabel.text  = title
+        self.titleLabel.isHidden = true
+        self.nextButton.isHidden = true
+    }
     // MARK: - GET API
     
     // MARK: - Layout

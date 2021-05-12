@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF050AA02647FBAA003DB90F /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF050A9F2647FBAA003DB90F /* NotificationsTableViewCell.swift */; };
 		CF1AEF6726097BE600269C54 /* PersonalFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */; };
 		CF1CC29C2644436A00CFA22A /* SelectShipAddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF1CC29B2644436A00CFA22A /* SelectShipAddressTableViewCell.swift */; };
 		CF2A17E8262A8DBC00990EA7 /* ProductRecommend.json in Resources */ = {isa = PBXBuildFile; fileRef = CF2A17E7262A8DBC00990EA7 /* ProductRecommend.json */; };
@@ -51,6 +52,8 @@
 		CF6104692610B7B200FBB983 /* BannerEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6104682610B7B200FBB983 /* BannerEventViewController.swift */; };
 		CF61046C2610B7FE00FBB983 /* ProductRecommendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61046B2610B7FE00FBB983 /* ProductRecommendViewController.swift */; };
 		CF6E81352610937100FDB5BF /* BaseHomeSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */; };
+		CF6F242926496ACE00693504 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F242826496ACE00693504 /* SignUpViewModel.swift */; };
+		CF6F242C2649775100693504 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F242B2649775100693504 /* SignInViewModel.swift */; };
 		CF6F553A262C732D00ED6F64 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF6F5539262C732D00ED6F64 /* TitleTableViewCell.swift */; };
 		CF730921262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730920262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift */; };
 		CF730924262E8DCF0026C0B3 /* ProductCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730923262E8DCF0026C0B3 /* ProductCommentViewController.swift */; };
@@ -264,6 +267,7 @@
 		CFAF8FF925FC5E51000E2CCA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */; };
 		CFAF8FFD25FC5EBF000E2CCA /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */; };
 		CFB41DFA26476EA9006A323D /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB41DF926476EA9006A323D /* UITextField+Extension.swift */; };
+		CFB9998F2649FC4F00F0AAD5 /* HomeEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFB9998E2649FC4F00F0AAD5 /* HomeEndPoint.swift */; };
 		CFBA8025262D765C000E1ED2 /* ProductParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA8024262D765C000E1ED2 /* ProductParameter.swift */; };
 		CFBA8028262D963F000E1ED2 /* ProductParameterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBA8027262D963F000E1ED2 /* ProductParameterViewController.swift */; };
 		CFBC17A72624059D0016A223 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC17A62624059D0016A223 /* ProductDetailViewController.swift */; };
@@ -312,6 +316,7 @@
 /* Begin PBXFileReference section */
 		89804318629FE70AB5E51062 /* Pods_Tiki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tiki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B436648191770830A2E126B8 /* Pods-Tiki.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.release.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.release.xcconfig"; sourceTree = "<group>"; };
+		CF050A9F2647FBAA003DB90F /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		CF1AEF6626097BE600269C54 /* PersonalFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF1CC29B2644436A00CFA22A /* SelectShipAddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectShipAddressTableViewCell.swift; sourceTree = "<group>"; };
 		CF2A17E7262A8DBC00990EA7 /* ProductRecommend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductRecommend.json; sourceTree = "<group>"; };
@@ -356,6 +361,8 @@
 		CF6104682610B7B200FBB983 /* BannerEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerEventViewController.swift; sourceTree = "<group>"; };
 		CF61046B2610B7FE00FBB983 /* ProductRecommendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductRecommendViewController.swift; sourceTree = "<group>"; };
 		CF6E81342610937100FDB5BF /* BaseHomeSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseHomeSectionModel.swift; sourceTree = "<group>"; };
+		CF6F242826496ACE00693504 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		CF6F242B2649775100693504 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		CF6F5539262C732D00ED6F64 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		CF730920262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF730923262E8DCF0026C0B3 /* ProductCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCommentViewController.swift; sourceTree = "<group>"; };
@@ -610,6 +617,7 @@
 		CFAF8FF825FC5E51000E2CCA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		CFB41DF926476EA9006A323D /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		CFB9998E2649FC4F00F0AAD5 /* HomeEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEndPoint.swift; sourceTree = "<group>"; };
 		CFBA8024262D765C000E1ED2 /* ProductParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductParameter.swift; sourceTree = "<group>"; };
 		CFBA8027262D963F000E1ED2 /* ProductParameterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductParameterViewController.swift; sourceTree = "<group>"; };
 		CFBC17A62624059D0016A223 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
@@ -711,6 +719,7 @@
 		CF4A01FD261EADBE003734EC /* Notification */ = {
 			isa = PBXGroup;
 			children = (
+				CF050A9F2647FBAA003DB90F /* NotificationsTableViewCell.swift */,
 				CF4A01FE261EADDD003734EC /* NotificationViewController.swift */,
 			);
 			path = Notification;
@@ -966,6 +975,7 @@
 			isa = PBXGroup;
 			children = (
 				CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */,
+				CFB9998E2649FC4F00F0AAD5 /* HomeEndPoint.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1551,6 +1561,7 @@
 			children = (
 				CFAF8FE125FC55D1000E2CCA /* SignInViewController.swift */,
 				CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */,
+				CF6F242B2649775100693504 /* SignInViewModel.swift */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -1559,6 +1570,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD794C7260EE783004DE431 /* SignUpViewController.swift */,
+				CF6F242826496ACE00693504 /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -2010,6 +2022,7 @@
 				CFAF8F0925FC507C000E2CCA /* NIFoundationMethods.m in Sources */,
 				CF6104612610B71700FBB983 /* BannerFeedSectionController.swift in Sources */,
 				CFAF8F1025FC507C000E2CCA /* FLAnimatedImageView.m in Sources */,
+				CF6F242C2649775100693504 /* SignInViewModel.swift in Sources */,
 				CFAF8E5D25FC4EDD000E2CCA /* UploadManager.swift in Sources */,
 				CF55F1AE261EB87C00635F80 /* EventCollectionViewCell.swift in Sources */,
 				CFAF8E5E25FC4EDD000E2CCA /* AlertManager.swift in Sources */,
@@ -2201,6 +2214,7 @@
 				CFAF8F0625FC507C000E2CCA /* NIState.m in Sources */,
 				CFAF8E5125FC4EDD000E2CCA /* Notification+Extension.swift in Sources */,
 				CFAF8FC225FC545D000E2CCA /* LoadMoreModel.swift in Sources */,
+				CFB9998F2649FC4F00F0AAD5 /* HomeEndPoint.swift in Sources */,
 				CFD56FED2635CBE800B17AEA /* OrderInfomationCollectionViewCell.swift in Sources */,
 				CFD56FF62635CBE800B17AEA /* OrderManager.swift in Sources */,
 				CFAF8F1525FC507C000E2CCA /* ImageCropperPresenter.swift in Sources */,
@@ -2208,6 +2222,7 @@
 				CFAF8FDA25FC545D000E2CCA /* EmptyView.swift in Sources */,
 				CFAF8E4325FC4EDD000E2CCA /* UIViewController+Extenstion.swift in Sources */,
 				CFAF8E3E25FC4EDD000E2CCA /* UILabel+Extension.swift in Sources */,
+				CF6F242926496ACE00693504 /* SignUpViewModel.swift in Sources */,
 				CF588793262826510041A595 /* ProductDetailRecommendCollectionViewCell.swift in Sources */,
 				CFAF8E4A25FC4EDD000E2CCA /* Date+Extension.swift in Sources */,
 				CFAF8E3C25FC4EDD000E2CCA /* GradientPoint.swift in Sources */,
@@ -2226,6 +2241,7 @@
 				CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */,
 				CFAF8F0225FC507C000E2CCA /* NINonRetainingCollections.m in Sources */,
 				CFAF8F1C25FC507C000E2CCA /* UINavigationController+ImagePickerConfigurable.swift in Sources */,
+				CF050AA02647FBAA003DB90F /* NotificationsTableViewCell.swift in Sources */,
 				CFEA2018262EC18E00288A39 /* ShopHomeViewModel.swift in Sources */,
 				CFAF8F1A25FC507C000E2CCA /* ContentDynamicLayout.swift in Sources */,
 				CF588780262824000041A595 /* ProductDetailDescriptionCollectionViewCell.swift in Sources */,

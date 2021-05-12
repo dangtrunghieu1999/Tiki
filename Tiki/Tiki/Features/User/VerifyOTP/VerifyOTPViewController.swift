@@ -9,7 +9,6 @@ import UIKit
 
 class VerifyOTPViewController: BaseViewController {
     
-    
     var userName: String = ""
     var isActiveAccount = false
     
@@ -58,7 +57,7 @@ class VerifyOTPViewController: BaseViewController {
     fileprivate lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.next, for: .normal)
-        button.backgroundColor = UIColor.primary
+        button.backgroundColor = UIColor.disable
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(tapOnNextButton), for: .touchUpInside)
@@ -113,7 +112,26 @@ class VerifyOTPViewController: BaseViewController {
     }
     
     @objc private func tapOnNextButton() {
+        guard let code = enterCodeTextField.text else { return }
+        let endPoint = UserEndPoint.checkValidCode(bodyParams: ["phone": userName,
+                                                                "otp": code])
         
+        APIService.request(endPoint: endPoint, onSuccess: { [weak self] (apiResponse) in
+            if self?.isActiveAccount ?? false {
+                AlertManager.shared.show(message: TextManager.activeAccSuccess.localized())
+                UIViewController.setRootVCBySinInVC()
+            } else {
+                let enterNewPWVC = EnterNewPWViewController()
+                enterNewPWVC.code = code
+                self?.navigationController?.pushViewController(enterNewPWVC, animated: true)
+            }
+            
+        }, onFailure: { (apiError) in
+            AlertManager.shared.show(message: TextManager.invalidCode.localized())
+        }) {
+            AlertManager.shared.show(message: TextManager.errorMessage.localized())
+        }
+
     }
     
     // MARK: - Setup Layouts

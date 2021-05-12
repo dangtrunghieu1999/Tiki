@@ -65,7 +65,10 @@ class AppRouter: NSObject {
     }
     
     class func pushToVerifyOTPVC(with userName: String, isActiveAcc: Bool = false) {
-
+        let viewController = VerifyOTPViewController()
+        viewController.userName = userName
+        viewController.isActiveAccount = isActiveAcc
+        UIViewController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
     class func pushToProductDetail(_ product: Product) {

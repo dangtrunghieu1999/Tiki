@@ -11,6 +11,8 @@ class EnterNewPWViewController: BaseViewController {
     
     // MARK: - Variables
     
+    var code = ""
+    
     // MARK: - UI Elements
     
     

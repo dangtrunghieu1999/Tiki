@@ -11,11 +11,11 @@ import Alamofire
 
 enum UserEndPoint {
     case signIn(bodyParams: Parameters)
-    case signUp(bodyParams: Parameters)
+    case register(bodyParams: Parameters)
     case forgotPW(bodyParams: Parameters)
     case checkValidCode(bodyParams: Parameters)
     case createNewPW(bodyParams: Parameters)
-    case getUserById(params: Parameters)
+    case getUserInfo
     case searchUser(params: Parameters)
 }
 
@@ -23,17 +23,17 @@ extension UserEndPoint: EndPointType {
     var path: String {
         switch self {
         case .signIn:
-            return "/Auth/Login"
-        case .signUp:
-            return "/User/Create"
+            return "/user/login"
+        case .register:
+            return "/user/register"
         case .forgotPW:
-            return "/User/ForgotPassword"
+            return "/user/changepassword"
         case .checkValidCode:
-            return "/User/ConfirmAccount"
+            return "/user/verify"
         case .createNewPW:
             return "/User/CreateNewPassword"
-        case .getUserById:
-            return "/User/GetById"
+        case .getUserInfo:
+            return "/user/me"
         case .searchUser:
             return "/User/SearchUser"
         }
@@ -43,7 +43,7 @@ extension UserEndPoint: EndPointType {
         switch self {
         case .signIn:
             return .post
-        case .signUp:
+        case .register:
             return .post
         case .forgotPW:
             return .post
@@ -51,7 +51,7 @@ extension UserEndPoint: EndPointType {
             return .post
         case .createNewPW:
             return .post
-        case .getUserById:
+        case .getUserInfo:
             return .get
         case .searchUser:
             return .get
@@ -62,7 +62,7 @@ extension UserEndPoint: EndPointType {
         switch self {
         case .signIn(let bodyParams):
             return bodyParams
-        case .signUp(let bodyParams):
+        case .register(let bodyParams):
             return bodyParams
         case .forgotPW(let bodyParams):
             return bodyParams
@@ -70,8 +70,8 @@ extension UserEndPoint: EndPointType {
             return bodyParams
         case .createNewPW(let bodyParams):
             return bodyParams
-        case .getUserById(let params):
-            return params
+        case .getUserInfo:
+            return nil
         case .searchUser(let params):
             return params
         }
