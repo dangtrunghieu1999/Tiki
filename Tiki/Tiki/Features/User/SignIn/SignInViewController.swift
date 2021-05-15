@@ -102,32 +102,40 @@ class SignInViewController: BaseViewController {
         return label
     }()
     
-    fileprivate lazy var facebookButton: UIButton = {
-        let button = UIButton()
-        button.setImage(ImageManager.facebook, for: .normal)
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
-        button.backgroundColor = .clear
-        return button
+    private let containerView: BaseView = {
+        let view = BaseView()
+        return view
     }()
 
-    fileprivate lazy var googleButton: UIButton = {
+    fileprivate lazy var lineTitleLabel: TitleCenterLineView = {
+        let label = TitleCenterLineView()
+        label.titleText = TextManager.optionSignIn
+        label.titleLabel.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        return label
+    }()
+    
+    
+    fileprivate lazy var buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.spacing = 16
+        stackView.alignment = .center
+        stackView.distribution = .fill
+        return stackView
+    }()
+    
+    lazy var facebookSignInButton: UIButton = {
         let button = UIButton()
-        button.setImage(ImageManager.google, for: .normal)
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = Dimension.shared.largeHeightButton / 2
-        button.backgroundColor = .clear
+        button.setImage(ImageManager.facebook, for: .normal)
         return button
     }()
     
-    fileprivate lazy var optionSignInLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.optionSignIn
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        label.textAlignment = .center
-        label.textColor = UIColor.bodyText
-        return label
+    lazy var googleSignInButton: UIButton = {
+        let button = UIButton()
+        button.setImage(ImageManager.google, for: .normal)
+        return button
     }()
+    
     
     // MARK: - View LifeCycles
     
@@ -142,10 +150,12 @@ class SignInViewController: BaseViewController {
         layoutLineView()
         layoutContinueButton()
         layoutSignUpButton()
+        layoutContainerView()
+        layoutLineTitleLabel()
+        layoutButtonStackView()
+        layoutFaceBookSignInButton()
+        layoutGoogleSignInButton()
         layoutTermAndConditionLabel()
-        layoutFacebookButton()
-        layoutGoogleButton()
-        layoutOptionSignInLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -269,10 +279,54 @@ class SignInViewController: BaseViewController {
         view.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { (make) in
             make.top.equalTo(continueButton.snp.bottom)
-                .offset(Dimension.shared.mediumMargin_12)
+                .offset(Dimension.shared.normalMargin)
             make.centerX.equalToSuperview()
             make.width.equalTo(100)
             make.height.equalTo(20)
+        }
+    }
+        
+    private func layoutContainerView() {
+        view.addSubview(containerView)
+        containerView.snp.makeConstraints { (make) in
+            make.top.equalTo(signUpButton.snp.bottom)
+                .offset(Dimension.shared.largeMargin_32)
+            make.left.equalToSuperview()
+                .offset(Dimension.shared.normalMargin)
+            make.right.equalToSuperview()
+                .offset(-Dimension.shared.normalMargin)
+            make.height.equalTo(20)
+        }
+    }
+    
+    private func layoutLineTitleLabel() {
+        containerView.addSubview(lineTitleLabel)
+        lineTitleLabel.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    private func layoutButtonStackView() {
+        view.addSubview(buttonStackView)
+        buttonStackView.snp.makeConstraints { (make) in
+            make.top.equalTo(containerView.snp.bottom)
+                .offset(Dimension.shared.largeMargin_32)
+            make.width.equalTo(116)
+            make.centerX.equalToSuperview()
+        }
+    }
+    
+    private func layoutFaceBookSignInButton() {
+        buttonStackView.addArrangedSubview(facebookSignInButton)
+        facebookSignInButton.snp.makeConstraints { (make) in
+            make.width.height.equalTo(50)
+        }
+    }
+    
+    private func layoutGoogleSignInButton() {
+        buttonStackView.addArrangedSubview(googleSignInButton)
+        googleSignInButton.snp.makeConstraints { (make) in
+            make.width.height.equalTo(50)
         }
     }
     
@@ -280,42 +334,12 @@ class SignInViewController: BaseViewController {
         view.addSubview(termAndConditionLabel)
         termAndConditionLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
-        }
-    }
-    
-    private func layoutFacebookButton() {
-        view.addSubview(facebookButton)
-        facebookButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(termAndConditionLabel.snp.top)
-                .offset(-Dimension.shared.normalMargin)
-            make.centerX.equalToSuperview()
-                .offset(-Dimension.shared.largeMargin_32)
-            make.width.height.equalTo(Dimension.shared.largeHeightButton)
-        }
-    }
-    
-    private func layoutGoogleButton() {
-        view.addSubview(googleButton)
-        googleButton.snp.makeConstraints { (make) in
-            make.bottom.equalTo(termAndConditionLabel.snp.top)
-                .offset(-Dimension.shared.normalMargin)
-            make.centerX.equalToSuperview()
+            make.top.equalTo(buttonStackView.snp.bottom)
                 .offset(Dimension.shared.largeMargin_32)
-            make.width.height.equalTo(Dimension.shared.largeHeightButton)
         }
     }
+
     
-    private func layoutOptionSignInLabel() {
-        view.addSubview(optionSignInLabel)
-        optionSignInLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(facebookButton.snp.top)
-                .offset(-Dimension.shared.normalMargin)
-            make.width.equalTo(200)
-            make.centerX.equalToSuperview()
-        }
-    }
 }
 
 // MARK: - NIAttributedLabelDelegate

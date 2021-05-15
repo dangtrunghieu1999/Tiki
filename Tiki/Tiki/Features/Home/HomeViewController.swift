@@ -48,6 +48,11 @@ class HomeViewController: BaseViewController {
         requestHomeAPI()
     }
     
+    override func touchInSearchBar() {
+        let vc = SearchProductViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     // MARK: - Helper Method
     
     func requestHomeAPI() {
