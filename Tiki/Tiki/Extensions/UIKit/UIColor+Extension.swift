@@ -121,6 +121,10 @@ extension UIColor {
     class var messageBackground: UIColor {
         return UIColor(hex: "EFF1F3")
     }
+    
+    class var boderColor: UIColor {
+        return UIColor(hex: "E0E0E5")
+    }
 }
 
 // MARK: - Support Method

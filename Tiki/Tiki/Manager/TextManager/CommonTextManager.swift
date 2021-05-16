@@ -49,6 +49,9 @@ final class  TextManager {
     static let loginFailMessage             = "Đăng nhập thất bại vui lòng kiểm tra tên đăng nhập hoặc mật khẩu"
     static let accNotActive                 = "Tài khoản chưa kích hoạt \n Bạn kiểm tra email và kích hoạt tài khoản để bắt đầu sử dụng"
     static let errorMessage                 = "Đã xảy ra lỗi vui lòng thử lại"
+    static let gender                       = "Gender"
+    static let female                       = "Nữ"
+    static let male                         = "Nam"
     
     // MARK: - Users
     
@@ -60,7 +63,7 @@ final class  TextManager {
     static let earnMoney                    = "Kiếm tiền"
     static let bussinessAndEarnMoney        = "Kinh doanh, kiếm tiền"
     static let signIn                       = "Đăng nhập hoặc Tạo tài khoản"
-    static let signInUserNamePlaceHolder    = "Điện thoại, email"
+    static let signInUserNamePlaceHolder    = "Điện thoại"
     static let password                     = "Mật khẩu"
     static let confirmPassword              = "Nhập lại mật khẩu"
     static let forgotPassword               = "Quên mật khẩu"
@@ -136,4 +139,9 @@ final class  TextManager {
     static let processOrder                 = "Tiến hành đặt hàng"
     static let shipAddress                  = "Giao đến địa chỉ này"
     static let selectShipAddress            = "Chọn địa chỉ giao hàng"
+    static let changePassword               = "Đổi mật khẩu"
+    static let notSpecify                   = "Khác"
+    static let searchTitle2                 = "Sản phẩm và thương hiệu mọi thứ bạn cần"
+    static let myCategory                   = "Danh mục cho bạn"
+    
 }

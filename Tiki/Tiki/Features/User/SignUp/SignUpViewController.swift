@@ -11,6 +11,11 @@ class SignUpViewController: BaseViewController {
     
     // MARK: - Variables
     
+    fileprivate lazy var viewModel: SignUpViewModel = {
+        let viewModel = SignUpViewModel()
+        return viewModel
+    }()
+    
     private var selectedDate = AppConfig.defaultDate
     
     // MARK: - UI Elements
@@ -22,7 +27,7 @@ class SignUpViewController: BaseViewController {
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .semibold)
         return label
     }()
-     
+    
     fileprivate let freePolicyLabel: UILabel = {
         let label = UILabel()
         label.text = TextManager.freePolicy.localized()
@@ -60,7 +65,7 @@ class SignUpViewController: BaseViewController {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.conerRadiusMedium
         textField.layer.masksToBounds = true
-        textField.keyboardType = .emailAddress
+        textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
@@ -131,12 +136,12 @@ class SignUpViewController: BaseViewController {
         label.text = "Bằng cách nhấp vào Tạo tài khoản, bạn đồng ý với Điều khoản của chúng tôi và rằng bạn đã đọc Chính sách dữ liệu của chúng tôi.".localized()
         
         if let conditionRange = label.text?.range(of: "Điều khoản".localized()),
-            let conditionNSRange = label.text?.nsRange(from: conditionRange) {
+           let conditionNSRange = label.text?.nsRange(from: conditionRange) {
             label.addLink(URL(string: "https://careers.zalo.me/")!, range: conditionNSRange)
         }
         
         if let termRange = label.text?.range(of: "Chính sách dữ liệu".localized()),
-            let termNSRange = label.text?.nsRange(from: termRange) {
+           let termNSRange = label.text?.nsRange(from: termRange) {
             label.addLink(URL(string: "https://careers.zalo.me/")!, range: termNSRange)
         }
         
@@ -146,9 +151,10 @@ class SignUpViewController: BaseViewController {
     fileprivate lazy var createAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.createAccount, for: .normal)
-        button.backgroundColor = UIColor.primary
+        button.backgroundColor = UIColor.disable
         button.layer.cornerRadius = 5
         button.layer.masksToBounds = true
+        button.isUserInteractionEnabled = false
         button.addTarget(self, action: #selector(tapOnCreateAccountButton), for: .touchUpInside)
         return button
     }()
@@ -174,15 +180,79 @@ class SignUpViewController: BaseViewController {
         layoutCreateAccountButton()
     }
     
-    
-    
     @objc private func textFieldValueChange(_ textField: UITextField) {
-       
+        if viewModel.canSignUp(firstName: firstNameTextField.text,
+                               lastName: lastNameTextField.text,
+                               userName: userNameTextField.text,
+                               password: passwordTextField.text,
+                               confirmPassword: confirmpasswordTextField.text,
+                               dob: selectedDate) {
+            createAccountButton.isUserInteractionEnabled = true
+            createAccountButton.backgroundColor = UIColor.background
+        } else {
+            createAccountButton.isUserInteractionEnabled = false
+            createAccountButton.backgroundColor = UIColor.disable
+        }
     }
     
     @objc private func tapOnCreateAccountButton() {
-        let verifyOTPVC = VerifyOTPViewController()
-        self.navigationController?.pushViewController(verifyOTPVC, animated: true)
+        guard let firstName = firstNameTextField.text,
+              let lastName = lastNameTextField.text,
+              let userName = userNameTextField.text,
+              let password = passwordTextField.text,
+              let confirmPassword = confirmpasswordTextField.text
+        else {
+            return
+        }
+        
+        guard password == confirmPassword else {
+            AlertManager.shared.show(message: TextManager.passwordNotMatch.localized())
+            return
+        }
+        
+        guard password.count >= AppConfig.minPasswordLenght
+                && confirmPassword.count >= AppConfig.minPasswordLenght else {
+            AlertManager.shared.show(message: TextManager.pwNotEnoughLength.localized())
+            return
+        }
+        
+        showLoading()
+        
+        if viewModel.canSignUp(firstName: firstName,
+                               lastName: lastName,
+                               userName: userName,
+                               password: passwordTextField.text,
+                               confirmPassword: confirmPassword,
+                               dob: selectedDate) {
+            
+            viewModel.requestSignUp(firstName: firstName, lastName: lastName, userName: userName, password: password, dob: selectedDate, onSuccess: {
+                
+                self.hideLoading()
+                
+                var message = ""
+                
+                if userName.isPhoneNumber {
+                    message = TextManager.signUpPhoneSuccessMessage.localized()
+                    AppRouter.pushToVerifyOTPVC(with: userName, isActiveAcc: true)
+                    AlertManager.shared.show(TextManager.alertTitle.localized(),
+                                             message: message,
+                                             buttons: [TextManager.IUnderstand.localized()],
+                                             tapBlock: { (action, index) in })
+                    
+                } else {
+                    message = TextManager.signUpEmailSuccessMessage.localized()
+                    AlertManager.shared.show(TextManager.alertTitle.localized(),
+                                             message: message,
+                                             buttons: [TextManager.IUnderstand.localized()],
+                                             tapBlock: { (action, index) in
+                                                UIViewController.setRootVCBySinInVC()
+                                             })
+                }
+            }) { (message) in
+                self.hideLoading()
+                AlertManager.shared.show(TextManager.alertTitle.localized(), message: message)
+            }
+        }
     }
     
     @objc private func datePickerChange(_ picker: UIDatePicker) {

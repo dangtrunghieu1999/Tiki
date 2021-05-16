@@ -115,11 +115,11 @@ open class BaseViewController: UIViewController {
         if let navCtrl = navigationController {
             navCtrl.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         }
-        setupTabbar()
     }
     
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        setupTabbar()
     }
     
     override open func viewDidLoad() {

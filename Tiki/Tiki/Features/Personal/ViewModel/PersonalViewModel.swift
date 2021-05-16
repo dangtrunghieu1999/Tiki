@@ -89,6 +89,10 @@ extension PersonalViewModel: UICollectionViewDataSource {
             let header: PersonalHeaderCollectionReusableView =
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
             header.delegate = self
+            if UserManager.isLoggedIn() {
+                let title   = UserManager.user?.fullName ?? ""
+                header.configData(title: title)
+            }
             return header
         } else {
             return UICollectionReusableView()

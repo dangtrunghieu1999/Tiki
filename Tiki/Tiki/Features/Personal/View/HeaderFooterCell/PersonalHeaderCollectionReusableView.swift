@@ -14,7 +14,6 @@ protocol PersonalHeaderCollectionViewDelegate: class {
 class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Variables
-    
     weak var delegate: PersonalHeaderCollectionViewDelegate?
     
     // MARK: - UI Elements
@@ -22,7 +21,7 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     fileprivate lazy var avatarImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = ImageManager.avatarDefault
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         return imageView
     }()
@@ -78,6 +77,10 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Helper Method
     
+    func configData(title: String) {
+        self.subTitleLabel.text  = title
+        self.nextButton.isHidden = true
+    }
     // MARK: - GET API
     
     // MARK: - Layout
@@ -87,16 +90,20 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         avatarImageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.width.height.equalTo(50)
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
+            make.left.equalToSuperview()
+                .offset(Dimension.shared.normalMargin)
         }
     }
     
     private func layoutTitleLabel() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(avatarImageView.snp.right).offset(Dimension.shared.normalMargin)
-            make.top.equalTo(avatarImageView)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.left.equalTo(avatarImageView.snp.right)
+                .offset(Dimension.shared.normalMargin)
+            make.top.equalTo(avatarImageView.snp.top)
+                .offset(Dimension.shared.smallMargin)
+            make.right.equalToSuperview()
+                .offset(-Dimension.shared.normalMargin)
         }
     }
     
@@ -104,16 +111,18 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         addSubview(subTitleLabel)
         subTitleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
-            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.smallMargin)
+            make.bottom.equalTo(avatarImageView.snp.bottom)
+                .offset(-Dimension.shared.smallMargin)
         }
     }
     
     private func layoutNextButton() {
         addSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.right.equalToSuperview()
+                .offset(-Dimension.shared.normalMargin)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(12)
+            make.width.height.equalTo(24)
         }
     }
 }

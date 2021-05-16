@@ -83,5 +83,4 @@ class EmptyView: BaseView {
             make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.mediumMargin)
         }
     }
-    
 }

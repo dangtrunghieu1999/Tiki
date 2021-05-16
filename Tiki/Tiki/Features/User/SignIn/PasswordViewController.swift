@@ -12,6 +12,13 @@ class PasswordViewController: BaseViewController {
 
     // MARK: - Variables
     
+    fileprivate lazy var viewModel: SignInViewModel = {
+        let viewModel = SignInViewModel()
+        return viewModel
+    }()
+    
+    var username: String = ""
+    
     // MARK: - UI Elements
     
     fileprivate lazy var titleLabel: UILabel = {
@@ -38,6 +45,7 @@ class PasswordViewController: BaseViewController {
         textField.fontSizePlaceholder(text: TextManager.password,
                                       size: FontSize.title.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self
         return textField
     }()
@@ -51,9 +59,10 @@ class PasswordViewController: BaseViewController {
     fileprivate lazy var signInButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.signInAccount, for: .normal)
-        button.backgroundColor = UIColor.primary
+        button.backgroundColor = UIColor.disable
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5
+        button.isUserInteractionEnabled = false
         button.addTarget(self, action: #selector(tapOnSignIn), for: .touchUpInside)
         return button
     }()
@@ -97,9 +106,29 @@ class PasswordViewController: BaseViewController {
         return attributedText
     }
     
+    @objc private func textFieldValueChange(_ textField: UITextField) {
+        guard let password = self.passwordTextField.text else { return }
+        if password != "" {
+            signInButton.isUserInteractionEnabled = true
+            signInButton.backgroundColor = UIColor.primary
+        } else {
+            signInButton.isUserInteractionEnabled = false
+            signInButton.backgroundColor = UIColor.disable
+        }
+    }
     
     @objc func tapOnSignIn() {
+        guard let password = self.passwordTextField.text else { return }
+        showLoading()
         
+        viewModel.requestSignIn(userName: self.username, passWord: password, onSuccess: {
+            self.hideLoading()
+            guard let window = UIApplication.shared.keyWindow else { return }
+            window.rootViewController = TKTabBarViewController()
+        }) { (message) in
+            self.hideLoading()
+            AlertManager.shared.show(TextManager.alertTitle.localized(), message: message)
+        }
     }
     
     @objc func tapOnNewPassword() {

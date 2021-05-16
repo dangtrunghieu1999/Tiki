@@ -48,6 +48,11 @@ class HomeViewController: BaseViewController {
         requestHomeAPI()
     }
     
+    override func touchInSearchBar() {
+        AppRouter.pushViewToSearchBar(viewController: self)
+        searchBar.endEditing(true)
+    }
+    
     // MARK: - Helper Method
     
     func requestHomeAPI() {
