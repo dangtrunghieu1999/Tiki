@@ -34,7 +34,6 @@
 		CF540B392608403B003CDC6D /* DeliveryAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */; };
 		CF540B3E2608407A003CDC6D /* InfoPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B3D2608407A003CDC6D /* InfoPaymentViewController.swift */; };
 		CF540B42260840FD003CDC6D /* ProductedBuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */; };
-		CF540B452608412D003CDC6D /* ProductedLoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */; };
 		CF540B4926084177003CDC6D /* RaitingProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF540B4826084177003CDC6D /* RaitingProductViewController.swift */; };
 		CF55F1AB261EB73500635F80 /* EventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55F1AA261EB73500635F80 /* EventModel.swift */; };
 		CF55F1AE261EB87C00635F80 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF55F1AD261EB87C00635F80 /* EventCollectionViewCell.swift */; };
@@ -70,6 +69,8 @@
 		CF88CEAC25FDB5D800E30BD1 /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */; };
 		CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF88CEB225FDB5EE00E30BD1 /* Personal.swift */; };
 		CF8AD72E262DC4B7007233CD /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8AD72D262DC4B7007233CD /* UIButton+Extension.swift */; };
+		CF94A53E2651013F00EF8E7E /* ProductByCateogryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF94A53D2651013E00EF8E7E /* ProductByCateogryViewController.swift */; };
+		CF94A556265112BF00EF8E7E /* ProductItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF94A555265112BF00EF8E7E /* ProductItemTableViewCell.swift */; };
 		CF9C88092644469D006C7874 /* ShipAddressTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9C88082644469D006C7874 /* ShipAddressTableViewFooter.swift */; };
 		CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */; };
 		CFA5BB5025EB89BE00AC20D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */; };
@@ -352,7 +353,6 @@
 		CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAddressViewController.swift; sourceTree = "<group>"; };
 		CF540B3D2608407A003CDC6D /* InfoPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPaymentViewController.swift; sourceTree = "<group>"; };
 		CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductedBuyViewController.swift; sourceTree = "<group>"; };
-		CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductedLoveViewController.swift; sourceTree = "<group>"; };
 		CF540B4826084177003CDC6D /* RaitingProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaitingProductViewController.swift; sourceTree = "<group>"; };
 		CF55F1AA261EB73500635F80 /* EventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventModel.swift; sourceTree = "<group>"; };
 		CF55F1AD261EB87C00635F80 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -388,6 +388,8 @@
 		CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF88CEB225FDB5EE00E30BD1 /* Personal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Personal.swift; sourceTree = "<group>"; };
 		CF8AD72D262DC4B7007233CD /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		CF94A53D2651013E00EF8E7E /* ProductByCateogryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductByCateogryViewController.swift; sourceTree = "<group>"; };
+		CF94A555265112BF00EF8E7E /* ProductItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItemTableViewCell.swift; sourceTree = "<group>"; };
 		CF9C88082644469D006C7874 /* ShipAddressTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipAddressTableViewFooter.swift; sourceTree = "<group>"; };
 		CFA5BB4825EB89BE00AC20D1 /* Tiki.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tiki.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFA5BB4B25EB89BE00AC20D1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -898,7 +900,6 @@
 				CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */,
 				CF540B3D2608407A003CDC6D /* InfoPaymentViewController.swift */,
 				CF540B41260840FD003CDC6D /* ProductedBuyViewController.swift */,
-				CF540B442608412D003CDC6D /* ProductedLoveViewController.swift */,
 				CF540B4826084177003CDC6D /* RaitingProductViewController.swift */,
 				CF47214626082D8E00200FDC /* HeaderFooterCell */,
 				CFC009832604AA560067BEDD /* ViewCell */,
@@ -1643,6 +1644,7 @@
 				CFAF8FF425FC5E38000E2CCA /* CategoryViewController.swift */,
 				CFE871C02650F46200D36599 /* CategoryCollectionViewCell.swift */,
 				CFE871C32650F52100D36599 /* CategoryViewModel.swift */,
+				CF94A53D2651013E00EF8E7E /* ProductByCateogryViewController.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1719,6 +1721,7 @@
 				CF1CC29B2644436A00CFA22A /* SelectShipAddressTableViewCell.swift */,
 				CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */,
 				CF9C88082644469D006C7874 /* ShipAddressTableViewFooter.swift */,
+				CF94A555265112BF00EF8E7E /* ProductItemTableViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -2033,6 +2036,7 @@
 				CFAF8FCC25FC545D000E2CCA /* ListStickerCollectionViewCell.swift in Sources */,
 				CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */,
 				CFAF8E2425FC4EDD000E2CCA /* NetworkLogger.swift in Sources */,
+				CF94A556265112BF00EF8E7E /* ProductItemTableViewCell.swift in Sources */,
 				CFAF8E4925FC4EDD000E2CCA /* Int+Extension.swift in Sources */,
 				CFAF8E4F25FC4EDD000E2CCA /* CGPoint+Extensions.swift in Sources */,
 				CF6104652610B76D00FBB983 /* MenuFeedSectionViewController.swift in Sources */,
@@ -2166,7 +2170,6 @@
 				CFAF8E3225FC4EDD000E2CCA /* BaseViewModel.swift in Sources */,
 				CFCCFD9D26502A0B0058283E /* ChatDetailViewController.swift in Sources */,
 				CFAF8EFB25FC507C000E2CCA /* NICommonMetrics.m in Sources */,
-				CF540B452608412D003CDC6D /* ProductedLoveViewController.swift in Sources */,
 				CFA5BB4C25EB89BE00AC20D1 /* AppDelegate.swift in Sources */,
 				CFD015462635CA6700850ADB /* CartCollectionHeaderView.swift in Sources */,
 				CF588777262823DB0041A595 /* ProductSameProductCollectionViewCell.swift in Sources */,
@@ -2299,6 +2302,7 @@
 				CF3DA2E02625549700A35EED /* ProductDetailInfoCollectionViewCell.swift in Sources */,
 				CF58878D262826110041A595 /* ProductParentCommentCollectionViewCell.swift in Sources */,
 				CFAF8F1B25FC507C000E2CCA /* SlideUpPresentationController.swift in Sources */,
+				CF94A53E2651013F00EF8E7E /* ProductByCateogryViewController.swift in Sources */,
 				CF2A204C26464C5100EDCDB0 /* Address.swift in Sources */,
 				CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */,
 				CFAF8F1E25FC507C000E2CCA /* ImagePickerController.swift in Sources */,

@@ -18,7 +18,7 @@ class InfoPaymentViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Thông tin thanh toán"
+        navigationItem.title = TextManager.infoPayment
         
     }
     

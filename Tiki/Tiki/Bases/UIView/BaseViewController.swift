@@ -250,9 +250,11 @@ open class BaseViewController: UIViewController {
     
     private func setupTabbar() {
         if navigationController?.viewControllers.count ?? 0 > 1 {
-            tabBarController?.tabBar.isHidden = true
+            self.tabBarController?.tabBar.isHidden = true
+            self.extendedLayoutIncludesOpaqueBars = true
         } else {
-            tabBarController?.tabBar.isHidden = false
+            self.tabBarController?.tabBar.isHidden = false
+            self.extendedLayoutIncludesOpaqueBars = false
         }
     }
     

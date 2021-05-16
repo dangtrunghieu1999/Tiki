@@ -58,16 +58,16 @@ class PersonalViewController: BaseViewController {
     private func layoutPersonalCollectionView() {
         view.addSubview(personalCollectionView)
         personalCollectionView.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide)
-                    .offset(Dimension.shared.smallMargin)
-                make.bottom.equalTo(view.snp_bottomMargin)
+                
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
-                    .offset(Dimension.shared.smallMargin)
-                make.bottom.equalTo(bottomLayoutGuide.snp.top)
+                
             }
-            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+                .offset(-Dimension.shared.largeMargin_38)
         }
     }
 }
@@ -93,9 +93,11 @@ extension PersonalViewController: PersonalViewModelDelegate {
             navigationController?.pushViewController(vc, animated: true)
         case .productedBuy:
             let vc = ProductedBuyViewController()
+            vc.isBought = true
             navigationController?.pushViewController(vc, animated: true)
         case .productedLove:
-            let vc = ProductedLoveViewController()
+            let vc = ProductedBuyViewController()
+            vc.isBought = false
             navigationController?.pushViewController(vc, animated: true)
         case .productRating:
             let vc = RaitingProductViewController()

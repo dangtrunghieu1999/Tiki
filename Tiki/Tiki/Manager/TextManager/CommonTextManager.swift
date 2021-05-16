@@ -144,4 +144,8 @@ final class  TextManager {
     static let searchTitle2                 = "Sản phẩm và thương hiệu mọi thứ bạn cần"
     static let myCategory                   = "Danh mục cho bạn"
     
+    static let infoPayment                  = "Thông tin thanh toán"
+    static let bought                       = "Đã mua"
+    static let loved                        = "Yêu thích"
+    
 }
