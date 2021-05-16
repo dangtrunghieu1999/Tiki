@@ -81,7 +81,7 @@ class TitleTextField: BaseView {
     private (set) lazy var textField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.placeholder = TextManager.signInUserNamePlaceHolder
-        textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textField.padding =  UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         textField.layer.masksToBounds = true
         return textField
     }()

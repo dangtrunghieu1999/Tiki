@@ -63,6 +63,10 @@ class Dimension {
         return 42 * self.widthScale
     }
     
+    var largeMargin_48: CGFloat {
+        return 48 * self.widthScale
+    }
+    
     var largeMargin_56: CGFloat {
         return 56 * self.widthScale
     }
@@ -152,7 +156,7 @@ class Dimension {
     // MARK: - TextField
     
     var defaultHeightTextField: CGFloat {
-        return 40 * heightScale
+        return 48 * heightScale
     }
     
     var cornerRadiusSmall: CGFloat {
@@ -170,4 +174,8 @@ class Dimension {
     }
     
     let productImageRatio: CGFloat   = 0.94
+    
+    var checkBoxHeight: CGFloat {
+        return 26
+    }
 }

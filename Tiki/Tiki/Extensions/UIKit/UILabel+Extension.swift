@@ -53,6 +53,15 @@ extension UILabel {
 
         self.attributedText = attributedString
     }
+    
+    convenience init(text: String? = nil, font: UIFont = .init(), textColor: UIColor = .black, textAlignment: NSTextAlignment = .natural, numberOfLines: Int = 0) {
+        self.init()
+        self.text = text
+        self.textColor = textColor
+        self.font = font
+        self.textAlignment = textAlignment
+        self.numberOfLines = numberOfLines
+    }
 
 }
 

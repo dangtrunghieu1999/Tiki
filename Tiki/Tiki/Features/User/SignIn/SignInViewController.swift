@@ -338,8 +338,6 @@ class SignInViewController: BaseViewController {
                 .offset(Dimension.shared.largeMargin_32)
         }
     }
-
-    
 }
 
 // MARK: - NIAttributedLabelDelegate

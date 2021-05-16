@@ -85,7 +85,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         nextButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(12)
+            make.width.height.equalTo(24)
         }
     }
     

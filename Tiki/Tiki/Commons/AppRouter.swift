@@ -17,6 +17,16 @@ class AppRouter: NSObject {
         viewController.present(nvc, animated: true, completion: nil)
     }
     
+    class func pushViewToGetProfile(viewController: UIViewController) {
+        let vc = ProfileViewController()
+        UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    class func pushViewToSearchBar(viewController: UIViewController) {
+        let vc = SearchProductViewController()
+        UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     class func presentViewParameterProduct(viewController: UIViewController, values: [String]) {
         let vc = ProductParameterViewController()
         vc.configValueTitle(values: values)

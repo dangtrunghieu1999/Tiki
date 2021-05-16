@@ -39,6 +39,7 @@ class PersonalViewController: BaseViewController {
         registerCollectionView()
         personalViewModel.reloadData()
         personalViewModel.delegate = self
+        navigationItem.title = TextManager.person
     }
     
     // MARK: - Helper Method
@@ -105,7 +106,10 @@ extension PersonalViewController: PersonalViewModelDelegate {
     }
     
     func didTapOnSignIn() {
-        AppRouter.presentViewToSignIn(viewController: self)
-    }
-
+        if UserManager.isLoggedIn() {
+            AppRouter.pushViewToGetProfile(viewController: self)
+        } else {
+            AppRouter.presentViewToSignIn(viewController: self)
+        }
+    }    
 }

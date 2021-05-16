@@ -116,4 +116,16 @@ extension UIView {
         addSubview(border)
     }
     
+    func set(borderWidth: CGFloat? = nil, borderColor: UIColor? = nil, cornerRadius: CGFloat? = nil, masksToBounds: Bool = true) {
+        if let borderWidth = borderWidth, let borderColor = borderColor {
+            self.layer.borderWidth = borderWidth
+            self.layer.borderColor = borderColor.cgColor
+        }
+        
+        if let cornerRadius = cornerRadius {
+            self.layer.cornerRadius = cornerRadius
+            self.layer.masksToBounds = masksToBounds
+        }
+    }
+    
 }

@@ -24,10 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barStyle = .blackOpaque
         
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-//        window?.rootViewController = TKTabBarViewController()
-        window?.rootViewController = UINavigationController(rootViewController: SignInViewController())
+        window?.rootViewController = TKTabBarViewController()
+//        window?.rootViewController = UINavigationController(rootViewController: ProfileViewController())
         return true
     }
 }

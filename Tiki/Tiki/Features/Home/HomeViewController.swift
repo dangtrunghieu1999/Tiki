@@ -49,8 +49,8 @@ class HomeViewController: BaseViewController {
     }
     
     override func touchInSearchBar() {
-        let vc = SearchProductViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        AppRouter.pushViewToSearchBar(viewController: self)
+        searchBar.endEditing(true)
     }
     
     // MARK: - Helper Method
