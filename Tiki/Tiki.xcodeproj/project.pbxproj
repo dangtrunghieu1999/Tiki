@@ -24,7 +24,6 @@
 		CF360C05264FB694008F0FF7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF360C04264FB694008F0FF7 /* ProfileViewController.swift */; };
 		CF360C11264FBB33008F0FF7 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF360C10264FBB33008F0FF7 /* BaseScrollView.swift */; };
 		CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */; };
-		CF3C3304264F7FC20093566B /* TitleCenterLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3C3303264F7FC20093566B /* TitleCenterLineView.swift */; };
 		CF3DA2C92625232F00A35EED /* ProductDetailType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DA2C82625232F00A35EED /* ProductDetailType.swift */; };
 		CF3DA2D92625391300A35EED /* ProductDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = CF3DA2D82625391300A35EED /* ProductDetail.json */; };
 		CF3DA2E02625549700A35EED /* ProductDetailInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3DA2DF2625549700A35EED /* ProductDetailInfoCollectionViewCell.swift */; };
@@ -303,6 +302,7 @@
 		CFD56FF82635CBE800B17AEA /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE72635CBE800B17AEA /* Province.swift */; };
 		CFD56FF92635CBE800B17AEA /* DeliveryInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */; };
 		CFD56FFA2635CBE800B17AEA /* OrderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */; };
+		CFD6E34926529FEC00287DAC /* TitleCenterLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD6E34826529FEC00287DAC /* TitleCenterLineView.swift */; };
 		CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794C7260EE783004DE431 /* SignUpViewController.swift */; };
 		CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */; };
 		CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */; };
@@ -345,7 +345,6 @@
 		CF360C04264FB694008F0FF7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CF360C10264FBB33008F0FF7 /* BaseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		CF3C3303264F7FC20093566B /* TitleCenterLineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TitleCenterLineView.swift; path = ../../../../../ExampleSwift/ExampleSwift/Custom/TitleCenterLineView.swift; sourceTree = "<group>"; };
 		CF3DA2C82625232F00A35EED /* ProductDetailType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailType.swift; sourceTree = "<group>"; };
 		CF3DA2D82625391300A35EED /* ProductDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductDetail.json; sourceTree = "<group>"; };
 		CF3DA2DF2625549700A35EED /* ProductDetailInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailInfoCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -665,6 +664,7 @@
 		CFD56FE72635CBE800B17AEA /* Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInfomationViewController.swift; sourceTree = "<group>"; };
 		CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSettingViewController.swift; sourceTree = "<group>"; };
+		CFD6E34826529FEC00287DAC /* TitleCenterLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCenterLineView.swift; sourceTree = "<group>"; };
 		CFD794C7260EE783004DE431 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPWViewController.swift; sourceTree = "<group>"; };
@@ -1099,7 +1099,6 @@
 		CFAF8DDA25FC4EDC000E2CCA /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				CF3C3303264F7FC20093566B /* TitleCenterLineView.swift */,
 				CFAF8DDB25FC4EDC000E2CCA /* TitleAndContent.swift */,
 				CFAF8DDC25FC4EDC000E2CCA /* CheckMarkView.swift */,
 				CFAF8DDD25FC4EDC000E2CCA /* TitleTextField.swift */,
@@ -1107,6 +1106,7 @@
 				CFAF8DDF25FC4EDC000E2CCA /* PaddingLabel.swift */,
 				CFAF8DE025FC4EDC000E2CCA /* BageButton.swift */,
 				CFAF8DE125FC4EDC000E2CCA /* PaddingTextView.swift */,
+				CFD6E34826529FEC00287DAC /* TitleCenterLineView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -2240,7 +2240,6 @@
 				CFAF8F3A25FC507C000E2CCA /* ImageScrollView.swift in Sources */,
 				CFF9A0072616CB6300F702F0 /* BannerCollectionViewCell.swift in Sources */,
 				CFAF8E2625FC4EDD000E2CCA /* BaseViewController.swift in Sources */,
-				CF3C3304264F7FC20093566B /* TitleCenterLineView.swift in Sources */,
 				CFAF8E6825FC4EDD000E2CCA /* PermissionManager.swift in Sources */,
 				CFAF8F3925FC507C000E2CCA /* UIColor+Palette.swift in Sources */,
 				CFAF8E4D25FC4EDD000E2CCA /* Double+Extension.swift in Sources */,
@@ -2248,6 +2247,7 @@
 				CFBC6085261F8B720060DC5C /* ProductRecommendModel.swift in Sources */,
 				CFEA201B262EC18E00288A39 /* ShopHomeGalleryViewController.swift in Sources */,
 				CFAF8F0525FC507C000E2CCA /* NINonEmptyCollectionTesting.m in Sources */,
+				CFD6E34926529FEC00287DAC /* TitleCenterLineView.swift in Sources */,
 				CFAF8F3225FC507C000E2CCA /* PhotoGalleryCameraIconView.swift in Sources */,
 				CFAF8E5825FC4EDD000E2CCA /* AppInfo.swift in Sources */,
 				CFAF8F3525FC507C000E2CCA /* PhotoAlbumsViewController.swift in Sources */,
