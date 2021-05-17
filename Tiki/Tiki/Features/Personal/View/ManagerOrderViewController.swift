@@ -20,7 +20,6 @@ class ManagerOrderViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = TextManager.myOrdered
         
-        navigationController?.tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - Helper Method
