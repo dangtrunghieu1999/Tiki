@@ -46,6 +46,7 @@ class HomeViewController: BaseViewController {
         navigationItem.titleView = searchBar
         view.addSubview(collectionView)
         requestHomeAPI()
+        self.collectionView.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
     }
     
     override func touchInSearchBar() {
