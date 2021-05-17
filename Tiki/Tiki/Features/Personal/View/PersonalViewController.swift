@@ -40,6 +40,8 @@ class PersonalViewController: BaseViewController {
         personalViewModel.reloadData()
         personalViewModel.delegate = self
         navigationItem.title = TextManager.person
+        self.personalCollectionView.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
+
     }
     
     // MARK: - Helper Method
