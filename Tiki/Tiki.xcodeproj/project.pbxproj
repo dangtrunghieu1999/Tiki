@@ -305,6 +305,7 @@
 		CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794C7260EE783004DE431 /* SignUpViewController.swift */; };
 		CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */; };
 		CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */; };
+		CFE6A3CB2652A6F80017F7E6 /* TitleCenterLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE6A3CA2652A6F80017F7E6 /* TitleCenterLineView.swift */; };
 		CFE871C12650F46200D36599 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE871C02650F46200D36599 /* CategoryCollectionViewCell.swift */; };
 		CFE871C42650F52100D36599 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFE871C32650F52100D36599 /* CategoryViewModel.swift */; };
 		CFEA2016262EC18E00288A39 /* ShopHomeListProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA200D262EC18D00288A39 /* ShopHomeListProductViewController.swift */; };
@@ -666,6 +667,7 @@
 		CFD794C7260EE783004DE431 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPWViewController.swift; sourceTree = "<group>"; };
+		CFE6A3CA2652A6F80017F7E6 /* TitleCenterLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCenterLineView.swift; sourceTree = "<group>"; };
 		CFE871C02650F46200D36599 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFE871C32650F52100D36599 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		CFEA200D262EC18D00288A39 /* ShopHomeListProductViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopHomeListProductViewController.swift; sourceTree = "<group>"; };
@@ -1104,6 +1106,7 @@
 				CFAF8DDF25FC4EDC000E2CCA /* PaddingLabel.swift */,
 				CFAF8DE025FC4EDC000E2CCA /* BageButton.swift */,
 				CFAF8DE125FC4EDC000E2CCA /* PaddingTextView.swift */,
+				CFE6A3CA2652A6F80017F7E6 /* TitleCenterLineView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -2244,6 +2247,7 @@
 				CFBC6085261F8B720060DC5C /* ProductRecommendModel.swift in Sources */,
 				CFEA201B262EC18E00288A39 /* ShopHomeGalleryViewController.swift in Sources */,
 				CFAF8F0525FC507C000E2CCA /* NINonEmptyCollectionTesting.m in Sources */,
+				CFE6A3CB2652A6F80017F7E6 /* TitleCenterLineView.swift in Sources */,
 				CFAF8F3225FC507C000E2CCA /* PhotoGalleryCameraIconView.swift in Sources */,
 				CFAF8E5825FC4EDD000E2CCA /* AppInfo.swift in Sources */,
 				CFAF8F3525FC507C000E2CCA /* PhotoAlbumsViewController.swift in Sources */,
