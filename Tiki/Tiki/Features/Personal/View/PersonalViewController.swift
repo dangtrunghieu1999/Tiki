@@ -49,6 +49,9 @@ class PersonalViewController: BaseViewController {
         self.personalCollectionView
             .registerReusableSupplementaryView(PersonalHeaderCollectionReusableView.self,
                                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+        self.personalCollectionView
+            .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
+                                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
     }
     
     // MARK: - GET API
@@ -61,13 +64,11 @@ class PersonalViewController: BaseViewController {
             make.left.right.equalToSuperview()
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide)
-                
+                make.bottom.equalTo(view.safeAreaInsets.bottom)
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
-                
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
             }
-            make.bottom.equalToSuperview()
-                .offset(-Dimension.shared.largeMargin_38)
         }
     }
 }

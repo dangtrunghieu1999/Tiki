@@ -18,7 +18,7 @@ class ManagerOrderViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Đơn hàng của tôi"
+        navigationItem.title = TextManager.myOrdered
     }
     
     // MARK: - Helper Method

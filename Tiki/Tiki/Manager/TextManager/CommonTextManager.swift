@@ -147,5 +147,7 @@ final class  TextManager {
     static let infoPayment                  = "Thông tin thanh toán"
     static let bought                       = "Đã mua"
     static let loved                        = "Yêu thích"
-    
+    static let waitReview                   = "Chờ đánh giá"
+    static let haveReview                   = "Đã đánh giá"
+    static let myOrdered                    = "Đơn hàng của tôi"
 }
