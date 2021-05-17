@@ -19,6 +19,8 @@ class ManagerOrderViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.myOrdered
+        
+        navigationController?.tabBarController?.tabBar.isHidden = true
     }
     
     // MARK: - Helper Method
