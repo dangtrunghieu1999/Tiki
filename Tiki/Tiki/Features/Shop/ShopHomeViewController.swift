@@ -11,27 +11,14 @@ import Photos
 import Alamofire
 import SwiftyJSON
 
-protocol ShopHomeViewControllerDelegate: class {
-    func didUpdateInfoSuccess()
-}
-
 // MARK: -
 
 class ShopHomeViewController: HeaderedCAPSPageMenuViewController {
     
     // MARK: - Helper Type
     
-    enum ImageType {
-        case avatar
-        case cover
-    }
-    
     // MARK: - Variables
-    
-    weak var shopInfoDelegate: ShopHomeViewControllerDelegate?
-    
-    fileprivate var isSelectAvatar = false
-    fileprivate var isSelectBackground = false
+        
     fileprivate var shop = Shop()
     fileprivate var viewModel = ShopHomeViewModel()
     fileprivate let stallDetailVC = ShopHomeStallDetailViewController()
