@@ -314,7 +314,6 @@
 		CFEA2019262EC18E00288A39 /* ShopHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA2010262EC18D00288A39 /* ShopHomeViewController.swift */; };
 		CFEA201A262EC18E00288A39 /* ShopProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA2011262EC18D00288A39 /* ShopProfileHeaderView.swift */; };
 		CFEA201B262EC18E00288A39 /* ShopHomeGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA2012262EC18D00288A39 /* ShopHomeGalleryViewController.swift */; };
-		CFEA201C262EC18E00288A39 /* ShopHomeListMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA2013262EC18E00288A39 /* ShopHomeListMessageViewController.swift */; };
 		CFEA201D262EC18E00288A39 /* ShopHomeProductListSearchHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA2014262EC18E00288A39 /* ShopHomeProductListSearchHeaderView.swift */; };
 		CFEA201E262EC18E00288A39 /* ShopHomeStallDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA2015262EC18E00288A39 /* ShopHomeStallDetailViewController.swift */; };
 		CFEA2022262EC3DA00288A39 /* BaseProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA2021262EC3DA00288A39 /* BaseProductView.swift */; };
@@ -679,7 +678,6 @@
 		CFEA2010262EC18D00288A39 /* ShopHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopHomeViewController.swift; sourceTree = "<group>"; };
 		CFEA2011262EC18D00288A39 /* ShopProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopProfileHeaderView.swift; sourceTree = "<group>"; };
 		CFEA2012262EC18D00288A39 /* ShopHomeGalleryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopHomeGalleryViewController.swift; sourceTree = "<group>"; };
-		CFEA2013262EC18E00288A39 /* ShopHomeListMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopHomeListMessageViewController.swift; sourceTree = "<group>"; };
 		CFEA2014262EC18E00288A39 /* ShopHomeProductListSearchHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopHomeProductListSearchHeaderView.swift; sourceTree = "<group>"; };
 		CFEA2015262EC18E00288A39 /* ShopHomeStallDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopHomeStallDetailViewController.swift; sourceTree = "<group>"; };
 		CFEA2021262EC3DA00288A39 /* BaseProductView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseProductView.swift; sourceTree = "<group>"; };
@@ -1609,7 +1607,6 @@
 			isa = PBXGroup;
 			children = (
 				CFEA2012262EC18D00288A39 /* ShopHomeGalleryViewController.swift */,
-				CFEA2013262EC18E00288A39 /* ShopHomeListMessageViewController.swift */,
 				CFEA200E262EC18D00288A39 /* ShopHomeListOrderViewController.swift */,
 				CFEA200D262EC18D00288A39 /* ShopHomeListProductViewController.swift */,
 				CFEA2014262EC18E00288A39 /* ShopHomeProductListSearchHeaderView.swift */,
@@ -2330,7 +2327,6 @@
 				CFAF8E3125FC4EDD000E2CCA /* ShimmerLabel.swift in Sources */,
 				CFAF8E5225FC4EDD000E2CCA /* Dictionary+Extension.swift in Sources */,
 				CFAF8FD825FC545D000E2CCA /* SearchResultView.swift in Sources */,
-				CFEA201C262EC18E00288A39 /* ShopHomeListMessageViewController.swift in Sources */,
 				CFD56FF72635CBE800B17AEA /* VTCPayInfomation.swift in Sources */,
 				F68784492653C7F400A09AEC /* ShowHidePulleyView.swift in Sources */,
 				CFE871C42650F52100D36599 /* CategoryViewModel.swift in Sources */,

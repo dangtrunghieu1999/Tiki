@@ -79,7 +79,7 @@ class ShopHomeViewController: HeaderedCAPSPageMenuViewController {
         navigationItem.title = shop.name
         profileView.configShop(by: shop)
         profileView.stopShimmering()
-        addShopOwnerChildsVC()
+        self.addGuestChildsVC()
     }
     
     func requestLoadShop() {
@@ -124,31 +124,6 @@ class ShopHomeViewController: HeaderedCAPSPageMenuViewController {
     
     // MARK: - Add VC Helper
     
-    fileprivate func addShopOwnerChildsVC() {
-        addProductListVC()
-        addStallVC()
-        addGalleryVC()
-        
-        let messageVC = ShopHomeListMessageViewController()
-        messageVC.title = TextManager.mesage
-        messageVC.view.frame = viewControllerFrame
-        subPageControllers.append(messageVC)
-        messageVC.scrollDelegateFunc = { [weak self] in self?.pleaseScroll($0) }
-        
-        let orderVC = ShopHomeListOrderViewController()
-        orderVC.title = TextManager.order
-        orderVC.view.frame = viewControllerFrame
-        subPageControllers.append(orderVC)
-        orderVC.scrollDelegateFunc = { [weak self] in self?.pleaseScroll($0) }
-        
-        addPageMenu(menu: CAPSPageMenu(viewControllers: subPageControllers,
-                                       frame: CGRect(x: 0,
-                                                     y: 0,
-                                                     width: pageMenuContainer.frame.width,
-                                                     height: pageMenuContainer.frame.height),
-                                       pageMenuOptions: parameters))
-    }
-    
     fileprivate func addGuestChildsVC() {
         addProductListVC()
         addStallVC()
@@ -187,4 +162,5 @@ class ShopHomeViewController: HeaderedCAPSPageMenuViewController {
         subPageControllers.append(galleryVC)
         galleryVC.scrollDelegateFunc = { [weak self] in self?.pleaseScroll($0) }
     }
+    
 }
