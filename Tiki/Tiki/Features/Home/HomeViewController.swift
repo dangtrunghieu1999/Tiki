@@ -47,6 +47,7 @@ class HomeViewController: BaseViewController {
         view.addSubview(collectionView)
         requestHomeAPI()
         self.collectionView.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
+        self.tabBarController?.tabBar.isTranslucent = false
     }
     
     override func touchInSearchBar() {
