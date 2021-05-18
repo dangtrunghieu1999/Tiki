@@ -40,10 +40,9 @@ class PersonalViewController: BaseViewController {
         personalViewModel.reloadData()
         personalViewModel.delegate = self
         navigationItem.title = TextManager.person
-        self.personalCollectionView.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
-
+        self.tabBarController?.tabBar.isTranslucent = false
     }
-    
+        
     // MARK: - Helper Method
     
     func registerCollectionView() {
@@ -66,7 +65,7 @@ class PersonalViewController: BaseViewController {
             make.left.right.equalToSuperview()
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide)
-                make.bottom.equalTo(view.safeAreaInsets.bottom)
+                make.bottom.equalTo(view.snp.bottomMargin)
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
                 make.bottom.equalTo(bottomLayoutGuide.snp.top)
