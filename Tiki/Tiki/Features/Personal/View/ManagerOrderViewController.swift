@@ -7,19 +7,19 @@
 
 import UIKit
 
+
 class ManagerOrderViewController: BaseViewController {
 
     // MARK: - Variables
     
     // MARK: - UI Elements
     
-    
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.myOrdered
-        
+       
     }
     
     // MARK: - Helper Method
@@ -30,3 +30,4 @@ class ManagerOrderViewController: BaseViewController {
     
 
 }
+// MARK: - Setup Components

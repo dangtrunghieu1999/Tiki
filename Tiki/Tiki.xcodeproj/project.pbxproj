@@ -707,13 +707,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CF2A204A26464B2000EDCDB0 /* DataJson */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataJson;
-			sourceTree = "<group>";
-		};
 		CF3ADC65260F1C7900987199 /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -756,13 +749,6 @@
 				CFD015392635C58100850ADB /* Model */,
 			);
 			path = Cart;
-			sourceTree = "<group>";
-		};
-		CF4BF2952651EDEC00321548 /* MyOrder */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MyOrder;
 			sourceTree = "<group>";
 		};
 		CF55F1B5261EBA1600635F80 /* Banner */ = {
@@ -904,7 +890,6 @@
 		CF88CEAA25FDB5C000E30BD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CF4BF2952651EDEC00321548 /* MyOrder */,
 				CF360C04264FB694008F0FF7 /* ProfileViewController.swift */,
 				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
 				CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */,
@@ -965,7 +950,6 @@
 		CFA5BBB125EB8E8B00AC20D1 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				CF2A204A26464B2000EDCDB0 /* DataJson */,
 				CFBC17A52624058D0016A223 /* Product */,
 				CF4A0202261EAE48003734EC /* Cart */,
 				CF4A01FD261EADBE003734EC /* Notification */,
