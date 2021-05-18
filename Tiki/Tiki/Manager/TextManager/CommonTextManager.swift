@@ -150,4 +150,15 @@ final class  TextManager {
     static let waitReview                   = "Chờ đánh giá"
     static let haveReview                   = "Đã đánh giá"
     static let myOrdered                    = "Đơn hàng của tôi"
+    
 }
+
+extension TextManager {
+    static let allOrder                     = "Tất cả đơn"
+    static let waitOrder                    = "Chờ thanh toán"
+    static let processing                   = "Đang xử lý"
+    static let transported                  = "Đang vận chuyển"
+    static let recivedSuccess               = "Đã giao"
+    static let cancelOrder                  = "Đã huỷ"
+}
+

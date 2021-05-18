@@ -323,9 +323,6 @@
 		CFF9A0022616B11D00F702F0 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0012616B11D00F702F0 /* BannerModel.swift */; };
 		CFF9A0072616CB6300F702F0 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */; };
 		D3D31FCBF7CFFB2FE02B1431 /* Pods_Tiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89804318629FE70AB5E51062 /* Pods_Tiki.framework */; };
-		F60EEFA826535B2000B672B9 /* AllOrderProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EEFA726535B2000B672B9 /* AllOrderProductViewController.swift */; };
-		F60EEFAB26535B5500B672B9 /* OrderSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EEFAA26535B5500B672B9 /* OrderSuccessViewController.swift */; };
-		F60EEFAE26535B5B00B672B9 /* CancelOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60EEFAD26535B5B00B672B9 /* CancelOrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -687,9 +684,6 @@
 		CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		CFF9A0012616B11D00F702F0 /* BannerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
-		F60EEFA726535B2000B672B9 /* AllOrderProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllOrderProductViewController.swift; sourceTree = "<group>"; };
-		F60EEFAA26535B5500B672B9 /* OrderSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSuccessViewController.swift; sourceTree = "<group>"; };
-		F60EEFAD26535B5B00B672B9 /* CancelOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelOrderViewController.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -896,7 +890,6 @@
 		CF88CEAA25FDB5C000E30BD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F60EEFA426535A7A00B672B9 /* ManagerOrder */,
 				CF360C04264FB694008F0FF7 /* ProfileViewController.swift */,
 				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
 				CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */,
@@ -1849,16 +1842,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		F60EEFA426535A7A00B672B9 /* ManagerOrder */ = {
-			isa = PBXGroup;
-			children = (
-				F60EEFA726535B2000B672B9 /* AllOrderProductViewController.swift */,
-				F60EEFAA26535B5500B672B9 /* OrderSuccessViewController.swift */,
-				F60EEFAD26535B5B00B672B9 /* CancelOrderViewController.swift */,
-			);
-			name = ManagerOrder;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2046,7 +2029,6 @@
 				CFAF8E3425FC4EDD000E2CCA /* CheckMarkView.swift in Sources */,
 				CFAF8F2625FC507C000E2CCA /* SlideDownDismissingAnimator.swift in Sources */,
 				CFAF8F0425FC507C000E2CCA /* NIButtonUtilities.m in Sources */,
-				F60EEFAE26535B5B00B672B9 /* CancelOrderViewController.swift in Sources */,
 				CFAF8E2925FC4EDD000E2CCA /* BaseTableViewHeaderFooter.swift in Sources */,
 				CFAF8F2525FC507C000E2CCA /* ImagePickerParameters.swift in Sources */,
 				CFAF8FCC25FC545D000E2CCA /* ListStickerCollectionViewCell.swift in Sources */,
@@ -2167,7 +2149,6 @@
 				CFD56FF32635CBE800B17AEA /* DeliveryInformation.swift in Sources */,
 				CFAF8E2225FC4EDD000E2CCA /* APIResponse.swift in Sources */,
 				CFD56FF52635CBE800B17AEA /* Ward.swift in Sources */,
-				F60EEFAB26535B5500B672B9 /* OrderSuccessViewController.swift in Sources */,
 				CFAF8E1C25FC4EDD000E2CCA /* ProductEndPoint.swift in Sources */,
 				CFAF8F1425FC507C000E2CCA /* ImageCropperViewController.swift in Sources */,
 				CFAF8E3625FC4EDD000E2CCA /* PaddingTextField.swift in Sources */,
@@ -2232,7 +2213,6 @@
 				CF730927262E8DFF0026C0B3 /* ReplyCommentView.swift in Sources */,
 				CFD015482635CA6700850ADB /* CartCollectionViewCell.swift in Sources */,
 				CFAF8E4425FC4EDD000E2CCA /* UICollectionView+Extension.swift in Sources */,
-				F60EEFA826535B2000B672B9 /* AllOrderProductViewController.swift in Sources */,
 				CFAF8F1325FC507C000E2CCA /* ImageCropperModel.swift in Sources */,
 				CF540B3E2608407A003CDC6D /* InfoPaymentViewController.swift in Sources */,
 				CFAF8E5925FC4EDD000E2CCA /* Dimension.swift in Sources */,
