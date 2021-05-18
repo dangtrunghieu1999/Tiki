@@ -125,6 +125,10 @@ extension UIColor {
     class var boderColor: UIColor {
         return UIColor(hex: "E0E0E5")
     }
+    
+    class var secondary1: UIColor {
+        return UIColor(hex: "#313131")
+    }
 }
 
 // MARK: - Support Method

@@ -160,5 +160,7 @@ extension TextManager {
     static let transported                  = "Đang vận chuyển"
     static let recivedSuccess               = "Đã giao"
     static let cancelOrder                  = "Đã huỷ"
+    static let infoGuarantee                = "Thông tin bảo hành"
+    
 }
 
