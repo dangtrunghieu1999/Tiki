@@ -87,7 +87,7 @@ final class  TextManager {
     
     // ForgotPassword
     static let resetPWTitle                 = "Quên mật khẩu"
-    static let weWillSendCodeToEmail        = "Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu"
+    static let weWillSendCodeToEmail        = "Vui lòng cung cấp số điện thoại đăng nhập để lấy lại mật khẩu"
     static let next                         = "Tiếp tục"
     
     static let sendCodeRecoverPWInEmail     = "Chúng tôi đã gửi cho bạn mã code qua email, hãy check mail bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
@@ -126,6 +126,7 @@ final class  TextManager {
     static let continueSignIn               = "Tiếp tục"
     static let titlePassword                = "Mật khẩu"
     static let inputPassword                = "Nhập mật khẩu"
+    static let beginPassword                = "Lấy lại mật khẩu"
     static let pleaseInputPW                = "Vui lòng nhập mật khẩu HiShop của số điện thoại "
     static let signInAccount                = "Đăng nhập"
     static let continueRules                = "Bằng việc tiếp tục, bạn đã chấp nhận điều khoản sử dụng"

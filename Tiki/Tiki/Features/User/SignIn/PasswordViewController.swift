@@ -43,7 +43,7 @@ class PasswordViewController: BaseViewController {
         let textField = PaddingTextField()
         textField.isSecureTextEntry = true
         textField.fontSizePlaceholder(text: TextManager.password,
-                                      size: FontSize.title.rawValue)
+                                      size: FontSize.body.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self
@@ -195,7 +195,7 @@ class PasswordViewController: BaseViewController {
         view.addSubview(signInButton)
         signInButton.snp.makeConstraints { (make) in
             make.top.equalTo(lineView.snp.bottom)
-                .offset(Dimension.shared.normalMargin)
+                .offset(Dimension.shared.largeMargin_32)
             make.left.equalToSuperview()
                 .offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview()

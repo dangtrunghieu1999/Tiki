@@ -12,20 +12,23 @@ class ForgotPasswordViewController: BaseViewController {
     
     // MARK: - UI Elements
     
-    fileprivate let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = ImageManager.lock
-        return imageView
+    fileprivate lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextManager.beginPassword
+        label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue,
+                                       weight: .medium)
+        label.textColor = UIColor.titleText
+        label.textAlignment = .left
+        return label
     }()
     
     fileprivate let enterUserNameTitleLabel: UILabel = {
         let label = UILabel()
         label.text = TextManager.weWillSendCodeToEmail.localized()
-        label.textColor = UIColor.lightBodyText
+        label.textColor = UIColor.titleText
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         return label
     }()
     
@@ -34,6 +37,7 @@ class ForgotPasswordViewController: BaseViewController {
         textField.fontSizePlaceholder(text: TextManager.signInUserNamePlaceHolder,
                                       size: FontSize.body.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self
         return textField
     }()
@@ -47,45 +51,25 @@ class ForgotPasswordViewController: BaseViewController {
     fileprivate lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.next, for: .normal)
-        button.backgroundColor = UIColor.primary
+        button.backgroundColor = UIColor.disable
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(tapOnNextButton), for: .touchUpInside)
         button.isUserInteractionEnabled = false
         return button
     }()
-    
-    fileprivate let youDontHaveAccountLabel: UILabel = {
-       let label = UILabel()
-        label.text = TextManager.youNotHaveAccount.localized()
-        label.textColor = UIColor.lightBodyText
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue)
-        return label
-    }()
-    
-    fileprivate lazy var signUpButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(TextManager.signUp, for: .normal)
-        button.setTitleColor(UIColor.link, for: .normal)
-        button.addTarget(self, action: #selector(tapOnSignUp), for: .touchUpInside)
-        return button
-    }()
-    
+        
     // MARK: - LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = TextManager.resetPWTitle.localized()
-        
-        layoutImageView()
+        layoutTitleLabel()
         layoutEnterUserNameLabel()
         layoutPhoneTextField()
         layoutLineView()
         layoutNextButton()
-        layoutSignUPButton()
-        layoutYouDontHaveAccountLabel()
+
     }
     
     // MARK: - UI Actions
@@ -113,24 +97,27 @@ class ForgotPasswordViewController: BaseViewController {
     
     // MARK: - Setup Layouts
     
-    private func layoutImageView() {
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(100 * Dimension.shared.heightScale)
-            make.centerX.equalToSuperview()
+    private func layoutTitleLabel() {
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+                .offset(Dimension.shared.normalMargin)
             if #available(iOS 11, *) {
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40 * Dimension.shared.heightScale)
+                make.top.equalTo(view.safeAreaLayoutGuide)
+                    .offset(Dimension.shared.largeMargin_32)
             } else {
-                make.top.equalTo(topLayoutGuide.snp.bottom).offset(40 * Dimension.shared.heightScale)
+                make.top.equalTo(topLayoutGuide.snp.bottom)
+                    .offset(Dimension.shared.largeMargin_32)
             }
+            make.right.equalToSuperview()
         }
     }
-    
+
     private func layoutEnterUserNameLabel() {
         view.addSubview(enterUserNameTitleLabel)
         enterUserNameTitleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.normalMargin)
+            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.normalMargin)
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
         }
@@ -140,7 +127,7 @@ class ForgotPasswordViewController: BaseViewController {
         view.addSubview(phoneTextField)
         phoneTextField.snp.makeConstraints { (make) in
             make.top.equalTo(enterUserNameTitleLabel.snp.bottom)
-                .offset(Dimension.shared.normalMargin)
+                .offset(Dimension.shared.largeMargin_32)
             make.left.equalTo(view)
                 .offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview()
@@ -173,21 +160,4 @@ class ForgotPasswordViewController: BaseViewController {
         }
     }
     
-    private func layoutSignUPButton() {
-        view.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { (make) in
-            make.width.equalTo(Dimension.shared.mediumWidthButton)
-            make.height.equalTo(Dimension.shared.defaultHeightButton)
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_32)
-        }
-    }
-    
-    private func layoutYouDontHaveAccountLabel() {
-        view.addSubview(youDontHaveAccountLabel)
-        youDontHaveAccountLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalTo(signUpButton.snp.top)
-        }
-    }
 }

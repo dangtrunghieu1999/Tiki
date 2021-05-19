@@ -1590,7 +1590,6 @@
 				CF3ADC65260F1C7900987199 /* ForgotPassword */,
 				CFD794D0260EED6B004DE431 /* EnterNewPW */,
 				CFD794CB260EED00004DE431 /* VerifyOTP */,
-				CFD794CA260EECF9004DE431 /* Password */,
 				CFAF8FE525FC55E1000E2CCA /* SignUp */,
 				CFAF8FE425FC55DD000E2CCA /* SignIn */,
 			);
@@ -1827,13 +1826,6 @@
 				CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */,
 			);
 			path = OrderHistory;
-			sourceTree = "<group>";
-		};
-		CFD794CA260EECF9004DE431 /* Password */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Password;
 			sourceTree = "<group>";
 		};
 		CFD794CB260EED00004DE431 /* VerifyOTP */ = {
