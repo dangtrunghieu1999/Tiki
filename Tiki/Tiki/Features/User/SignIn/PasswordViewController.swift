@@ -34,7 +34,7 @@ class PasswordViewController: BaseViewController {
     fileprivate lazy var pleaseInputPasswordLabel: UILabel = {
         let label = UILabel()
         label.attributedText = getRequiredAttibuted(from: TextManager.pleaseInputPW,
-                                                    to: "0336665653")
+                                                    to: username)
         label.numberOfLines = 0
         return label
     }()

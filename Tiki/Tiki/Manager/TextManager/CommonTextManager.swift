@@ -81,7 +81,7 @@ final class  TextManager {
     static let existPhoneNumber             = "Số điện thoại đã đăng kí. Vui lòng quay Đăng nhập hoặc Quên mật khẩu"
     static let signUpEmailSuccessMessage    = "Tạo tài khoản thành công. Kiểm tra Email và xác thực tài khoản để bắt đầu sử dụng ứng dụng"
     
-    static let signUpPhoneSuccessMessage    = "Tạo tài khoản thành công. Kiểm tra tin nhắn và xác thực tài khoản để bắt đầu sử dụng ứng dụng"
+    static let signUpPhoneSuccessMessage    = "Tạo tài khoản thành công. Bắt đầu kích hoạt mã xác nhận"
     
     static let pwNotEnoughLength            = "Mật khẩu phải dài hơn \(AppConfig.minPasswordLenght) kí tự"
     
