@@ -89,7 +89,7 @@ final class  TextManager {
     static let resetPWTitle                 = "Quên mật khẩu"
     static let weWillSendCodeToEmail        = "Vui lòng cung cấp số điện thoại đăng nhập để lấy lại mật khẩu"
     static let next                         = "Tiếp tục"
-    
+    static let continuePassword             = "Tiếp tục nhập với mật khẩu mới"
     static let sendCodeRecoverPWInEmail     = "Chúng tôi đã gửi cho bạn mã code qua email, hãy check mail bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
     
     static let sendCodeRecoverPWInSMS       = "Chúng tôi đã gửi cho bạn mã code qua tin nhắn, hãy check tin nhắn bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
