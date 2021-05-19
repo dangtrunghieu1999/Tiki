@@ -11,7 +11,7 @@ import Foundation
 class APIConfig {
     
     static var baseURLString: String {
-        return "https://kltn2021.herokuapp.com"
+        return "https://user-servers.herokuapp.com"
     }
     
 }

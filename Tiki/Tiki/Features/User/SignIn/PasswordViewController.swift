@@ -124,7 +124,7 @@ class PasswordViewController: BaseViewController {
         viewModel.requestSignIn(userName: self.username, passWord: password, onSuccess: {
             self.hideLoading()
             guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = TKTabBarViewController()
+            window.rootViewController = PersonalViewController()
         }) { (message) in
             self.hideLoading()
             AlertManager.shared.show(TextManager.alertTitle.localized(), message: message)
