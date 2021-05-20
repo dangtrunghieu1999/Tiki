@@ -16,6 +16,12 @@ class SearchProductViewController: BaseViewController {
         return label
     }()
     
+    fileprivate lazy var subTitleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+
+    
     // MAKR: - View LifeCycles
     
     override func viewDidLoad() {
