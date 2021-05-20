@@ -9,7 +9,23 @@ import UIKit
 
 class SearchProductViewController: BaseViewController {
 
+    // MARK: - Define Variables
     
+    fileprivate lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+    
+    fileprivate lazy var subTitleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+
+    fileprivate lazy var passwordTitleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+
     // MAKR: - View LifeCycles
     
     override func viewDidLoad() {
