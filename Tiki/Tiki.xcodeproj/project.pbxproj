@@ -328,6 +328,8 @@
 		F64014A42653F9BA00B80A21 /* OrderTransportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64014A32653F9BA00B80A21 /* OrderTransportViewController.swift */; };
 		F64014A72653F9C500B80A21 /* OrderSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64014A62653F9C500B80A21 /* OrderSuccessViewController.swift */; };
 		F64014AA2653F9D200B80A21 /* OrderCancelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64014A92653F9D200B80A21 /* OrderCancelViewController.swift */; };
+		F64425B92655F7C400C47841 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64425B82655F7C400C47841 /* ReviewCollectionViewCell.swift */; };
+		F64425BD2655F7EA00C47841 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64425BC2655F7EA00C47841 /* Review.swift */; };
 		F68784462653C7CE00A09AEC /* ThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784452653C7CE00A09AEC /* ThroughView.swift */; };
 		F68784492653C7F400A09AEC /* ShowHidePulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */; };
 		F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */; };
@@ -697,6 +699,8 @@
 		F64014A32653F9BA00B80A21 /* OrderTransportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTransportViewController.swift; sourceTree = "<group>"; };
 		F64014A62653F9C500B80A21 /* OrderSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSuccessViewController.swift; sourceTree = "<group>"; };
 		F64014A92653F9D200B80A21 /* OrderCancelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCancelViewController.swift; sourceTree = "<group>"; };
+		F64425B82655F7C400C47841 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		F64425BC2655F7EA00C47841 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		F68784452653C7CE00A09AEC /* ThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThroughView.swift; sourceTree = "<group>"; };
 		F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHidePulleyView.swift; sourceTree = "<group>"; };
 		F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreProductPulleyView.swift; sourceTree = "<group>"; };
@@ -916,6 +920,7 @@
 				CF540B4826084177003CDC6D /* RaitingProductViewController.swift */,
 				CF47214626082D8E00200FDC /* HeaderFooterCell */,
 				CFC009832604AA560067BEDD /* ViewCell */,
+				F64425BB2655F7D100C47841 /* Model */,
 				CF1814CD26515EB400BB15C1 /* WaitingReviewViewController.swift */,
 				CF1814E326515EC600BB15C1 /* AlreadyReviewViewController.swift */,
 			);
@@ -1738,6 +1743,7 @@
 				CF88CEAB25FDB5D800E30BD1 /* PersonCollectionViewCell.swift */,
 				CF9C88082644469D006C7874 /* ShipAddressTableViewFooter.swift */,
 				CF94A555265112BF00EF8E7E /* ProductItemTableViewCell.swift */,
+				F64425B82655F7C400C47841 /* ReviewCollectionViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -1864,6 +1870,14 @@
 				F64014A92653F9D200B80A21 /* OrderCancelViewController.swift */,
 			);
 			path = ViewScroll;
+			sourceTree = "<group>";
+		};
+		F64425BB2655F7D100C47841 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F64425BC2655F7EA00C47841 /* Review.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2252,6 +2266,7 @@
 				CFAF8FCF25FC545D000E2CCA /* StickerCollectionViewCell.swift in Sources */,
 				CFAF8F3A25FC507C000E2CCA /* ImageScrollView.swift in Sources */,
 				CFF9A0072616CB6300F702F0 /* BannerCollectionViewCell.swift in Sources */,
+				F64425B92655F7C400C47841 /* ReviewCollectionViewCell.swift in Sources */,
 				CFAF8E2625FC4EDD000E2CCA /* BaseViewController.swift in Sources */,
 				CFAF8E6825FC4EDD000E2CCA /* PermissionManager.swift in Sources */,
 				CFAF8F3925FC507C000E2CCA /* UIColor+Palette.swift in Sources */,
@@ -2320,6 +2335,7 @@
 				CFAF8F1125FC507C000E2CCA /* ImageCropperConfiguration.swift in Sources */,
 				CFAF8E3D25FC4EDD000E2CCA /* UIColor+Extension.swift in Sources */,
 				CFF9A0022616B11D00F702F0 /* BannerModel.swift in Sources */,
+				F64425BD2655F7EA00C47841 /* Review.swift in Sources */,
 				CFEC28A7260C9C3A008B90E7 /* PasswordViewController.swift in Sources */,
 				CFAF8E4725FC4EDD000E2CCA /* UITableView+Extension.swift in Sources */,
 				CFAF8F0725FC507C000E2CCA /* NIImageUtilities.m in Sources */,
