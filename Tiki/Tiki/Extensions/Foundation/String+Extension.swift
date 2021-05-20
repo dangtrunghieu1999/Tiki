@@ -17,7 +17,7 @@ extension String {
     }
     
     var isPhoneNumber: Bool {
-        if count < 8 {
+        if count < 9 {
             return false
         }
         

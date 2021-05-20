@@ -81,15 +81,15 @@ final class  TextManager {
     static let existPhoneNumber             = "Số điện thoại đã đăng kí. Vui lòng quay Đăng nhập hoặc Quên mật khẩu"
     static let signUpEmailSuccessMessage    = "Tạo tài khoản thành công. Kiểm tra Email và xác thực tài khoản để bắt đầu sử dụng ứng dụng"
     
-    static let signUpPhoneSuccessMessage    = "Tạo tài khoản thành công. Kiểm tra tin nhắn và xác thực tài khoản để bắt đầu sử dụng ứng dụng"
+    static let signUpPhoneSuccessMessage    = "Tạo tài khoản thành công. Bắt đầu kích hoạt mã xác nhận"
     
     static let pwNotEnoughLength            = "Mật khẩu phải dài hơn \(AppConfig.minPasswordLenght) kí tự"
     
     // ForgotPassword
     static let resetPWTitle                 = "Quên mật khẩu"
-    static let weWillSendCodeToEmail        = "Vui lòng cung cấp email hoặc số điện thoại đăng nhập để lấy lại mật khẩu"
+    static let weWillSendCodeToEmail        = "Vui lòng cung cấp số điện thoại đăng nhập để lấy lại mật khẩu"
     static let next                         = "Tiếp tục"
-    
+    static let continuePassword             = "Tiếp tục nhập với mật khẩu mới"
     static let sendCodeRecoverPWInEmail     = "Chúng tôi đã gửi cho bạn mã code qua email, hãy check mail bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
     
     static let sendCodeRecoverPWInSMS       = "Chúng tôi đã gửi cho bạn mã code qua tin nhắn, hãy check tin nhắn bạn nhé! \n\n Vui lòng nhập code để khôi phục lại mật khẩu của bạn"
@@ -126,6 +126,7 @@ final class  TextManager {
     static let continueSignIn               = "Tiếp tục"
     static let titlePassword                = "Mật khẩu"
     static let inputPassword                = "Nhập mật khẩu"
+    static let beginPassword                = "Lấy lại mật khẩu"
     static let pleaseInputPW                = "Vui lòng nhập mật khẩu HiShop của số điện thoại "
     static let signInAccount                = "Đăng nhập"
     static let continueRules                = "Bằng việc tiếp tục, bạn đã chấp nhận điều khoản sử dụng"
@@ -160,5 +161,7 @@ extension TextManager {
     static let transported                  = "Đang vận chuyển"
     static let recivedSuccess               = "Đã giao"
     static let cancelOrder                  = "Đã huỷ"
+    static let infoGuarantee                = "Thông tin bảo hành"
+    
 }
 

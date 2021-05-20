@@ -29,7 +29,7 @@ class User: NSObject, JSONParsable, NSCoding {
         self.lastName       = json["lastName"].stringValue
         self.pictureURL     = json["pictureUrl"].stringValue
         self.email          = json["gmail"].stringValue
-        self.token          = json["Token"].stringValue
+        self.token          = json["token"].stringValue
         self.fullName       = json["fullName"].stringValue
         
         if fullName.isEmpty {
@@ -47,7 +47,7 @@ class User: NSObject, JSONParsable, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id,           forKey: "id")
-        aCoder.encode(token,        forKey: "Token")
+        aCoder.encode(token,        forKey: "token")
         aCoder.encode(firstName,    forKey: "firstName")
         aCoder.encode(lastName,     forKey: "lastName")
         aCoder.encode(email,        forKey: "email")

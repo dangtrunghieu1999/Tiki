@@ -9,6 +9,9 @@ import UIKit
 
 class SearchProductViewController: BaseViewController {
 
+    
+    // MAKR: - View LifeCycles
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.titleView = searchBar

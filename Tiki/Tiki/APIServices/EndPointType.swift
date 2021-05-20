@@ -41,7 +41,7 @@ public extension EndPointType {
     var headers: HTTPHeaders? {
         var headers = ["Content-Type": "application/json"]
         if let token = UserManager.accessToken {
-            headers["Authorization"] = "Bearer \(token)"
+            headers["Authorization"] = "\(token)"
         }
         return headers
     }

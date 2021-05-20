@@ -23,17 +23,7 @@ class VerifyOTPViewController: BaseViewController {
     
     fileprivate lazy var titleLabel: UILabel = {
         let label = UILabel()
-        
-        if !isActiveAccount && userName.isPhoneNumber {
-            label.text = TextManager.sendCodeRecoverPWInSMS.localized()
-        } else if !isActiveAccount && userName.isValidEmail {
-            label.text = TextManager.sendCodeRecoverPWInEmail.localized()
-        } else if isActiveAccount {
-            label.text = TextManager.sendCodeActiveAccInSMS.localized()
-        } else {
-            label.text = TextManager.defaultSendCodeMessage.localized()
-        }
-        
+        label.text = TextManager.sendCodeRecoverPWInSMS.localized()
         label.textColor = UIColor.lightBodyText
         label.textAlignment = .center
         label.numberOfLines = 0

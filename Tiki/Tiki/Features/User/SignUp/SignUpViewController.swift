@@ -32,7 +32,7 @@ class SignUpViewController: BaseViewController {
         let label = UILabel()
         label.text = TextManager.freePolicy.localized()
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.title.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         return label
     }()
     

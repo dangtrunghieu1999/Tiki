@@ -187,9 +187,13 @@ class SignInViewController: BaseViewController {
     
     @objc func tapOnPassword() {
         let vc = PasswordViewController()
-        vc.username = self.phoneTextField.text ?? ""
-        self.navigationController?.pushViewController(vc, animated: true)
-        
+        guard let check = self.phoneTextField.text?.isPhoneNumber else { return }
+        if check {
+            vc.username = self.phoneTextField.text ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            AlertManager.shared.show(TextManager.alertTitle, message: TextManager.invalidPhone)
+        }
     }
     
     @objc func tapOnSignUp() {

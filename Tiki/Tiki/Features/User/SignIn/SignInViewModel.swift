@@ -25,6 +25,7 @@ class SignInViewModel: BaseViewModel {
             
             if let user = apiResponse.toObject(User.self) {
                 UserManager.saveCurrentUser(user)
+                UserManager.getUserProfile()
                 onSuccess()
             } else {
                 onError(TextManager.errorMessage.localized())

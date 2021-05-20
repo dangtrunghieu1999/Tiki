@@ -34,7 +34,7 @@ class PasswordViewController: BaseViewController {
     fileprivate lazy var pleaseInputPasswordLabel: UILabel = {
         let label = UILabel()
         label.attributedText = getRequiredAttibuted(from: TextManager.pleaseInputPW,
-                                                    to: "0336665653")
+                                                    to: username)
         label.numberOfLines = 0
         return label
     }()
@@ -43,7 +43,7 @@ class PasswordViewController: BaseViewController {
         let textField = PaddingTextField()
         textField.isSecureTextEntry = true
         textField.fontSizePlaceholder(text: TextManager.password,
-                                      size: FontSize.title.rawValue)
+                                      size: FontSize.body.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self
@@ -124,7 +124,7 @@ class PasswordViewController: BaseViewController {
         viewModel.requestSignIn(userName: self.username, passWord: password, onSuccess: {
             self.hideLoading()
             guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = TKTabBarViewController()
+            window.rootViewController = PersonalViewController()
         }) { (message) in
             self.hideLoading()
             AlertManager.shared.show(TextManager.alertTitle.localized(), message: message)
@@ -195,7 +195,7 @@ class PasswordViewController: BaseViewController {
         view.addSubview(signInButton)
         signInButton.snp.makeConstraints { (make) in
             make.top.equalTo(lineView.snp.bottom)
-                .offset(Dimension.shared.normalMargin)
+                .offset(Dimension.shared.largeMargin_32)
             make.left.equalToSuperview()
                 .offset(Dimension.shared.normalMargin)
             make.right.equalToSuperview()

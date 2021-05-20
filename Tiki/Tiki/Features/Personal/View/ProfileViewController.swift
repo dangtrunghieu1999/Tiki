@@ -174,6 +174,7 @@ class ProfileViewController: BaseViewController {
         button.isUserInteractionEnabled = true
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.primary.cgColor
+        button.addTarget(self, action: #selector(processLogout), for: .touchUpInside)
         return button
     }()
     
@@ -239,6 +240,14 @@ class ProfileViewController: BaseViewController {
         view.isActive = true
     }
     
+    @objc private func processLogout() {
+        AlertManager.shared.showConfirmMessage(mesage: TextManager.statusLogOut.localized())
+        { (action) in
+            UserManager.logout()
+            guard let window = UIApplication.shared.keyWindow else { return }
+            window.rootViewController = TKTabBarViewController()
+        }
+    }
 }
 
 extension ProfileViewController {

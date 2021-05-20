@@ -72,4 +72,16 @@ public extension UIViewController {
         guard let window = UIApplication.shared.keyWindow else { return }
         window.rootViewController = TKTabBarViewController()
     }
+    
+    var topbarHeightY: CGFloat {
+        if #available(iOS 13.0, *) {
+            return (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0.0) +
+                (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        } else {
+            let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+            (self.navigationController?.navigationBar.frame.height ?? 0.0)
+            return topBarHeight
+        }
+    }
+
 }
