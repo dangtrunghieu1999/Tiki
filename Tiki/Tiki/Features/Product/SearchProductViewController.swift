@@ -9,11 +9,18 @@ import UIKit
 
 class SearchProductViewController: BaseViewController {
 
+    // MARK: - Define Variables
+    
+    fileprivate lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
     
     // MAKR: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("test 1")
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItem = cartBarButtonItem
         self.searchBar.fontSizePlaceholder(text: TextManager.searchTitle2, size: FontSize.h2.rawValue)
