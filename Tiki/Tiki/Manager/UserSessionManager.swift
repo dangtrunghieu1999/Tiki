@@ -72,7 +72,7 @@ class UserSessionManager: NSObject {
         do {
             currentUser = nil
             removeCurrentUser()
-//            CartManager.shared.removeAll()
+            CartManager.shared.removeAll()
             try keychain.remove(KeychainKey.AccessToken)
             try keychain.remove(KeychainKey.UserId)
         } catch {

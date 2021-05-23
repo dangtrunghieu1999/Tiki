@@ -49,7 +49,7 @@ final class  TextManager {
     static let loginFailMessage             = "Đăng nhập thất bại vui lòng kiểm tra tên đăng nhập hoặc mật khẩu"
     static let accNotActive                 = "Tài khoản chưa kích hoạt \n Bạn kiểm tra email và kích hoạt tài khoản để bắt đầu sử dụng"
     static let errorMessage                 = "Đã xảy ra lỗi vui lòng thử lại"
-    static let gender                       = "Gender"
+    static let gender                       = "Giới tính"
     static let female                       = "Nữ"
     static let male                         = "Nam"
     
@@ -101,7 +101,7 @@ final class  TextManager {
     static let yourCode                     = "Mã code"
     
     static let resetPWSuccessMessage        = "Xin chúc mừng bạn! Bạn đã lấy lại mật khẩu thành công! Bạn vui lòng đăng nhập để tiếp tục khám phá! Xin cảm ơn!"
-    
+    static let updatePWSuccessMessage       = "Cập nhập mật khẩu thành công tiếp tục mua sắm!"
     static let oneStepToResetPW             = "Còn bước nữa là bạn có thể lấy lại được mật khẩu của mình!\n Vui lòng nhập mật khẩu mới của bạn tại đây"
     
     static let confirmPW                    = "Nhập lại mật khẩu"
@@ -110,11 +110,13 @@ final class  TextManager {
     static let invalidPhone                 = "Số điện thoại không hợp lệ. Bạn vui lòng kiểm tra lại!"
     static let invalidCode                  = "Code không hợp lệ. Bạn vui lòng kiểm tra lại!"
     static let youNotHaveAccount            = "BẠN KHÔNG CÓ TÀI KHOẢN?"
-    static let resendCodeAgain              = "Bạn không nhận được mã code? Thử lại "
+    static let resendCodeAgain              = "Bạn không nhận được mã code?"
+    static let againCode                    = "Thử lại"
     static let gotoSignInPage               = "VỀ TRANG ĐĂNG NHẬP"
     static let signUp                       = "Đăng ký"
     static let verifyCode                   = "Xác thực tài khoản"
-    static let activeAccSuccess             = "Kích hoạt tài khoản thành công \n Bạn đăng nhập để bắt đầu sử dụng ứng dụng"
+    static let activeAccSuccess             = "Kích hoạt tài khoản thành công"
+    static let createNewPW                  = "Tạo mật khẩu mới"
     
     // MARK: - User Profile
     
@@ -127,6 +129,7 @@ final class  TextManager {
     static let titlePassword                = "Mật khẩu"
     static let inputPassword                = "Nhập mật khẩu"
     static let beginPassword                = "Lấy lại mật khẩu"
+    static let updateNewPassword            = "Cập nhập mật khẩu mới"
     static let pleaseInputPW                = "Vui lòng nhập mật khẩu HiShop của số điện thoại "
     static let signInAccount                = "Đăng nhập"
     static let continueRules                = "Bằng việc tiếp tục, bạn đã chấp nhận điều khoản sử dụng"

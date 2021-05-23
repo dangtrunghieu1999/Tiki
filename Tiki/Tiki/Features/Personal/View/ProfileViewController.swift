@@ -19,6 +19,8 @@ class ProfileViewController: BaseViewController {
         return barButtonItem
     }()
     
+    var userProfile = User()
+    
     let myScrollView = BaseScrollView(frame: .zero)
     
     let contenStackView: UIStackView = {
@@ -53,7 +55,6 @@ class ProfileViewController: BaseViewController {
         textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         textField.layer.masksToBounds = true
         textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        textField.text = "Dang"
         return textField
     }()
     
@@ -61,7 +62,6 @@ class ProfileViewController: BaseViewController {
         let textField = PaddingTextField()
         textField.layer.borderColor = UIColor.boderColor.cgColor
         textField.layer.borderWidth = 1
-        textField.text = "Hieu"
         textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         textField.layer.masksToBounds = true
@@ -77,14 +77,11 @@ class ProfileViewController: BaseViewController {
     
     fileprivate lazy var emailTextFieldView: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.text = "Hieudt230899@gmail.com"
         textField.layer.borderColor = UIColor.boderColor.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        textField.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         textField.layer.masksToBounds = true
-        textField.layer.backgroundColor = UIColor.separator.cgColor
-        textField.isUserInteractionEnabled = false
         return textField
     }()
     
@@ -97,7 +94,6 @@ class ProfileViewController: BaseViewController {
     
     fileprivate lazy var phoneTextFieldView: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.text = "0336665653"
         textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         textField.layer.borderColor = UIColor.separator.cgColor
         textField.layer.borderWidth = 1
@@ -128,8 +124,12 @@ class ProfileViewController: BaseViewController {
             activeImageName: "radioCheck",
             deactiveImageName: "uncheck",
             description: TextManager.female)
-        view.isActive = true
+        view.isActive = false
         view.iconWidth = dimension.checkBoxHeight
+        view.handleDidChange = { [weak self] (isActive) in
+            guard let self = self else { return }
+            self.maleCheckBoxView.isActive = !isActive
+        }
         return view
     }()
     
@@ -140,18 +140,13 @@ class ProfileViewController: BaseViewController {
             description: TextManager.male)
         view.isActive = false
         view.iconWidth = dimension.checkBoxHeight
+        view.handleDidChange = { [weak self] (isActive) in
+            guard let self = self else { return }
+            self.femaleCheckBoxView.isActive = !isActive
+        }
         return view
     }()
     
-    lazy var otherCheckBoxView: CheckBoxAndDescriptionView = {
-        let view = CheckBoxAndDescriptionView(
-            activeImageName: "radioCheck",
-            deactiveImageName: "uncheck",
-            description: TextManager.notSpecify)
-        view.isActive = false
-        view.iconWidth = dimension.checkBoxHeight
-        return view
-    }()
     
     fileprivate lazy var changePasswordButton: UIButton = {
         let button = UIButton()
@@ -161,6 +156,7 @@ class ProfileViewController: BaseViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5
         button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(tapOnChangePassword), for: .touchUpInside)
         return button
     }()
     
@@ -205,7 +201,6 @@ class ProfileViewController: BaseViewController {
         textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         textField.layer.masksToBounds = true
         textField.inputView = datePicker
-        textField.text = selectedDate.desciption(by: DateFormat.shortDateUserFormat)
         return textField
     }()
 
@@ -234,10 +229,35 @@ class ProfileViewController: BaseViewController {
         layoutDOBTextField()
     }
     
+    // MARK: - Get API
+    
+    func configData(user: User) {
+        let birthDay = userProfile.dateOfBirth.toDate(with: DateFormat.shortDateUserFormat)
+        
+        self.firstNameTextField.text     = userProfile.firstName
+        self.lastNameTextField.text      = userProfile.lastName
+        self.emailTextFieldView.text     = userProfile.email
+        self.phoneTextFieldView.text     = userProfile.phone
+        self.DOBTextField.text           = birthDay.desciption(by: DateFormat.shortDateUserFormat)
+        
+        if userProfile.gender == true {
+            femaleCheckBoxView.isActive = false
+        } else {
+            maleCheckBoxView.isActive = true
+        }
+    }
+    
+    
+    
     // MARK: - UI Action
     
     @objc private func tapSelectGender(_ view: CheckBoxAndDescriptionView) {
         view.isActive = true
+    }
+    
+    @objc private func tapOnChangePassword() {
+        let vc = ChangePWViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func processLogout() {
@@ -366,7 +386,6 @@ extension ProfileViewController {
     private func layoutGenderCheckBoxes() {
         genderStackView.addArrangedSubview(femaleCheckBoxView)
         genderStackView.addArrangedSubview(maleCheckBoxView)
-        genderStackView.addArrangedSubview(otherCheckBoxView)
     }
     
     

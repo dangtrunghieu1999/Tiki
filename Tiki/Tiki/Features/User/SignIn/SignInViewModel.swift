@@ -72,7 +72,7 @@ class SignInViewModel: BaseViewModel {
             }
             
             UserSessionManager.shared.saveUserId(userId)
-            AppRouter.pushToVerifyOTPVC(with: userName, isActiveAcc: true)
+            AppRouter.pushToVerifyOTPVC(with: userName)
             
             }, onFailure: { (serviceError) in
                 onError(TextManager.invalidEmail.localized())

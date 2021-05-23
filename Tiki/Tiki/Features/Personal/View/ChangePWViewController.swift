@@ -1,22 +1,21 @@
 //
-//  EnterNewPWViewController.swift
+//  ChangePWViewController.swift
 //  Tiki
 //
-//  Created by Dang Trung Hieu on 3/27/21.
+//  Created by Bee_MacPro on 23/05/2021.
 //
 
 import UIKit
 
-class EnterNewPWViewController: BaseViewController {
-    
+class ChangePWViewController: BaseViewController {
+
     // MARK: - Variables
-    var userId = ""
     
     // MARK: - UI Elements
     
     fileprivate lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = TextManager.beginPassword
+        label.text = TextManager.updateNewPassword
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue,
                                        weight: .medium)
         label.textColor = UIColor.titleText
@@ -113,14 +112,14 @@ class EnterNewPWViewController: BaseViewController {
         
         guard let password = passwordTextField.text else { return }
         
-        let endPoint = UserEndPoint.forgotPW(bodyParams: ["userId": userId,
-                                                        "password": password])
+        let endPoint = UserEndPoint.changePW(bodyParams: ["password": password])
+        
         APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
             AlertManager.shared.show(TextManager.alertTitle.localized(),
-                                     message: TextManager.resetPWSuccessMessage.localized(),
+                                     message: TextManager.updatePWSuccessMessage.localized(),
                                      buttons: [TextManager.IUnderstand.localized()],
                                      tapBlock: { (action, index) in
-                                        UIViewController.setRootVCBySinInVC()
+                                        self.navigationController?.popViewController(animated: true)
             })
         }, onFailure: { (apiError) in
             AlertManager.shared.show(TextManager.alertTitle.localized(),
@@ -224,5 +223,5 @@ class EnterNewPWViewController: BaseViewController {
                 .offset(Dimension.shared.largeMargin_32)
         }
     }
-
+    
 }

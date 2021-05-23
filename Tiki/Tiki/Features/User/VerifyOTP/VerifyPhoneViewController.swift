@@ -1,13 +1,13 @@
 //
-//  VerifyOTPViewController.swift
+//  VerifyPhoneViewController.swift
 //  Tiki
 //
-//  Created by Dang Trung Hieu on 3/27/21.
+//  Created by Bee_MacPro on 23/05/2021.
 //
 
 import UIKit
 
-class VerifyOTPViewController: BaseViewController {
+class VerifyPhoneViewController: BaseViewController {
     
     var userName: String = ""
     
@@ -114,15 +114,17 @@ class VerifyOTPViewController: BaseViewController {
     
     @objc private func tapOnNextButton() {
         guard let code = enterCodeTextField.text else { return }
-        let endPoint = UserEndPoint.checkValidCode(bodyParams: ["phone": userName,
-                                                                "otp": code])
-        
-        APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
-            
-            AlertManager.shared.show(message: TextManager.activeAccSuccess.localized())
-            UIViewController.setRootVCBySinInVC()
-            
-            
+        let endPoint = UserEndPoint.checkValidCodeWithPhone(bodyParams: ["otp": code])
+        self.showLoading()
+        APIService.request(endPoint: endPoint, onSuccess: { [weak self] (apiResponse) in
+            self?.hideLoading()
+            var userId = ""
+            if let user = apiResponse.toObject(User.self) {
+                userId = user.userId
+            }
+            let enterNewPWVC = EnterNewPWViewController()
+            enterNewPWVC.userId = userId
+            self?.navigationController?.pushViewController(enterNewPWVC, animated: true)
         }, onFailure: { (apiError) in
             AlertManager.shared.show(message: TextManager.invalidCode.localized())
         }) {
@@ -135,7 +137,7 @@ class VerifyOTPViewController: BaseViewController {
 
 // MARK: - Layout
 
-extension VerifyOTPViewController {
+extension VerifyPhoneViewController {
     
     private func layoutCenterStackView() {
         view.addSubview(centerStackView)
@@ -193,4 +195,3 @@ extension VerifyOTPViewController {
     }
     
 }
-

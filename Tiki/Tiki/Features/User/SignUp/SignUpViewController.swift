@@ -125,29 +125,6 @@ class SignUpViewController: BaseViewController {
         return textField
     }()
     
-    private lazy var termAndConditionLabel: NIAttributedLabel = {
-        let label = NIAttributedLabel()
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        label.textColor = UIColor.bodyText
-        label.linkColor = UIColor.link
-        label.numberOfLines = 0
-        label.delegate = self
-        label.lineBreakMode = .byWordWrapping
-        label.text = "Bằng cách nhấp vào Tạo tài khoản, bạn đồng ý với Điều khoản của chúng tôi và rằng bạn đã đọc Chính sách dữ liệu của chúng tôi.".localized()
-        
-        if let conditionRange = label.text?.range(of: "Điều khoản".localized()),
-           let conditionNSRange = label.text?.nsRange(from: conditionRange) {
-            label.addLink(URL(string: "https://careers.zalo.me/")!, range: conditionNSRange)
-        }
-        
-        if let termRange = label.text?.range(of: "Chính sách dữ liệu".localized()),
-           let termNSRange = label.text?.nsRange(from: termRange) {
-            label.addLink(URL(string: "https://careers.zalo.me/")!, range: termNSRange)
-        }
-        
-        return label
-    }()
-    
     fileprivate lazy var createAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.createAccount, for: .normal)
@@ -176,7 +153,6 @@ class SignUpViewController: BaseViewController {
         layoutConfirmPasswordTextField()
         layoutDOBTitleLabel()
         layoutDOBTextField()
-        layoutTermAndConditionLabel()
         layoutCreateAccountButton()
     }
     
@@ -233,7 +209,7 @@ class SignUpViewController: BaseViewController {
                 
                 if userName.isPhoneNumber {
                     message = TextManager.signUpPhoneSuccessMessage.localized()
-                    AppRouter.pushToVerifyOTPVC(with: userName, isActiveAcc: true)
+                    AppRouter.pushToVerifyOTPVC(with: userName)
                     AlertManager.shared.show(TextManager.alertTitle.localized(),
                                              message: message,
                                              buttons: [TextManager.IUnderstand.localized()],
@@ -284,7 +260,7 @@ class SignUpViewController: BaseViewController {
         scrollView.addSubview(firstNameTextField)
         firstNameTextField.snp.makeConstraints { (make) in
             make.width.equalTo(width)
-            make.height.equalTo(Dimension.shared.defaultHeightTextField)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
             make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
             make.top.equalTo(freePolicyLabel.snp.bottom).offset(Dimension.shared.normalMargin)
         }
@@ -342,18 +318,10 @@ class SignUpViewController: BaseViewController {
         }
     }
     
-    private func layoutTermAndConditionLabel() {
-        scrollView.addSubview(termAndConditionLabel)
-        termAndConditionLabel.snp.makeConstraints { (make) in
-            make.left.right.equalTo(userNameTextField)
-            make.top.equalTo(DOBTextField.snp.bottom).offset(Dimension.shared.largeMargin)
-        }
-    }
-    
     private func layoutCreateAccountButton() {
         scrollView.addSubview(createAccountButton)
         createAccountButton.snp.makeConstraints { (make) in
-            make.top.equalTo(termAndConditionLabel.snp.bottom)
+            make.top.equalTo(DOBTextField.snp.bottom)
                 .offset(Dimension.shared.largeMargin)
             make.bottom.equalToSuperview()
                 .offset(-Dimension.shared.largeMargin)
@@ -367,12 +335,4 @@ class SignUpViewController: BaseViewController {
     
 }
 
-// MARK: - NIAttributedLabelDelegate
-
-extension SignUpViewController: NIAttributedLabelDelegate {
-    func attributedLabel(_ attributedLabel: NIAttributedLabel!, didSelect result: NSTextCheckingResult!, at point: CGPoint) {
-        guard let url = result.url else { return }
-        AppRouter.pushToWebView(config: url)
-    }
-}
 

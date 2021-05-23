@@ -37,4 +37,5 @@ extension TextManager {
     static let share                                = "Chia sẻ"
     static let facebook                             = "facebook"
     static let shopRecomend                         = "Shop gợi ý"
+
 }
