@@ -52,7 +52,7 @@ class SignInViewController: BaseViewController {
         let textField = PaddingTextField()
         textField.keyboardType = .numberPad
         textField.fontSizePlaceholder(text: TextManager.phoneNumber,
-                                      size: FontSize.title.rawValue)
+                                      size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self
@@ -84,22 +84,6 @@ class SignInViewController: BaseViewController {
                                                     weight: .semibold)
         button.addTarget(self, action: #selector(tapOnSignUp), for: .touchUpInside)
         return button
-    }()
-    
-    private lazy var termAndConditionLabel: NIAttributedLabel = {
-        let label = NIAttributedLabel()
-        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        label.textColor = UIColor.bodyText
-        label.linkColor = UIColor.link
-        label.numberOfLines = 1
-        label.delegate = self
-        label.lineBreakMode = .byWordWrapping
-        label.text = TextManager.continueRules
-        if let conditionRange = label.text?.range(of: "điều khoản sử dụng".localized()),
-           let conditionNSRange = label.text?.nsRange(from: conditionRange) {
-            label.addLink(URL(string: "https://careers.zalo.me/")!, range: conditionNSRange)
-        }
-        return label
     }()
     
     private let containerView: BaseView = {
@@ -155,7 +139,6 @@ class SignInViewController: BaseViewController {
         layoutButtonStackView()
         layoutFaceBookSignInButton()
         layoutGoogleSignInButton()
-        layoutTermAndConditionLabel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -334,14 +317,6 @@ class SignInViewController: BaseViewController {
         }
     }
     
-    private func layoutTermAndConditionLabel() {
-        view.addSubview(termAndConditionLabel)
-        termAndConditionLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(buttonStackView.snp.bottom)
-                .offset(Dimension.shared.largeMargin_32)
-        }
-    }
 }
 
 // MARK: - NIAttributedLabelDelegate

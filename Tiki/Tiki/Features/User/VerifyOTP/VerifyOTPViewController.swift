@@ -14,21 +14,26 @@ class VerifyOTPViewController: BaseViewController {
     
     // MARK: - UI Elements
     
-    fileprivate let imageView: UIImageView = {
+    let topView: UIView = {
+        let view = UIView()
+        return view
+    }()
+    
+    fileprivate lazy var logoImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = ImageManager.icon_logo2
+        imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.image = ImageManager.sendMail
         return imageView
     }()
     
-    fileprivate lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.sendCodeRecoverPWInSMS.localized()
-        label.textColor = UIColor.lightBodyText
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue)
-        return label
+    let centerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis         = .vertical
+        stackView.alignment    = .fill
+        stackView.distribution = .fill
+        stackView.spacing = dimension.normalMargin
+        return stackView
     }()
     
     fileprivate lazy var enterCodeTextField: PaddingTextField = {
@@ -44,6 +49,25 @@ class VerifyOTPViewController: BaseViewController {
         return textField
     }()
     
+    private lazy var resendCodeLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextManager.resendCodeAgain.localized()
+        label.textColor = UIColor.bodyText
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private lazy var againCodeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(TextManager.againCode, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        button.backgroundColor = UIColor.clear
+        button.setTitleColor(UIColor.second, for: .normal)
+        button.addTarget(self, action: #selector(tapOnResendCode), for: .touchUpInside)
+        return button
+    }()
+    
     fileprivate lazy var nextButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.next, for: .normal)
@@ -54,24 +78,7 @@ class VerifyOTPViewController: BaseViewController {
         button.isUserInteractionEnabled = false
         return button
     }()
-    
-    private lazy var resendCodeLabel: NIAttributedLabel = {
-        let label = NIAttributedLabel()
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        label.textColor = UIColor.bodyText
-        label.linkColor = UIColor.link
-        label.numberOfLines = 0
-        label.delegate = self
-        label.lineBreakMode = .byWordWrapping
-        label.text = TextManager.resendCodeAgain.localized()
-        
-        if let conditionRange = label.text?.range(of: "Thử lại".localized()),
-           let conditionNSRange = label.text?.nsRange(from: conditionRange) {
-            label.addLink(URL(string: "https://careers.zalo.me/")!, range: conditionNSRange)
-        }
-        
-        return label
-    }()
+
     
     // MARK: - LifeCycles
     
@@ -79,12 +86,13 @@ class VerifyOTPViewController: BaseViewController {
         super.viewDidLoad()
         
         navigationItem.title = TextManager.verifyCode.localized()
-        
-        layoutImageView()
-        layoutMessageLabel()
+        layoutCenterStackView()
         layoutEnterCodeTextField()
         layoutNextButton()
-        layoutResendCode()
+        layoutResendLabel()
+        layoutAgainCodeButton()
+        layoutTopView()
+        layoutLogoImageView()
         
     }
     
@@ -99,6 +107,10 @@ class VerifyOTPViewController: BaseViewController {
             nextButton.backgroundColor = UIColor.disable
             nextButton.isUserInteractionEnabled = false
         }
+    }
+    
+    @objc private func tapOnResendCode() {
+        
     }
     
     @objc private func tapOnNextButton() {
@@ -123,69 +135,67 @@ class VerifyOTPViewController: BaseViewController {
         }
 
     }
+
+}
+
+// MARK: - Layout
+
+extension VerifyOTPViewController {
     
-    // MARK: - Setup Layouts
-    
-    private func layoutImageView() {
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(100 * Dimension.shared.heightScale)
-            make.centerX.equalToSuperview()
-            if #available(iOS 11, *) {
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(40 * Dimension.shared.heightScale)
-            } else {
-                make.top.equalTo(topLayoutGuide.snp.bottom).offset(40 * Dimension.shared.heightScale)
-            }
-        }
-    }
-    
-    private func layoutMessageLabel() {
-        view.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.normalMargin)
-            make.left.equalToSuperview().offset(Dimension.shared.largeMargin_32)
-            make.right.equalToSuperview().offset(-Dimension.shared.largeMargin_32)
+    private func layoutCenterStackView() {
+        view.addSubview(centerStackView)
+        centerStackView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+                .offset(dimension.normalMargin)
+            make.right.equalToSuperview()
+                .inset(dimension.normalMargin)
+            make.centerY.equalToSuperview()
         }
     }
     
     private func layoutEnterCodeTextField() {
-        view.addSubview(enterCodeTextField)
+        centerStackView.addArrangedSubview(enterCodeTextField)
         enterCodeTextField.snp.makeConstraints { (make) in
-            make.left.equalTo(view).offset(Dimension.shared.normalMargin)
-            make.right.equalTo(view).offset(-Dimension.shared.normalMargin)
-            make.height.equalTo(Dimension.shared.defaultHeightTextField)
-            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.largeMargin)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
         }
     }
     
     private func layoutNextButton() {
-        view.addSubview(nextButton)
+        centerStackView.addArrangedSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
             make.height.equalTo(Dimension.shared.largeHeightButton)
-            make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
-            make.top.equalTo(enterCodeTextField.snp.bottom)
-                .offset(Dimension.shared.largeMargin_32)
-            make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
         }
     }
     
-    private func layoutResendCode() {
-        view.addSubview(resendCodeLabel)
-        resendCodeLabel.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin_32)
+    private func layoutResendLabel() {
+        centerStackView.addArrangedSubview(resendCodeLabel)
+    }
+    
+    
+    private func layoutAgainCodeButton() {
+        centerStackView.addArrangedSubview(againCodeButton)
+        againCodeButton.snp.makeConstraints { (make) in
+            make.height.equalTo(16)
+        }
+    }
+    
+    private func layoutTopView() {
+        view.addSubview(topView)
+        topView.snp.makeConstraints { (make) in
+            make.top.equalTo(topLayoutGuide.snp.bottom)
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(centerStackView.snp.top)
+        }
+    }
+    
+    private func layoutLogoImageView() {
+        topView.addSubview(logoImageView)
+        logoImageView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalTo(view).multipliedBy(0.5)
+            make.height.equalTo(logoImageView.snp.width)
         }
     }
     
 }
 
-extension VerifyOTPViewController: NIAttributedLabelDelegate {
-    func attributedLabel(_ attributedLabel: NIAttributedLabel!,
-                         didSelect result: NSTextCheckingResult!,
-                         at point: CGPoint) {
-        
-    }
-}

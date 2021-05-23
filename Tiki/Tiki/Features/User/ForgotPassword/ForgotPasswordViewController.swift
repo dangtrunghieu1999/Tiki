@@ -16,7 +16,7 @@ class ForgotPasswordViewController: BaseViewController {
         let label = UILabel()
         label.text = TextManager.beginPassword
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue,
-                                       weight: .medium)
+                                       weight: .semibold)
         label.textColor = UIColor.titleText
         label.textAlignment = .left
         return label
@@ -28,14 +28,14 @@ class ForgotPasswordViewController: BaseViewController {
         label.textColor = UIColor.titleText
         label.textAlignment = .left
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         return label
     }()
     
     fileprivate lazy var phoneTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.fontSizePlaceholder(text: TextManager.signInUserNamePlaceHolder,
-                                      size: FontSize.body.rawValue)
+                                      size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self

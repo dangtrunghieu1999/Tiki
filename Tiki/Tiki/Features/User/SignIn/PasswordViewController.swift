@@ -25,7 +25,7 @@ class PasswordViewController: BaseViewController {
         let label = UILabel()
         label.text = TextManager.inputPassword
         label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue,
-                                       weight: .medium)
+                                       weight: .semibold)
         label.textColor = UIColor.titleText
         label.textAlignment = .left
         return label
@@ -43,7 +43,7 @@ class PasswordViewController: BaseViewController {
         let textField = PaddingTextField()
         textField.isSecureTextEntry = true
         textField.fontSizePlaceholder(text: TextManager.password,
-                                      size: FontSize.body.rawValue)
+                                      size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.delegate = self
@@ -93,8 +93,8 @@ class PasswordViewController: BaseViewController {
     // MARK: - Helper Method
     
     func getRequiredAttibuted(from text: String, to textAfter: String) -> NSAttributedString {
-        let font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        let fontAfter = UIFont.systemFont(ofSize: FontSize.h2.rawValue, weight: .bold)
+        let font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        let fontAfter = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .bold)
         let attributeds = [NSAttributedString.Key.font: font,
                            NSAttributedString.Key.foregroundColor: UIColor.titleText]
         let attributedText = NSMutableAttributedString(string: text, attributes: attributeds)

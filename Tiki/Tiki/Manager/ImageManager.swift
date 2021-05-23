@@ -157,7 +157,7 @@ final class ImageManager {
     static let see_more                          = UIImage(named: "see_more")
     static let config_address                    = UIImage(named: "config_address")
     static let icon_flag                         = UIImage(named: "icon_flag")
-    
+    static let icon_logo2                        = UIImage(named: "icon_logo2")
     
     // MAKR: - Temp
     
