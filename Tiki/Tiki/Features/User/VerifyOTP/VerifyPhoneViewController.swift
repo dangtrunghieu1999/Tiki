@@ -114,15 +114,16 @@ class VerifyPhoneViewController: BaseViewController {
     
     @objc private func tapOnNextButton() {
         guard let code = enterCodeTextField.text else { return }
-        let endPoint = UserEndPoint.checkValidCodeWithPhone(bodyParams: ["phone": userName,
-                                                                         "otp": code])
+        let endPoint = UserEndPoint.checkValidCodeWithPhone(bodyParams: ["otp": code])
         self.showLoading()
         APIService.request(endPoint: endPoint, onSuccess: { [weak self] (apiResponse) in
             self?.hideLoading()
+            var userId = ""
             if let user = apiResponse.toObject(User.self) {
-                UserManager.saveCurrentUser(user)
+                userId = user.userId
             }
             let enterNewPWVC = EnterNewPWViewController()
+            enterNewPWVC.userId = userId
             self?.navigationController?.pushViewController(enterNewPWVC, animated: true)
         }, onFailure: { (apiError) in
             AlertManager.shared.show(message: TextManager.invalidCode.localized())

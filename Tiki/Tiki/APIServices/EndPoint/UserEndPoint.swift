@@ -52,7 +52,7 @@ extension UserEndPoint: EndPointType {
         case .register:
             return .post
         case .forgotPW:
-            return .post
+            return .put
         case .checkValidCode:
             return .post
         case .checkValidCodeWithPhone:

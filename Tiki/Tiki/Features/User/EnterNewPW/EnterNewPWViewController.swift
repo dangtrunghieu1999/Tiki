@@ -10,6 +10,7 @@ import UIKit
 class EnterNewPWViewController: BaseViewController {
     
     // MARK: - Variables
+    var userId = ""
     
     // MARK: - UI Elements
     
@@ -111,7 +112,7 @@ class EnterNewPWViewController: BaseViewController {
     @objc private func tapOnNextButton() {
         
         guard let password = passwordTextField.text else { return }
-        guard let userId = UserManager.userId else { return }
+        
         let endPoint = UserEndPoint.forgotPW(bodyParams: ["userId": userId,
                                                         "password": password])
         APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in

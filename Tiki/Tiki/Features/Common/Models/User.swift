@@ -12,6 +12,7 @@ import SwiftyJSON
 class User: NSObject, JSONParsable, NSCoding {
     
     var id              = ""
+    var userId          = ""
     var token           = ""
     var firstName       = ""
     var lastName        = ""
@@ -31,6 +32,7 @@ class User: NSObject, JSONParsable, NSCoding {
         self.email          = json["gmail"].stringValue
         self.token          = json["token"].stringValue
         self.fullName       = json["fullName"].stringValue
+        self.userId         = json["userId"].stringValue
         
         if fullName.isEmpty {
             self.fullName = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
@@ -47,6 +49,7 @@ class User: NSObject, JSONParsable, NSCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(id,           forKey: "id")
+        aCoder.encode(userId,       forKey: "userId")
         aCoder.encode(token,        forKey: "token")
         aCoder.encode(firstName,    forKey: "firstName")
         aCoder.encode(lastName,     forKey: "lastName")

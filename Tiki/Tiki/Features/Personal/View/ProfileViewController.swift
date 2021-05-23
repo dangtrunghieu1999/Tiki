@@ -81,10 +81,8 @@ class ProfileViewController: BaseViewController {
         textField.layer.borderColor = UIColor.boderColor.cgColor
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        textField.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         textField.layer.masksToBounds = true
-        textField.layer.backgroundColor = UIColor.separator.cgColor
-        textField.isUserInteractionEnabled = false
         return textField
     }()
     

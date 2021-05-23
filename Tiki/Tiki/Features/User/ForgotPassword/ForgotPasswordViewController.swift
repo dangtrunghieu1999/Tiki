@@ -94,19 +94,19 @@ class ForgotPasswordViewController: BaseViewController {
     @objc private func tapOnNextButton() {
         guard let phoneNumber = self.phoneTextField.text else { return }
     
-        let params   = ["phone": "0985153812"]
+        let params   = ["phone": phoneNumber]
         let endPoint = UserEndPoint.sendOTP(bodyParams: params)
-        
-        APIService.request(endPoint: endPoint) { (apiResponse) in
+    
+        APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
             let message = TextManager.sendCodeRecoverPWInSMS
             AppRouter.pushToVerifyOTPVCWithPhone(with: phoneNumber)
             AlertManager.shared.show(TextManager.alertTitle, message: message,
                                      buttons: [TextManager.IUnderstand.localized()],
                                      tapBlock: { (action, index) in })
-        } onFailure: { (error) in
+        }, onFailure: { (apiError) in
             self.hideLoading()
-            AlertManager.shared.show(TextManager.alertTitle, message: error?.message ??  " ")
-        } onRequestFail: {
+            AlertManager.shared.show(TextManager.alertTitle, message: apiError?.message ??  " ")
+        }) {
             AlertManager.shared.show(TextManager.alertTitle, message: TextManager.errorMessage)
         }
     }
