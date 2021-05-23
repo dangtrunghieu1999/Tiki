@@ -19,6 +19,9 @@ class User: NSObject, JSONParsable, NSCoding {
     var pictureURL      = ""
     var fullName        = ""
     var email           = ""
+    var phone           = ""
+    var gender: Bool?
+    var dateOfBirth     = ""
     var user: JSON?
     
     required override init() {}
@@ -33,7 +36,10 @@ class User: NSObject, JSONParsable, NSCoding {
         self.token          = json["token"].stringValue
         self.fullName       = json["fullName"].stringValue
         self.userId         = json["userId"].stringValue
-        
+        self.phone          = json["phone"].stringValue
+        self.dateOfBirth    = json["dayOfBirth"].stringValue
+        self.gender         = json["gender"].boolValue
+    
         if fullName.isEmpty {
             self.fullName = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
         }
@@ -44,6 +50,7 @@ class User: NSObject, JSONParsable, NSCoding {
         firstName   = aDecoder.decodeObject(forKey: "firstName") as? String ?? ""
         lastName    = aDecoder.decodeObject(forKey: "lastName") as? String ?? ""
         email       = aDecoder.decodeObject(forKey: "email") as? String ?? ""
+        phone       = aDecoder.decodeObject(forKey: "phone") as? String ?? ""
         fullName    = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
     }
     
@@ -54,6 +61,7 @@ class User: NSObject, JSONParsable, NSCoding {
         aCoder.encode(firstName,    forKey: "firstName")
         aCoder.encode(lastName,     forKey: "lastName")
         aCoder.encode(email,        forKey: "email")
+        aCoder.encode(phone,        forKey: "phone")
     }
     
 }

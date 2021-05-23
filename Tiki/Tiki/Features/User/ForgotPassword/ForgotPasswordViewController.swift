@@ -96,8 +96,9 @@ class ForgotPasswordViewController: BaseViewController {
     
         let params   = ["phone": phoneNumber]
         let endPoint = UserEndPoint.sendOTP(bodyParams: params)
-    
+        self.showLoading()
         APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
+            self.hideLoading()
             let message = TextManager.sendCodeRecoverPWInSMS
             AppRouter.pushToVerifyOTPVCWithPhone(with: phoneNumber)
             AlertManager.shared.show(TextManager.alertTitle, message: message,

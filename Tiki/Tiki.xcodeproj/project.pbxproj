@@ -322,6 +322,7 @@
 		CFF9A0022616B11D00F702F0 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0012616B11D00F702F0 /* BannerModel.swift */; };
 		CFF9A0072616CB6300F702F0 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */; };
 		D3D31FCBF7CFFB2FE02B1431 /* Pods_Tiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89804318629FE70AB5E51062 /* Pods_Tiki.framework */; };
+		F6061BB9265A9D1A003111CA /* ChangePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6061BB8265A9D1A003111CA /* ChangePWViewController.swift */; };
 		F640149A2653F99000B80A21 /* OrderAllViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64014992653F99000B80A21 /* OrderAllViewController.swift */; };
 		F640149E2653F9A100B80A21 /* OrderPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F640149D2653F9A100B80A21 /* OrderPaymentViewController.swift */; };
 		F64014A12653F9AD00B80A21 /* OrderProcessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64014A02653F9AD00B80A21 /* OrderProcessViewController.swift */; };
@@ -694,6 +695,7 @@
 		CFEC28A6260C9C3A008B90E7 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		CFF9A0012616B11D00F702F0 /* BannerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
 		CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6061BB8265A9D1A003111CA /* ChangePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewController.swift; sourceTree = "<group>"; };
 		F64014992653F99000B80A21 /* OrderAllViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderAllViewController.swift; sourceTree = "<group>"; };
 		F640149D2653F9A100B80A21 /* OrderPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaymentViewController.swift; sourceTree = "<group>"; };
 		F64014A02653F9AD00B80A21 /* OrderProcessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProcessViewController.swift; sourceTree = "<group>"; };
@@ -914,6 +916,7 @@
 			children = (
 				F64014982653F95800B80A21 /* ViewScroll */,
 				CF360C04264FB694008F0FF7 /* ProfileViewController.swift */,
+				F6061BB8265A9D1A003111CA /* ChangePWViewController.swift */,
 				CFAF8FFC25FC5EBF000E2CCA /* PersonalViewController.swift */,
 				CF540B3426083FC8003CDC6D /* ManagerOrderViewController.swift */,
 				CF540B382608403B003CDC6D /* DeliveryAddressViewController.swift */,
@@ -2357,6 +2360,7 @@
 				F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */,
 				CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */,
 				CFAF8F1E25FC507C000E2CCA /* ImagePickerController.swift in Sources */,
+				F6061BB9265A9D1A003111CA /* ChangePWViewController.swift in Sources */,
 				CFD56FEF2635CBE800B17AEA /* PaymentMethodCollectionViewCell.swift in Sources */,
 				CFAF8FC025FC545D000E2CCA /* Photo.swift in Sources */,
 				CFAF8E4125FC4EDD000E2CCA /* UINavigationController+Extension.swift in Sources */,
