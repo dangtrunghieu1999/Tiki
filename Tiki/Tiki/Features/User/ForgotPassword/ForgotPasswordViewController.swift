@@ -38,6 +38,7 @@ class ForgotPasswordViewController: BaseViewController {
                                       size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
+        textField.keyboardType = .numberPad
         textField.delegate = self
         return textField
     }()
@@ -92,15 +93,13 @@ class ForgotPasswordViewController: BaseViewController {
     
     @objc private func tapOnNextButton() {
         guard let phoneNumber = self.phoneTextField.text else { return }
-        self.showLoading()
-        
-        let params = ["phone": phoneNumber]
-        let endPoint = UserEndPoint.createNewPW(bodyParams: params)
+    
+        let params   = ["phone": "0985153812"]
+        let endPoint = UserEndPoint.sendOTP(bodyParams: params)
         
         APIService.request(endPoint: endPoint) { (apiResponse) in
-            self.hideLoading()
             let message = TextManager.sendCodeRecoverPWInSMS
-            AppRouter.pushToVerifyOTPVC(with: phoneNumber)
+            AppRouter.pushToVerifyOTPVCWithPhone(with: phoneNumber)
             AlertManager.shared.show(TextManager.alertTitle, message: message,
                                      buttons: [TextManager.IUnderstand.localized()],
                                      tapBlock: { (action, index) in })

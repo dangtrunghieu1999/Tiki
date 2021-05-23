@@ -16,6 +16,7 @@ enum UserEndPoint {
     case checkValidCode(bodyParams: Parameters)
     case checkValidCodeWithPhone(bodyParams: Parameters)
     case createNewPW(bodyParams: Parameters)
+    case sendOTP(bodyParams: Parameters)
     case getUserInfo
     case searchUser(params: Parameters)
 }
@@ -28,13 +29,15 @@ extension UserEndPoint: EndPointType {
         case .register:
             return "/user/register"
         case .forgotPW:
-            return "/user/changepassword"
+            return "/user/forgotpassword"
         case .checkValidCode:
             return "/user/verify"
         case .checkValidCodeWithPhone:
-            return "/user/verify"
+            return "/user/checkotp"
         case .createNewPW:
             return "/User/CreateNewPassword"
+        case .sendOTP:
+            return "/user/sendotp"
         case .getUserInfo:
             return "/user/me"
         case .searchUser:
@@ -56,6 +59,8 @@ extension UserEndPoint: EndPointType {
             return .post
         case .createNewPW:
             return .post
+        case .sendOTP:
+            return .post
         case .getUserInfo:
             return .get
         case .searchUser:
@@ -76,6 +81,8 @@ extension UserEndPoint: EndPointType {
         case .checkValidCodeWithPhone(let bodyParams):
             return bodyParams
         case .createNewPW(let bodyParams):
+            return bodyParams
+        case .sendOTP(let bodyParams):
             return bodyParams
         case .getUserInfo:
             return nil

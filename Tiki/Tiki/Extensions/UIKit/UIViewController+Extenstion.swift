@@ -70,7 +70,7 @@ public extension UIViewController {
     
     class func setRootVCBySinInVC() {
         guard let window = UIApplication.shared.keyWindow else { return }
-        window.rootViewController = TKTabBarViewController()
+        window.rootViewController = UINavigationController(rootViewController: SignInViewController())
     }
     
     var topbarHeightY: CGFloat {

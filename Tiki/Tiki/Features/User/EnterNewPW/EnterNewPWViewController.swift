@@ -11,8 +11,6 @@ class EnterNewPWViewController: BaseViewController {
     
     // MARK: - Variables
     
-    var code = ""
-    
     // MARK: - UI Elements
     
     fileprivate lazy var titleLabel: UILabel = {
@@ -112,6 +110,24 @@ class EnterNewPWViewController: BaseViewController {
     
     @objc private func tapOnNextButton() {
         
+        guard let password = passwordTextField.text else { return }
+        guard let userId = UserManager.userId else { return }
+        let endPoint = UserEndPoint.forgotPW(bodyParams: ["userId": userId,
+                                                        "password": password])
+        APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
+            AlertManager.shared.show(TextManager.alertTitle.localized(),
+                                     message: TextManager.resetPWSuccessMessage.localized(),
+                                     buttons: [TextManager.IUnderstand.localized()],
+                                     tapBlock: { (action, index) in
+                                        UIViewController.setRootVCBySinInVC()
+            })
+        }, onFailure: { (apiError) in
+            AlertManager.shared.show(TextManager.alertTitle.localized(),
+                                     message: TextManager.errorMessage.localized())
+        }) {
+            AlertManager.shared.show(TextManager.alertTitle.localized(),
+                                     message: TextManager.errorMessage.localized())
+        }
     }
     
     // MARK: - Helper Method

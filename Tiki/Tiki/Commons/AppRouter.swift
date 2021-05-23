@@ -44,7 +44,7 @@ class AppRouter: NSObject {
         webVC.configWebView(by: byURL)
         UIViewController.topViewController()?.navigationController?.pushViewController(webVC, animated: true)
     }
-
+    
     class func pushToGuideEranMoneyWebView(config byURL: URL) {
         
     }
@@ -52,20 +52,20 @@ class AppRouter: NSObject {
     class func pushToAvatarCropperVC(image: UIImage,
                                      completion: @escaping ImageCropperCompletion,
                                      dismis: @escaping ImageCropperDismiss) {
-
+        
     }
     
     class func pushToCropCoverImageVC(image: UIImage,
                                       delegate: UpdateCoverImageViewControllerDelegate?,
                                       avatarURL: String?,
                                       displayName: String) {
-
+        
     }
     
     class func presentToImagePicker(pickerDelegate: ImagePickerControllerDelegate?,
                                     limitImage: Int = 1,
                                     selecedAssets: [PHAsset] = []) {
-
+        
     }
     
     class func presentPopupImage(urls: [String],
@@ -74,10 +74,15 @@ class AppRouter: NSObject {
         
     }
     
-    class func pushToVerifyOTPVC(with userName: String, isActiveAcc: Bool = false) {
+    class func pushToVerifyOTPVC(with userName: String) {
         let viewController = VerifyOTPViewController()
         viewController.userName = userName
-        viewController.isActiveAccount = isActiveAcc
+        UIViewController.topNavigationVC?.pushViewController(viewController, animated: true)
+    }
+    
+    class func pushToVerifyOTPVCWithPhone(with userName: String) {
+        let viewController = VerifyPhoneViewController()
+        viewController.userName = userName
         UIViewController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
@@ -89,7 +94,7 @@ class AppRouter: NSObject {
     
     class func pushToShopHome(_ shopId: Int) {
         let viewController = ShopHomeViewController()
-//        viewController.loadShop(by: shopId)
+        //        viewController.loadShop(by: shopId)
         viewController.requestLoadShop()
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
@@ -103,22 +108,20 @@ class AppRouter: NSObject {
     }
     
     class func pushToChatHistory() {
-
+        
     }
     
     class func pushToChatDetail(partnerId: String) {
-
+        
     }
     
     class func pushToCategory(categoryId: Int, categoryName: String) {
-
+        
     }
     
     class func pushToNotificationVC() {
         let viewController = NotificationViewController()
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
-    
-
 
 }

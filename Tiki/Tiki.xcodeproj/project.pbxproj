@@ -333,6 +333,7 @@
 		F68784462653C7CE00A09AEC /* ThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784452653C7CE00A09AEC /* ThroughView.swift */; };
 		F68784492653C7F400A09AEC /* ShowHidePulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */; };
 		F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */; };
+		F69BECDF265A5457003C8AF5 /* VerifyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -704,6 +705,7 @@
 		F68784452653C7CE00A09AEC /* ThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThroughView.swift; sourceTree = "<group>"; };
 		F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHidePulleyView.swift; sourceTree = "<group>"; };
 		F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreProductPulleyView.swift; sourceTree = "<group>"; };
+		F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneViewController.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1838,6 +1840,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */,
+				F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */,
 			);
 			path = VerifyOTP;
 			sourceTree = "<group>";
@@ -2306,6 +2309,7 @@
 				CF1D87432650148F00C98E4D /* SearchProductViewController.swift in Sources */,
 				CF360C05264FB694008F0FF7 /* ProfileViewController.swift in Sources */,
 				CFAF8E3C25FC4EDD000E2CCA /* GradientPoint.swift in Sources */,
+				F69BECDF265A5457003C8AF5 /* VerifyPhoneViewController.swift in Sources */,
 				CFAF8E4C25FC4EDD000E2CCA /* JSON+Parser.swift in Sources */,
 				CFAF8E2F25FC4EDD000E2CCA /* BaseShimmerProtocol.swift in Sources */,
 				CFAF8E6425FC4EDD000E2CCA /* ChatTextManager.swift in Sources */,

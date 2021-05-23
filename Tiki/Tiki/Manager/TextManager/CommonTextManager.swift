@@ -115,7 +115,7 @@ final class  TextManager {
     static let gotoSignInPage               = "VỀ TRANG ĐĂNG NHẬP"
     static let signUp                       = "Đăng ký"
     static let verifyCode                   = "Xác thực tài khoản"
-    static let activeAccSuccess             = "Kích hoạt tài khoản thành công \n Bạn đăng nhập để bắt đầu sử dụng ứng dụng"
+    static let activeAccSuccess             = "Kích hoạt tài khoản thành công"
     
     // MARK: - User Profile
     
