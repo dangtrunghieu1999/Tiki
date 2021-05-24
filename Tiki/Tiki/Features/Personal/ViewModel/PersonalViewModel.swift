@@ -101,7 +101,9 @@ extension PersonalViewModel: UICollectionViewDataSource {
 }
 
 extension PersonalViewModel: PersonalHeaderCollectionViewDelegate {
+    
     func tapOnSignIn() {
         delegate?.didTapOnSignIn()
     }
 }
+

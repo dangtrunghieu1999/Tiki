@@ -124,5 +124,5 @@ class AppRouter: NSObject {
         let viewController = NotificationViewController()
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
-
+    
 }

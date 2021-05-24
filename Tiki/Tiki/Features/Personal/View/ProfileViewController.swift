@@ -227,6 +227,7 @@ class ProfileViewController: BaseViewController {
         layoutPhoneTextField()
         layoutDOBTitleLabel()
         layoutDOBTextField()
+        configData(user: userProfile)
     }
     
     // MARK: - Get API
