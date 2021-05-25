@@ -49,6 +49,7 @@ class ProfileViewController: BaseViewController {
         button.setTitle("Thay đổi ảnh", for: .normal)
         button.setTitleColor(UIColor.second, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
+        button.addTarget(self, action: #selector(tapOnUploadPhoto), for: .touchUpInside)
         return button
     }()
         
@@ -248,6 +249,10 @@ class ProfileViewController: BaseViewController {
             guard let window = UIApplication.shared.keyWindow else { return }
             window.rootViewController = TKTabBarViewController()
         }
+    }
+    
+    @objc private func tapOnUploadPhoto() {
+        
     }
 }
 
