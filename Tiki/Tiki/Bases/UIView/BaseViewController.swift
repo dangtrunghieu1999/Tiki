@@ -66,6 +66,7 @@ open class BaseViewController: UIViewController {
     lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isUserInteractionEnabled = true
+        scrollView.showsVerticalScrollIndicator = false
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchInScrollView))
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
@@ -335,7 +336,9 @@ open class BaseViewController: UIViewController {
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
             }
-            make.left.right.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+                .offset(-Dimension.shared.normalMargin)
         }
     }
     

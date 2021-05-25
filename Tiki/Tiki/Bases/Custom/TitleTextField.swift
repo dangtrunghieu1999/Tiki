@@ -74,7 +74,7 @@ class TitleTextField: BaseView {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
         return label
     }()
     
@@ -83,6 +83,9 @@ class TitleTextField: BaseView {
         textField.placeholder = TextManager.signInUserNamePlaceHolder
         textField.padding =  UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
         textField.layer.masksToBounds = true
+        textField.layer.cornerRadius = dimension.cornerRadiusSmall
+        textField.layer.borderWidth = 1
+        textField.layer.borderColor = UIColor.separator.cgColor
         return textField
     }()
     

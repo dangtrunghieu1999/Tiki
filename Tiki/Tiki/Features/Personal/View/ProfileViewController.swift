@@ -10,18 +10,20 @@ import UIKit
 class ProfileViewController: BaseViewController {
     
     private var selectedDate = AppConfig.defaultDate
-
+    let widhtTextField = (UIScreen.main.bounds.size.width / 2 ) - dimension.normalMargin
+    
     let withLabel = UIScreen.main.bounds.size.width / 2
     
     lazy var editBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: TextManager.edit, style: .done, target: self, action: nil)
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: FontSize.h1.rawValue), NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+                                              , NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         return barButtonItem
     }()
     
     var userProfile = User()
     
-    let myScrollView = BaseScrollView(frame: .zero)
+    // MARK: - UI Elements
     
     let contenStackView: UIStackView = {
         let stackView = UIStackView()
@@ -32,74 +34,31 @@ class ProfileViewController: BaseViewController {
         return stackView
     }()
     
+    let profileView = UIView()
+    
+    fileprivate lazy var profilePhotoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = ImageManager.avatarDefault
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        return imageView
+    }()
+    
+    fileprivate lazy var changePhotoButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Thay đổi ảnh", for: .normal)
+        button.setTitleColor(UIColor.second, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        return button
+    }()
+        
     let nameContainerView = UIView()
     
-    fileprivate lazy var firstNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.firstName
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        return label
-    }()
-    
-    fileprivate lazy var lastNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.lastName
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        return label
-    }()
-    
-    fileprivate lazy var firstNameTextField: PaddingTextField = {
-        let textField = PaddingTextField()
-        textField.layer.borderColor = UIColor.boderColor.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        textField.layer.masksToBounds = true
-        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        return textField
-    }()
-    
-    fileprivate lazy var lastNameTextField: PaddingTextField = {
-        let textField = PaddingTextField()
-        textField.layer.borderColor = UIColor.boderColor.cgColor
-        textField.layer.borderWidth = 1
-        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        textField.layer.masksToBounds = true
-        return textField
-    }()
-    
-        fileprivate lazy var emailNameLabel: UILabel = {
-            let label = UILabel()
-            label.text = TextManager.email
-            label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-            return label
-        }()
-    
-    fileprivate lazy var emailTextFieldView: PaddingTextField = {
-        let textField = PaddingTextField()
-        textField.layer.borderColor = UIColor.boderColor.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        textField.layer.masksToBounds = true
-        return textField
-    }()
-    
-    fileprivate lazy var phonelNameLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.phoneNumber
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        return label
-    }()
-    
-    fileprivate lazy var phoneTextFieldView: PaddingTextField = {
-        let textField = PaddingTextField()
-        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        textField.layer.borderColor = UIColor.separator.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        textField.layer.masksToBounds = true
-        textField.keyboardType = .numberPad
+    fileprivate lazy var fullNameField: TitleTextField = {
+        let textField = TitleTextField()
+        textField.titleText   = TextManager.fullName.localized()
+        textField.textField.fontSizePlaceholder(text: TextManager.fullNamePlaceholder.localized(),
+                                                size: FontSize.h1.rawValue)
         return textField
     }()
     
@@ -147,6 +106,64 @@ class ProfileViewController: BaseViewController {
         return view
     }()
     
+    let bottomStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis         = .vertical
+        stackView.alignment    = .fill
+        stackView.distribution = .fill
+        stackView.spacing = dimension.normalMargin
+        return stackView
+    }()
+    
+    fileprivate lazy var emailTextField: TitleTextField = {
+        let textField = TitleTextField()
+        textField.titleText   = TextManager.email.localized()
+        textField.textField.fontSizePlaceholder(text: TextManager.emailPlaceholder.localized(),
+                                                size: FontSize.h1.rawValue)
+        
+        textField.keyboardType = .emailAddress
+        return textField
+    }()
+    
+    fileprivate lazy var phoneTextField: TitleTextField = {
+        let textField = TitleTextField()
+        textField.titleText   = TextManager.phoneNumber.localized()
+        textField.textField.fontSizePlaceholder(text: TextManager.phoneNumberPlaceholder.localized(),
+                                                size: FontSize.h1.rawValue)
+        textField.keyboardType = .numberPad
+        return textField
+    }()
+        
+    let dobContainerView = UIView()
+    
+    fileprivate let DOBTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = TextManager.dateOfBirth
+        label.textColor = UIColor.titleText
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
+        return label
+    }()
+    
+    fileprivate lazy var datePicker: UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.locale = Locale(identifier: "Vi")
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = AppConfig.minDate
+        datePicker.maximumDate = Date()
+        datePicker.date = selectedDate
+        return datePicker
+    }()
+    
+    fileprivate lazy var DOBTextField: PaddingTextField = {
+        let textField = PaddingTextField()
+        textField.placeholder = TextManager.dateOfBirth
+        textField.layer.borderColor = UIColor.separator.cgColor
+        textField.layer.borderWidth = 1
+        textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
+        textField.layer.masksToBounds = true
+        textField.inputView = datePicker
+        return textField
+    }()
     
     fileprivate lazy var changePasswordButton: UIButton = {
         let button = UIButton()
@@ -174,59 +191,25 @@ class ProfileViewController: BaseViewController {
         return button
     }()
     
-    fileprivate let DOBTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.dateOfBirth
-        label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        return label
-    }()
-
-    
-    fileprivate lazy var datePicker: UIDatePicker = {
-        let datePicker = UIDatePicker()
-        datePicker.locale = Locale(identifier: "Vi")
-        datePicker.datePickerMode = .date
-        datePicker.minimumDate = AppConfig.minDate
-        datePicker.maximumDate = Date()
-        datePicker.date = selectedDate
-        return datePicker
-    }()
-    
-    fileprivate lazy var DOBTextField: PaddingTextField = {
-        let textField = PaddingTextField()
-        textField.placeholder = TextManager.dateOfBirth
-        textField.layer.borderColor = UIColor.separator.cgColor
-        textField.layer.borderWidth = 1
-        textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        textField.layer.masksToBounds = true
-        textField.inputView = datePicker
-        return textField
-    }()
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupEditBarButtonItem()
-        layoutLogoutButton()
-        layoutChangePasswordButton()
-        layoutMyScrollView()
-        layoutFirstNameLabel()
-        layoutLastNameLabel()
+        layoutScrollView()
+        layoutBottomStackView()
+        layoutItemBottomStackView()
+        layoutDOBView()
+        layoutDOBTitleLabel()
+        layoutDOBTextField()
+        layoutBottomButton()
         layoutContenStackView()
-        layoutNameContainerView()
-        layoutFirstNameTextField()
-        layoutLastNameTextField()
+        layoutProfileView()
+        layoutProfilePhotoImage()
+        layoutChangePhotoButton()
         layoutGenderContainerView()
         layoutGenderTitleLabel()
         layoutGenderStackView()
         layoutGenderCheckBoxes()
-        layoutEmailLabel()
-        layoutEmailTextField()
-        layoutPhoneNameLabel()
-        layoutPhoneTextField()
-        layoutDOBTitleLabel()
-        layoutDOBTextField()
+        layoutFullNameTextField()
         configData(user: userProfile)
     }
     
@@ -235,10 +218,9 @@ class ProfileViewController: BaseViewController {
     func configData(user: User) {
         let birthDay = userProfile.dateOfBirth.toDate(with: DateFormat.shortDateUserFormat)
         
-        self.firstNameTextField.text     = userProfile.firstName
-        self.lastNameTextField.text      = userProfile.lastName
-        self.emailTextFieldView.text     = userProfile.email
-        self.phoneTextFieldView.text     = userProfile.phone
+        self.fullNameField.text          = userProfile.fullName
+        self.emailTextField.text         = userProfile.email
+        self.phoneTextField.text         = userProfile.phone
         self.DOBTextField.text           = birthDay.desciption(by: DateFormat.shortDateUserFormat)
         
         if userProfile.gender == true {
@@ -247,8 +229,6 @@ class ProfileViewController: BaseViewController {
             maleCheckBoxView.isActive = true
         }
     }
-    
-    
     
     // MARK: - UI Action
     
@@ -277,90 +257,93 @@ extension ProfileViewController {
         self.navigationItem.title = TextManager.userProfile
         self.navigationItem.rightBarButtonItem = self.editBarButtonItem
     }
-    
-    private func layoutLogoutButton() {
-        view.addSubview(logoutButton)
-        logoutButton.snp.makeConstraints { (make) in
-            make.leading.trailing.equalToSuperview().inset(dimension.mediumMargin)
-            make.height.equalTo(dimension.largeMargin_48)
-            make.bottom.equalTo(bottomLayoutGuide.snp.top).offset(-dimension.mediumMargin)
+        
+    private func layoutBottomStackView() {
+        scrollView.addSubview(bottomStackView)
+        bottomStackView.snp.makeConstraints { (make) in
+            make.bottom.equalToSuperview()
+                .offset(-Dimension.shared.mediumMargin)
+            make.left.right.equalTo(view)
+                .inset(Dimension.shared.normalMargin)
         }
     }
     
-    private func layoutChangePasswordButton() {
-        view.addSubview(changePasswordButton)
-        changePasswordButton.snp.makeConstraints { (make) in
-            make.leading.trailing.height.equalTo(logoutButton)
-            make.bottom.equalTo(logoutButton.snp.top).offset(-dimension.mediumMargin)
+    private func layoutItemBottomStackView() {
+        bottomStackView.addArrangedSubview(emailTextField)
+        bottomStackView.addArrangedSubview(phoneTextField)
+    }
+    
+    private func layoutDOBView() {
+        bottomStackView.addArrangedSubview(dobContainerView)
+        dobContainerView.snp.makeConstraints { ( make) in
+            make.height.equalTo(74)
         }
     }
     
-    private func layoutMyScrollView() {
-        view.addSubview(self.myScrollView)
-        myScrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(topLayoutGuide.snp.bottom)
-            make.leading.trailing.equalToSuperview()
-            make.bottom.equalTo(changePasswordButton.snp.top).offset(-dimension.normalMargin)
-        }
-    }
-    
-    private func layoutFirstNameLabel() {
-        myScrollView.addSubview(firstNameLabel)
-        firstNameLabel.snp.makeConstraints { (make) in
+    private func layoutDOBTitleLabel() {
+        dobContainerView.addSubview(DOBTitleLabel)
+        DOBTitleLabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
             make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
-            make.width.equalTo(withLabel)
-            make.top.equalToSuperview()
-                .offset(Dimension.shared.largeMargin)
         }
     }
     
-    private func layoutLastNameLabel() {
-        myScrollView.addSubview(lastNameLabel)
-        lastNameLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview()
+    private func layoutDOBTextField() {
+        dobContainerView.addSubview(DOBTextField)
+        DOBTextField.snp.makeConstraints { (make) in
+            make.top.equalTo(DOBTitleLabel.snp.bottom)
                 .offset(Dimension.shared.mediumMargin)
-            make.width.equalTo(withLabel)
-            make.top.equalToSuperview()
-                .offset(Dimension.shared.largeMargin)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
+            make.left.right.equalToSuperview()
+        }
+    }
+    
+    private func layoutBottomButton() {
+        bottomStackView.addArrangedSubview(changePasswordButton)
+        changePasswordButton.snp.makeConstraints { (make) in
+            make.height.equalTo(Dimension.shared.largeMargin_48)
+        }
+        bottomStackView.addArrangedSubview(logoutButton)
+        logoutButton.snp.makeConstraints { (make) in
+            make.height.equalTo(changePasswordButton)
         }
     }
     
     private func layoutContenStackView() {
-        self.myScrollView.view.addSubview(self.contenStackView)
-        self.contenStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(firstNameLabel.snp.bottom)
+        scrollView.addSubview(contenStackView)
+        contenStackView.snp.makeConstraints { (make) in
+            make.left.equalTo(view)
+                .offset(Dimension.shared.normalMargin)
+            make.right.equalTo(view)
+                .offset(-Dimension.shared.normalMargin)
+            make.top.equalToSuperview()
+                .offset(Dimension.shared.normalMargin)
+            make.bottom.equalTo(bottomStackView.snp.top)
+                .offset(-Dimension.shared.normalMargin)
+        }
+    }
+    
+    private func layoutProfileView() {
+        contenStackView.addArrangedSubview(profileView)
+        profileView.snp.makeConstraints { (make) in
+            make.height.equalTo(200)
+        }
+    }
+    
+    private func layoutProfilePhotoImage() {
+        profileView.addSubview(profilePhotoImage)
+        profilePhotoImage.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(150)
+        }
+    }
+    
+    private func layoutChangePhotoButton() {
+        profileView.addSubview(changePhotoButton)
+        changePhotoButton.snp.makeConstraints { (make) in
+            make.top.equalTo(profilePhotoImage.snp.bottom)
                 .offset(Dimension.shared.mediumMargin)
-            make.leading.equalToSuperview().offset(dimension.normalMargin)
-            make.trailing.equalToSuperview().offset(-dimension.normalMargin)
-            make.width.equalTo(self.view).offset(-dimension.normalMargin * 2)
-            make.bottom.equalToSuperview()
-        }
-    }
-    
-    private func layoutNameContainerView() {
-        self.contenStackView.addArrangedSubview(self.nameContainerView)
-    }
-    
-    private func layoutFirstNameTextField() {
-        nameContainerView.addSubview(firstNameTextField)
-        firstNameTextField.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview()
-            make.bottom.lessThanOrEqualToSuperview()
-            make.right.equalTo(self.nameContainerView.snp.centerX)
-                .offset(-dimension.mediumMargin)
-            make.height.equalTo(Dimension.shared.largeMargin_48)
-        }
-    }
-    
-    private func layoutLastNameTextField() {
-        nameContainerView.addSubview(lastNameTextField)
-        lastNameTextField.snp.makeConstraints { (make) in
-            make.right.top.equalToSuperview()
-            make.bottom.lessThanOrEqualToSuperview()
-            make.left.equalTo(nameContainerView.snp.centerX)
-                .offset(dimension.mediumMargin)
-            make.height.equalTo(Dimension.shared.largeMargin_48)
+            make.centerX.width.equalTo(profilePhotoImage)
         }
     }
     
@@ -389,62 +372,8 @@ extension ProfileViewController {
         genderStackView.addArrangedSubview(maleCheckBoxView)
     }
     
-    
-    private func layoutEmailLabel() {
-        myScrollView.addSubview(emailNameLabel)
-        emailNameLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
-            make.top.equalTo(genderStackView.snp.bottom)
-                .offset(Dimension.shared.largeMargin)
-        }
+    private func layoutFullNameTextField() {
+        contenStackView.addArrangedSubview(fullNameField)
     }
     
-    private func layoutEmailTextField() {
-        myScrollView.addSubview(emailTextFieldView)
-        emailTextFieldView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(emailNameLabel)
-            make.top.equalTo(emailNameLabel.snp.bottom)
-                .offset(Dimension.shared.mediumMargin)
-            make.height.equalTo(Dimension.shared.defaultHeightTextField)
-        }
-    }
-    
-    private func layoutPhoneNameLabel() {
-        myScrollView.addSubview(phonelNameLabel)
-        phonelNameLabel.snp.makeConstraints { (make) in
-            make.left.right.equalTo(emailNameLabel)
-            make.top.equalTo(emailTextFieldView.snp.bottom)
-                .offset(Dimension.shared.largeMargin)
-        }
-    }
-    
-    private func layoutPhoneTextField() {
-        myScrollView.addSubview(phoneTextFieldView)
-        phoneTextFieldView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(emailNameLabel)
-            make.top.equalTo(phonelNameLabel.snp.bottom)
-                .offset(Dimension.shared.mediumMargin)
-            make.height.equalTo(Dimension.shared.defaultHeightTextField)
-        }
-    }
-    
-    private func layoutDOBTitleLabel() {
-        myScrollView.addSubview(DOBTitleLabel)
-        DOBTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(phoneTextFieldView)
-            make.top.equalTo(phoneTextFieldView.snp.bottom)
-                .offset(Dimension.shared.largeMargin)
-        }
-    }
-    
-    private func layoutDOBTextField() {
-        myScrollView.addSubview(DOBTextField)
-        DOBTextField.snp.makeConstraints { (make) in
-            make.left.width.height.equalTo(phoneTextFieldView)
-            make.top.equalTo(DOBTitleLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
-        }
-    }
 }
