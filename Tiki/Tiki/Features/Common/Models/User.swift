@@ -62,6 +62,7 @@ class User: NSObject, JSONParsable, NSCoding {
         aCoder.encode(lastName,     forKey: "lastName")
         aCoder.encode(email,        forKey: "email")
         aCoder.encode(phone,        forKey: "phone")
+        aCoder.encode(dateOfBirth,  forKey: "dateOfBirth")
     }
     
 }

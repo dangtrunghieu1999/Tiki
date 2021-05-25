@@ -48,7 +48,7 @@ class ProfileViewController: BaseViewController {
         let button = UIButton()
         button.setTitle("Thay đổi ảnh", for: .normal)
         button.setTitleColor(UIColor.second, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
         return button
     }()
         
@@ -326,7 +326,7 @@ extension ProfileViewController {
     private func layoutProfileView() {
         contenStackView.addArrangedSubview(profileView)
         profileView.snp.makeConstraints { (make) in
-            make.height.equalTo(200)
+            make.height.equalTo(180)
         }
     }
     

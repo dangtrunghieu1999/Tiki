@@ -27,8 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-//        window?.rootViewController = TKTabBarViewController()
-        window?.rootViewController = UINavigationController(rootViewController: ProfileViewController())
+        window?.rootViewController = TKTabBarViewController()
         return true
     }
 }
