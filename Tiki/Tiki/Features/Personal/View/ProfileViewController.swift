@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum EditState: Int {
+    case edit      = 0
+    case done      = 1
+}
+
 class ProfileViewController: BaseViewController {
     
     private var selectedDate = AppConfig.defaultDate
@@ -35,15 +40,7 @@ class ProfileViewController: BaseViewController {
     }()
     
     let profileView = UIView()
-    
-    fileprivate lazy var profilePhotoImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageManager.avatarDefault
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }()
-    
+        
     fileprivate lazy var changePhotoButton: UIButton = {
         let button = UIButton()
         button.setTitle("Thay đổi ảnh", for: .normal)
@@ -252,7 +249,7 @@ class ProfileViewController: BaseViewController {
     }
     
     @objc private func tapOnUploadPhoto() {
-        
+        self.showChooseSourceTypeAlertController()
     }
 }
 
@@ -339,7 +336,7 @@ extension ProfileViewController {
         profileView.addSubview(profilePhotoImage)
         profilePhotoImage.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(150)
+            make.width.height.equalTo(dimension.largeMargin_120)
         }
     }
     
@@ -380,5 +377,4 @@ extension ProfileViewController {
     private func layoutFullNameTextField() {
         contenStackView.addArrangedSubview(fullNameField)
     }
-    
 }

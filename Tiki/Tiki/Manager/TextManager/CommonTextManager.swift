@@ -165,6 +165,7 @@ extension TextManager {
     static let recivedSuccess               = "Đã giao"
     static let cancelOrder                  = "Đã huỷ"
     static let infoGuarantee                = "Thông tin bảo hành"
-    
+    static let getPhotoLibrary              = "Chọn ảnh từ thư viện"
+    static let camera                       = "Máy ảnh"
 }
 
