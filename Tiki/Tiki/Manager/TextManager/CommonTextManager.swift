@@ -167,5 +167,6 @@ extension TextManager {
     static let infoGuarantee                = "Thông tin bảo hành"
     static let getPhotoLibrary              = "Chọn ảnh từ thư viện"
     static let camera                       = "Máy ảnh"
+    static let changePhoto                  = "Thay đổi ảnh"
 }
 

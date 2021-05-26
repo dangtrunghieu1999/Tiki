@@ -43,7 +43,7 @@ class ProfileViewController: BaseViewController {
         
     fileprivate lazy var changePhotoButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Thay đổi ảnh", for: .normal)
+        button.setTitle(TextManager.changePhoto, for: .normal)
         button.setTitleColor(UIColor.second, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
         button.addTarget(self, action: #selector(tapOnUploadPhoto), for: .touchUpInside)
@@ -57,6 +57,7 @@ class ProfileViewController: BaseViewController {
         textField.titleText   = TextManager.fullName.localized()
         textField.textField.fontSizePlaceholder(text: TextManager.fullNamePlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
     
@@ -118,7 +119,7 @@ class ProfileViewController: BaseViewController {
         textField.titleText   = TextManager.email.localized()
         textField.textField.fontSizePlaceholder(text: TextManager.emailPlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
-        
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.keyboardType = .emailAddress
         return textField
     }()
@@ -128,6 +129,7 @@ class ProfileViewController: BaseViewController {
         textField.titleText   = TextManager.phoneNumber.localized()
         textField.textField.fontSizePlaceholder(text: TextManager.phoneNumberPlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.keyboardType = .numberPad
         return textField
     }()
@@ -159,6 +161,7 @@ class ProfileViewController: BaseViewController {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         textField.layer.masksToBounds = true
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.inputView = datePicker
         return textField
     }()
@@ -251,7 +254,13 @@ class ProfileViewController: BaseViewController {
     @objc private func tapOnUploadPhoto() {
         self.showChooseSourceTypeAlertController()
     }
+    
+    @objc private func textFieldValueChange(_ textField: UITextField) {
+        
+    }
 }
+
+// MARK: - Layout
 
 extension ProfileViewController {
     
