@@ -19,7 +19,7 @@ class AppRouter: NSObject {
     
     class func pushViewToGetProfile(viewController: UIViewController) {
         let vc = ProfileViewController()
-        vc.userProfile = UserManager.user ?? User()
+        vc.configData(user: UserManager.currentUser)
         UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
     

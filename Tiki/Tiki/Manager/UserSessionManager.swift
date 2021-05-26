@@ -124,3 +124,26 @@ extension UserSessionManager {
         }
     }
 }
+
+extension UserSessionManager {
+    
+    struct UpdateProfileRequest {
+        var firstName: String?
+        var lastName: String?
+        var gender: Gender?
+        var phone: String?
+        var email: String?
+        var birthday: String?
+        
+        var parameters: [String: Any] {
+            return [
+                "firstName": firstName ?? "",
+                "lastName": lastName ?? "",
+                "gender": gender?.rawValue ?? 1,
+                "phone": phone ?? "",
+                "gmail": email ?? "",
+                "dayOfBirth": birthday ?? "",
+            ]
+        }
+    }
+}

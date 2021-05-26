@@ -33,7 +33,6 @@ class ProfileViewController: BaseViewController {
         return barButtonItem
     }()
     
-    var userProfile = User()
     var isPressCancel: Bool = false
     lazy var viewModel = ProfileViewModel()
     
@@ -260,21 +259,19 @@ class ProfileViewController: BaseViewController {
         layoutDOBView()
         layoutDOBTitleLabel()
         layoutDOBTextField()
-        configData(user: userProfile)
     }
     
     // MARK: - Get API
     
-    func configData(user: User) {
-        let birthDay = userProfile.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
+    func configData(user: User?) {
         
-        self.firstNameTextField.text = userProfile.firstName
-        self.lastNameTextField.text  = userProfile.lastName
-        self.emailTextField.text         = userProfile.email
-        self.phoneTextField.text         = userProfile.phone
-        self.DOBTextField.text           = birthDay
+        self.firstNameTextField.text     = user?.firstName
+        self.lastNameTextField.text      = user?.lastName
+        self.emailTextField.text         = user?.email
+        self.phoneTextField.text         = user?.phone
+        self.DOBTextField.text           = user?.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
         
-        if userProfile.gender.rawValue == 1 {
+        if user?.gender.rawValue == 1 {
             femaleCheckBoxView.isActive = false
         } else {
             maleCheckBoxView.isActive = true
@@ -329,8 +326,10 @@ extension ProfileViewController {
             make.height.equalTo(Dimension.shared.largeHeightButton)
             if #available(iOS 11, *) {
                 make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+                    .offset(-Dimension.shared.mediumMargin)
             } else {
                 make.bottom.equalTo(bottomLayoutGuide.snp.top)
+                    .offset(-Dimension.shared.mediumMargin)
             }
         }
     }
