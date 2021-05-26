@@ -14,6 +14,7 @@ final class  TextManager {
     
     static let search                       = "Bạn tìm gì hôm nay?"
     static let cancel                       = "Huỷ"
+    static let done                         = "Xong"
     static let save                         = "Lưu"
     static let preview                      = "Xem trước"
     static let photoPermission              = "Cho phép ứng dụng truy cập thư viện ảnh để chia sẻ hình ảnh đến bạn bè"
@@ -165,6 +166,8 @@ extension TextManager {
     static let recivedSuccess               = "Đã giao"
     static let cancelOrder                  = "Đã huỷ"
     static let infoGuarantee                = "Thông tin bảo hành"
-    
+    static let getPhotoLibrary              = "Chọn ảnh từ thư viện"
+    static let camera                       = "Máy ảnh"
+    static let changePhoto                  = "Thay đổi ảnh"
 }
 

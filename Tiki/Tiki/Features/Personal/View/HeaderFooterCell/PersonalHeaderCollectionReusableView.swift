@@ -74,7 +74,7 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     @objc func tapOnSignIn() {
         delegate?.tapOnSignIn()
     }
-    
+        
     // MARK: - Helper Method
     
     func configData(title: String) {

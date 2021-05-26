@@ -274,7 +274,8 @@ extension CartViewController: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if CartManager.shared.cartShopInfos.isEmpty {
             let cell: EmptyCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
@@ -333,7 +334,7 @@ extension CartViewController: CartProductCellDelegate {
     }
     
     func didSelectDeleteProduct(product: Product) {
-        AlertManager.shared.showConfirmMessage(mesage: TextManager.deleteProduct) { (action) in
+        AlertManager.shared.showConfirm(TextManager.deleteProduct) { (action) in
             CartManager.shared.deleteProduct(product, completionHandler: {
                 self.cartCollectionView.reloadData()
                 self.emptyView.isHidden = !CartManager.shared.cartShopInfos.isEmpty

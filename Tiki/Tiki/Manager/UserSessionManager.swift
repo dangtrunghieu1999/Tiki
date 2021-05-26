@@ -22,7 +22,7 @@ class UserSessionManager: NSObject {
     
     static let shared = UserSessionManager()
     
-    private var currentUser: User?
+    private (set) var currentUser: User?
     private let keychain = Keychain(service: AppInfo.bundleId())
     
     // MARK: - Methods
@@ -112,6 +112,7 @@ extension UserSessionManager {
         
         APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
             guard let userProfile = apiResponse.toObject(User.self) else { return }
+            self.currentUser = userProfile
             userProfile.token = self.accessToken ?? ""
             userProfile.id = userId
             self.currentUser = userProfile
@@ -120,6 +121,29 @@ extension UserSessionManager {
             
         }) {
             
+        }
+    }
+}
+
+extension UserSessionManager {
+    
+    struct UpdateProfileRequest {
+        var firstName: String?
+        var lastName: String?
+        var gender: Gender?
+        var phone: String?
+        var email: String?
+        var birthday: String?
+        
+        var parameters: [String: Any] {
+            return [
+                "firstName": firstName ?? "",
+                "lastName": lastName ?? "",
+                "gender": gender?.rawValue ?? 1,
+                "phone": phone ?? "",
+                "gmail": email ?? "",
+                "dayOfBirth": birthday ?? "",
+            ]
         }
     }
 }

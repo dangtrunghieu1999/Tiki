@@ -25,11 +25,11 @@ class TKTabBarViewController: UITabBarController {
     
         
         let chatNavigationVC = UINavigationController(rootViewController: ChatViewController())
-        chatNavigationVC.tabBarItem = UITabBarItem(title: TextManager.chat, image: ImageManager.chat, tag:3)
+        chatNavigationVC.tabBarItem = UITabBarItem(title: TextManager.chat, image: ImageManager.chat, tag:2)
         chatNavigationVC.tabBarItem.imageInsets = insets
         
         let personalNavigationVC = UINavigationController(rootViewController: PersonalViewController())
-        personalNavigationVC.tabBarItem = UITabBarItem(title: TextManager.person, image: ImageManager.person, tag: 4)
+        personalNavigationVC.tabBarItem = UITabBarItem(title: TextManager.person, image: ImageManager.person, tag: 3)
         personalNavigationVC.tabBarItem.imageInsets = insets
         
         viewControllers = [homeNavigationVC, categorygNavigationVC, chatNavigationVC, personalNavigationVC]

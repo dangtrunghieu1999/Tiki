@@ -28,7 +28,7 @@ class SignInViewModel: BaseViewModel {
                 UserManager.getUserProfile()
                 onSuccess()
             } else {
-                onError(TextManager.errorMessage.localized())
+                onError(TextManager.loginFailMessage.localized())
             }
         }, onFailure: { [weak self] (serviceError) in
             if serviceError?.message == "Account is inactive!" {
