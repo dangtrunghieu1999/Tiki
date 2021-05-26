@@ -22,7 +22,7 @@ class UserSessionManager: NSObject {
     
     static let shared = UserSessionManager()
     
-    private var currentUser: User?
+    private (set) var currentUser: User?
     private let keychain = Keychain(service: AppInfo.bundleId())
     
     // MARK: - Methods

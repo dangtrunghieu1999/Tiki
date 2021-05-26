@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import IQKeyboardManagerSwift
 
 enum EditState: Int {
     case edit      = 0
@@ -14,21 +17,37 @@ enum EditState: Int {
 
 class ProfileViewController: BaseViewController {
     
+    // MARK: - Variables
+    let disposeBag = DisposeBag()
     private var selectedDate = AppConfig.defaultDate
-    let widhtTextField = (UIScreen.main.bounds.size.width / 2 ) - dimension.normalMargin
-    
-    let withLabel = UIScreen.main.bounds.size.width / 2
     
     lazy var editBarButtonItem: UIBarButtonItem = {
-        let barButtonItem = UIBarButtonItem(title: TextManager.edit, style: .done, target: self, action: nil)
-        barButtonItem.setTitleTextAttributes([NSAttributedString.Key.font: UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-                                              , NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
+        let barButtonItem = UIBarButtonItem(title: TextManager.edit,
+                                            style: .done,
+                                            target: self,
+                                            action: nil)
+        let attributedText  = [NSAttributedString.Key.font:
+                                UIFont.systemFont(ofSize: FontSize.h1.rawValue),
+                               NSAttributedString.Key.foregroundColor: UIColor.white]
+        barButtonItem.setTitleTextAttributes(attributedText, for: .normal)
         return barButtonItem
     }()
     
     var userProfile = User()
+    var isPressCancel: Bool = false
+    lazy var viewModel = ProfileViewModel()
     
     // MARK: - UI Elements
+    
+    lazy var profileScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isUserInteractionEnabled = true
+        scrollView.showsVerticalScrollIndicator = false
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchInScrollView))
+        tapGesture.cancelsTouchesInView = false
+        scrollView.addGestureRecognizer(tapGesture)
+        return scrollView
+    }()
     
     let contenStackView: UIStackView = {
         let stackView = UIStackView()
@@ -40,7 +59,7 @@ class ProfileViewController: BaseViewController {
     }()
     
     let profileView = UIView()
-        
+    
     fileprivate lazy var changePhotoButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.changePhoto, for: .normal)
@@ -49,17 +68,25 @@ class ProfileViewController: BaseViewController {
         button.addTarget(self, action: #selector(tapOnUploadPhoto), for: .touchUpInside)
         return button
     }()
-        
+    
     let nameContainerView = UIView()
     
-    fileprivate lazy var fullNameField: TitleTextField = {
+    fileprivate lazy var firstNameTextField: TitleTextField = {
         let textField = TitleTextField()
-        textField.titleText   = TextManager.fullName.localized()
-        textField.textField.fontSizePlaceholder(text: TextManager.fullNamePlaceholder.localized(),
+        textField.titleText   = TextManager.firstName.localized()
+        textField.textField.fontSizePlaceholder(text: TextManager.firstName.localized(),
                                                 size: FontSize.h1.rawValue)
-        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         return textField
     }()
+    
+    fileprivate lazy var lastNameTextField: TitleTextField = {
+        let textField = TitleTextField()
+        textField.titleText   = TextManager.lastName.localized()
+        textField.textField.fontSizePlaceholder(text: TextManager.lastName.localized(),
+                                                size: FontSize.h1.rawValue)
+        return textField
+    }()
+    
     
     let genderContainerView = UIView()
     
@@ -119,7 +146,6 @@ class ProfileViewController: BaseViewController {
         textField.titleText   = TextManager.email.localized()
         textField.textField.fontSizePlaceholder(text: TextManager.emailPlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
-        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.keyboardType = .emailAddress
         return textField
     }()
@@ -129,11 +155,10 @@ class ProfileViewController: BaseViewController {
         textField.titleText   = TextManager.phoneNumber.localized()
         textField.textField.fontSizePlaceholder(text: TextManager.phoneNumberPlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
-        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
         textField.keyboardType = .numberPad
         return textField
     }()
-        
+    
     let dobContainerView = UIView()
     
     fileprivate let DOBTitleLabel: UILabel = {
@@ -154,6 +179,25 @@ class ProfileViewController: BaseViewController {
         return datePicker
     }()
     
+    fileprivate lazy var toolBar: IQToolbar = {
+        let toolBar = IQToolbar()
+        let flexSpace    = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                           target: self,
+                                           action: nil)
+        let doneButton   = UIBarButtonItem(title: TextManager.done.localized(),
+                                           style: .done,
+                                           target: self,
+                                           action: #selector(onPressDoneButton))
+        let cancelButton = UIBarButtonItem(title: TextManager.cancel.localized(),
+                                           style: .done,
+                                           target: self,
+                                           action: #selector(onPressCancelButton))
+        toolBar.items = [cancelButton, flexSpace, doneButton]
+        toolBar.tintColor = UIColor.primary
+        toolBar.sizeToFit()
+        return toolBar
+    }()
+    
     fileprivate lazy var DOBTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.placeholder = TextManager.dateOfBirth
@@ -161,7 +205,7 @@ class ProfileViewController: BaseViewController {
         textField.layer.borderWidth = 1
         textField.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
         textField.layer.masksToBounds = true
-        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
+        textField.inputAccessoryView = toolBar
         textField.inputView = datePicker
         return textField
     }()
@@ -174,7 +218,8 @@ class ProfileViewController: BaseViewController {
         button.layer.masksToBounds = true
         button.layer.cornerRadius = 5
         button.isUserInteractionEnabled = true
-        button.addTarget(self, action: #selector(tapOnChangePassword), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapOnChangePassword),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -188,43 +233,48 @@ class ProfileViewController: BaseViewController {
         button.isUserInteractionEnabled = true
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.primary.cgColor
-        button.addTarget(self, action: #selector(processLogout), for: .touchUpInside)
+        button.addTarget(self, action: #selector(processLogout),
+                         for: .touchUpInside)
         return button
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindingCompoents()
         setupEditBarButtonItem()
-        layoutScrollView()
-        layoutBottomStackView()
-        layoutItemBottomStackView()
-        layoutDOBView()
-        layoutDOBTitleLabel()
-        layoutDOBTextField()
-        layoutBottomButton()
+        layoutLogouButton()
+        layoutChangePasswordButton()
+        layoutProfileScrollView()
         layoutContenStackView()
         layoutProfileView()
         layoutProfilePhotoImage()
         layoutChangePhotoButton()
+        layoutNameContainerView()
+        layoutFirstNameTextFieldView()
+        layoutLastNameTextFieldView()
         layoutGenderContainerView()
         layoutGenderTitleLabel()
         layoutGenderStackView()
         layoutGenderCheckBoxes()
-        layoutFullNameTextField()
+        layoutItemBottomView()
+        layoutDOBView()
+        layoutDOBTitleLabel()
+        layoutDOBTextField()
         configData(user: userProfile)
     }
     
     // MARK: - Get API
     
     func configData(user: User) {
-        let birthDay = userProfile.dateOfBirth.toDate(with: DateFormat.shortDateUserFormat)
+        let birthDay = userProfile.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
         
-        self.fullNameField.text          = userProfile.fullName
+        self.firstNameTextField.text = userProfile.firstName
+        self.lastNameTextField.text  = userProfile.lastName
         self.emailTextField.text         = userProfile.email
         self.phoneTextField.text         = userProfile.phone
-        self.DOBTextField.text           = birthDay.desciption(by: DateFormat.shortDateUserFormat)
+        self.DOBTextField.text           = birthDay
         
-        if userProfile.gender == true {
+        if userProfile.gender.rawValue == 1 {
             femaleCheckBoxView.isActive = false
         } else {
             maleCheckBoxView.isActive = true
@@ -233,17 +283,13 @@ class ProfileViewController: BaseViewController {
     
     // MARK: - UI Action
     
-    @objc private func tapSelectGender(_ view: CheckBoxAndDescriptionView) {
-        view.isActive = true
-    }
-    
     @objc private func tapOnChangePassword() {
         let vc = ChangePWViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func processLogout() {
-        AlertManager.shared.showConfirmMessage(mesage: TextManager.statusLogOut.localized())
+        AlertManager.shared.showConfirm(TextManager.statusLogOut.localized())
         { (action) in
             UserManager.logout()
             guard let window = UIApplication.shared.keyWindow else { return }
@@ -255,8 +301,14 @@ class ProfileViewController: BaseViewController {
         self.showChooseSourceTypeAlertController()
     }
     
-    @objc private func textFieldValueChange(_ textField: UITextField) {
-        
+    @objc private func onPressCancelButton() {
+        self.isPressCancel = true
+        self.view.endEditing(true)
+    }
+    
+    @objc private func onPressDoneButton() {
+        self.isPressCancel = false
+        self.view.endEditing(true)
     }
 }
 
@@ -268,24 +320,136 @@ extension ProfileViewController {
         self.navigationItem.title = TextManager.userProfile
         self.navigationItem.rightBarButtonItem = self.editBarButtonItem
     }
-        
-    private func layoutBottomStackView() {
-        scrollView.addSubview(bottomStackView)
-        bottomStackView.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview()
-                .offset(-Dimension.shared.mediumMargin)
-            make.left.right.equalTo(view)
+    
+    private func layoutLogouButton() {
+        view.addSubview(logoutButton)
+        logoutButton.snp.makeConstraints { (make) in
+            make.left.right.equalToSuperview()
                 .inset(Dimension.shared.normalMargin)
+            make.height.equalTo(Dimension.shared.largeHeightButton)
+            if #available(iOS 11, *) {
+                make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom.equalTo(bottomLayoutGuide.snp.top)
+            }
         }
     }
     
-    private func layoutItemBottomStackView() {
-        bottomStackView.addArrangedSubview(emailTextField)
-        bottomStackView.addArrangedSubview(phoneTextField)
+    private func layoutChangePasswordButton() {
+        view.addSubview(changePasswordButton)
+        changePasswordButton.snp.makeConstraints { (make) in
+            make.height.equalTo(logoutButton)
+            make.left.right.equalTo(logoutButton)
+            make.bottom.equalTo(logoutButton.snp.top)
+                .offset(-Dimension.shared.mediumMargin)
+        }
+    }
+    
+    private func layoutProfileScrollView() {
+        view.addSubview(profileScrollView)
+        profileScrollView.snp.makeConstraints { (make) in
+            if #available(iOS 11.0, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            } else {
+                make.top.equalTo(topLayoutGuide.snp.bottom)
+            }
+            make.left.right.equalToSuperview()
+            make.bottom.equalTo(changePasswordButton.snp.top)
+                .offset(-Dimension.shared.normalMargin)
+        }
+    }
+    
+    private func layoutContenStackView() {
+        profileScrollView.addSubview(contenStackView)
+        contenStackView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(view)
+                .inset(Dimension.shared.normalMargin)
+            make.top.equalToSuperview()
+                .offset(Dimension.shared.normalMargin)
+            make.bottom.equalToSuperview()
+                .offset(-Dimension.shared.largeMargin_56)
+        }
+    }
+    
+    private func layoutProfileView() {
+        contenStackView.addArrangedSubview(profileView)
+        profileView.snp.makeConstraints { (make) in
+            make.height.equalTo(150)
+        }
+    }
+    
+    private func layoutProfilePhotoImage() {
+        profileView.addSubview(profilePhotoImage)
+        profilePhotoImage.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(dimension.largeMargin_120)
+        }
+    }
+    
+    private func layoutChangePhotoButton() {
+        profileView.addSubview(changePhotoButton)
+        changePhotoButton.snp.makeConstraints { (make) in
+            make.top.equalTo(profilePhotoImage.snp.bottom)
+                .offset(Dimension.shared.mediumMargin)
+            make.centerX.width.equalTo(profilePhotoImage)
+        }
+    }
+    
+    private func layoutNameContainerView() {
+        contenStackView.addArrangedSubview(nameContainerView)
+    }
+    
+    private func layoutFirstNameTextFieldView() {
+        nameContainerView.addSubview(firstNameTextField)
+        firstNameTextField.snp.makeConstraints { (make) in
+            make.leading.top.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+            make.trailing.equalTo(nameContainerView.snp.centerX)
+                .offset(-dimension.mediumMargin)
+        }
+    }
+    
+    private func layoutLastNameTextFieldView() {
+        nameContainerView.addSubview(lastNameTextField)
+        lastNameTextField.snp.makeConstraints { (make) in
+            make.trailing.top.equalToSuperview()
+            make.bottom.lessThanOrEqualToSuperview()
+            make.leading.equalTo(nameContainerView.snp.centerX).offset(dimension.mediumMargin)
+        }
+    }
+    
+    private func layoutGenderContainerView() {
+        contenStackView.addArrangedSubview(genderContainerView)
+    }
+    
+    private func layoutGenderTitleLabel() {
+        genderContainerView.addSubview(genderTitleLabel)
+        genderTitleLabel.snp.makeConstraints { (make) in
+            make.leading.top.equalToSuperview()
+        }
+    }
+    
+    private func layoutGenderStackView() {
+        genderContainerView.addSubview(genderStackView)
+        genderStackView.snp.makeConstraints { (make) in
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(genderTitleLabel.snp.bottom)
+                .offset(dimension.mediumMargin)
+        }
+    }
+    
+    private func layoutGenderCheckBoxes() {
+        genderStackView.addArrangedSubview(femaleCheckBoxView)
+        genderStackView.addArrangedSubview(maleCheckBoxView)
+    }
+    
+    private func layoutItemBottomView() {
+        contenStackView.addArrangedSubview(emailTextField)
+        contenStackView.addArrangedSubview(phoneTextField)
     }
     
     private func layoutDOBView() {
-        bottomStackView.addArrangedSubview(dobContainerView)
+        contenStackView.addArrangedSubview(dobContainerView)
         dobContainerView.snp.makeConstraints { ( make) in
             make.height.equalTo(74)
         }
@@ -308,82 +472,155 @@ extension ProfileViewController {
             make.left.right.equalToSuperview()
         }
     }
+}
+
+// MARK: - Binding Data
+extension ProfileViewController {
     
-    private func layoutBottomButton() {
-        bottomStackView.addArrangedSubview(changePasswordButton)
-        changePasswordButton.snp.makeConstraints { (make) in
-            make.height.equalTo(Dimension.shared.largeMargin_48)
+    private func bindingCompoents() {
+        bindingFirstName()
+        bindingLastName()
+        bindingPhone()
+        bindingGender()
+        bindingEmail()
+        bindingBirthday()
+        bindingEditButton()
+    }
+    
+    private func bindingFirstName(){
+        viewModel.firstName
+            .asDriver()
+            .drive(firstNameTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+        firstNameTextField
+            .textField.rx.text
+            .changed.bind(to: viewModel.firstName)
+            .disposed(by: disposeBag)
+        firstNameTextField
+            .textField.rx
+            .controlEvent(.editingDidBegin)
+            .map {true}
+            .bind(to: viewModel.isEdit)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindingLastName(){
+        viewModel.lastName
+            .asDriver()
+            .drive(lastNameTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+        lastNameTextField
+            .textField.rx.text
+            .changed.bind(to: viewModel.lastName)
+            .disposed(by: disposeBag)
+        lastNameTextField
+            .textField.rx
+            .controlEvent(.editingDidBegin)
+            .map {true}
+            .bind(to: viewModel.isEdit)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindingPhone() {
+        viewModel.phone
+            .asDriver()
+            .drive(phoneTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+        phoneTextField
+            .textField.rx.text
+            .changed.bind(to: viewModel.phone)
+            .disposed(by: disposeBag)
+        phoneTextField
+            .textField.rx
+            .controlEvent(.editingChanged)
+            .map {true}
+            .bind(to: viewModel.isEdit)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindingGender() {
+        viewModel.gender
+            .asDriver()
+            .drive(onNext: { [weak self] type in
+                self?.femaleCheckBoxView.isActive = false
+                self?.maleCheckBoxView.isActive   = false
+                switch Gender(rawValue: type) {
+                case .male:
+                    self?.maleCheckBoxView.isActive   = true
+                case .female:
+                    self?.femaleCheckBoxView.isActive = true
+                default:
+                    self?.maleCheckBoxView.isActive   = true
+                }
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindingEmail() {
+        viewModel.email
+            .asDriver()
+            .drive(emailTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+        emailTextField
+            .textField.rx.text
+            .changed.bind(to: viewModel.email)
+            .disposed(by: disposeBag)
+        emailTextField
+            .textField.rx
+            .controlEvent(.editingDidBegin)
+            .map { true }
+            .bind(to: viewModel.isEdit)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindingBirthday() {
+        viewModel.birthday.asDriver().map {
+            $0?.toString(.ddMMyyyy)
         }
-        bottomStackView.addArrangedSubview(logoutButton)
-        logoutButton.snp.makeConstraints { (make) in
-            make.height.equalTo(changePasswordButton)
+        .drive(DOBTextField.rx.text)
+        .disposed(by: disposeBag)
+        
+        viewModel.birthday.asDriver().map {
+            return $0 ?? Date()
         }
+        .drive(datePicker.rx.date)
+        .disposed(by: disposeBag)
+        
+        DOBTextField.rx.controlEvent(.editingDidEnd)
+            .bind{ [weak self] in
+                guard let self = self else { return }
+                if !self.isPressCancel {
+                    self.viewModel.birthday.accept(self.datePicker.date)
+                } else {
+                    self.DOBTextField.text = self.DOBTextField.text
+                    if self.DOBTextField.text?.isEmpty ?? true {
+                        self.viewModel.birthday.accept(nil)
+                    }
+                }
+            }.disposed(by: disposeBag)
+        
+        DOBTextField.rx.controlEvent(.editingDidBegin)
+            .map { true }
+            .bind(to: viewModel.isEdit)
+            .disposed(by: disposeBag)
     }
     
-    private func layoutContenStackView() {
-        scrollView.addSubview(contenStackView)
-        contenStackView.snp.makeConstraints { (make) in
-            make.left.equalTo(view)
-                .offset(Dimension.shared.normalMargin)
-            make.right.equalTo(view)
-                .offset(-Dimension.shared.normalMargin)
-            make.top.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
-            make.bottom.equalTo(bottomStackView.snp.top)
-                .offset(-Dimension.shared.normalMargin)
-        }
+    private func bindingEditButton() {
+        editBarButtonItem.rx.tap.map { [weak self] in
+            self?.editBarButtonItem.title == TextManager.edit.localized()
+        }.bind(to: viewModel.isEdit).disposed(by: disposeBag)
+        
+        viewModel.isEdit.map {
+            $0 == true ? TextManager.done.localized() : TextManager.edit.localized()
+        }.bind(to: editBarButtonItem.rx.title).disposed(by: disposeBag)
+        
+        viewModel.isEdit.bind(onNext: { [weak self] isEnable in
+            self?.firstNameTextField.isBlur = isEnable
+            self?.lastNameTextField.isBlur  = isEnable
+            self?.phoneTextField.isBlur     = isEnable
+            self?.DOBTextField.isBlur       = isEnable
+            self?.emailTextField.isBlur     = isEnable
+        }).disposed(by: disposeBag)
     }
     
-    private func layoutProfileView() {
-        contenStackView.addArrangedSubview(profileView)
-        profileView.snp.makeConstraints { (make) in
-            make.height.equalTo(180)
-        }
-    }
-    
-    private func layoutProfilePhotoImage() {
-        profileView.addSubview(profilePhotoImage)
-        profilePhotoImage.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(dimension.largeMargin_120)
-        }
-    }
-    
-    private func layoutChangePhotoButton() {
-        profileView.addSubview(changePhotoButton)
-        changePhotoButton.snp.makeConstraints { (make) in
-            make.top.equalTo(profilePhotoImage.snp.bottom)
-                .offset(Dimension.shared.mediumMargin)
-            make.centerX.width.equalTo(profilePhotoImage)
-        }
-    }
-    
-    private func layoutGenderContainerView() {
-        contenStackView.addArrangedSubview(genderContainerView)
-    }
-    
-    private func layoutGenderTitleLabel() {
-        genderContainerView.addSubview(genderTitleLabel)
-        genderTitleLabel.snp.makeConstraints { (make) in
-            make.leading.top.equalToSuperview()
-        }
-    }
-    
-    private func layoutGenderStackView() {
-        genderContainerView.addSubview(self.genderStackView)
-        genderStackView.snp.makeConstraints { (make) in
-            make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(self.genderTitleLabel.snp.bottom)
-                .offset(dimension.mediumMargin)
-        }
-    }
-    
-    private func layoutGenderCheckBoxes() {
-        genderStackView.addArrangedSubview(femaleCheckBoxView)
-        genderStackView.addArrangedSubview(maleCheckBoxView)
-    }
-    
-    private func layoutFullNameTextField() {
-        contenStackView.addArrangedSubview(fullNameField)
-    }
 }

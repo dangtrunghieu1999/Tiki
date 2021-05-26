@@ -22,6 +22,9 @@ PODS:
   - NVActivityIndicatorView (5.1.1):
     - NVActivityIndicatorView/Base (= 5.1.1)
   - NVActivityIndicatorView/Base (5.1.1)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
@@ -41,6 +44,8 @@ DEPENDENCIES:
   - KeychainAccess (= 4.2.1)
   - Localize-Swift (~> 3.2)
   - NVActivityIndicatorView
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
   - SDWebImage (= 4.4.6)
   - Shimmer (~> 1.0.2)
   - SnapKit (~> 4.2.0)
@@ -60,6 +65,8 @@ SPEC REPOS:
     - KeychainAccess
     - Localize-Swift
     - NVActivityIndicatorView
+    - RxCocoa
+    - RxSwift
     - SDWebImage
     - Shimmer
     - SnapKit
@@ -78,12 +85,14 @@ SPEC CHECKSUMS:
   KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
   Localize-Swift: 6f4475136bdb0d7b2882ea3d4ea919d70142b232
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: fdb07955284af618b1fe0933d253a49acda51bba
+PODFILE CHECKSUM: 8f5c7c8ffda8fbe8f5841eeabecbce35dd45da8d
 
 COCOAPODS: 1.10.1

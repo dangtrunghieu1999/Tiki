@@ -14,6 +14,7 @@ final class  TextManager {
     
     static let search                       = "Bạn tìm gì hôm nay?"
     static let cancel                       = "Huỷ"
+    static let done                         = "Xong"
     static let save                         = "Lưu"
     static let preview                      = "Xem trước"
     static let photoPermission              = "Cho phép ứng dụng truy cập thư viện ảnh để chia sẻ hình ảnh đến bạn bè"

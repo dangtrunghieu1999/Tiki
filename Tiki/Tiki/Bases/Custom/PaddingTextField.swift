@@ -70,6 +70,12 @@ open class PaddingTextField: UITextField {
         paddingViewDelegate?.didTouchInRightView()
     }
     
+    var isBlur: Bool = false {
+        didSet {
+            self.backgroundColor = self.isBlur ? .white : .lightBackground
+        }
+    }
+
     func removeRightView() {
         rightView = nil
         rightImage = nil

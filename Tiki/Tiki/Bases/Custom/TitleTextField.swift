@@ -106,6 +106,13 @@ class TitleTextField: BaseView {
     func addTarget(_ target: Any?, action: Selector, for event: UIControl.Event) {
         textField.addTarget(target, action: action, for: event)
     }
+        
+    var isBlur: Bool = false {
+        didSet {
+            self.textField.textColor       = self.isBlur ? .white : .lightBackground
+            self.textField.backgroundColor = self.isBlur ? .white : .lightBackground
+        }
+    }
     
     // MARK: - Layouts
     

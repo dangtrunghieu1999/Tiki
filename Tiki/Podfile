@@ -17,5 +17,7 @@ target 'Tiki' do
     pod 'GooglePlaces'
     pod 'HCSStarRatingView', '~> 1.5'
     pod 'FSPagerView'
-
+    pod 'RxSwift', '~> 4.0'
+    pod 'RxCocoa', '~> 4.0'
+    
 end

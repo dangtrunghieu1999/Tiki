@@ -20,8 +20,8 @@ class User: NSObject, JSONParsable, NSCoding {
     var fullName        = ""
     var email           = ""
     var phone           = ""
-    var gender: Bool?
-    var dateOfBirth     = ""
+    var gender: Gender  = .male
+    var birthDay:    Date?
     var user: JSON?
     
     required override init() {}
@@ -37,8 +37,8 @@ class User: NSObject, JSONParsable, NSCoding {
         self.fullName       = json["fullName"].stringValue
         self.userId         = json["userId"].stringValue
         self.phone          = json["phone"].stringValue
-        self.dateOfBirth    = json["dayOfBirth"].stringValue
-        self.gender         = json["gender"].boolValue
+        self.birthDay       = json["dayOfBirth"].dateValue
+        self.gender         = Gender(rawValue: json["gender"].intValue) ?? .female
     
         if fullName.isEmpty {
             self.fullName = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
@@ -62,7 +62,21 @@ class User: NSObject, JSONParsable, NSCoding {
         aCoder.encode(lastName,     forKey: "lastName")
         aCoder.encode(email,        forKey: "email")
         aCoder.encode(phone,        forKey: "phone")
-        aCoder.encode(dateOfBirth,  forKey: "dateOfBirth")
+        aCoder.encode(birthDay,     forKey: "dateOfBirth")
     }
     
+}
+
+enum Gender: Int {
+    case male       = 1
+    case female     = 2
+    
+    var stringValue: String {
+        switch self {
+        case .male:
+            return "Male"
+        case .female:
+            return "Female"
+        }
+    }
 }

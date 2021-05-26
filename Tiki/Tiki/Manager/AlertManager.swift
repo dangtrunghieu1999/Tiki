@@ -65,7 +65,7 @@ class AlertManager {
         topView.makeToast(message)
     }
     
-    func showConfirmMessage(mesage: String?, confirmBlock: @escaping (UIAlertAction) -> Void) {
+    func showConfirm(_ mesage: String?, confirmBlock: @escaping (UIAlertAction) -> Void) {
         let alert = UIAlertController(title: TextManager.alertTitle.localized(),
                                       message: mesage,
                                       preferredStyle: .alert)
