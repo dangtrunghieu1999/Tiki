@@ -388,7 +388,7 @@ extension BaseViewController: UIImagePickerControllerDelegate, UINavigationContr
         let cameraAction = UIAlertAction(title: TextManager.camera, style: .default) { (action) in
             self.showImagePickerController(sourceType: .camera)
         }
-        let cancelAction = UIAlertAction(title: "Huỷ", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: TextManager.cancel, style: .cancel, handler: nil)
         AlertManager.showAlert(style: .actionSheet, title: nil, message: nil, actions: [photoLibraryAction, cameraAction, cancelAction], completion: nil)
     }
     
