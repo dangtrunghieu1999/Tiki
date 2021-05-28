@@ -15,11 +15,11 @@ enum UserEndPoint {
     case forgotPW(bodyParams: Parameters)
     case checkValidCode(bodyParams: Parameters)
     case checkValidCodeWithPhone(bodyParams: Parameters)
-    case createNewPW(bodyParams: Parameters)
     case sendOTP(bodyParams: Parameters)
     case changePW(bodyParams: Parameters)
     case getUserInfo
-    case searchUser(params: Parameters)
+    case updateInfo(bodyParams: Parameters)
+    case uploadPhoto(bodyParams: Parameters)
 }
 
 extension UserEndPoint: EndPointType {
@@ -35,16 +35,16 @@ extension UserEndPoint: EndPointType {
             return "/user/verify"
         case .checkValidCodeWithPhone:
             return "/user/checkotp"
-        case .createNewPW:
-            return "/User/CreateNewPassword"
         case .sendOTP:
             return "/user/sendotp"
         case .changePW:
             return "/user/changepassword"
         case .getUserInfo:
             return "/user/me"
-        case .searchUser:
-            return "/User/SearchUser"
+        case .updateInfo:
+            return "/user"
+        case .uploadPhoto:
+            return "/user/photo"
         }
     }
     
@@ -60,16 +60,16 @@ extension UserEndPoint: EndPointType {
             return .post
         case .checkValidCodeWithPhone:
             return .post
-        case .createNewPW:
-            return .post
         case .sendOTP:
             return .post
         case .changePW:
             return .put
         case .getUserInfo:
             return .get
-        case .searchUser:
-            return .get
+        case .updateInfo:
+            return .put
+        case .uploadPhoto:
+            return .post
         }
     }
     
@@ -85,18 +85,17 @@ extension UserEndPoint: EndPointType {
             return bodyParams
         case .checkValidCodeWithPhone(let bodyParams):
             return bodyParams
-        case .createNewPW(let bodyParams):
-            return bodyParams
         case .sendOTP(let bodyParams):
             return bodyParams
         case .changePW(let bodyParams):
             return bodyParams
         case .getUserInfo:
             return nil
-        case .searchUser(let params):
-            return params
+        case .updateInfo(let bodyParams):
+            return bodyParams
+        case .uploadPhoto(let bodyParams):
+            return bodyParams
         }
     }
-    
-    
+
 }

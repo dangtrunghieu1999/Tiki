@@ -1,5 +1,15 @@
 PODS:
   - Alamofire (4.8.1)
+  - FBSDKCoreKit (9.3.0):
+    - FBSDKCoreKit/Basics (= 9.3.0)
+    - FBSDKCoreKit/Core (= 9.3.0)
+  - FBSDKCoreKit/Basics (9.3.0)
+  - FBSDKCoreKit/Core (9.3.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKLoginKit (9.3.0):
+    - FBSDKLoginKit/Login (= 9.3.0)
+  - FBSDKLoginKit/Login (9.3.0):
+    - FBSDKCoreKit (~> 9.3.0)
   - FSPagerView (0.8.3)
   - GoogleMaps/Base (4.1.0)
   - GooglePlaces (4.1.0):
@@ -29,12 +39,15 @@ PODS:
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
   - Shimmer (1.0.2)
+  - SMSegmentView (1.3.1)
   - SnapKit (4.2.0)
   - SwiftyJSON (4.3.0)
   - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - Alamofire (= 4.8.1)
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - FSPagerView
   - GooglePlaces
   - HCSStarRatingView (~> 1.5)
@@ -48,6 +61,7 @@ DEPENDENCIES:
   - RxSwift (~> 4.0)
   - SDWebImage (= 4.4.6)
   - Shimmer (~> 1.0.2)
+  - SMSegmentView
   - SnapKit (~> 4.2.0)
   - SwiftyJSON (~> 4.0)
   - Toast-Swift (~> 5.0.1)
@@ -55,6 +69,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
+    - FBSDKCoreKit
+    - FBSDKLoginKit
     - FSPagerView
     - GoogleMaps
     - GooglePlaces
@@ -69,12 +85,15 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - Shimmer
+    - SMSegmentView
     - SnapKit
     - SwiftyJSON
     - Toast-Swift
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  FBSDKCoreKit: 0d1ae58388a458b8222f72025804cdc84eb5d0c3
+  FBSDKLoginKit: aea68df6121c5e165ccae2fabfdc83c4644ee40f
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   GoogleMaps: 008e2c80e38605b56b560e8deb73d4194ff30bef
   GooglePlaces: a058b776259c13e1323c9ff135549cb1b13ad8e7
@@ -89,10 +108,11 @@ SPEC CHECKSUMS:
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
+  SMSegmentView: 3c3aa59206a67a7c8a9e05593f84aa875eddeeba
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 8f5c7c8ffda8fbe8f5841eeabecbce35dd45da8d
+PODFILE CHECKSUM: 6ed3f91d877c92cfeeba03b6e431f80eb7632841
 
 COCOAPODS: 1.10.1
