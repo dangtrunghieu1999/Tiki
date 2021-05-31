@@ -109,7 +109,6 @@ class TitleTextField: BaseView {
         
     var isBlur: Bool = false {
         didSet {
-            self.textField.textColor       = self.isBlur ? .white : .lightBackground
             self.textField.backgroundColor = self.isBlur ? .white : .lightBackground
         }
     }

@@ -259,6 +259,7 @@ class ProfileViewController: BaseViewController {
         layoutDOBView()
         layoutDOBTitleLabel()
         layoutDOBTextField()
+        configData(user: UserManager.user)
     }
     
     // MARK: - Get API

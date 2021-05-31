@@ -112,7 +112,6 @@ extension UserSessionManager {
         
         APIService.request(endPoint: endPoint, onSuccess: { (apiResponse) in
             guard let userProfile = apiResponse.toObject(User.self) else { return }
-            self.currentUser = userProfile
             userProfile.token = self.accessToken ?? ""
             userProfile.id = userId
             self.currentUser = userProfile

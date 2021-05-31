@@ -27,7 +27,6 @@ class User: NSObject, JSONParsable, NSCoding {
     required override init() {}
 
     required init(json: JSON) {
-        self.user           = json["User"]
         self.id             = json["id"].stringValue
         self.firstName      = json["firstName"].stringValue
         self.lastName       = json["lastName"].stringValue
@@ -49,7 +48,7 @@ class User: NSObject, JSONParsable, NSCoding {
         id          = aDecoder.decodeObject(forKey: "id") as? String ?? ""
         firstName   = aDecoder.decodeObject(forKey: "firstName") as? String ?? ""
         lastName    = aDecoder.decodeObject(forKey: "lastName") as? String ?? ""
-        email       = aDecoder.decodeObject(forKey: "email") as? String ?? ""
+        email       = aDecoder.decodeObject(forKey: "gmail") as? String ?? ""
         phone       = aDecoder.decodeObject(forKey: "phone") as? String ?? ""
         fullName    = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
     }
@@ -60,9 +59,9 @@ class User: NSObject, JSONParsable, NSCoding {
         aCoder.encode(token,        forKey: "token")
         aCoder.encode(firstName,    forKey: "firstName")
         aCoder.encode(lastName,     forKey: "lastName")
-        aCoder.encode(email,        forKey: "email")
+        aCoder.encode(email,        forKey: "gmail")
         aCoder.encode(phone,        forKey: "phone")
-        aCoder.encode(birthDay,     forKey: "dateOfBirth")
+        aCoder.encode(birthDay,     forKey: "dayOfBirth")
     }
     
 }
