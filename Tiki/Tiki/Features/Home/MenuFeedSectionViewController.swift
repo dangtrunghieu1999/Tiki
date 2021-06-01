@@ -35,7 +35,7 @@ class MenuFeedSectionViewController: ListSectionController{
             return UICollectionViewCell()
         }
         if let cell = cell as? HomeViewProtocol, let menu = self.menu {
-            cell.configDataMenu?(menu: menu.menuModel)
+            cell.configDataMenu?(menu: menu)
         }
         return cell
     }

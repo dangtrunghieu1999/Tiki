@@ -16,7 +16,8 @@ class EventCollectionViewCell: BaseCollectionViewCell {
     fileprivate lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = dimension.conerRadiusMedium
         return imageView
     }()
     
@@ -37,7 +38,11 @@ class EventCollectionViewCell: BaseCollectionViewCell {
     private func layoutImageView() {
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.top.equalToSuperview()
+            make.bottom.equalToSuperview()
+                .inset(dimension.normalMargin)
+            make.left.right.equalToSuperview()
+                .inset(dimension.normalMargin)
         }
     }
 }
@@ -45,7 +50,7 @@ class EventCollectionViewCell: BaseCollectionViewCell {
 // MARK: - HomeViewProtocol
 
 extension EventCollectionViewCell: HomeViewProtocol {
-    func configDataEvent(event: EventModel?) {
-        self.imageView.sd_setImage(with: event?.list[0].image.url, completed: nil)
+    func configDataEvent(event: BannerEventSectionModel?) {
+        self.imageView.sd_setImage(with: event?.url.url, completed: nil)
     }
 }

@@ -12,7 +12,7 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
-    var bannerModel: BannerModel?
+    var bannerModel: BannerFeedSectionModel?
     
     // MARK: - UI Elements
     
@@ -90,11 +90,11 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
 
 extension BannerCollectionViewCell: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return bannerModel?.list.count ?? 0
+        return bannerModel?.bannerModel.count ?? 0
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let imageURL = bannerModel?.list[index].image
+        let imageURL = bannerModel?.bannerModel[index].url
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         cell.imageView?.sd_setImage(with: imageURL?.url, completed: nil)
         cell.imageView?.contentMode = .scaleAspectFill
@@ -123,8 +123,8 @@ extension BannerCollectionViewCell: FSPagerViewDelegate {
 // MARK: - HomeViewProtocol
 
 extension BannerCollectionViewCell: HomeViewProtocol {
-    func configDataBanner(banner: BannerModel?) {
+    func configDataBanner(banner: BannerFeedSectionModel?) {
         self.bannerModel = banner
-        self.pageControl.numberOfPages = bannerModel?.list.count ?? 0
+        self.pageControl.numberOfPages = bannerModel?.bannerModel.count ?? 0
     }
 }

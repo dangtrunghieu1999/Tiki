@@ -12,7 +12,8 @@ import SwiftyJSON
 class BannerFeedSectionModel: BaseHomeSectionModel {
     
     var data: JSON?
-    var bannerModel: BannerModel?
+    var bannerModel:  [BannerModel] = []
+    
     required init() {
         super.init()
     }
@@ -20,7 +21,7 @@ class BannerFeedSectionModel: BaseHomeSectionModel {
     required init(json: JSON) {
         super.init(json: json)
         self.data = json["data"]
-        self.bannerModel = BannerModel(json: data ?? [])
+        self.bannerModel = data?.arrayValue.map{ BannerModel(json: $0) } ?? []
     }
 
 }

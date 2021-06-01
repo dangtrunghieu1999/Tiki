@@ -23,11 +23,10 @@ class ProfileViewModel {
     lazy var isEdit      = BehaviorRelay<Bool>(value: false)
     var updateProfilePS  = PublishSubject<Void>()
     var getProfilePS     = PublishSubject<Void>()
-    
+    lazy var error        = BehaviorRelay<ServiceErrorAPI?>(value: nil)
     var disposeBag       = DisposeBag()
     
     init() {
-        setupGetProfilePS()
         setupUpdateProfilePS()
         userProfile.bind { [weak self] profile in
             self?.firstName.accept(profile?.firstName)
@@ -57,13 +56,17 @@ class ProfileViewModel {
                                       phone: self.phone.value,
                                       email: self.email.value,
                                       birthday: self.birthday.value?.toString(.ddMMyyyy))
+            let endPoint = UserEndPoint.updateInfo(bodyParams: updateInfo.parameters)
             
-        }).subscribe().disposed(by: disposeBag)
-    }
-    
-    func setupGetProfilePS() {
-        getProfilePS.do(onNext: { _ in
-            UserManager.getUserProfile()
+            APIService.request(endPoint: endPoint) { (apiResponse) in
+                self.getProfilePS.onNext(())
+            } onFailure: { (error) in
+                self.error.accept(error)
+            } onRequestFail: {
+                
+            }
+
+            
         }).subscribe().disposed(by: disposeBag)
     }
     

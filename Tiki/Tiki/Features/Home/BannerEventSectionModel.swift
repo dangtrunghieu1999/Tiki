@@ -13,7 +13,10 @@ import SwiftyJSON
 class BannerEventSectionModel: BaseHomeSectionModel {
     
     var data: JSON?
-    var eventModel: EventModel?
+    var uuid: Int       = 0
+    var name: String    = ""
+    var url:  String    = ""
+
     required init() {
         super.init()
     }
@@ -21,6 +24,8 @@ class BannerEventSectionModel: BaseHomeSectionModel {
     required init(json: JSON) {
         super.init(json: json)
         self.data = json["data"]
-        self.eventModel = EventModel(json: data ?? [])
+        self.uuid = data?["id"].intValue ?? 0
+        self.name = data?["name"].stringValue ?? ""
+        self.url  = data?["url"].stringValue ?? ""
     }
 }

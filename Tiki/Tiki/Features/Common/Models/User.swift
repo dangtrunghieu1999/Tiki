@@ -21,6 +21,8 @@ class User: NSObject, JSONParsable, NSCoding {
     var email           = ""
     var phone           = ""
     var gender: Gender  = .male
+    var dayOfBirth      = ""
+    let date            = ""
     var birthDay:    Date?
     var user: JSON?
     
@@ -36,7 +38,9 @@ class User: NSObject, JSONParsable, NSCoding {
         self.fullName       = json["fullName"].stringValue
         self.userId         = json["userId"].stringValue
         self.phone          = json["phone"].stringValue
-        self.birthDay       = json["dayOfBirth"].dateValue
+        self.dayOfBirth     = json["dayOfBirth"].stringValue
+        self.birthDay       = dayOfBirth.toDate()
+        
         self.gender         = Gender(rawValue: json["gender"].intValue) ?? .female
     
         if fullName.isEmpty {

@@ -41,6 +41,14 @@ extension String {
         return dateFormater.date(from: self) ?? Date()
     }
     
+    func toDate(withFormat format: String = "dd-MM-yyyy")-> Date?{
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = format
+        let date = dateFormatter.date(from: self)
+        return date
+    }
+    
     func toInt() -> Int {
         return Int(self) ?? 0
     }

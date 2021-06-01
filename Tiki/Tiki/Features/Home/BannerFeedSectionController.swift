@@ -35,7 +35,7 @@ class BannerFeedSectionController: ListSectionController{
         }
         
         if let cell = cell as? HomeViewProtocol, let banner = self.banner {
-            cell.configDataBanner?(banner: banner.bannerModel)
+            cell.configDataBanner?(banner: banner)
         }
         return cell
     }

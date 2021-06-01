@@ -19,7 +19,7 @@ enum UserEndPoint {
     case changePW(bodyParams: Parameters)
     case getUserInfo
     case updateInfo(bodyParams: Parameters)
-    case uploadPhoto(bodyParams: Parameters)
+    case uploadPhoto(image: UIImage)
 }
 
 extension UserEndPoint: EndPointType {
@@ -93,8 +93,10 @@ extension UserEndPoint: EndPointType {
             return nil
         case .updateInfo(let bodyParams):
             return bodyParams
-        case .uploadPhoto(let bodyParams):
-            return bodyParams
+        case .uploadPhoto(let image):
+            var params: Parameters = [:]
+            params["file"]  = image
+            return params
         }
     }
 

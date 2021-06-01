@@ -12,7 +12,7 @@ import SwiftyJSON
 class HomeViewController: BaseViewController {
     
     // MARK: - Variables
-
+    
     private lazy var adapter: ListAdapter = {
         let updater = ListAdapterUpdater()
         let adapter = ListAdapter(updater: updater,
@@ -58,29 +58,32 @@ class HomeViewController: BaseViewController {
     // MARK: - Helper Method
     
     func requestHomeAPI() {
-        guard let path = Bundle.main.path(forResource: "Home", ofType: "json") else {
-            fatalError("Not available json")
-        }
+        let endPoint = HomeEndPoint.getAllHome
+        self.showLoading()
         
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-        let json = try! JSON(data: data)
-        
-        let homeSectionModels = json.arrayValue.compactMap { (json) -> BaseHomeSectionModel? in
-            let model = BaseHomeSectionModel(json: json)
-            switch model.feedType {
-            case .SlideWidget:
-                return BannerFeedSectionModel(json: json)
-            case .ShortcutWidget:
-                return MenuFeedSectionModel(json: json)
-            case .BannerEventWidget:
-                return BannerEventSectionModel(json: json)
-            case .ProductRecommendWidget:
-                return ProductRecommendSectionModel(json: json)
+        APIService.request(endPoint: endPoint) { (apiResponse) in
+            self.hideLoading()
+            let json = apiResponse.data
+            let homeSectionModels = json?.arrayValue.compactMap { (json) -> BaseHomeSectionModel? in
+                let model = BaseHomeSectionModel(json: json)
+                switch model.feedType {
+                case .SlideWidget:
+                    return BannerFeedSectionModel(json: json)
+                case .ShortcutWidget:
+                    return MenuFeedSectionModel(json: json)
+                case .BannerEventWidget:
+                    return BannerEventSectionModel(json: json)
+                case .ProductRecommendWidget:
+                    return ProductRecommendSectionModel(json: json)
+                }
             }
+            self.dataSource.append(contentsOf: homeSectionModels!)
+            self.adapter.reloadData(completion: nil)
+        } onFailure: { (errorResponse) in
+            
+        } onRequestFail: {
+            
         }
-        
-        dataSource.append(contentsOf: homeSectionModels)
-        adapter.reloadData(completion: nil)
     }
 }
 
@@ -113,7 +116,7 @@ extension HomeViewController: ListAdapterDataSource {
     func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
         return dataSource
     }
-
+    
 }
 
 // MARK: - ProductRecommendDelagte
@@ -122,5 +125,4 @@ extension HomeViewController: ProductRecommendDelagte {
     func tapProductDetail(product: Product?) {
         AppRouter.pushToProductDetail(product ?? Product())
     }
-    
 }

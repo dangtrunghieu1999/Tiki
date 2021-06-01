@@ -266,11 +266,11 @@ class ProfileViewController: BaseViewController {
     
     func configData(user: User?) {
         
-        self.firstNameTextField.text     = user?.firstName
-        self.lastNameTextField.text      = user?.lastName
-        self.emailTextField.text         = user?.email
-        self.phoneTextField.text         = user?.phone
-        self.DOBTextField.text           = user?.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
+        self.firstNameTextField.text = user?.firstName
+        self.lastNameTextField.text  = user?.lastName
+        self.emailTextField.text     = user?.email
+        self.phoneTextField.text     = user?.phone
+        self.DOBTextField.text       = user?.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
         
         if user?.gender.rawValue == 1 {
             femaleCheckBoxView.isActive = false
@@ -291,7 +291,9 @@ class ProfileViewController: BaseViewController {
         { (action) in
             UserManager.logout()
             guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = TKTabBarViewController()
+            let tb = TKTabBarViewController()
+            self.tabBarController?.selectedViewController?.view.tag = 3
+            window.rootViewController = tb
         }
     }
     

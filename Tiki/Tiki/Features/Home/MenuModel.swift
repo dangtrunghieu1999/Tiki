@@ -10,9 +10,11 @@ import SwiftyJSON
 
 class MenuModel: BaseHomeSectionModel {
     
-    var title = ""
-    var link  = ""
-    var list: [ListMenu] = []
+    var uuid: Int      = 0
+    var name           = ""
+    var image          = ""
+    var parentId: Int  = 0
+    
     
     required init() {
         super.init()
@@ -20,27 +22,10 @@ class MenuModel: BaseHomeSectionModel {
     
     required init(json: JSON) {
         super.init(json: json)
-        title = json["title"].stringValue
-        link  = json["link"].stringValue
-        list  = json["list"].arrayValue.map{ ListMenu(json: $0) }
+        uuid        = json["id"].intValue
+        name        = json["name"].stringValue
+        image       = json["image"].stringValue
+        parentId    = json["parentId"].intValue
     }
-    
 }
 
-class ListMenu: BaseHomeSectionModel {
-    var title = ""
-    var image = ""
-    var url   = ""
-    
-    required init() {
-        super.init()
-    }
-    
-    required init(json: JSON) {
-        super.init(json: json)
-        title = json["title"].stringValue
-        image = json["image"].stringValue
-        url   = json["url"].stringValue
-    }
-    
-}

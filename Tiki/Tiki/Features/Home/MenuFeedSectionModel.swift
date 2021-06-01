@@ -12,7 +12,8 @@ import SwiftyJSON
 class MenuFeedSectionModel: BaseHomeSectionModel {
 
     var data: JSON?
-    var menuModel: MenuModel?
+    var menuModel: [MenuModel] = []
+    
     required init() {
         super.init()
     }
@@ -20,7 +21,7 @@ class MenuFeedSectionModel: BaseHomeSectionModel {
     required init(json: JSON) {
         super.init(json: json)
         self.data = json["data"]
-        self.menuModel = MenuModel(json: data ?? [])
+        self.menuModel = data?.arrayValue.map{ MenuModel(json: $0) } ?? []
     }
 
 }

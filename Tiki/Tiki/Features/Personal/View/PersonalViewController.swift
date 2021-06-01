@@ -42,6 +42,11 @@ class PersonalViewController: BaseViewController {
         navigationItem.title = TextManager.person
         self.tabBarController?.tabBar.isTranslucent = false
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.tabBarController?.tabBar.isHidden = false
+    }
         
     // MARK: - Helper Method
     
