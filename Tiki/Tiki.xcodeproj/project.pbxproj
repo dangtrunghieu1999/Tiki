@@ -331,6 +331,7 @@
 		F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */; };
 		F69BECDF265A5457003C8AF5 /* VerifyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */; };
 		F69F2CC52664BF55008D20F7 /* BannerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F2CC42664BF55008D20F7 /* BannerModel.swift */; };
+		F6DEBA2826662BDA00B84857 /* LoginInNeededViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DEBA2726662BDA00B84857 /* LoginInNeededViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -700,6 +701,7 @@
 		F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreProductPulleyView.swift; sourceTree = "<group>"; };
 		F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneViewController.swift; sourceTree = "<group>"; };
 		F69F2CC42664BF55008D20F7 /* BannerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerModel.swift; sourceTree = "<group>"; };
+		F6DEBA2726662BDA00B84857 /* LoginInNeededViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInNeededViewController.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -920,6 +922,7 @@
 				F64425BB2655F7D100C47841 /* Model */,
 				CF1814CD26515EB400BB15C1 /* WaitingReviewViewController.swift */,
 				CF1814E326515EC600BB15C1 /* AlreadyReviewViewController.swift */,
+				F6DEBA2726662BDA00B84857 /* LoginInNeededViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2218,6 +2221,7 @@
 				CFAF8E2725FC4EDD000E2CCA /* BaseTableViewCell.swift in Sources */,
 				CF55F1B2261EB9B400635F80 /* HomeViewModel.swift in Sources */,
 				CFAF8F1725FC507C000E2CCA /* UIImage+NormalizeOrientation.swift in Sources */,
+				F6DEBA2826662BDA00B84857 /* LoginInNeededViewController.swift in Sources */,
 				CFAF8E2025FC4EDD000E2CCA /* ShoppingEndPoint.swift in Sources */,
 				CFEA201E262EC18E00288A39 /* ShopHomeStallDetailViewController.swift in Sources */,
 				CF730927262E8DFF0026C0B3 /* ReplyCommentView.swift in Sources */,

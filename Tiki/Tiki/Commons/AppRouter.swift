@@ -17,6 +17,11 @@ class AppRouter: NSObject {
         viewController.present(nvc, animated: true, completion: nil)
     }
     
+    class func pushToViewLoginNeeeded(viewController: UIViewController) {
+        let vc = LoginInNeededViewController()
+        UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     class func pushViewToGetProfile(viewController: UIViewController) {
         let vc = ProfileViewController()
         UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)

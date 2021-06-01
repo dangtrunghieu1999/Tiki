@@ -59,13 +59,17 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
             
             layoutCellSection()
         default:
-            imageView.isHidden = false
-            titleLabel.isHidden = false
-            nextButton.isHidden = false
-            backgroundColor = UIColor.white
-            imageView.image = personal?.icon
-            titleLabel.text = personal?.title
+            layoutCellItem(personal: personal)
         }
+    }
+    
+    func layoutCellItem(personal: Personal?) {
+        imageView.isHidden = false
+        titleLabel.isHidden = false
+        nextButton.isHidden = false
+        backgroundColor = UIColor.white
+        imageView.image = personal?.icon
+        titleLabel.text = personal?.title
     }
     
     func layoutCellSection() {
