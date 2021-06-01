@@ -7,10 +7,14 @@
 
 import UIKit
 
+protocol SignInViewControllerDelegate: class {
+    func reloadDataCollectionView()
+}
+
 class SignInViewController: BaseViewController {
     
     // MARK: - Variables
-    
+    weak var delegate: SignInViewControllerDelegate?
     // MARK: - UI Elements
     
     fileprivate lazy var bannerImageView: UIImageView = {
@@ -170,6 +174,7 @@ class SignInViewController: BaseViewController {
     
     @objc func tapOnPassword() {
         let vc = PasswordViewController()
+        vc.delegate = self
         guard let check = self.phoneTextField.text?.isPhoneNumber else { return }
         if check {
             vc.username = self.phoneTextField.text ?? ""
@@ -328,3 +333,10 @@ extension SignInViewController: NIAttributedLabelDelegate {
     }
 }
 
+extension SignInViewController: PasswordViewControllerDelegate {
+    func handleLoginSuccess() {
+        self.dismiss(animated: false) {
+            self.delegate?.reloadDataCollectionView()
+        }
+    }
+}

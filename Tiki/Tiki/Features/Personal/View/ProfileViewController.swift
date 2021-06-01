@@ -15,6 +15,10 @@ enum EditState: Int {
     case done      = 1
 }
 
+protocol ProfileViewControllerDelegate: class {
+    func handleLogoutSuccess()
+}
+
 class ProfileViewController: BaseViewController {
     
     // MARK: - Variables
@@ -35,6 +39,7 @@ class ProfileViewController: BaseViewController {
     
     var isPressCancel: Bool = false
     lazy var viewModel = ProfileViewModel()
+    weak var delegate: ProfileViewControllerDelegate?
     
     // MARK: - UI Elements
     
@@ -291,9 +296,7 @@ class ProfileViewController: BaseViewController {
         { (action) in
             UserManager.logout()
             guard let window = UIApplication.shared.keyWindow else { return }
-            let tb = TKTabBarViewController()
-            self.tabBarController?.selectedViewController?.view.tag = 3
-            window.rootViewController = tb
+            window.rootViewController = TKTabBarViewController()
         }
     }
     

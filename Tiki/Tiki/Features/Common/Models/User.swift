@@ -41,7 +41,7 @@ class User: NSObject, JSONParsable, NSCoding {
         self.dayOfBirth     = json["dayOfBirth"].stringValue
         self.birthDay       = dayOfBirth.toDate()
         
-        self.gender         = Gender(rawValue: json["gender"].intValue) ?? .female
+        self.gender         = Gender(rawValue: json["gender"].intValue) ?? .male
     
         if fullName.isEmpty {
             self.fullName = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)

@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol PasswordViewControllerDelegate: class {
+    func handleLoginSuccess()
+}
+
 class PasswordViewController: BaseViewController {
 
     // MARK: - Variables
@@ -18,6 +22,7 @@ class PasswordViewController: BaseViewController {
     }()
     
     var username: String = ""
+    weak var delegate: PasswordViewControllerDelegate?
     
     // MARK: - UI Elements
     
@@ -123,8 +128,9 @@ class PasswordViewController: BaseViewController {
         
         viewModel.requestSignIn(userName: self.username, passWord: password, onSuccess: {
             self.hideLoading()
-            guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = TKTabBarViewController()
+            self.navigationController?.popViewControllerWithHandler(completion: {
+                self.delegate?.handleLoginSuccess()
+            })
         }) { (message) in
             self.hideLoading()
             AlertManager.shared.show(TextManager.alertTitle.localized(), message: message)

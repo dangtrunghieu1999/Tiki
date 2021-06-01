@@ -76,7 +76,6 @@
 		CFA5BB5025EB89BE00AC20D1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */; };
 		CFA5BB5525EB89BF00AC20D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFA5BB5425EB89BF00AC20D1 /* Assets.xcassets */; };
 		CFA5BB5825EB89BF00AC20D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFA5BB5625EB89BF00AC20D1 /* LaunchScreen.storyboard */; };
-		CFA7F68525FDB9CA0026FCAA /* PersonalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA7F68425FDB9CA0026FCAA /* PersonalViewModel.swift */; };
 		CFAF8E1925FC4EDD000E2CCA /* ServiceErrorAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8DBC25FC4EDC000E2CCA /* ServiceErrorAPI.swift */; };
 		CFAF8E1A25FC4EDD000E2CCA /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8DBD25FC4EDC000E2CCA /* APIService.swift */; };
 		CFAF8E1B25FC4EDD000E2CCA /* CartEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAF8DBF25FC4EDC000E2CCA /* CartEndPoint.swift */; };
@@ -408,7 +407,6 @@
 		CFA5BB5425EB89BF00AC20D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFA5BB5725EB89BF00AC20D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CFA5BB5925EB89BF00AC20D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CFA7F68425FDB9CA0026FCAA /* PersonalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewModel.swift; sourceTree = "<group>"; };
 		CFAF8DBC25FC4EDC000E2CCA /* ServiceErrorAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceErrorAPI.swift; sourceTree = "<group>"; };
 		CFAF8DBD25FC4EDC000E2CCA /* APIService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		CFAF8DBF25FC4EDC000E2CCA /* CartEndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartEndPoint.swift; sourceTree = "<group>"; };
@@ -1030,7 +1028,6 @@
 		CFA7F68325FDB9AC0026FCAA /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				CFA7F68425FDB9CA0026FCAA /* PersonalViewModel.swift */,
 				CF2F67CD2646738C00D693CA /* ShipAddress.json */,
 				F671F406265DEC5C009743D3 /* ProfileViewModel.swift */,
 			);
@@ -2212,7 +2209,6 @@
 				CF6104592610B4EF00FBB983 /* BannerEventSectionModel.swift in Sources */,
 				CFAF8F1825FC507C000E2CCA /* ImageCropperRouter.swift in Sources */,
 				CFAF8F2D25FC507C000E2CCA /* PhotoGalleryViewController.swift in Sources */,
-				CFA7F68525FDB9CA0026FCAA /* PersonalViewModel.swift in Sources */,
 				CF1814CE26515EB400BB15C1 /* WaitingReviewViewController.swift in Sources */,
 				CFAF8FD625FC545D000E2CCA /* TitleCollectionViewHeaderCell.swift in Sources */,
 				CFAF8E1D25FC4EDD000E2CCA /* CommonEndpoint.swift in Sources */,
