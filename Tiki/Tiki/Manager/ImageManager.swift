@@ -170,4 +170,5 @@ final class ImageManager {
     static let r7                                   = UIImage(named: "r7")
     static let r8                                   = UIImage(named: "r8")
     static let r9                                   = UIImage(named: "r9")
+    
 }

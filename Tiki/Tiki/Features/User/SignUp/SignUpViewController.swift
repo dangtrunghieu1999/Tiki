@@ -209,7 +209,7 @@ class SignUpViewController: BaseViewController {
                 
                 if userName.isPhoneNumber {
                     message = TextManager.signUpPhoneSuccessMessage.localized()
-                    AppRouter.pushToVerifyOTPVC(with: userName)
+                    AppRouter.pushToVerifyOTPVC(with: userName  )
                     AlertManager.shared.show(TextManager.alertTitle.localized(),
                                              message: message,
                                              buttons: [TextManager.IUnderstand.localized()],

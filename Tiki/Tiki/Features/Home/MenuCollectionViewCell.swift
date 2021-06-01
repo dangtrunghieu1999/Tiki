@@ -11,7 +11,7 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
-    var menuModel: MenuModel?
+    var menuModel: MenuFeedSectionModel?
     
     // MARK: - UI Elements
 
@@ -68,14 +68,14 @@ extension MenuCollectionViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return menuModel?.list.count ?? 0
+        return menuModel?.menuModel.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageTitleCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configCell(menuModel?.list[indexPath.row].image,
-                        menuModel?.list[indexPath.row].title)
+        let menu = menuModel?.menuModel[indexPath.row]
+        cell.configCell(menu?.image, menu?.name)
         return cell
     }
 }
@@ -83,7 +83,7 @@ extension MenuCollectionViewCell: UICollectionViewDataSource {
 // MARK: - HomeViewProtocol
 
 extension MenuCollectionViewCell: HomeViewProtocol {
-    func configDataMenu(menu: MenuModel?) {
+    func configDataMenu(menu: MenuFeedSectionModel?) {
         self.menuModel = menu
     }
 }

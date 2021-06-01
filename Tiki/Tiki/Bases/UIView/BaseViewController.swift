@@ -105,7 +105,7 @@ open class BaseViewController: UIViewController {
         button.addTarget(self, action: #selector(touchInNotificationButton), for: .touchUpInside)
         return button
     }()
-
+    
     
     private (set) lazy var cartBarButtonItem = UIBarButtonItem(customView: cartButton)
     private (set) lazy var notifiBarButtonItem = UIBarButtonItem(customView: notifiButton)
@@ -317,7 +317,7 @@ open class BaseViewController: UIViewController {
             let rightBarButtonModel = BarButtonItemModel(rightBarItem, rightBarItemTarget)
             addBarItems(with: [rightBarButtonModel], type: .right)
         }
-
+        
         navigationItem.titleView = searchBar
     }
     
@@ -375,7 +375,7 @@ extension BaseViewController: UITextFieldDelegate {
 
 extension BaseViewController: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
-                           shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+                                  shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }

@@ -52,9 +52,17 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
     func configCell(personal: Personal?) {
         let type = personal?.cellType
         switch type {
-        case .section1, .section2, .section3, .section4:
+        case .section1,
+             .section2,
+             .section3,
+             .section4:
+            
             layoutCellSection()
         default:
+            imageView.isHidden = false
+            titleLabel.isHidden = false
+            nextButton.isHidden = false
+            backgroundColor = UIColor.white
             imageView.image = personal?.icon
             titleLabel.text = personal?.title
         }
@@ -74,7 +82,8 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
     private func layoutImageView() {
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
+            make.left.equalToSuperview()
+                .offset(Dimension.shared.normalMargin)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(20)
         }
@@ -83,7 +92,8 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
     private func layoutNextButton() {
         addSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.right.equalToSuperview()
+                .offset(-Dimension.shared.normalMargin)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(24)
         }
@@ -93,7 +103,8 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(imageView)
-            make.left.equalTo(imageView.snp.right).offset(Dimension.shared.normalMargin)
+            make.left.equalTo(imageView.snp.right)
+                .offset(Dimension.shared.normalMargin)
         }
     }
 }

@@ -15,6 +15,10 @@ enum EditState: Int {
     case done      = 1
 }
 
+protocol ProfileViewControllerDelegate: class {
+    func handleLogoutSuccess()
+}
+
 class ProfileViewController: BaseViewController {
     
     // MARK: - Variables
@@ -35,6 +39,7 @@ class ProfileViewController: BaseViewController {
     
     var isPressCancel: Bool = false
     lazy var viewModel = ProfileViewModel()
+    weak var delegate: ProfileViewControllerDelegate?
     
     // MARK: - UI Elements
     
@@ -259,17 +264,18 @@ class ProfileViewController: BaseViewController {
         layoutDOBView()
         layoutDOBTitleLabel()
         layoutDOBTextField()
+        configData(user: UserManager.user)
     }
     
     // MARK: - Get API
     
     func configData(user: User?) {
         
-        self.firstNameTextField.text     = user?.firstName
-        self.lastNameTextField.text      = user?.lastName
-        self.emailTextField.text         = user?.email
-        self.phoneTextField.text         = user?.phone
-        self.DOBTextField.text           = user?.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
+        self.firstNameTextField.text = user?.firstName
+        self.lastNameTextField.text  = user?.lastName
+        self.emailTextField.text     = user?.email
+        self.phoneTextField.text     = user?.phone
+        self.DOBTextField.text       = user?.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
         
         if user?.gender.rawValue == 1 {
             femaleCheckBoxView.isActive = false
@@ -289,8 +295,9 @@ class ProfileViewController: BaseViewController {
         AlertManager.shared.showConfirm(TextManager.statusLogOut.localized())
         { (action) in
             UserManager.logout()
-            guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = TKTabBarViewController()
+            self.navigationController?.popViewControllerWithHandler {
+                self.delegate?.handleLogoutSuccess()
+            }
         }
     }
     

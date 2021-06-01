@@ -9,118 +9,85 @@ import UIKit
 
 class CategoryViewController: BaseViewController {
     
-    // MARK: - Variables
     
+    var viewModel = CategoryViewModel()
     
-    // MARK: - Properties
-    
-    private let viewModel: CategoryViewModel = {
-        let viewModel = CategoryViewModel()
-        return viewModel
+    fileprivate lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.clear
+        tableView.showsVerticalScrollIndicator = false
+        tableView.registerReusableCell(CategoryTableViewCell.self)
+        tableView.registerReusableHeaderFooter(CategoryHeaderTableView.self)
+        tableView.registerReusableHeaderFooter(BaseTableViewHeaderFooter.self)
+        return tableView
     }()
-    
-    // MARK: - UI Elements
-    
-    private let containerView: BaseView = {
-        let view = BaseView()
-        view.layer.cornerRadius = 5
-        return view
-    }()
-    
-    private let titleRecommendLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.myCategory
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        return label
-    }()
-    
-    fileprivate lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0.25
-        layout.minimumInteritemSpacing = 0.25
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        collectionView.registerReusableCell(CategoryCollectionViewCell.self)
-        return collectionView
-    }()
-    
-    // MARK: - ViewLifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = TextManager.category
-        layoutContainerView()
-        layoutTitleRecommendLabel()
-        layoutCollectionView()
+        self.view.backgroundColor = UIColor.lightSeparator
+        self.navigationItem.title = TextManager.category
+        layoutTableView()
     }
     
-    // MARK: - Helper Method
-    
-    // MARK: - Public Method
-    
-    // MARK: - Layout
-    
-    private func layoutContainerView() {
-        view.addSubview(containerView)
-        containerView.snp.makeConstraints { (make) in
+    private func layoutTableView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide)
-                    .offset(Dimension.shared.normalMargin)
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
-                    .offset(Dimension.shared.normalMargin)
             }
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
             make.bottom.equalToSuperview()
+            make.left.right.equalToSuperview()
         }
-    }
-    
-    private func layoutTitleRecommendLabel() {
-        containerView.addSubview(titleRecommendLabel)
-        titleRecommendLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Dimension.shared.mediumMargin)
-            make.left.equalToSuperview()
-        }
-    }
-    
-    private func layoutCollectionView() {
-        containerView.addSubview(collectionView)
-        collectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleRecommendLabel.snp.bottom).offset(Dimension.shared.normalMargin)
-            make.left.right.bottom.equalToSuperview()
-        }
-    }
-    
-}
-
-extension CategoryViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - 0.25 * 2) / 3
-        return CGSize(width: width, height: 120)
     }
 }
 
-extension CategoryViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+
+extension CategoryViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configCell(image: viewModel.images[indexPath.row], title: viewModel.titles[indexPath.row])
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return dimension.mediumMargin
+    }
+}
+
+extension CategoryViewController: UITableViewDataSource{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.titleCategory.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: CategoryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         return cell
     }
-}
-
-extension ProductByCateogryViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = ProductByCateogryViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header: CategoryHeaderTableView = tableView.dequeueReusableHeaderFooterView()
+        header.titleName = viewModel.titleCategory[section]
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footer: BaseTableViewHeaderFooter = tableView.dequeueReusableHeaderFooterView()
+        return footer
     }
 }
-
-
-
