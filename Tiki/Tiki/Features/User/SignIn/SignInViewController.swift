@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SignInViewControllerDelegate: class {
-    func reloadDataCollectionView()
+    func reloadUserInfo()
 }
 
 class SignInViewController: BaseViewController {
@@ -336,7 +336,7 @@ extension SignInViewController: NIAttributedLabelDelegate {
 extension SignInViewController: PasswordViewControllerDelegate {
     func handleLoginSuccess() {
         self.dismiss(animated: false) {
-            self.delegate?.reloadDataCollectionView()
+            self.delegate?.reloadUserInfo()
         }
     }
 }

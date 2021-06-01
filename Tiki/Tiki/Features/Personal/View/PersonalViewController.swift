@@ -136,26 +136,34 @@ extension PersonalViewController: UICollectionViewDelegate {
         switch type {
         case .managerOrder, .recive, .paymentAgain, .transport, .successOrder, .canccelOrder:
             let vc = ManagerOrderViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            self.handleWhenLoginPushView(vc)
         case .address:
             let vc = DeliveryAddressViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            self.handleWhenLoginPushView(vc)
         case .infoPayment:
             let vc = InfoPaymentViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            self.handleWhenLoginPushView(vc)
         case .productedBuy:
             let vc = ProductedBuyViewController()
             vc.isBought = true
-            navigationController?.pushViewController(vc, animated: true)
+            self.handleWhenLoginPushView(vc)
         case .productedLove:
             let vc = ProductedBuyViewController()
             vc.isBought = false
-            navigationController?.pushViewController(vc, animated: true)
+            self.handleWhenLoginPushView(vc)
         case .productRating:
             let vc = RaitingProductViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            self.handleWhenLoginPushView(vc)
         default:
             break
+        }
+    }
+    
+    func handleWhenLoginPushView(_ vc: UIViewController) {
+        if UserManager.isLoggedIn() {
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            AppRouter.presentViewToSignIn(viewController: self)
         }
     }
 }
@@ -163,7 +171,9 @@ extension PersonalViewController: UICollectionViewDelegate {
 extension PersonalViewController: PersonalHeaderCollectionViewDelegate {
     func tapOnSignIn() {
         if UserManager.isLoggedIn() {
-            AppRouter.pushViewToGetProfile(viewController: self)
+            let vc = ProfileViewController()
+            vc.delegate = self
+           self.navigationController?.pushViewController(vc, animated: true)
         } else {
             let vc = SignInViewController()
             vc.delegate = self
@@ -174,8 +184,13 @@ extension PersonalViewController: PersonalHeaderCollectionViewDelegate {
 }
 
 extension PersonalViewController: SignInViewControllerDelegate {
-    
-    func reloadDataCollectionView() {
+    func reloadUserInfo() {
+        self.reloadCollectionView()
+    }
+}
+
+extension PersonalViewController: ProfileViewControllerDelegate {
+    func handleLogoutSuccess() {
         self.reloadCollectionView()
     }
 }

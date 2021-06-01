@@ -295,8 +295,9 @@ class ProfileViewController: BaseViewController {
         AlertManager.shared.showConfirm(TextManager.statusLogOut.localized())
         { (action) in
             UserManager.logout()
-            guard let window = UIApplication.shared.keyWindow else { return }
-            window.rootViewController = TKTabBarViewController()
+            self.navigationController?.popViewControllerWithHandler {
+                self.delegate?.handleLogoutSuccess()
+            }
         }
     }
     

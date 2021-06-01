@@ -104,7 +104,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(imageView)
             make.left.equalTo(imageView.snp.right)
-            offset(Dimension.shared.normalMargin)
+                .offset(Dimension.shared.normalMargin)
         }
     }
 }
