@@ -21,12 +21,15 @@ class SearchProductViewController: BaseViewController {
         return label
     }()
 
-    
+    fileprivate lazy var passwordTitleLabel: UILabel = {
+        let label = UILabel()
+        return label
+    }()
+
     // MAKR: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("test 1")
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItem = cartBarButtonItem
         self.searchBar.fontSizePlaceholder(text: TextManager.searchTitle2, size: FontSize.h2.rawValue)
