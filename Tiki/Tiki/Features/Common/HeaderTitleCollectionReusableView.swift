@@ -31,6 +31,10 @@ class HeaderTitleCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Helper Method
     
+    func configTitleHeader(title: String?) {
+        self.titleLabel.text = title
+    }
+    
     // MARK: - GET API
     
     // MARK: - Layout
@@ -45,11 +49,4 @@ class HeaderTitleCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     }
 }
 
-// MARK: - HomeViewProtocol
-
-extension HeaderTitleCollectionReusableView: HomeViewProtocol {
-    func configTitleHeader(title: String?) {
-        self.titleLabel.text = title
-    }
-}
 

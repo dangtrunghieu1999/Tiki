@@ -9,4 +9,5 @@ import UIKit
 
 class HomeViewModel: NSObject {
     
+    var products: [Product?] = []
 }

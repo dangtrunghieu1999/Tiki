@@ -51,7 +51,6 @@
 		CF730921262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730920262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift */; };
 		CF730924262E8DCF0026C0B3 /* ProductCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730923262E8DCF0026C0B3 /* ProductCommentViewController.swift */; };
 		CF730927262E8DFF0026C0B3 /* ReplyCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF730926262E8DFF0026C0B3 /* ReplyCommentView.swift */; };
-		CF7DB6DD2625FF8B00D47759 /* HomeViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */; };
 		CF80626E263C4CFF005DF444 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF80626D263C4CFF005DF444 /* CartViewController.swift */; };
 		CF81999B26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF81999A26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift */; };
 		CF86AD8026267C48000753B1 /* ProductDetailProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF86AD7F26267C48000753B1 /* ProductDetailProtocol.swift */; };
@@ -361,7 +360,6 @@
 		CF730920262E8D1B0026C0B3 /* BaseCommentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCommentCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF730923262E8DCF0026C0B3 /* ProductCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCommentViewController.swift; sourceTree = "<group>"; };
 		CF730926262E8DFF0026C0B3 /* ReplyCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyCommentView.swift; sourceTree = "<group>"; };
-		CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewProtocol.swift; sourceTree = "<group>"; };
 		CF80626D263C4CFF005DF444 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		CF81999A26205EC3000F5CDD /* HeaderTitleCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTitleCollectionReusableView.swift; sourceTree = "<group>"; };
 		CF86AD7F26267C48000753B1 /* ProductDetailProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailProtocol.swift; sourceTree = "<group>"; };
@@ -749,14 +747,6 @@
 			path = Comment;
 			sourceTree = "<group>";
 		};
-		CF7DB6DB2625FF7900D47759 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				CF7DB6DC2625FF8B00D47759 /* HomeViewProtocol.swift */,
-			);
-			name = Protocol;
-			sourceTree = "<group>";
-		};
 		CF86AD7E26267C05000753B1 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,7 +842,6 @@
 		CFA5BBB425EB8EA700AC20D1 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				CF7DB6DB2625FF7900D47759 /* Protocol */,
 				CF6104512610B2B300FBB983 /* Sections */,
 				CFC7F7A025FEF0EB00D986D0 /* MockData */,
 				CFA5BBB525EB8EAE00AC20D1 /* Model */,
@@ -874,7 +863,6 @@
 			isa = PBXGroup;
 			children = (
 				CFA5BB4F25EB89BE00AC20D1 /* HomeViewController.swift */,
-				CFB9998E2649FC4F00F0AAD5 /* HomeEndPoint.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -913,6 +901,8 @@
 		CFAF8DBE25FC4EDC000E2CCA /* EndPoint */ = {
 			isa = PBXGroup;
 			children = (
+				CFAF8E0A25FC4EDD000E2CCA /* UploadManager.swift */,
+				CFB9998E2649FC4F00F0AAD5 /* HomeEndPoint.swift */,
 				CFAF8DBF25FC4EDC000E2CCA /* CartEndPoint.swift */,
 				CFAF8DC025FC4EDC000E2CCA /* ProductEndPoint.swift */,
 				CFAF8DC125FC4EDC000E2CCA /* CommonEndpoint.swift */,
@@ -1047,7 +1037,6 @@
 			isa = PBXGroup;
 			children = (
 				CFAF8E0925FC4EDD000E2CCA /* ImageManager.swift */,
-				CFAF8E0A25FC4EDD000E2CCA /* UploadManager.swift */,
 				CFAF8E0B25FC4EDD000E2CCA /* AlertManager.swift */,
 				CFAF8E0C25FC4EDD000E2CCA /* UserSessionManager.swift */,
 				CFAF8E1825FC4EDD000E2CCA /* PermissionManager.swift */,
@@ -2065,7 +2054,6 @@
 				CFAF8F3525FC507C000E2CCA /* PhotoAlbumsViewController.swift in Sources */,
 				CFAF8EFF25FC507C000E2CCA /* NIDeviceOrientation.m in Sources */,
 				CFAF8F0F25FC507C000E2CCA /* FLAnimatedImage.m in Sources */,
-				CF7DB6DD2625FF8B00D47759 /* HomeViewProtocol.swift in Sources */,
 				CF2EC69A261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift in Sources */,
 				CFAF8E6225FC4EDD000E2CCA /* CommonTextManager.swift in Sources */,
 				CFAF8E5C25FC4EDD000E2CCA /* ImageManager.swift in Sources */,

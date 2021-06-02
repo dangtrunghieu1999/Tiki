@@ -168,8 +168,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-extension ProductCollectionViewCell: HomeViewProtocol {
-    func configDataProductRecommend(product: [Product]?, at index: Int) {
+extension ProductCollectionViewCell{
+    func configDataProduct(product: [Product]?, at index: Int) {
         guard let product = product?[index] else { return }
         self.productImageView.sd_setImage(with: product.photos[0].url.url, completed: nil)
         self.titleLabel.text  = product.name.capitalized
