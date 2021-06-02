@@ -12,6 +12,8 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - UI Elements
     
+    var banners: [Banner] = []
+    
     fileprivate lazy var topView: BaseView = {
         let view = BaseView()
         view.backgroundColor = UIColor.white
@@ -80,19 +82,23 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
             make.height.equalTo(Dimension.shared.pageControlHeight)
         }
     }
+    
+    func configCell(banners: [Banner]) {
+        self.banners = banners
+    }
 }
 
 // MARK: - FSPagerViewDataSource
 
 extension BannerCollectionViewCell: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return 3
+        return banners.count
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-//        let imageURL = bannerModel?.bannerModel[index].url
+        let imageURL = banners[index].url
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-//        cell.imageView?.sd_setImage(with: imageURL?.url, completed: nil)
+        cell.imageView?.sd_setImage(with: imageURL?.url, completed: nil)
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         return cell

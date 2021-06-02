@@ -24,7 +24,7 @@ class HomeViewController: BaseViewController {
     // MARK: - Variables
     
     fileprivate var viewModel = HomeViewModel()
-    
+    fileprivate var banners: [Banner] = []
     // MARK: - UI Elements
     
     fileprivate lazy var refreshControl: UIRefreshControl = {
@@ -56,6 +56,7 @@ class HomeViewController: BaseViewController {
         registerCell()
         configNavigationBar()
         layoutCollectionView()
+        getDataHome()
     }
     
     // MARK: - Helper Method
@@ -87,6 +88,17 @@ class HomeViewController: BaseViewController {
     
     @objc private func pullToRefresh() {
         
+    }
+    
+    private func getDataHome() {
+        self.viewModel.getHomeBanner { [weak self] (home, error) in
+            guard let self = self else { return }
+            if let error = error {
+              
+            } else {
+                self.banners = home[0].banner
+            }
+        }
     }
     
     // MARK: - Layout
@@ -178,6 +190,7 @@ extension HomeViewController: UICollectionViewDataSource {
         switch type {
         case .banner:
             let cell: BannerCollectionViewCell  = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configCell(banners: banners)
             return cell
         case .menu:
             let cell: MenuCollectionViewCell    = collectionView.dequeueReusableCell(for: indexPath)
