@@ -46,11 +46,3 @@ class EventCollectionViewCell: BaseCollectionViewCell {
         }
     }
 }
-
-// MARK: - HomeViewProtocol
-
-extension EventCollectionViewCell: HomeViewProtocol {
-    func configDataEvent(event: BannerEventSectionModel?) {
-        self.imageView.sd_setImage(with: event?.url.url, completed: nil)
-    }
-}

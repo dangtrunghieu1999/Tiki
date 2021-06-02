@@ -10,10 +10,6 @@ import FSPagerView
 
 class BannerCollectionViewCell: BaseCollectionViewCell {
     
-    // MARK: - Variables
-    
-    var bannerModel: BannerFeedSectionModel?
-    
     // MARK: - UI Elements
     
     fileprivate lazy var topView: BaseView = {
@@ -90,13 +86,13 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
 
 extension BannerCollectionViewCell: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return bannerModel?.bannerModel.count ?? 0
+        return 3
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let imageURL = bannerModel?.bannerModel[index].url
+//        let imageURL = bannerModel?.bannerModel[index].url
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-        cell.imageView?.sd_setImage(with: imageURL?.url, completed: nil)
+//        cell.imageView?.sd_setImage(with: imageURL?.url, completed: nil)
         cell.imageView?.contentMode = .scaleAspectFill
         cell.imageView?.clipsToBounds = true
         return cell
@@ -117,14 +113,5 @@ extension BannerCollectionViewCell: FSPagerViewDelegate {
     
     func pagerViewDidEndScrollAnimation(_ pagerView: FSPagerView) {
         self.pageControl.currentPage = pagerView.currentIndex
-    }
-}
-
-// MARK: - HomeViewProtocol
-
-extension BannerCollectionViewCell: HomeViewProtocol {
-    func configDataBanner(banner: BannerFeedSectionModel?) {
-        self.bannerModel = banner
-        self.pageControl.numberOfPages = bannerModel?.bannerModel.count ?? 0
     }
 }

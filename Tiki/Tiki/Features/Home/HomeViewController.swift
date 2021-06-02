@@ -13,28 +13,28 @@ class HomeViewController: BaseViewController {
     
     // MARK: - Variables
     
-    private lazy var adapter: ListAdapter = {
-        let updater = ListAdapterUpdater()
-        let adapter = ListAdapter(updater: updater,
-                                  viewController: self,
-                                  workingRangeSize: 4)
-        adapter.collectionView = collectionView
-        adapter.dataSource = self
-        return adapter
-    }()
-    
-    private var dataSource: [BaseHomeSectionModel] = []
+    fileprivate var viewModel                      = HomeViewModel()
     
     // MARK: - UI Elements
+    
+    fileprivate lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.background
+        refreshControl.addTarget(self, action: #selector(pullToRefresh),
+                                 for: .valueChanged)
+        return refreshControl
+    }()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.lightBackground
         collectionView.frame = view.bounds
         collectionView.showsVerticalScrollIndicator = false
+        collectionView.refreshControl = refreshControl
         return collectionView
     }()
     
@@ -42,87 +42,50 @@ class HomeViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItems = [cartBarButtonItem, notifiBarButtonItem]
-        navigationItem.titleView = searchBar
-        view.addSubview(collectionView)
-        requestHomeAPI()
-        self.collectionView.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
+        setButtonNavBar()
+        configNavigationBar()
+        layoutCollectionView()
+    }
+    
+    private func configNavigationBar() {
+        let height = self.tabBarController?.tabBar.frame.height ?? 0
+        self.collectionView.contentInset.bottom     = height
         self.tabBarController?.tabBar.isTranslucent = false
+    }
+    
+    private func setButtonNavBar() {
+        self.navigationItem.titleView      = searchBar
+        navigationItem.rightBarButtonItems = [cartBarButtonItem,
+                                              notifiBarButtonItem]
     }
     
     override func touchInSearchBar() {
         AppRouter.pushViewToSearchBar(viewController: self)
         searchBar.endEditing(true)
     }
-    
+
     // MARK: - Helper Method
     
-    func requestHomeAPI() {
-        let endPoint = HomeEndPoint.getAllHome
-        self.showLoading()
+    @objc private func pullToRefresh() {
         
-        APIService.request(endPoint: endPoint) { (apiResponse) in
-            self.hideLoading()
-            let json = apiResponse.data
-            let homeSectionModels = json?.arrayValue.compactMap { (json) -> BaseHomeSectionModel? in
-                let model = BaseHomeSectionModel(json: json)
-                switch model.feedType {
-                case .SlideWidget:
-                    return BannerFeedSectionModel(json: json)
-                case .ShortcutWidget:
-                    return MenuFeedSectionModel(json: json)
-                case .BannerEventWidget:
-                    return BannerEventSectionModel(json: json)
-                case .ProductRecommendWidget:
-                    return ProductRecommendSectionModel(json: json)
-                }
+    }
+}
+
+// MARK: - UI Elements
+
+extension HomeViewController{
+    
+    private func layoutCollectionView() {
+        view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { (make) in
+            if #available(iOS 11, *) {
+                make.top.equalTo(view.safeAreaInsets)
+            } else {
+                make.top.equalTo(topLayoutGuide.snp.bottom)
             }
-            self.dataSource.append(contentsOf: homeSectionModels!)
-            self.adapter.reloadData(completion: nil)
-        } onFailure: { (errorResponse) in
-            
-        } onRequestFail: {
-            
+            make.left.right.bottom.equalToSuperview()
         }
-    }
-}
-
-// MARK: - ListAdapterDataSource
-
-extension HomeViewController: ListAdapterDataSource {
-    func listAdapter(_ listAdapter: ListAdapter, sectionControllerFor object: Any) -> ListSectionController {
-        
-        guard let model = object as? BaseHomeSectionModel else {
-            return ListSectionController()
-        }
-        switch model.feedType {
-        case .SlideWidget:
-            return BannerFeedSectionController()
-        case .ShortcutWidget:
-            return MenuFeedSectionViewController()
-        case .BannerEventWidget:
-            return BannerEventViewController()
-        case .ProductRecommendWidget:
-            let vc = ProductRecommendViewController()
-            vc.delegate = self
-            return vc
-        }
-    }
-    
-    func emptyView(for listAdapter: ListAdapter) -> UIView? {
-        return nil
-    }
-    
-    func objects(for listAdapter: ListAdapter) -> [ListDiffable] {
-        return dataSource
     }
     
 }
 
-// MARK: - ProductRecommendDelagte
-
-extension HomeViewController: ProductRecommendDelagte {
-    func tapProductDetail(product: Product?) {
-        AppRouter.pushToProductDetail(product ?? Product())
-    }
-}

@@ -19,10 +19,7 @@ enum ProductEndPoint {
     case getProductById(parameters: Parameters)
     case getSuggestProduct(parameters: Parameters)
     case createComment(parameters: Parameters)
-    case getAllSuplier
-    case likeProduct(parameters: Parameters)
-    case folowProduct(parameters: Parameters)
-    case getAllProductByCategoryId(parameters: Parameters)
+    case getAllProduct
 }
 
 extension ProductEndPoint: EndPointType {
@@ -45,15 +42,9 @@ extension ProductEndPoint: EndPointType {
         case .getSuggestProduct:
             return "/Product/GetSuggestProduct"
         case .createComment:
-            return "/ProductComment/Create"
-        case .getAllSuplier:
-            return "/Supplier/GetAll"
-        case .likeProduct:
-            return "/ProductLike/CreateOrUpdate"
-        case .folowProduct:
-            return "/ProductFollow/CreateOrUpdate"
-        case .getAllProductByCategoryId:
-            return "/Product/GetAllProductByCategoryId"
+            return "/"
+        case .getAllProduct:
+            return "/product​/loadmore"
         }
     }
     
@@ -77,13 +68,7 @@ extension ProductEndPoint: EndPointType {
             return .get
         case .createComment:
             return .post
-        case .getAllSuplier:
-            return .get
-        case .likeProduct:
-            return .post
-        case .folowProduct:
-            return .post
-        case .getAllProductByCategoryId:
+        case .getAllProduct:
             return .get
         }
     }
@@ -108,14 +93,8 @@ extension ProductEndPoint: EndPointType {
             return parameters
         case .createComment(let parameters):
             return parameters
-        case .getAllSuplier:
+        case .getAllProduct:
             return nil
-        case .likeProduct(let parameters):
-            return parameters
-        case .folowProduct(let parameters):
-            return parameters
-        case .getAllProductByCategoryId(let parameters):
-            return parameters
         }
     }
 }
