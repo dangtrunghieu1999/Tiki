@@ -13,7 +13,7 @@ class HomeViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate var viewModel                      = HomeViewModel()
+    fileprivate var viewModel = HomeViewModel()
     
     // MARK: - UI Elements
     

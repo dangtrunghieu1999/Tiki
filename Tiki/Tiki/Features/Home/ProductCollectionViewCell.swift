@@ -8,7 +8,7 @@
 import UIKit
 import HCSStarRatingView
 
-class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
+class ProductCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
 
@@ -168,7 +168,7 @@ class ProductRecommendCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-extension ProductRecommendCollectionViewCell: HomeViewProtocol {
+extension ProductCollectionViewCell: HomeViewProtocol {
     func configDataProductRecommend(product: [Product]?, at index: Int) {
         guard let product = product?[index] else { return }
         self.productImageView.sd_setImage(with: product.photos[0].url.url, completed: nil)

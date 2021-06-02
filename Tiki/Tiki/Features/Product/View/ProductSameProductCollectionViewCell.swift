@@ -23,7 +23,7 @@ class ProductSameProductCollectionViewCell: BaseCollectionViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.registerReusableCell(ProductRecommendCollectionViewCell.self)
+        collectionView.registerReusableCell(ProductCollectionViewCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0,
@@ -78,7 +78,7 @@ extension ProductSameProductCollectionViewCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: ProductRecommendCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let cell: ProductCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.backgroundColor = UIColor.white
         cell.colorCoverView = UIColor.white
         cell.fontSize = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
