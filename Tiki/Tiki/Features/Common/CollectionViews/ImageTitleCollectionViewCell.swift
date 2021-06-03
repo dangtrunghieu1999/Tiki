@@ -13,15 +13,15 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - UI Elements
     
-    fileprivate lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+    fileprivate lazy var imageView: ShimmerImageView = {
+        let imageView = ShimmerImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         return imageView
     }()
     
-    fileprivate lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    fileprivate lazy var titleLabel: ShimmerLabel = {
+        let label = ShimmerLabel()
         label.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue, weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 2
@@ -34,12 +34,22 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
         super.initialize()
         layoutImageView()
         layoutTitleLabel()
+        startShimmering()
     }
     
+    func startShimmering() {
+        imageView.startShimmer()
+        titleLabel.startShimmer()
+    }
+    
+    func stopShimmering() {
+        imageView.stopShimmer()
+        titleLabel.stopShimmer()
+    }
+
     // MARK: - Helper Method
     
     func configCell(_ image: String?, _ title: String?) {
-        self.imageView.sd_setImage(with: image?.url, completed: nil)
         self.titleLabel.text = title
     }
     

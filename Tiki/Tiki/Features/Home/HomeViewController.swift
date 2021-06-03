@@ -44,6 +44,8 @@ class HomeViewController: BaseViewController {
         collectionView.backgroundColor = .lightBackground
         collectionView.refreshControl  = refreshControl
         collectionView.frame           = view.bounds
+        collectionView.dataSource      = self
+        collectionView.delegate        = self
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
@@ -56,7 +58,6 @@ class HomeViewController: BaseViewController {
         registerCell()
         configNavigationBar()
         layoutCollectionView()
-        getDataHome()
     }
     
     // MARK: - Helper Method
@@ -65,6 +66,12 @@ class HomeViewController: BaseViewController {
         self.collectionView.registerReusableCell(BannerCollectionViewCell.self)
         self.collectionView.registerReusableCell(MenuCollectionViewCell.self)
         self.collectionView.registerReusableCell(ProductCollectionViewCell.self)
+        self.collectionView
+            .registerReusableSupplementaryView(HeaderTitleCollectionReusableView.self,
+             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+        self.collectionView
+            .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
+             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
     }
     
     private func configNavigationBar() {
@@ -90,17 +97,6 @@ class HomeViewController: BaseViewController {
         
     }
     
-    private func getDataHome() {
-        self.viewModel.getHomeBanner { [weak self] (home, error) in
-            guard let self = self else { return }
-            if let error = error {
-              
-            } else {
-                self.banners = home[0].banner
-            }
-        }
-    }
-    
     // MARK: - Layout
     
     private func layoutCollectionView() {
@@ -114,7 +110,6 @@ class HomeViewController: BaseViewController {
             make.left.right.bottom.equalToSuperview()
         }
     }
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -141,7 +136,6 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
         if section == 3 {
             return CGSize(width: collectionView.frame.width, height: 50)
         } else {

@@ -38,10 +38,12 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     private func layoutMenuCollectionView() {
         addSubview(menuCollectionView)
         menuCollectionView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Dimension.shared.mediumMargin)
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.top.equalToSuperview()
+                .offset(dimension.mediumMargin)
+            make.left.right.equalToSuperview()
+                .inset(dimension.normalMargin)
             make.bottom.equalToSuperview()
+                .inset(dimension.mediumMargin_12)
         }
     }
 }

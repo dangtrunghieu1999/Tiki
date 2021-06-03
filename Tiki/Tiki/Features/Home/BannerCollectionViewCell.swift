@@ -20,6 +20,12 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
+    private var bannerShimmerView: BaseShimmerView = {
+        let view = BaseShimmerView()
+        view.isHidden = true
+        return view
+    }()
+    
     fileprivate lazy var pageView: FSPagerView = {
         let view = FSPagerView()
         view.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -47,12 +53,26 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     override func initialize() {
         super.initialize()
         layoutTopView()
+        layoutBannerShimmerView()
         layoutPageView()
         layoutPageControl()
+        startShimmering()
     }
     
     // MARK: - Helper Method
 
+    func startShimmering() {
+        bannerShimmerView.startShimmer()
+        topView.isHidden = true
+        bannerShimmerView.isHidden = false
+    }
+    
+    func stopShimmering() {
+        bannerShimmerView.stopShimmer()
+        topView.isHidden = false
+        bannerShimmerView.isHidden = true
+    }
+    
     // MARK: - GET API
     
     // MARK: - Layout
@@ -60,17 +80,24 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     private func layoutTopView() {
         addSubview(topView)
         topView.snp.makeConstraints { (make) in
-            make.left.bottom.right.equalToSuperview()
-            make.top.equalToSuperview().offset(Dimension.shared.mediumMargin_12)
+            make.left.right.equalToSuperview()
+                .inset(dimension.mediumMargin_12)
+            make.top.bottom.equalToSuperview()
+                .inset(dimension.mediumMargin_12)
+        }
+    }
+    
+    private func layoutBannerShimmerView() {
+        addSubview(bannerShimmerView)
+        bannerShimmerView.snp.makeConstraints { (make) in
+            make.top.left.right.bottom.equalTo(topView)
         }
     }
     
     private func layoutPageView() {
         topView.addSubview(pageView)
         pageView.snp.makeConstraints { (make) in
-            make.top.bottom.equalToSuperview()
-            make.left.equalToSuperview().offset(Dimension.shared.mediumMargin_12)
-            make.right.equalToSuperview().offset(-Dimension.shared.mediumMargin_12)
+            make.edges.equalToSuperview()
         }
     }
     
@@ -78,11 +105,11 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
         pageView.addSubview(pageControl)
         pageControl.snp.makeConstraints { (make) in
             make.bottom.equalToSuperview()
-            make.left.right.equalToSuperview()
-            make.height.equalTo(Dimension.shared.pageControlHeight)
+            make.left.right.equalTo(pageView)
+            make.height.equalTo(dimension.pageControlHeight)
         }
     }
-    
+
     func configCell(banners: [Banner]) {
         self.banners = banners
     }
