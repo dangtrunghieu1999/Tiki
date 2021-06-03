@@ -9,17 +9,9 @@
 import UIKit
 import IGListKit
 
-class SecparatorCollectionViewCell: BaseCollectionViewCell {
+class FooterCollectionViewCell: BaseCollectionViewCell {
     override func initialize() {
         super.initialize()
         backgroundColor = UIColor.separator
-    }
-}
-
-// MARK: - ListBindable
-
-extension SecparatorCollectionViewCell {
-    override func bindViewModel(_ viewModel: Any) {
-        
     }
 }

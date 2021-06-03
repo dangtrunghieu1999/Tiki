@@ -11,12 +11,16 @@ import HCSStarRatingView
 class ProductCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
-
+    
     var fontSize: UIFont? {
         didSet {
-            titleLabel.font = fontSize
-            finalPriceLabel.font = fontSize
-            promotionPercentLabel.isHidden = true
+            productTitleLabel.font = fontSize ??
+                .systemFont(ofSize: FontSize.h1.rawValue)
+            
+            finalPriceLabel.font = fontSize ??
+                .systemFont(ofSize: FontSize.h1.rawValue)
+            
+            promoPercentLabel.isHidden = true
         }
     }
     
@@ -25,7 +29,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
             coverView.backgroundColor = colorCoverView
         }
     }
-        
+    
     // MARK: - UI Elements
     
     fileprivate lazy var coverView: BaseView = {
@@ -33,15 +37,15 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         return view
     }()
     
-    fileprivate lazy var productImageView: UIImageView = {
-        let imageView = UIImageView()
+    fileprivate lazy var productImageView: ShimmerImageView = {
+        let imageView = ShimmerImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         return imageView
     }()
     
-    fileprivate lazy var titleLabel: UILabel = {
-        let label = UILabel()
+    fileprivate lazy var productTitleLabel: ShimmerLabel = {
+        let label = ShimmerLabel()
         label.numberOfLines = 2
         label.textAlignment = .left
         label.textColor = UIColor.bodyText
@@ -49,7 +53,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    fileprivate lazy var ratingView: HCSStarRatingView = {
+    
+    fileprivate lazy var productRatingView: HCSStarRatingView = {
         let ratingView = HCSStarRatingView()
         ratingView.tintColor = UIColor.ratingColor
         ratingView.allowsHalfStars = true
@@ -57,22 +62,28 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         return ratingView
     }()
     
-    fileprivate lazy var numberReviewLabel: UILabel = {
-        let label = UILabel()
+    private var ratingShimmerView: BaseShimmerView = {
+        let view = BaseShimmerView()
+        view.isHidden = true
+        return view
+    }()
+    
+    fileprivate lazy var numberReviewLabel: ShimmerLabel = {
+        let label = ShimmerLabel()
         label.textColor = UIColor.bodyText
         label.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue)
         return label
     }()
     
-    fileprivate var finalPriceLabel: UILabel = {
-        let label = UILabel()
+    fileprivate var finalPriceLabel: ShimmerLabel = {
+        let label = ShimmerLabel()
         label.textColor = UIColor.bodyText
         label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .medium)
         return label
     }()
     
-    fileprivate var promotionPercentLabel: UILabel = {
-        let label = UILabel()
+    fileprivate var promoPercentLabel: ShimmerLabel = {
+        let label = ShimmerLabel()
         label.backgroundColor = UIColor.red
         label.textColor = .white
         label.layer.cornerRadius = 5
@@ -82,7 +93,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-
+    
     // MARK: - View LifeCycles
     
     override func initialize() {
@@ -92,13 +103,36 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         layoutProductImageView()
         layoutTitleLabel()
         layoutRatingView()
+        layoutRatingShimmerView()
         layoutNumberReviewLabel()
         layoutFinalPriceLabel()
         layoutPromotionPercentLabel()
+        self.startShimmering()
     }
     
     // MARK: - Helper Method
     
+    func startShimmering() {
+        productImageView.startShimmer()
+        productTitleLabel.startShimmer()
+        numberReviewLabel.startShimmer()
+        finalPriceLabel.startShimmer()
+        promoPercentLabel.startShimmer()
+        ratingShimmerView.startShimmer()
+        productRatingView.isHidden = true
+        ratingShimmerView.isHidden = false
+    }
+    
+    func stopShimmering() {
+        productImageView.stopShimmer()
+        productTitleLabel.stopShimmer()
+        numberReviewLabel.stopShimmer()
+        finalPriceLabel.stopShimmer()
+        promoPercentLabel.stopShimmer()
+        ratingShimmerView.stopShimmer()
+        productRatingView.isHidden = false
+        ratingShimmerView.isHidden = true
+    }
     // MARK: - GET API
     
     // MARK: - Layout
@@ -114,53 +148,67 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     private func layoutProductImageView() {
         coverView.addSubview(productImageView)
         productImageView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(Dimension.shared.smallMargin)
-            make.left.equalToSuperview().offset(Dimension.shared.smallMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.smallMargin)
-            make.height.equalTo(self.snp.width).multipliedBy(Dimension.shared.productImageRatio)
+            make.top.equalToSuperview()
+                .offset(dimension.normalMargin)
+            make.left.right.equalToSuperview()
+                .inset(dimension.smallMargin)
+            make.height.equalTo(self.snp.width)
+                .multipliedBy(dimension.productImageRatio)
         }
     }
     
     private func layoutTitleLabel() {
-        coverView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(productImageView.snp.bottom).offset(Dimension.shared.normalMargin)
-            make.left.equalToSuperview().offset(Dimension.shared.mediumMargin_12)
-            make.right.equalToSuperview().offset(-Dimension.shared.mediumMargin_12)
+        coverView.addSubview(productTitleLabel)
+        productTitleLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(productImageView.snp.bottom)
+                .offset(Dimension.shared.normalMargin)
+            make.left.right.equalToSuperview()
+                .inset(dimension.mediumMargin_12)
         }
     }
     
     private func layoutRatingView() {
-        coverView.addSubview(ratingView)
-        ratingView.snp.makeConstraints { (make) in
-            make.left.equalTo(titleLabel)
-            make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
+        coverView.addSubview(productRatingView)
+        productRatingView.snp.makeConstraints { (make) in
+            make.left.equalTo(productTitleLabel)
+            make.top.equalTo(productTitleLabel.snp.bottom)
+                .offset(dimension.mediumMargin)
             make.width.equalTo(60)
             make.height.equalTo(10)
+        }
+    }
+    
+    private func layoutRatingShimmerView() {
+        coverView.addSubview(ratingShimmerView)
+        ratingShimmerView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
     }
     
     private func layoutNumberReviewLabel() {
         coverView.addSubview(numberReviewLabel)
         numberReviewLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(ratingView.snp.right).offset(Dimension.shared.mediumMargin)
-            make.top.equalTo(ratingView)
-            make.centerY.equalTo(ratingView)
+            make.left.equalTo(productRatingView.snp.right)
+                .offset(dimension.mediumMargin)
+            make.top.equalTo(productRatingView)
+            make.centerY.equalTo(productRatingView)
         }
     }
     
     private func layoutFinalPriceLabel() {
         coverView.addSubview(finalPriceLabel)
         finalPriceLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(titleLabel)
-            make.top.equalTo(ratingView.snp.bottom).offset(Dimension.shared.mediumMargin)
+            make.left.equalTo(productTitleLabel)
+            make.top.equalTo(productRatingView.snp.bottom)
+                .offset(dimension.mediumMargin)
         }
     }
     
     private func layoutPromotionPercentLabel() {
-        coverView.addSubview(promotionPercentLabel)
-        promotionPercentLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(finalPriceLabel.snp.right).offset(Dimension.shared.mediumMargin)
+        coverView.addSubview(promoPercentLabel)
+        promoPercentLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(finalPriceLabel.snp.right)
+                .offset(dimension.mediumMargin)
             make.width.equalTo(40)
             make.top.equalTo(finalPriceLabel)
             make.bottom.equalTo(finalPriceLabel)
@@ -168,14 +216,3 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-extension ProductCollectionViewCell{
-    func configDataProduct(product: [Product]?, at index: Int) {
-        guard let product = product?[index] else { return }
-        self.productImageView.sd_setImage(with: product.photos[0].url.url, completed: nil)
-        self.titleLabel.text  = product.name.capitalized
-        self.ratingView.value = CGFloat(product.rating)
-        self.numberReviewLabel.text = "(\(product.number_comment))"
-        self.finalPriceLabel.text = product.promoPrice.currencyFormat
-        self.promotionPercentLabel.text = "-\(product.promotion_percent)%"
-    }
-}

@@ -82,8 +82,6 @@ extension ProductSameProductCollectionViewCell: UICollectionViewDataSource {
         cell.backgroundColor = UIColor.white
         cell.colorCoverView = UIColor.white
         cell.fontSize = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        cell.configDataProduct(product: products, at: indexPath.row)
-        
         return cell
     }
 }

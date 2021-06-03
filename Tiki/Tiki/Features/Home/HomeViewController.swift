@@ -12,10 +12,12 @@ import SwiftyJSON
 enum HomeSection: Int {
     case banner     = 0
     case menu       = 1
-    case product    = 2
+    case seperator  = 2
+    case header     = 3
+    case product    = 4
     
     static func numberOfSection() -> Int {
-        return 3
+        return 5
     }
 }
 
@@ -37,7 +39,7 @@ class HomeViewController: BaseViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing      = 4
         layout.minimumInteritemSpacing = 0
         let collectionView             = UICollectionView(frame: .zero,
                                                           collectionViewLayout: layout)
@@ -65,13 +67,9 @@ class HomeViewController: BaseViewController {
     private func registerCell() {
         self.collectionView.registerReusableCell(BannerCollectionViewCell.self)
         self.collectionView.registerReusableCell(MenuCollectionViewCell.self)
+        self.collectionView.registerReusableCell(FooterCollectionViewCell.self)
+        self.collectionView.registerReusableCell(HeaderCollectionViewCell.self)
         self.collectionView.registerReusableCell(ProductCollectionViewCell.self)
-        self.collectionView
-            .registerReusableSupplementaryView(HeaderTitleCollectionReusableView.self,
-             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
-        self.collectionView
-            .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
-             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
     }
     
     private func configNavigationBar() {
@@ -119,35 +117,22 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let width = collectionView.frame.width
-        let type = HomeSection(rawValue: indexPath.row)
+        let width = ScreenSize.SCREEN_WIDTH
+        let type  = HomeSection(rawValue: indexPath.section)
         switch type {
         case .banner:
             return CGSize(width: width, height: 140)
         case .menu:
             return CGSize(width: width, height: 180)
+        case .seperator:
+            return CGSize(width: width, height: 8)
+        case .header:
+            return CGSize(width: width, height: 40)
         case .product:
-            return CGSize(width: (width - 1) / 2, height: 320)
+            return CGSize(width: (width - 4) / 2, height: 320)
         default:
             return CGSize(width: 0, height: 0)
         }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 3 {
-            return CGSize(width: collectionView.frame.width, height: 50)
-        } else {
-            return CGSize(width: 0, height: 0)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForFooterInSection section: Int) -> CGSize {
-        
-        return CGSize(width: collectionView.frame.width, height: dimension.mediumMargin)
     }
 }
 
@@ -169,10 +154,14 @@ extension HomeViewController: UICollectionViewDataSource {
                         numberOfItemsInSection section: Int) -> Int {
         let type = HomeSection(rawValue: section)
         switch type {
-        case .banner, .menu:
+        case .banner, .menu, .seperator, .header:
             return 1
         case .product:
-            return viewModel.products.count
+            if viewModel.products.isEmpty {
+                return 4
+            } else {
+                return viewModel.products.count
+            }
         default:
             return 0
         }
@@ -189,26 +178,18 @@ extension HomeViewController: UICollectionViewDataSource {
         case .menu:
             let cell: MenuCollectionViewCell    = collectionView.dequeueReusableCell(for: indexPath)
             return cell
+        case .seperator:
+            let cell: FooterCollectionViewCell  = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        case .header:
+            let cell: HeaderCollectionViewCell  = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configTitle(title: TextManager.recommendProduct)
+            return cell
         case .product:
             let cell: ProductCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         default:
             return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        if kind == UICollectionView.elementKindSectionHeader {
-            let header: HeaderTitleCollectionReusableView =
-                collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-            header.configTitleHeader(title: TextManager.recommendProduct)
-            return header
-        } else {
-            let footer: BaseCollectionViewHeaderFooterCell =
-                collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-            return footer
         }
     }
 }
