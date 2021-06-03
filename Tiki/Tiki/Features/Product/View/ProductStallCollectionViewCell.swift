@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductStallShopCollectionViewCell: BaseCollectionViewCell {
+class ProductStallCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     private var shopId: Int?

@@ -124,14 +124,6 @@ extension ProductDetailsCollectionViewCell: UITableViewDataSource {
             cell.keyCoverView.backgroundColor = UIColor.white
             cell.valueCoverView.backgroundColor = UIColor.white
         }
-        switch indexPath.row {
-        case 0, 1, 2, 3:
-            cell.configTitle(keyTitle: productParamter.keyTitle[indexPath.row],
-                             valueTitle: valueTitles[indexPath.row])
-        default:
-            break
-        }
-    
         return cell
     }
 }

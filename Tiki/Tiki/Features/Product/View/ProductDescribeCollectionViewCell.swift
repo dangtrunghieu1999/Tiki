@@ -11,7 +11,7 @@ protocol ProductDetailDesciptionCollectionViewCellDelegate: class {
     func didSelectSeeMore()
 }
 
-class ProductDetailDescriptionCollectionViewCell: BaseCollectionViewCell {
+class ProductDescribeCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     

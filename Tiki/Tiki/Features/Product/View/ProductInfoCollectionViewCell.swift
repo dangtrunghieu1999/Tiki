@@ -9,7 +9,7 @@ import UIKit
 import FSPagerView
 import HCSStarRatingView
 
-class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
+class ProductInfoCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
@@ -129,9 +129,11 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
     private func layoutNumberLabel() {
         addSubview(numberLabel)
         numberLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(pageView.snp.bottom).offset(Dimension.shared.mediumMargin)
+            make.top.equalTo(pageView.snp.bottom)
+                .offset(dimension.mediumMargin)
             make.width.equalTo(35)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.right.equalToSuperview()
+                .offset(-dimension.normalMargin)
             make.height.equalTo(20)
         }
     }
@@ -139,9 +141,12 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
     private func layoutTitleLabel() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.top.equalTo(numberLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
+            make.left.equalToSuperview()
+                .offset(dimension.normalMargin)
+            make.right.equalToSuperview()
+                .offset(-dimension.normalMargin)
+            make.top.equalTo(numberLabel.snp.bottom)
+                .offset(dimension.mediumMargin)
         }
     }
     
@@ -158,7 +163,8 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
     private func layoutNumberReviewLabel() {
         addSubview(numberReviewLabel)
         numberReviewLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(ratingView.snp.right).offset(Dimension.shared.mediumMargin)
+            make.left.equalTo(ratingView.snp.right)
+                .offset(dimension.mediumMargin)
             make.top.equalTo(ratingView)
             make.centerY.equalTo(ratingView)
         }
@@ -168,8 +174,10 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         addSubview(promotionPriceLabel)
         promotionPriceLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
-            make.top.equalTo(ratingView.snp.bottom).offset(Dimension.shared.smallMargin)
-            make.bottom.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.top.equalTo(ratingView.snp.bottom)
+                .offset(dimension.smallMargin)
+            make.bottom.equalToSuperview()
+                .offset(-dimension.normalMargin)
         }
     }
     
@@ -177,14 +185,16 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
         addSubview(originalPriceLabel)
         originalPriceLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(promotionPriceLabel)
-            make.left.equalTo(promotionPriceLabel.snp.right).offset(Dimension.shared.normalMargin)
+            make.left.equalTo(promotionPriceLabel.snp.right)
+                .offset(dimension.normalMargin)
         }
     }
     
     private func layoutPromotionPercentLabel() {
         addSubview(promotionPercentLabel)
         promotionPercentLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(originalPriceLabel.snp.right).offset(Dimension.shared.mediumMargin)
+            make.left.equalTo(originalPriceLabel.snp.right)
+                .offset(dimension.mediumMargin)
             make.bottom.equalTo(originalPriceLabel)
         }
     }
@@ -192,7 +202,7 @@ class ProductDetailInfoCollectionViewCell: BaseCollectionViewCell {
 
 // MARK: - FSPagerViewDataSource
 
-extension ProductDetailInfoCollectionViewCell: FSPagerViewDataSource {
+extension ProductInfoCollectionViewCell: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
         return product?.photos.count ?? 0
     }
@@ -209,7 +219,7 @@ extension ProductDetailInfoCollectionViewCell: FSPagerViewDataSource {
 
 // MARK: - FSPagerViewDelegate
 
-extension ProductDetailInfoCollectionViewCell: FSPagerViewDelegate {
+extension ProductInfoCollectionViewCell: FSPagerViewDelegate {
     func pagerView(_ pagerView: FSPagerView, didSelectItemAt index: Int) {
         pagerView.deselectItem(at: index, animated: true)
         pagerView.scrollToItem(at: index, animated: true)
@@ -226,7 +236,7 @@ extension ProductDetailInfoCollectionViewCell: FSPagerViewDelegate {
 
 // MARK: - ProductDetailProtocol
 
-extension ProductDetailInfoCollectionViewCell: ProductDetailProtocol {
+extension ProductInfoCollectionViewCell: ProductDetailProtocol {
     func configDataInfomation(product: Product?) {
         self.product = product
         self.pageView.reloadData()
@@ -241,5 +251,4 @@ extension ProductDetailInfoCollectionViewCell: ProductDetailProtocol {
         let promotionPercent = product?.promotion_percent ?? 0
         self.promotionPercentLabel.text = "-\(promotionPercent)%"
     }
-
 }

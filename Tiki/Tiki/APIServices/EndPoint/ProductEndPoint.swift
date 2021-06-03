@@ -38,7 +38,7 @@ extension ProductEndPoint: EndPointType {
         case .refreshProduct(let id):
             return "/Product/UpdateNumberRefreshOfProduct/\(id)"
         case .getProductById:
-            return "/Product/GetById"
+            return "/product"
         case .getSuggestProduct:
             return "/Product/GetSuggestProduct"
         case .createComment:

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductAdvanedShopCollectionViewCell: BaseCollectionViewCell {
+class ProductAdvanedCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     

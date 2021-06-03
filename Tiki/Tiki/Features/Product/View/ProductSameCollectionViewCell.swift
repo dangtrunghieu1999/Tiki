@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductSameProductCollectionViewCell: BaseCollectionViewCell {
+class ProductSameCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
@@ -64,7 +64,7 @@ class ProductSameProductCollectionViewCell: BaseCollectionViewCell {
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
-extension ProductSameProductCollectionViewCell: UICollectionViewDelegateFlowLayout {
+extension ProductSameCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -75,7 +75,7 @@ extension ProductSameProductCollectionViewCell: UICollectionViewDelegateFlowLayo
 
 // MARK: - UICollectionViewDataSource
 
-extension ProductSameProductCollectionViewCell: UICollectionViewDataSource {
+extension ProductSameCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
     }
