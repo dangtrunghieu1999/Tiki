@@ -23,7 +23,7 @@ class HeaderCollectionViewCell: BaseCollectionViewCell {
         super.initialize()
         backgroundColor = .white
         layoutTitleLabel()
-        startShimmer()
+        startShimmering()
     }
     
     // MARK: - Helper Method
@@ -32,12 +32,12 @@ class HeaderCollectionViewCell: BaseCollectionViewCell {
         self.titleLabel.text = title
     }
     
-    func startShimmer() {
+    func startShimmering() {
         self.titleLabel.startShimmer()
     }
     
-    func stopShimmer() {
-        self.titleLabel.startShimmer()
+    func stopShimmering() {
+        self.titleLabel.stopShimmer()
     }
     
     // MARK: - GET API

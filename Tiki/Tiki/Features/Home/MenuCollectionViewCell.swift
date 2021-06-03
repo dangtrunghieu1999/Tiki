@@ -11,13 +11,16 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
+    var menu: [Menu] = []
+    
     // MARK: - UI Elements
 
     fileprivate lazy var menuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 35
         layout.minimumInteritemSpacing = 18
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isScrollEnabled = false
@@ -31,6 +34,12 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     override func initialize() {
         super.initialize()
         layoutMenuCollectionView()
+    }
+    
+    // MARK: - Helper Method
+    
+    func configCell(_ menu: [Menu]) {
+        self.menu = menu
     }
     
     // MARK: - Layout
@@ -74,9 +83,13 @@ extension MenuCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageTitleCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let row = indexPath.row
+        
+        if !menu.isEmpty {
+            cell.stopShimmering()
+            cell.configCell(menu[safe: row]?.image, menu[safe: row]?.name)
+        }
+        
         return cell
     }
 }
-
-// MARK: - HomeViewProtocol
-

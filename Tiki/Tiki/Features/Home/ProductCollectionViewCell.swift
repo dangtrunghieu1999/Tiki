@@ -133,6 +133,17 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         productRatingView.isHidden = false
         ratingShimmerView.isHidden = true
     }
+    
+    func configCell(_ product: Product) {
+        self.productImageView.loadImage(by: ""
+                                        , defaultImage: UIImage(named: "temp1"))
+        self.productTitleLabel.text  = product.name
+        self.numberReviewLabel.text  = "(\(product.number_comment))"
+        self.productRatingView.value = CGFloat(product.rating)
+        self.finalPriceLabel.text    = product.promoPrice.currencyFormat
+        self.promoPercentLabel.text  = "-\(product.promotion_percent)%"
+    }
+    
     // MARK: - GET API
     
     // MARK: - Layout
@@ -141,7 +152,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         addSubview(coverView)
         coverView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.top.equalToSuperview().offset(1)
+            make.top.equalToSuperview()
         }
     }
     
@@ -149,7 +160,6 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         coverView.addSubview(productImageView)
         productImageView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
-                .offset(dimension.normalMargin)
             make.left.right.equalToSuperview()
                 .inset(dimension.smallMargin)
             make.height.equalTo(self.snp.width)

@@ -63,6 +63,7 @@ class ProductSameProductCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
 extension ProductSameProductCollectionViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -72,6 +73,8 @@ extension ProductSameProductCollectionViewCell: UICollectionViewDelegateFlowLayo
     }
 }
 
+// MARK: - UICollectionViewDataSource
+
 extension ProductSameProductCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return products.count
@@ -79,9 +82,12 @@ extension ProductSameProductCollectionViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ProductCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let row = indexPath.row
         cell.backgroundColor = UIColor.white
         cell.colorCoverView = UIColor.white
         cell.fontSize = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        cell.configCell(products[safe: row] ?? Product())
+        cell.stopShimmering()
         return cell
     }
 }

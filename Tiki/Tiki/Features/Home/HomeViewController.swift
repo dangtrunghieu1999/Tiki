@@ -25,8 +25,14 @@ class HomeViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate var viewModel = HomeViewModel()
-    fileprivate var banners: [Banner] = []
+    fileprivate var viewModel                   = HomeViewModel()
+    fileprivate var banners:        [Banner]    = []
+    fileprivate var menu:           [Menu]      = []
+    fileprivate var products:       [Product]   = []
+    fileprivate var cachedProducts: [Product]   = []
+    fileprivate var isLoadMore                  = false
+    fileprivate var canLoadMore                 = true
+    
     // MARK: - UI Elements
     
     fileprivate lazy var refreshControl: UIRefreshControl = {
@@ -39,7 +45,7 @@ class HomeViewController: BaseViewController {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing      = 4
+        layout.minimumLineSpacing      = 6
         layout.minimumInteritemSpacing = 0
         let collectionView             = UICollectionView(frame: .zero,
                                                           collectionViewLayout: layout)
@@ -60,6 +66,8 @@ class HomeViewController: BaseViewController {
         registerCell()
         configNavigationBar()
         layoutCollectionView()
+        requestAPIBanners()
+        requestAPIProducts()
     }
     
     // MARK: - Helper Method
@@ -70,6 +78,9 @@ class HomeViewController: BaseViewController {
         self.collectionView.registerReusableCell(FooterCollectionViewCell.self)
         self.collectionView.registerReusableCell(HeaderCollectionViewCell.self)
         self.collectionView.registerReusableCell(ProductCollectionViewCell.self)
+        self.collectionView.registerReusableSupplementaryView(
+            LoadMoreCollectionViewCell.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
     }
     
     private func configNavigationBar() {
@@ -92,7 +103,9 @@ class HomeViewController: BaseViewController {
     }
     
     @objc private func pullToRefresh() {
-        
+        canLoadMore = true
+        requestAPIBanners()
+        requestAPIProducts()
     }
     
     // MARK: - Layout
@@ -134,12 +147,17 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 0, height: 0)
         }
     }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension HomeViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        
+        if isLoadMore && section == HomeSection.product.rawValue {
+            return CGSize(width: collectionView.frame.width, height: 70)
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 0)
+        }
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -157,10 +175,12 @@ extension HomeViewController: UICollectionViewDataSource {
         case .banner, .menu, .seperator, .header:
             return 1
         case .product:
-            if viewModel.products.isEmpty {
-                return 4
+            if isRequestingAPI {
+                return 6
+            } else if products.isEmpty {
+                return 1
             } else {
-                return viewModel.products.count
+                return products.count
             }
         default:
             return 0
@@ -174,22 +194,194 @@ extension HomeViewController: UICollectionViewDataSource {
         case .banner:
             let cell: BannerCollectionViewCell  = collectionView.dequeueReusableCell(for: indexPath)
             cell.configCell(banners: banners)
+            if !isRequestingAPI {
+                cell.stopShimmering()
+            }
             return cell
         case .menu:
             let cell: MenuCollectionViewCell    = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configCell(menu)
             return cell
         case .seperator:
             let cell: FooterCollectionViewCell  = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         case .header:
             let cell: HeaderCollectionViewCell  = collectionView.dequeueReusableCell(for: indexPath)
+            if !isRequestingAPI {
+                cell.stopShimmering()
+            }
             cell.configTitle(title: TextManager.recommendProduct)
             return cell
         case .product:
             let cell: ProductCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            if let product = products[safe: indexPath.row] {
+                cell.configCell(product)
+            }
+            if !isRequestingAPI {
+                cell.stopShimmering()
+            }
             return cell
         default:
             return UICollectionViewCell()
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionView.elementKindSectionFooter
+            && indexPath.section == HomeSection.product.rawValue {
+            let footer: LoadMoreCollectionViewCell =
+                collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
+            footer.animiate(isLoadMore)
+            return footer
+        } else {
+            return UICollectionReusableView()
+        }
+    }
+    
+}
+
+// MARK: - Request API
+
+extension HomeViewController {
+    
+    private func reloadDataWhenFinishLoadAPI() {
+        self.isRequestingAPI = false
+        self.collectionView.reloadData()
+        self.refreshControl.endRefreshing()
+    }
+    
+    func requestAPIBanners() {
+        let endPoint = HomeEndPoint.getBannerHome
+        
+        APIService.request(endPoint: endPoint) { [weak self] (apiResponse) in
+            guard let self = self else { return }
+            self.banners = apiResponse.toArray([Banner.self])
+            
+        } onFailure: { [weak self] (apiError) in
+            self?.reloadDataWhenFinishLoadAPI()
+            AlertManager.shared.show(message:
+                                        TextManager.errorMessage.localized())
+        } onRequestFail: {
+            self.reloadDataWhenFinishLoadAPI()
+            AlertManager.shared.show(message:
+                                        TextManager.errorMessage.localized())
+        }
+    }
+
+    func requestAPIMenu() {
+        let endPoint = HomeEndPoint.getCateogoryMenu
+
+        APIService.request(endPoint: endPoint) { [weak self] (apiResponse) in
+            guard let self = self else { return }
+            
+            self.menu = apiResponse.toArray([Menu.self])
+            self.reloadDataWhenFinishLoadAPI()
+            
+        } onFailure: {  [weak self] (apiError) in
+            self?.reloadDataWhenFinishLoadAPI()
+            AlertManager.shared.show(message:
+                                        TextManager.errorMessage.localized())
+        } onRequestFail: {
+            self.reloadDataWhenFinishLoadAPI()
+            AlertManager.shared.show(message:
+                                        TextManager.errorMessage.localized())
+        }
+
+    }
+    func requestAPIProducts() {
+    
+        let endPoint = ProductEndPoint.getAllProduct
+        
+        if !isLoadMore {
+            isRequestingAPI = true
+        }
+        
+        APIService.request(endPoint: endPoint, onSuccess: { [weak self] (apiResponse) in
+            guard let self = self else { return }
+            let productsResponse = apiResponse.toArray([Product.self])
+            
+            if self.isLoadMore {
+                self.cachedProducts.append(contentsOf: productsResponse)
+            } else {
+                self.cachedProducts = productsResponse
+            }
+            
+            if self.canLoadMore {
+                self.canLoadMore = !productsResponse.isEmpty
+            }
+            
+            self.isRequestingAPI = false
+            
+            if self.isLoadMore {
+                self.isLoadMore = false
+                var reloadIndexPaths: [IndexPath] = []
+                let numberProducts = self.products.count
+                
+                for index in 0..<productsResponse.count {
+                    reloadIndexPaths.append(
+                        IndexPath(item: numberProducts + index,
+                        section: HomeSection.product.rawValue))
+                }
+                
+                self.products = self.cachedProducts
+                self.collectionView.insertItems(at: reloadIndexPaths)
+            } else {
+                self.products = self.cachedProducts
+                self.collectionView.reloadData()
+            }
+            
+            self.refreshControl.endRefreshing()
+            
+            if self.products.count < 3 {
+                self.collectionView.contentInset =
+                    UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
+            }
+            
+        }, onFailure: { [weak self] (apiError) in
+            guard let self = self else { return }
+            self.isRequestingAPI = false
+            self.isLoadMore = false
+            self.canLoadMore = true
+            self.collectionView.reloadData()
+            self.refreshControl.endRefreshing()
+            AlertManager.shared.showToast()
+            
+        }) { [weak self] in
+            guard let self = self else { return }
+            self.isRequestingAPI = false
+            self.isLoadMore = false
+            self.canLoadMore = true
+            self.collectionView.reloadData()
+            self.refreshControl.endRefreshing()
+            AlertManager.shared.showToast()
+        }
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if let scrollDelegate = scrollDelegateFunc {
+            scrollDelegate(scrollView)
+        }
+        
+        let collectionViewOffset = collectionView.contentSize.height - collectionView.frame.size.height - 50
+        if scrollView.contentOffset.y >= collectionViewOffset
+            && !isLoadMore
+            && !isRequestingAPI
+            && canLoadMore {
+            
+            isLoadMore = true
+            collectionView.reloadData()
+            requestAPIProducts()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard !isRequestingAPI && !products.isEmpty else { return }
+        guard let product = products[safe: indexPath.row] else { return }
+        AppRouter.pushToProductDetail(product)
     }
 }

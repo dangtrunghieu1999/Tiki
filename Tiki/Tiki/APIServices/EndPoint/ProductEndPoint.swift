@@ -44,7 +44,7 @@ extension ProductEndPoint: EndPointType {
         case .createComment:
             return "/"
         case .getAllProduct:
-            return "/product​/loadmore"
+            return "/product/loadmore"
         }
     }
     

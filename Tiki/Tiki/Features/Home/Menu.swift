@@ -7,16 +7,17 @@
 
 import SwiftyJSON
 
-class Menu {
-    var data:  JSON?
+class Menu: NSObject, JSONParsable {
+    
     var uuid:  Int?              = 0
     var name:  String?           = ""
     var image: String?           = ""
     
-    init(json: JSON?) {
-        self.data   = json?["data"]
-        self.uuid   = data?["id"].intValue
-        self.name   = data?["name"].stringValue
-        self.image  = data?["image"].stringValue
+    required override init() {}
+    required init(json: JSON) {
+       
+        self.uuid   = json["id"].intValue
+        self.name   = json["name"].stringValue
+        self.image  = json["image"].stringValue
     }
 }

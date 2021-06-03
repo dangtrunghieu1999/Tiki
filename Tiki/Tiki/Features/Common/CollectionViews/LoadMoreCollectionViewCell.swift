@@ -11,7 +11,7 @@ import UIKit
 class LoadMoreCollectionViewCell: BaseCollectionViewHeaderFooterCell {
     private let indicatorView: UIActivityIndicatorView = {
         let indicatorView = UIActivityIndicatorView()
-        indicatorView.color = UIColor.gray
+        indicatorView.color = UIColor.primary
         return indicatorView
     }()
     
