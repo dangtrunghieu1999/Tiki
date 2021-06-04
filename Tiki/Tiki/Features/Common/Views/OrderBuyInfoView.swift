@@ -13,6 +13,8 @@ protocol OrderBuyInfoViewDelegate: class {
 
 class OrderBuyInfoView: BaseView {
 
+    weak var delegate: OrderBuyInfoViewDelegate?
+    
     fileprivate lazy var intoMoneyTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
@@ -49,7 +51,7 @@ class OrderBuyInfoView: BaseView {
     }
     
     @objc private func tapOnBuyButton() {
-        
+        self.delegate?.didSelectOrder()
     }
     
     func updateTotalMoney(_ money: String) {

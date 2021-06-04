@@ -52,6 +52,7 @@ class CartViewController: BaseViewController {
     private func layoutOrderBuyInfoView() {
         orderBuyView.addTopBorder(with: UIColor.separator,
                                   andWidth: 1)
+        orderBuyView.delegate = self
         view.addSubview(orderBuyView)
         orderBuyView.snp.makeConstraints { (make) in
             if #available(iOS 11, *) {
@@ -219,6 +220,17 @@ extension CartViewController: CartProductCellDelegate {
                 AlertManager.shared.showToast()
             }
         }
+    }
+}
+
+extension CartViewController: OrderBuyInfoViewDelegate {
+    func didSelectOrder() {
+        var products: [Product] = []
+        for cartshopInfo in CartManager.shared.cartShopInfos {
+            products += cartshopInfo.products
+        }
+        let vc = OrderInfoViewController(products: products)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

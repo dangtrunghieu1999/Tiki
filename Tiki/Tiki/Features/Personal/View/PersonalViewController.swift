@@ -42,7 +42,7 @@ class PersonalViewController: BaseViewController {
         self.personalCollectionView.registerReusableCell(PersonCollectionViewCell.self)
         self.personalCollectionView
             .registerReusableSupplementaryView(PersonalHeaderCollectionReusableView.self,
-                                               forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
     }
     
     // MARK: - GET API

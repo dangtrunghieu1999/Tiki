@@ -129,4 +129,9 @@ class AppRouter: NSObject {
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
+    class func pushToDeliveryAddressVC() {
+        let viewController = DeliveryAddressViewController()
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
+    }
+    
 }

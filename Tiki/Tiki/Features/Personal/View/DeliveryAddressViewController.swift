@@ -65,6 +65,7 @@ class DeliveryAddressViewController: BaseViewController {
         layoutShipAddressButton()
         layoutBottomView()
         layoutShipAddressTableView()
+        requestShipAddressAPI()
     }
     
     // MARK: - Helper Method

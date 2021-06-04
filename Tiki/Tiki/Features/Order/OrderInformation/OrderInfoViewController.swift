@@ -32,14 +32,26 @@ class OrderInfoViewController: BaseViewController {
                                               collectionViewLayout: layout)
         collectionView.showsVerticalScrollIndicator = false
         collectionView.backgroundColor = UIColor.separator
-        
+        collectionView.dataSource = self
+        collectionView.delegate   = self
         return collectionView
     }()
+    
+    private var products: [Product]? = []
+
+    private var estimateHeight: CGFloat = 0.0
+    
+    convenience init(products: [Product]) {
+        self.init()
+        self.products = products
+        self.estimateHeight = CGFloat(products.count) * 100.0
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = TextManager.confirmOrder
         layoutCollectionView()
+        registerCell()
     }
     
     private func registerCell() {
@@ -47,9 +59,7 @@ class OrderInfoViewController: BaseViewController {
         self.collectionView.registerReusableCell(FooterCollectionViewCell.self)
         self.collectionView.registerReusableCell(TransportCollectionViewCell.self)
         self.collectionView.registerReusableCell(PaymentCollectionViewCell.self)
-        self
-            .collectionView
-            .registerReusableCell(OrderCollectionViewCell.self)
+        self.collectionView.registerReusableCell(OrderCollectionViewCell.self)
     }
     
     
@@ -68,4 +78,85 @@ class OrderInfoViewController: BaseViewController {
     }
 }
 
+extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let width = collectionView.frame.width
+        let type  = OrderSection(rawValue: indexPath.section)
+        switch type {
+        case .section1, .section2, .section3:
+            return CGSize(width: width, height: 8)
+        case .address:
+            return CGSize(width: width, height: 120)
+        case .transport:
+            return CGSize(width: width, height: 230)
+        case .payment:
+            return CGSize(width: width, height: 200)
+        case .orderInfo:
+            return CGSize(width: width, height: estimateHeight + 100)
+        default:
+            return CGSize(width: width, height: 0)
+        }
+    }
+}
+
+extension OrderInfoViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return OrderSection.numberOfSections()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        let type = OrderSection(rawValue: section)
+        switch type {
+        case .section1, .section2, .section3:
+            return 1
+        case .address, .transport, .payment:
+            return 1
+        case .orderInfo:
+            return 1
+        default:
+            return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let type = OrderSection(rawValue: indexPath.section)
+        switch type {
+        case .section1, .section2, .section3:
+            let cell: FooterCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        case .address:
+            let cell: AddressCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.delegate = self
+            return cell
+        case .transport:
+            let cell: TransportCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        case .payment:
+            let cell: PaymentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        case .orderInfo:
+            let cell: OrderCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        default:
+            return UICollectionViewCell()
+        }
+    }
+}
+
+extension OrderInfoViewController: UICollectionViewDelegate {
+    
+}
+
+extension OrderInfoViewController: AddressCollectionViewCellDelegate {
+    func didSelectAddress() {
+        AppRouter.pushToDeliveryAddressVC()
+    }
+}
 

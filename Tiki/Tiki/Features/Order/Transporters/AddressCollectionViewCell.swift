@@ -7,13 +7,13 @@
 
 import UIKit
 
+protocol AddressCollectionViewCellDelegate: class {
+    func didSelectAddress()
+}
+
 class AddressCollectionViewCell: BaseCollectionViewCell {
     
-    
-    fileprivate lazy var topView: BaseView = {
-        let view = BaseView()
-        return view
-    }()
+    weak var delegate: AddressCollectionViewCellDelegate?
     
     fileprivate lazy var addressTitleLabel: UILabel = {
         let label = UILabel()
@@ -30,7 +30,7 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
         label.textAlignment = .left
         return label
     }()
-
+    
     fileprivate lazy var changeButton: UIButton = {
         let button = UIButton()
         button.layer.backgroundColor = UIColor.clear.cgColor
@@ -58,8 +58,6 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         super.initialize()
-        layoutTopView()
-        layoutLineView()
         layoutAddressTitleLabel()
         layoutChangeButton()
         layoutInfoUserLabel()
@@ -67,22 +65,11 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
     }
     
     @objc private func tapOnChangeAddress() {
-//        let vc = DeliveryAddressViewController()
-//        vc.requestShipAddressAPI()
-//        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    private func layoutTopView() {
-        addSubview(topView)
-        topView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.left.right.equalToSuperview()
-            make.height.equalTo(120)
-        }
+        self.delegate?.didSelectAddress()
     }
     
     private func layoutAddressTitleLabel() {
-        topView.addSubview(addressTitleLabel)
+        addSubview(addressTitleLabel)
         addressTitleLabel.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
                 .offset(dimension.normalMargin)
@@ -91,7 +78,7 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
     }
     
     private func layoutChangeButton() {
-        topView.addSubview(changeButton)
+        addSubview(changeButton)
         changeButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview()
                 .offset(-dimension.normalMargin)
@@ -102,7 +89,7 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
     }
     
     private func layoutInfoUserLabel() {
-        topView.addSubview(infoUserLabel)
+        addSubview(infoUserLabel)
         infoUserLabel.snp.makeConstraints { (make) in
             make.left.equalTo(addressTitleLabel)
             make.top.equalTo(addressTitleLabel.snp.bottom)
@@ -111,7 +98,7 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
     }
     
     private func layoutAddressDetailLabel() {
-        topView.addSubview(addressDetailLabel)
+        addSubview(addressDetailLabel)
         addressDetailLabel.snp.makeConstraints { (make) in
             make.left.equalTo(addressTitleLabel)
             make.right.equalToSuperview()
@@ -120,15 +107,5 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
                 .offset(dimension.smallMargin)
         }
     }
-    
-    private func layoutLineView() {
-        topView.addSubview(lineView)
-        lineView.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview()
-            make.left.right.equalToSuperview()
-            make.height.equalTo(8)
-        }
-    }
-    
-    
+
 }

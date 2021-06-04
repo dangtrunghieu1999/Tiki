@@ -83,6 +83,7 @@ final class ImageManager {
     
     static let dropDown                             = UIImage(named: "dropDown")
     static let logoGHTK                             = UIImage(named: "logoGHTK")
+    static let triangle                             = UIImage(named: "triangle")
     static let logoVietNamPost                      = UIImage(named: "logoVietNamPost")
     
     // MARK: - Setting
