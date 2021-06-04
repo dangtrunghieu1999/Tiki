@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol OrderBuyInfoViewDelegate: class {
+    func didSelectOrder()
+}
+
 class OrderBuyInfoView: BaseView {
 
     fileprivate lazy var intoMoneyTitleLabel: UILabel = {
@@ -45,7 +49,7 @@ class OrderBuyInfoView: BaseView {
     }
     
     @objc private func tapOnBuyButton() {
-        
+        AppRouter.pushToConfirmOrderVC()
     }
     
     func updateTotalMoney(_ money: String) {

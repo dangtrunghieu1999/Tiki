@@ -271,7 +271,6 @@
 		CFD56FF72635CBE800B17AEA /* VTCPayInfomation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE62635CBE800B17AEA /* VTCPayInfomation.swift */; };
 		CFD56FF82635CBE800B17AEA /* Province.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE72635CBE800B17AEA /* Province.swift */; };
 		CFD56FF92635CBE800B17AEA /* DeliveryInfomationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */; };
-		CFD56FFA2635CBE800B17AEA /* OrderSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */; };
 		CFD794C8260EE783004DE431 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794C7260EE783004DE431 /* SignUpViewController.swift */; };
 		CFD794CD260EED28004DE431 /* VerifyOTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */; };
 		CFD794D2260EED80004DE431 /* EnterNewPWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */; };
@@ -626,7 +625,6 @@
 		CFD56FE62635CBE800B17AEA /* VTCPayInfomation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VTCPayInfomation.swift; sourceTree = "<group>"; };
 		CFD56FE72635CBE800B17AEA /* Province.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Province.swift; sourceTree = "<group>"; };
 		CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInfomationViewController.swift; sourceTree = "<group>"; };
-		CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderSettingViewController.swift; sourceTree = "<group>"; };
 		CFD794C7260EE783004DE431 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CFD794CC260EED28004DE431 /* VerifyOTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyOTPViewController.swift; sourceTree = "<group>"; };
 		CFD794D1260EED80004DE431 /* EnterNewPWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNewPWViewController.swift; sourceTree = "<group>"; };
@@ -1470,7 +1468,6 @@
 			children = (
 				CFD56FE82635CBE800B17AEA /* DeliveryInfo */,
 				CFD56FDF2635CBE800B17AEA /* Model */,
-				CFD56FEA2635CBE800B17AEA /* OrderHistory */,
 				CFD56FD82635CBE800B17AEA /* OrderInformation */,
 				CFD56FDB2635CBE800B17AEA /* Transporters */,
 			);
@@ -1628,14 +1625,6 @@
 				CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */,
 			);
 			path = DeliveryInfo;
-			sourceTree = "<group>";
-		};
-		CFD56FEA2635CBE800B17AEA /* OrderHistory */ = {
-			isa = PBXGroup;
-			children = (
-				CFD56FEB2635CBE800B17AEA /* OrderSettingViewController.swift */,
-			);
-			path = OrderHistory;
 			sourceTree = "<group>";
 		};
 		CFD794CB260EED00004DE431 /* VerifyOTP */ = {
@@ -2149,7 +2138,6 @@
 				CFAF8E4125FC4EDD000E2CCA /* UINavigationController+Extension.swift in Sources */,
 				CFEB73FD261FFA14001E18ED /* FooterCollectionViewCell.swift in Sources */,
 				CFAF8FBB25FC545D000E2CCA /* ScrollImageCollectionViewCell.swift in Sources */,
-				CFD56FFA2635CBE800B17AEA /* OrderSettingViewController.swift in Sources */,
 				CFAF8E2125FC4EDD000E2CCA /* UserEndPoint.swift in Sources */,
 				F640149A2653F99000B80A21 /* OrderAllViewController.swift in Sources */,
 				CFAF8FD125FC545D000E2CCA /* EmptyTableViewCell.swift in Sources */,

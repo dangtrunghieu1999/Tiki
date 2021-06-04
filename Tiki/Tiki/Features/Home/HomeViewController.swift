@@ -276,10 +276,8 @@ extension HomeViewController {
 
         APIService.request(endPoint: endPoint) { [weak self] (apiResponse) in
             guard let self = self else { return }
-            
             self.menu = apiResponse.toArray([Menu.self])
-//            self.reloadDataWhenFinishLoadAPI()
-//            
+
         } onFailure: {  [weak self] (apiError) in
             self?.reloadDataWhenFinishLoadAPI()
             AlertManager.shared.show(message:

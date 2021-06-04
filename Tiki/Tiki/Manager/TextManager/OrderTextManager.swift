@@ -18,6 +18,7 @@ extension TextManager {
     static let youCantDecreaseQuantity                  = "Bạn không thể giảm số lượng sản phẩm"
     static let selectProperties                         = "Chỉnh sửa thuộc tính sản phẩm"
     static let confirm                                  = "Xác nhận"
+    static let confirmOrder                             = "Xác nhận đơn hàng"
     static let selectTransporter                        = "Chọn nhà vận chuyển"
     static let orderInfomation                          = "Thông tin đơn hàng"
     static let paymentMethod                            = "Phương thức thanh toán"
