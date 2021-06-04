@@ -20,7 +20,7 @@ class CartViewController: BaseViewController {
         layout.minimumInteritemSpacing = 0
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)
-        collectionView.delegate = self
+        collectionView.delegate   = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.tableBackground
         collectionView.showsVerticalScrollIndicator = false
@@ -28,73 +28,33 @@ class CartViewController: BaseViewController {
         collectionView.registerReusableCell(AddressCollectionViewCell.self)
         collectionView.registerReusableCell(EmptyCollectionViewCell.self)
         collectionView
-        .registerReusableSupplementaryView(CartCollectionHeaderView.self,
-        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+            .registerReusableSupplementaryView(CartCollectionHeaderView.self,
+             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         collectionView
-        .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
-        forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
+            .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
         
         return collectionView
     }()
     
-    fileprivate lazy var bottomView: BaseView = {
-        let view = BaseView()
-        view.addTopBorder(with: UIColor.separator, andWidth: 1)
-        view.layer.masksToBounds = true
-        return view
-    }()
-    
-    fileprivate lazy var intoMoneyTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.text = TextManager.totalMoney
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        return label
-    }()
-    
-    fileprivate lazy var totalMoneyTitleLabel: UILabel = {
-        let label = UILabel()
-        label.textAlignment = .left
-        label.text = CartManager.shared.totalMoney.currencyFormat
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue)
-        label.textColor = UIColor.primary
-        return label
-    }()
-    
-    private lazy var buyButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(TextManager.processOrder, for: .normal)
-        button.backgroundColor = UIColor.primary
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.layer.masksToBounds = true
-        button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
-        button.addTarget(self, action: #selector(tapOnBuyButton), for: .touchUpInside)
-        return button
-    }()
-    
+    fileprivate lazy var orderBuyView = OrderBuyInfoView()
     
     // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.cart
-        layoutBottomView()
-        layoutBuyButton()
-        layoutIntoMoneyTitleLabel()
-        layoutTotalMoneyTitleLabel()
+        layoutOrderBuyInfoView()
         layoutCartCollectionView()
-    }
-    
-    @objc private func tapOnBuyButton() {
-        
     }
     
     // MARK: - Layouts
     
-
-    private func layoutBottomView() {
-        view.addSubview(bottomView)
-        bottomView.snp.makeConstraints { (make) in
+    private func layoutOrderBuyInfoView() {
+        orderBuyView.addTopBorder(with: UIColor.separator,
+                                  andWidth: 1)
+        view.addSubview(orderBuyView)
+        orderBuyView.snp.makeConstraints { (make) in
             if #available(iOS 11, *) {
                 make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
             } else {
@@ -102,35 +62,6 @@ class CartViewController: BaseViewController {
             }
             make.left.right.equalToSuperview()
             make.height.equalTo(100)
-        }
-    }
-    
-    private func layoutBuyButton() {
-        bottomView.addSubview(buyButton)
-        buyButton.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
-                .inset(dimension.normalMargin)
-            make.height.equalTo(dimension.defaultHeightButton)
-            make.bottom.equalToSuperview()
-                .offset(-dimension.mediumMargin)
-        }
-    }
-    
-    private func layoutIntoMoneyTitleLabel() {
-        bottomView.addSubview(intoMoneyTitleLabel)
-        intoMoneyTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(buyButton)
-            make.top.equalToSuperview()
-                .offset(dimension.normalMargin)
-        }
-    }
-    
-    private func layoutTotalMoneyTitleLabel() {
-        bottomView.addSubview(totalMoneyTitleLabel)
-        totalMoneyTitleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(buyButton.snp.top)
-                .offset(-dimension.normalMargin)
-            make.right.equalTo(buyButton)
         }
     }
     
@@ -143,7 +74,7 @@ class CartViewController: BaseViewController {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
             }
             make.left.right.equalToSuperview()
-            make.bottom.equalTo(bottomView.snp.top)
+            make.bottom.equalTo(orderBuyView.snp.top)
         }
     }
 }
@@ -200,7 +131,7 @@ extension CartViewController: UICollectionViewDataSource {
             cell.message = TextManager.emptyCart
             cell.image = ImageManager.empty
             cartCollectionView.backgroundColor = UIColor.clear
-            bottomView.isHidden = true
+            orderBuyView.isHidden = true
             return cell
         } else {
             let cell: CartCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
@@ -245,25 +176,33 @@ extension CartViewController: CartProductCellDelegate {
     }
     
     func didSelectIncreaseNumber(product: Product) {
+        self.showLoading()
         CartManager.shared.increaseProductQuantity(product, completionHandler: {
+            self.hideLoading()
             self.cartCollectionView.reloadData()
             NotificationCenter.default.post(name: NSNotification.Name.reloadCartBadgeNumber,
                                             object: nil)
+            let money = CartManager.shared.totalMoney.currencyFormat
+            self.orderBuyView.updateTotalMoney(money)
         }) {
             AlertManager.shared.showToast()
         }
     }
     
     func didSelectDecreaseNumber(product: Product) {
+        self.showLoading()
         guard product.quantity > 1 else {
             AlertManager.shared.showToast(message: TextManager.youCantDecreaseQuantity)
             return
         }
         
         CartManager.shared.decreaseProductQuantity(product, completionHandler: {
+            self.hideLoading()
             self.cartCollectionView.reloadData()
             NotificationCenter.default.post(name: NSNotification.Name.reloadCartBadgeNumber,
                                             object: nil)
+            let money = CartManager.shared.totalMoney.currencyFormat
+            self.orderBuyView.updateTotalMoney(money)
         }) {
             AlertManager.shared.showToast()
         }
