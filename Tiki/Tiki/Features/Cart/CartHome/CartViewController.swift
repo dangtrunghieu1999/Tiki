@@ -25,7 +25,6 @@ class CartViewController: BaseViewController {
         collectionView.backgroundColor = UIColor.tableBackground
         collectionView.showsVerticalScrollIndicator = false
         collectionView.registerReusableCell(CartCollectionViewCell.self)
-        collectionView.registerReusableCell(AddressCollectionViewCell.self)
         collectionView.registerReusableCell(EmptyCollectionViewCell.self)
         collectionView
             .registerReusableSupplementaryView(CartCollectionHeaderView.self,

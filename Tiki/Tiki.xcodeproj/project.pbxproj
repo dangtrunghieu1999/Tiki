@@ -19,7 +19,6 @@
 		CF2EC69A261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2EC699261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift */; };
 		CF2F67CE2646738C00D693CA /* ShipAddress.json in Resources */ = {isa = PBXBuildFile; fileRef = CF2F67CD2646738C00D693CA /* ShipAddress.json */; };
 		CF2F7C1F261F8E3100F64925 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2F7C1E261F8E3100F64925 /* ProductCollectionViewCell.swift */; };
-		CF31F6F52639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */; };
 		CF360C05264FB694008F0FF7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF360C04264FB694008F0FF7 /* ProfileViewController.swift */; };
 		CF360C11264FBB33008F0FF7 /* BaseScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF360C10264FBB33008F0FF7 /* BaseScrollView.swift */; };
 		CF3ADC67260F1C8D00987199 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */; };
@@ -257,11 +256,9 @@
 		CFD015462635CA6700850ADB /* CartCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD015422635CA6700850ADB /* CartCollectionHeaderView.swift */; };
 		CFD015472635CA6700850ADB /* CartCollectionFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD015432635CA6700850ADB /* CartCollectionFooterView.swift */; };
 		CFD015482635CA6700850ADB /* CartCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD015442635CA6700850ADB /* CartCollectionViewCell.swift */; };
-		CFD56FEC2635CBE800B17AEA /* OrderInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FD92635CBE800B17AEA /* OrderInformationViewController.swift */; };
-		CFD56FED2635CBE800B17AEA /* OrderInfomationCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FDA2635CBE800B17AEA /* OrderInfomationCollectionViewCell.swift */; };
-		CFD56FEE2635CBE800B17AEA /* TransportersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FDC2635CBE800B17AEA /* TransportersViewController.swift */; };
-		CFD56FEF2635CBE800B17AEA /* PaymentMethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FDD2635CBE800B17AEA /* PaymentMethodCollectionViewCell.swift */; };
-		CFD56FF02635CBE800B17AEA /* TransporterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FDE2635CBE800B17AEA /* TransporterTableViewCell.swift */; };
+		CFD56FEC2635CBE800B17AEA /* OrderInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FD92635CBE800B17AEA /* OrderInfoViewController.swift */; };
+		CFD56FED2635CBE800B17AEA /* OrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FDA2635CBE800B17AEA /* OrderCollectionViewCell.swift */; };
+		CFD56FEF2635CBE800B17AEA /* PaymentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FDD2635CBE800B17AEA /* PaymentCollectionViewCell.swift */; };
 		CFD56FF12635CBE800B17AEA /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE02635CBE800B17AEA /* District.swift */; };
 		CFD56FF22635CBE800B17AEA /* TransportersType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE12635CBE800B17AEA /* TransportersType.swift */; };
 		CFD56FF32635CBE800B17AEA /* DeliveryInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD56FE22635CBE800B17AEA /* DeliveryInformation.swift */; };
@@ -309,6 +306,7 @@
 		F64D906D2669371300A55BD5 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */; };
 		F66074022660ED340059753F /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66074012660ED340059753F /* CategoryTableViewCell.swift */; };
 		F66074172660F1230059753F /* CategoryHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66074162660F1230059753F /* CategoryHeaderTableView.swift */; };
+		F662B3CF266A1ABA002E7BFA /* TransportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */; };
 		F671F407265DEC5C009743D3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671F406265DEC5C009743D3 /* ProfileViewModel.swift */; };
 		F68784462653C7CE00A09AEC /* ThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784452653C7CE00A09AEC /* ThroughView.swift */; };
 		F68784492653C7F400A09AEC /* ShowHidePulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */; };
@@ -332,7 +330,6 @@
 		CF2EC699261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF2F67CD2646738C00D693CA /* ShipAddress.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ShipAddress.json; sourceTree = "<group>"; };
 		CF2F7C1E261F8E3100F64925 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
-		CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressReciveCollectionViewCell.swift; sourceTree = "<group>"; };
 		CF360C04264FB694008F0FF7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		CF360C10264FBB33008F0FF7 /* BaseScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScrollView.swift; sourceTree = "<group>"; };
 		CF3ADC66260F1C8D00987199 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
@@ -611,11 +608,9 @@
 		CFD015422635CA6700850ADB /* CartCollectionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionHeaderView.swift; sourceTree = "<group>"; };
 		CFD015432635CA6700850ADB /* CartCollectionFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionFooterView.swift; sourceTree = "<group>"; };
 		CFD015442635CA6700850ADB /* CartCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCollectionViewCell.swift; sourceTree = "<group>"; };
-		CFD56FD92635CBE800B17AEA /* OrderInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInformationViewController.swift; sourceTree = "<group>"; };
-		CFD56FDA2635CBE800B17AEA /* OrderInfomationCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfomationCollectionViewCell.swift; sourceTree = "<group>"; };
-		CFD56FDC2635CBE800B17AEA /* TransportersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportersViewController.swift; sourceTree = "<group>"; };
-		CFD56FDD2635CBE800B17AEA /* PaymentMethodCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentMethodCollectionViewCell.swift; sourceTree = "<group>"; };
-		CFD56FDE2635CBE800B17AEA /* TransporterTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransporterTableViewCell.swift; sourceTree = "<group>"; };
+		CFD56FD92635CBE800B17AEA /* OrderInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderInfoViewController.swift; sourceTree = "<group>"; };
+		CFD56FDA2635CBE800B17AEA /* OrderCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderCollectionViewCell.swift; sourceTree = "<group>"; };
+		CFD56FDD2635CBE800B17AEA /* PaymentCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCollectionViewCell.swift; sourceTree = "<group>"; };
 		CFD56FE02635CBE800B17AEA /* District.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
 		CFD56FE12635CBE800B17AEA /* TransportersType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportersType.swift; sourceTree = "<group>"; };
 		CFD56FE22635CBE800B17AEA /* DeliveryInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryInformation.swift; sourceTree = "<group>"; };
@@ -662,6 +657,7 @@
 		F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		F66074012660ED340059753F /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		F66074162660F1230059753F /* CategoryHeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderTableView.swift; sourceTree = "<group>"; };
+		F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportCollectionViewCell.swift; sourceTree = "<group>"; };
 		F671F406265DEC5C009743D3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		F68784452653C7CE00A09AEC /* ThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThroughView.swift; sourceTree = "<group>"; };
 		F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHidePulleyView.swift; sourceTree = "<group>"; };
@@ -1572,8 +1568,6 @@
 				CFD015432635CA6700850ADB /* CartCollectionFooterView.swift */,
 				CFD015422635CA6700850ADB /* CartCollectionHeaderView.swift */,
 				CFD015442635CA6700850ADB /* CartCollectionViewCell.swift */,
-				CF31F6F42639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift */,
-				F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */,
 			);
 			path = CartHome;
 			sourceTree = "<group>";
@@ -1588,8 +1582,8 @@
 		CFD56FD82635CBE800B17AEA /* OrderInformation */ = {
 			isa = PBXGroup;
 			children = (
-				CFD56FD92635CBE800B17AEA /* OrderInformationViewController.swift */,
-				CFD56FDA2635CBE800B17AEA /* OrderInfomationCollectionViewCell.swift */,
+				CFD56FD92635CBE800B17AEA /* OrderInfoViewController.swift */,
+				CFD56FDA2635CBE800B17AEA /* OrderCollectionViewCell.swift */,
 			);
 			path = OrderInformation;
 			sourceTree = "<group>";
@@ -1597,9 +1591,9 @@
 		CFD56FDB2635CBE800B17AEA /* Transporters */ = {
 			isa = PBXGroup;
 			children = (
-				CFD56FDC2635CBE800B17AEA /* TransportersViewController.swift */,
-				CFD56FDD2635CBE800B17AEA /* PaymentMethodCollectionViewCell.swift */,
-				CFD56FDE2635CBE800B17AEA /* TransporterTableViewCell.swift */,
+				F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */,
+				CFD56FDD2635CBE800B17AEA /* PaymentCollectionViewCell.swift */,
+				F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */,
 			);
 			path = Transporters;
 			sourceTree = "<group>";
@@ -1889,7 +1883,6 @@
 				CFAF8E5D25FC4EDD000E2CCA /* UploadManager.swift in Sources */,
 				F64014A12653F9AD00B80A21 /* OrderProcessViewController.swift in Sources */,
 				CFAF8E5E25FC4EDD000E2CCA /* AlertManager.swift in Sources */,
-				CFD56FEE2635CBE800B17AEA /* TransportersViewController.swift in Sources */,
 				CFD015472635CA6700850ADB /* CartCollectionFooterView.swift in Sources */,
 				CFAF8E2B25FC4EDD000E2CCA /* BaseCollectionViewCel.swift in Sources */,
 				F64014A72653F9C500B80A21 /* OrderSuccessViewController.swift in Sources */,
@@ -1924,7 +1917,6 @@
 				CFAF8F0A25FC507C000E2CCA /* NIDebuggingTools.m in Sources */,
 				CFAF8E5625FC4EDD000E2CCA /* AppRouter.swift in Sources */,
 				CFAF8F2925FC507C000E2CCA /* PhotoGalleryCameraCell.swift in Sources */,
-				CFD56FF02635CBE800B17AEA /* TransporterTableViewCell.swift in Sources */,
 				CFEA2022262EC3DA00288A39 /* BaseProductView.swift in Sources */,
 				F671F407265DEC5C009743D3 /* ProfileViewModel.swift in Sources */,
 				CF4A01FF261EADDD003734EC /* NotificationViewController.swift in Sources */,
@@ -1940,7 +1932,6 @@
 				CF80626E263C4CFF005DF444 /* CartViewController.swift in Sources */,
 				CFAF8FCA25FC545D000E2CCA /* ExpandableTextView.swift in Sources */,
 				CFD56FF82635CBE800B17AEA /* Province.swift in Sources */,
-				CF31F6F52639CF6D00E3E7F3 /* AddressReciveCollectionViewCell.swift in Sources */,
 				CFAF8E3F25FC4EDD000E2CCA /* UIView+Extension.swift in Sources */,
 				CFAF8F3325FC507C000E2CCA /* VideoPropertyView.swift in Sources */,
 				CFAF8E3B25FC4EDD000E2CCA /* UIFont+Extension.swift in Sources */,
@@ -1958,7 +1949,7 @@
 				CFAF8F4425FC507C000E2CCA /* CAPSPageMenuConfiguration.swift in Sources */,
 				CFAF8E5425FC4EDD000E2CCA /* CGSize+Extension.swift in Sources */,
 				CFAF8E2E25FC4EDD000E2CCA /* BaseShimmerView.swift in Sources */,
-				CFD56FEC2635CBE800B17AEA /* OrderInformationViewController.swift in Sources */,
+				CFD56FEC2635CBE800B17AEA /* OrderInfoViewController.swift in Sources */,
 				CFAF8EFE25FC507C000E2CCA /* NINetworkActivity.m in Sources */,
 				CFAF8E4B25FC4EDD000E2CCA /* UserDefault+Extension.swift in Sources */,
 				CFAF8E4025FC4EDD000E2CCA /* UIImage+Extension.swift in Sources */,
@@ -2072,7 +2063,7 @@
 				CFAF8E5125FC4EDD000E2CCA /* Notification+Extension.swift in Sources */,
 				CFAF8FC225FC545D000E2CCA /* LoadMoreModel.swift in Sources */,
 				CFB9998F2649FC4F00F0AAD5 /* HomeEndPoint.swift in Sources */,
-				CFD56FED2635CBE800B17AEA /* OrderInfomationCollectionViewCell.swift in Sources */,
+				CFD56FED2635CBE800B17AEA /* OrderCollectionViewCell.swift in Sources */,
 				CFD56FF62635CBE800B17AEA /* OrderManager.swift in Sources */,
 				CFAF8F1525FC507C000E2CCA /* ImageCropperPresenter.swift in Sources */,
 				CFAF8F3D25FC507C000E2CCA /* ACTabScrollView.swift in Sources */,
@@ -2133,11 +2124,12 @@
 				CFAF8F1E25FC507C000E2CCA /* ImagePickerController.swift in Sources */,
 				F66074022660ED340059753F /* CategoryTableViewCell.swift in Sources */,
 				F6061BB9265A9D1A003111CA /* ChangePWViewController.swift in Sources */,
-				CFD56FEF2635CBE800B17AEA /* PaymentMethodCollectionViewCell.swift in Sources */,
+				CFD56FEF2635CBE800B17AEA /* PaymentCollectionViewCell.swift in Sources */,
 				CFAF8FC025FC545D000E2CCA /* Photo.swift in Sources */,
 				CFAF8E4125FC4EDD000E2CCA /* UINavigationController+Extension.swift in Sources */,
 				CFEB73FD261FFA14001E18ED /* FooterCollectionViewCell.swift in Sources */,
 				CFAF8FBB25FC545D000E2CCA /* ScrollImageCollectionViewCell.swift in Sources */,
+				F662B3CF266A1ABA002E7BFA /* TransportCollectionViewCell.swift in Sources */,
 				CFAF8E2125FC4EDD000E2CCA /* UserEndPoint.swift in Sources */,
 				F640149A2653F99000B80A21 /* OrderAllViewController.swift in Sources */,
 				CFAF8FD125FC545D000E2CCA /* EmptyTableViewCell.swift in Sources */,

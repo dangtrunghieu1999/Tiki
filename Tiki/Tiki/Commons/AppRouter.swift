@@ -129,9 +129,4 @@ class AppRouter: NSObject {
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
-    class func pushToConfirmOrderVC() {
-        let viewController = OrderInformationViewController()
-        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
-    }
-    
 }

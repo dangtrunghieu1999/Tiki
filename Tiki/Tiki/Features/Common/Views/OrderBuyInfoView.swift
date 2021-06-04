@@ -49,7 +49,7 @@ class OrderBuyInfoView: BaseView {
     }
     
     @objc private func tapOnBuyButton() {
-        AppRouter.pushToConfirmOrderVC()
+        
     }
     
     func updateTotalMoney(_ money: String) {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PaymentMethodCollectionViewCell: BaseCollectionViewCell {
+class PaymentCollectionViewCell: BaseCollectionViewCell {
     
     
     // MARK: - UI Elements

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OrderInfomationCollectionViewCell: BaseCollectionViewCell {
+class OrderCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - UI Elements
     
