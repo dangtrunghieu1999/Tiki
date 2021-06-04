@@ -1,0 +1,82 @@
+
+[
+    {
+        "id": 1,
+        "content": "Hàng tốt",
+        "parentId": 0,
+        "productId": 1,
+        "userId": 1,
+        "fullName": "Trần Thông",
+        "userAvatar": "",
+        "createOn": null,
+        "commentChild": [
+            {
+                "id": 2,
+                "content": "Sai rồi",
+                "parentId": 1,
+                "productId": 1,
+                "userId": 2,
+                "fullName": "Pham Tuyên",
+                "userAvatar": "",
+                "createOn": null,
+                "commentChild": []
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "content": "Lừa đảo",
+        "parentId": 0,
+        "productId": 1,
+        "userId": 2,
+        "fullName": "Pham Tuyên",
+        "userAvatar": "",
+        "createOn": null,
+        "commentChild": [
+            {
+                "id": 5,
+                "content": "lừa đảo",
+                "parentId": 3,
+                "productId": 1,
+                "userId": 2,
+                "fullName": "Pham Tuyên",
+                "userAvatar": "",
+                "createOn": "2021-05-29 23:27:38",
+                "commentChild": []
+            },
+            {
+                "id": 6,
+                "content": "lừa đảo",
+                "parentId": 3,
+                "productId": 1,
+                "userId": 2,
+                "fullName": "Pham Tuyên",
+                "userAvatar": "",
+                "createOn": "2021-05-29 23:29:36",
+                "commentChild": []
+            },
+            {
+                "id": 8,
+                "content": "lừa đảo",
+                "parentId": 3,
+                "productId": 1,
+                "userId": 1,
+                "fullName": "Shop acc liên quân",
+                "userAvatar": "",
+                "createOn": "2021-05-29 23:57:43",
+                "commentChild": []
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "content": "lừa đảo",
+        "parentId": 0,
+        "productId": 1,
+        "userId": 2,
+        "fullName": "Pham Tuyên",
+        "userAvatar": "",
+        "createOn": "2021-05-29 23:24:41",
+        "commentChild": []
+    }
+]

@@ -16,7 +16,6 @@ class Comment: NSObject, JSONParsable {
     var parentId: Int?
     var productId = 0
     var userId = ""
-    var userName = ""
     var fullName = ""
     var userAvatar = ""
     var createOn = Date()
@@ -27,18 +26,17 @@ class Comment: NSObject, JSONParsable {
     required override init() {}
     
     required init(json: JSON) {
-        id          = json["Id"].int
-        content     = json["Content"].stringValue
-        parentId    = json["ParentId"].int
-        productId   = json["ProductId"].intValue
-        userId      = json["UserId"].stringValue
-        userName    = json["UserName"].stringValue
-        fullName    = json["FullName"].stringValue
-        userAvatar  = json["UserAvatar"].stringValue
-        createOn    = json["CreateOn"].dateValue
-        rating      = CGFloat(json["Rating"].doubleValue)
+        
+        id          = json["id"].int
+        content     = json["content"].stringValue
+        parentId    = json["parentId"].int
+        productId   = json["productId"].intValue
+        userId      = json["userId"].stringValue
+        fullName    = json["fullName"].stringValue
+        userAvatar  = json["userAvatar"].stringValue
+        createOn    = json["createOn"].dateValue
         photos      = json["Photos"].arrayValue.map { Photo(json: $0) }
-        commentChild = json["CommentsChild"].arrayValue.map { Comment(json: $0) }
+        commentChild = json["commentChild"].arrayValue.map { Comment(json: $0) }
     }
     
     var allComments: [Comment] {
@@ -61,21 +59,19 @@ extension Comment {
         var dict: [String: Any] = [:]
         
         if let id = id {
-            dict["Id"] = id
+            dict["id"] = id
         }
         
         if let parentId = parentId {
-            dict["ParentId"]    = parentId
+            dict["productId"]    = parentId
         }
         
-        dict["Content"]     = content
-        dict["ProductId"]   = productId
-        dict["UserId"]      = userId
-        dict["UserName"]    = userName
-        dict["FullName"]    = fullName
-        dict["UserAvatar"]  = userAvatar
-        dict["CreateOn"]    = createOn.serverDateFormat
-        dict["Rating"]      = rating
+        dict["content"]     = content
+        dict["productId"]   = productId
+        dict["userId"]      = userId
+        dict["fullName"]    = fullName
+        dict["userAvatar"]  = userAvatar
+        dict["createOn"]    = createOn.serverDateFormat
         
         return dict
     }

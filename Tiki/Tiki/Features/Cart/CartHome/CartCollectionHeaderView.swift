@@ -22,7 +22,8 @@ class CartCollectionHeaderView: BaseCollectionViewHeaderFooterCell {
         imageView.layer.cornerRadius = 15
         imageView.layer.masksToBounds = true
         imageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnShopAvatar))
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(tapOnShopAvatar))
         imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
@@ -72,7 +73,8 @@ class CartCollectionHeaderView: BaseCollectionViewHeaderFooterCell {
         thumbnailShopImageView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.height.width.equalTo(30)
-            make.left.equalToSuperview().offset(Dimension.shared.smallMargin)
+            make.left.equalToSuperview()
+                .offset(dimension.normalMargin)
         }
     }
     
@@ -80,8 +82,10 @@ class CartCollectionHeaderView: BaseCollectionViewHeaderFooterCell {
         addSubview(shopNameLabel)
         shopNameLabel.snp.makeConstraints { (make) in
             make.top.equalTo(thumbnailShopImageView)
-            make.left.equalTo(thumbnailShopImageView.snp.right).offset(Dimension.shared.smallMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.left.equalTo(thumbnailShopImageView.snp.right)
+                .offset(dimension.smallMargin)
+            make.right.equalToSuperview()
+                .inset(dimension.normalMargin)
             make.centerY.equalTo(thumbnailShopImageView)
         }
     }
@@ -94,5 +98,4 @@ class CartCollectionHeaderView: BaseCollectionViewHeaderFooterCell {
             make.width.equalToSuperview()
         }
     }
-    
 }

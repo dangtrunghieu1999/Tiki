@@ -25,32 +25,6 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - UI Elements
     
-    fileprivate lazy var thumbnailShopImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.borderWidth = 1.0
-        imageView.layer.borderColor = UIColor.lightSeparator.withAlphaComponent(0.5).cgColor
-        imageView.layer.cornerRadius = 15
-        imageView.layer.masksToBounds = true
-        imageView.isUserInteractionEnabled = true
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapOnShopAvatar))
-        imageView.addGestureRecognizer(tapGesture)
-        return imageView
-    }()
-    
-    fileprivate lazy var shopNameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        label.textColor = UIColor.bodyText
-        return label
-    }()
-    
-    private let lineView: UIView = {
-        let view = UIView()
-        view.backgroundColor = UIColor.separator
-        return view
-    }()
-    
     fileprivate lazy var productImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
@@ -135,9 +109,6 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         super.initialize()
-        layoutThumbnailShopImageView()
-        layoutShopNameLabel()
-        layoutLineView()
         layoutProductImageView()
         layoutProductNameLabel()
         layoutProductPriceLabel()
@@ -161,12 +132,6 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         let originalPrice           = product.unitPrice
         self.originalPriceLabel.attributedText = Ultilities.drawLineBetween(price: originalPrice)
         productQuantityLabel.text   = product.quantity.description
-    }
-    
-    func configData(_ cartShopInfo: CartShopInfo) {
-        shopId = cartShopInfo.id
-        thumbnailShopImageView.loadImage(by: cartShopInfo.avatar)
-        shopNameLabel.text = cartShopInfo.name
     }
 
     func setupLayoutForCartButton() {
@@ -198,33 +163,6 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Setup Layouts
     
-    private func layoutThumbnailShopImageView() {
-        addSubview(thumbnailShopImageView)
-        thumbnailShopImageView.snp.makeConstraints { (make) in
-            make.height.width.equalTo(30)
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.top.equalToSuperview().offset(Dimension.shared.normalMargin)
-        }
-    }
-    
-    private func layoutShopNameLabel() {
-        addSubview(shopNameLabel)
-        shopNameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(thumbnailShopImageView)
-            make.left.equalTo(thumbnailShopImageView.snp.right).offset(Dimension.shared.smallMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.centerY.equalTo(thumbnailShopImageView)
-        }
-    }
-    
-    private func layoutLineView() {
-        addSubview(lineView)
-        lineView.snp.makeConstraints { (make) in
-            make.top.equalTo(thumbnailShopImageView.snp.bottom).offset(Dimension.shared.mediumMargin)
-            make.height.equalTo(1)
-            make.width.equalToSuperview()
-        }
-    }
     
     private func layoutProductImageView() {
         addSubview(productImageView)
@@ -232,22 +170,26 @@ class CartCollectionViewCell: BaseCollectionViewCell {
             make.left.equalToSuperview().offset(Dimension.shared.mediumMargin)
             make.height.width.equalTo(65)
             make.centerY.equalToSuperview()
+                .offset(-dimension.normalMargin)
         }
     }
     
     private func layoutProductNameLabel() {
         addSubview(productNameLabel)
         productNameLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(lineView.snp.bottom).offset(Dimension.shared.largeMargin)
-            make.left.equalTo(productImageView.snp.right).offset(Dimension.shared.mediumMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
+            make.top.equalTo(productImageView.snp.top)
+            make.left.equalTo(productImageView.snp.right)
+                .offset(dimension.mediumMargin)
+            make.right.equalToSuperview()
+                .offset(-dimension.normalMargin)
         }
     }
     
     private func layoutProductPriceLabel() {
         addSubview(productPriceLabel)
         productPriceLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(productNameLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
+            make.top.equalTo(productNameLabel.snp.bottom)
+                .offset(dimension.mediumMargin)
             make.left.equalTo(productNameLabel)
         }
     }
@@ -256,14 +198,16 @@ class CartCollectionViewCell: BaseCollectionViewCell {
         addSubview(originalPriceLabel)
         originalPriceLabel.snp.makeConstraints { (make) in
             make.bottom.equalTo(productPriceLabel)
-            make.left.equalTo(productPriceLabel.snp.right).offset(Dimension.shared.mediumMargin)
+            make.left.equalTo(productPriceLabel.snp.right)
+                .offset(dimension.mediumMargin)
         }
     }
     
     private func layoutDecreaseButton() {
         addSubview(decreaseButton)
         decreaseButton.snp.makeConstraints { (make) in
-            make.top.equalTo(productPriceLabel.snp.bottom).offset(Dimension.shared.normalMargin)
+            make.top.equalTo(productPriceLabel.snp.bottom)
+                .offset(dimension.normalMargin)
             make.left.equalTo(productNameLabel)
             make.height.width.equalTo(25)
         }
@@ -298,8 +242,10 @@ class CartCollectionViewCell: BaseCollectionViewCell {
     private func layoutDeleteButton() {
         addSubview(deleteButton)
         deleteButton.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview().offset(-Dimension.shared.largeMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.mediumMargin)
+            make.bottom.equalToSuperview()
+                .offset(-dimension.largeMargin)
+            make.right.equalToSuperview()
+                .offset(-dimension.mediumMargin)
             make.width.height.equalTo(25)
         }
     }

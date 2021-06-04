@@ -16,6 +16,7 @@ class ProductDetailViewController: BaseViewController {
     
     fileprivate lazy var product = Product()
     fileprivate lazy var productSame: [Product] = []
+    fileprivate lazy var comments:    [Comment] = []
     fileprivate var productInfoCellHeight:  CGFloat?
     fileprivate var desciptionCellHeight:   CGFloat?
     
@@ -73,11 +74,38 @@ class ProductDetailViewController: BaseViewController {
         layoutBuyButton()
         layoutCollectionView()
         requestProductSameAPI()
+        requestProductCart()
         
         let target: Target = (target: self, selector: #selector(tapOnShareExternalButton))
         let shareExtenalButton = buildBarButton(from: BarButtonItemModel(ImageManager.shareExternal, target))
         navigationItem.rightBarButtonItems = [cartBarButtonItem, shareExtenalButton]
         navigationItem.title = TextManager.productDetail.localized()
+    }
+    
+    func requestProductCart() {
+        guard let path = Bundle.main.path(forResource: "ProductCart", ofType: "json") else {
+            fatalError("Not available json")
+        }
+        
+        let url = URL(fileURLWithPath: path)
+        Alamofire.request(url).responseJSON { (response) in
+            switch response.result {
+            case.success(let value):
+                let json = JSON(value)
+                let data = json["data"]
+                let products = data.arrayValue.map{Product(json: $0)}
+                for product in products {
+                    CartManager.shared.addProductToCart(product) {
+                        NotificationCenter.default.post(name: Notification.Name.reloadCartBadgeNumber, object: nil)
+                        AlertManager.shared.showToast(message: TextManager.addToCartSuccess.localized())
+                    } error: {
+                        AlertManager.shared.showToast()
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     // MARK: - UI Action
@@ -132,7 +160,6 @@ class ProductDetailViewController: BaseViewController {
     
     func getProductById(id: Int) {
         let endPoint = ProductEndPoint.getProductById(parameters: ["id": id])
-        
         APIService.request(endPoint: endPoint, onSuccess: { [weak self] (apiResponse) in
             guard let self = self else { return }
             if let product = apiResponse.toObject(Product.self) {
@@ -140,9 +167,11 @@ class ProductDetailViewController: BaseViewController {
                 self.collectionView.reloadData()
             }
         }, onFailure: { (apiError) in
-            
+            AlertManager.shared.show(message:
+                                        TextManager.errorMessage.localized())
         }) {
-            
+            AlertManager.shared.show(message:
+                                        TextManager.errorMessage.localized())
         }
     }
     

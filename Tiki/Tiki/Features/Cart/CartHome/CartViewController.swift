@@ -7,68 +7,33 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class CartViewController: BaseViewController {
     
     // MARK: - UI Elements
     
-    fileprivate lazy var topView: BaseView = {
-        let view = BaseView()
-        return view
-    }()
-    
-    fileprivate lazy var addressTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = TextManager.addressRecive
-        label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        return label
-    }()
-    
-    fileprivate lazy var infoUserLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        label.text = "Đặng Trung Hiếu - 0336665653"
-        label.textAlignment = .left
-        return label
-    }()
-
-    fileprivate lazy var changeButton: UIButton = {
-        let button = UIButton()
-        button.layer.backgroundColor = UIColor.clear.cgColor
-        button.setTitle(TextManager.changeAction, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        button.setTitleColor(UIColor.tabbarIcon, for: .normal)
-        button.addTarget(self, action: #selector(tapOnChangeAddress), for: .touchUpInside)
-        return button
-    }()
-    
-    fileprivate lazy var lineView: BaseView = {
-        let view = BaseView()
-        view.backgroundColor = UIColor.separator
-        return view
-    }()
-    
-    fileprivate lazy var addressDetailLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Hẻm 457 Huỳnh Tấn Phát, phường Tân Thuận Đông, Quận7, Hồ Chí Minh"
-        label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        label.numberOfLines = 0
-        return label
-    }()
-    
     fileprivate lazy var cartCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 8
+        layout.minimumLineSpacing = 2
         layout.minimumInteritemSpacing = 0
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor.tableBackground
         collectionView.showsVerticalScrollIndicator = false
         collectionView.registerReusableCell(CartCollectionViewCell.self)
+        collectionView.registerReusableCell(AddressCollectionViewCell.self)
         collectionView.registerReusableCell(EmptyCollectionViewCell.self)
+        collectionView
+        .registerReusableSupplementaryView(CartCollectionHeaderView.self,
+        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+        collectionView
+        .registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self,
+        forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
+        
         return collectionView
     }()
     
@@ -90,7 +55,7 @@ class CartViewController: BaseViewController {
     fileprivate lazy var totalMoneyTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = 479000.currencyFormat
+        label.text = CartManager.shared.totalMoney.currencyFormat
         label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue)
         label.textColor = UIColor.primary
         return label
@@ -113,12 +78,6 @@ class CartViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = TextManager.cart
-        layoutTopView()
-        layoutLineView()
-        layoutAddressTitleLabel()
-        layoutChangeButton()
-        layoutInfoUserLabel()
-        layoutAddressDetailLabel()
         layoutBottomView()
         layoutBuyButton()
         layoutIntoMoneyTitleLabel()
@@ -130,70 +89,9 @@ class CartViewController: BaseViewController {
         
     }
     
-    @objc private func tapOnChangeAddress() {
-        let vc = DeliveryAddressViewController()
-        vc.requestShipAddressAPI()
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     // MARK: - Layouts
     
-    private func layoutTopView() {
-        view.addSubview(topView)
-        topView.snp.makeConstraints { (make) in
-            if #available(iOS 11, *) {
-                make.top.equalTo(view.safeAreaLayoutGuide)
-            } else {
-                make.top.equalTo(topLayoutGuide.snp.bottom)
-            }
-            make.left.right.equalToSuperview()
-            make.height.equalTo(120)
-        }
-    }
-    
-    private func layoutAddressTitleLabel() {
-        topView.addSubview(addressTitleLabel)
-        addressTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.top.equalToSuperview().offset(Dimension.shared.normalMargin)
-        }
-    }
-    
-    private func layoutChangeButton() {
-        topView.addSubview(changeButton)
-        changeButton.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.height.equalTo(40)
-            make.top.equalToSuperview().offset(Dimension.shared.smallMargin)
-        }
-    }
-    
-    private func layoutInfoUserLabel() {
-        topView.addSubview(infoUserLabel)
-        infoUserLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(addressTitleLabel)
-            make.top.equalTo(addressTitleLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
-        }
-    }
-    
-    private func layoutAddressDetailLabel() {
-        topView.addSubview(addressDetailLabel)
-        addressDetailLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(addressTitleLabel)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.top.equalTo(infoUserLabel.snp.bottom).offset(Dimension.shared.smallMargin)
-        }
-    }
-    
-    private func layoutLineView() {
-        topView.addSubview(lineView)
-        lineView.snp.makeConstraints { (make) in
-            make.bottom.equalToSuperview()
-            make.left.right.equalToSuperview()
-            make.height.equalTo(8)
-        }
-    }
-    
+
     private func layoutBottomView() {
         view.addSubview(bottomView)
         bottomView.snp.makeConstraints { (make) in
@@ -210,10 +108,11 @@ class CartViewController: BaseViewController {
     private func layoutBuyButton() {
         bottomView.addSubview(buyButton)
         buyButton.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.height.equalTo(Dimension.shared.defaultHeightButton)
-            make.bottom.equalToSuperview().offset(-Dimension.shared.mediumMargin)
+            make.left.right.equalToSuperview()
+                .inset(dimension.normalMargin)
+            make.height.equalTo(dimension.defaultHeightButton)
+            make.bottom.equalToSuperview()
+                .offset(-dimension.mediumMargin)
         }
     }
     
@@ -221,14 +120,16 @@ class CartViewController: BaseViewController {
         bottomView.addSubview(intoMoneyTitleLabel)
         intoMoneyTitleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(buyButton)
-            make.top.equalToSuperview().offset(Dimension.shared.normalMargin)
+            make.top.equalToSuperview()
+                .offset(dimension.normalMargin)
         }
     }
     
     private func layoutTotalMoneyTitleLabel() {
         bottomView.addSubview(totalMoneyTitleLabel)
         totalMoneyTitleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(buyButton.snp.top).offset(-Dimension.shared.normalMargin)
+            make.bottom.equalTo(buyButton.snp.top)
+                .offset(-dimension.normalMargin)
             make.right.equalTo(buyButton)
         }
     }
@@ -236,7 +137,11 @@ class CartViewController: BaseViewController {
     private func layoutCartCollectionView() {
         view.addSubview(cartCollectionView)
         cartCollectionView.snp.makeConstraints { (make) in
-            make.top.equalTo(topView.snp.bottom)
+            if #available(iOS 11, *) {
+                make.top.equalTo(view.safeAreaLayoutGuide)
+            } else {
+                make.top.equalTo(topLayoutGuide.snp.bottom)
+            }
             make.left.right.equalToSuperview()
             make.bottom.equalTo(bottomView.snp.top)
         }
@@ -250,7 +155,20 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let widthItem = cartCollectionView.bounds.width
-        return CGSize(width: widthItem, height: 200)
+        return CGSize(width: widthItem, height: 150)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        return CGSize(width: collectionView.frame.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 4)
     }
 }
 
@@ -283,19 +201,37 @@ extension CartViewController: UICollectionViewDataSource {
             cell.image = ImageManager.empty
             cartCollectionView.backgroundColor = UIColor.clear
             bottomView.isHidden = true
-            topView.isHidden = true
             return cell
         } else {
             let cell: CartCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.delegate = self
-            if let cartShop = CartManager.shared.cartShopInfos[safe: indexPath.row],
+            if let cartShop = CartManager.shared.cartShopInfos[safe: indexPath.section],
                let product = cartShop.products[safe: indexPath.row] {
                 cell.configData(product)
-                if let cartShop = CartManager.shared.cartShopInfos[safe: indexPath.row] {
-                    cell.configData(cartShop)
-                }
             }
             return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        if kind == UICollectionView.elementKindSectionHeader {
+            let header: CartCollectionHeaderView = collectionView
+                .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader,
+                                                  for: indexPath)
+            if let cartShop = CartManager.shared.cartShopInfos[safe: indexPath.section] {
+                header.configData(cartShop)
+            }
+            return header
+        }  else if kind == UICollectionView.elementKindSectionFooter {
+            let footer: BaseCollectionViewHeaderFooterCell = collectionView
+                .dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter,
+                                                  for: indexPath)
+            return footer
+        } else {
+            return UICollectionReusableView()
         }
     }
 }
@@ -346,6 +282,4 @@ extension CartViewController: CartProductCellDelegate {
             }
         }
     }
-    
 }
-

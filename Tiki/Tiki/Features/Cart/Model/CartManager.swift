@@ -21,6 +21,14 @@ class CartManager {
         }
     }
     
+    var totalMoney: Double {
+        return cartShopInfos.reduce(0) { (result, cartShopInfo) -> Double in
+            result + cartShopInfo.products.reduce(0, { ( money, product ) -> Double in
+                money + product.totalMoney
+            })
+        }
+    }
+    
     private (set) var cartShopInfos: [CartShopInfo] = []
     
     // MARK: - LifeCycles
@@ -42,7 +50,7 @@ class CartManager {
             NotificationCenter.default.post(name: NSNotification.Name.reloadCartBadgeNumber, object: nil)
         }
     }
-
+    
     func addProductToCart(_ product: Product,
                           completionHandler: () -> Void,
                           error: () -> Void) {
@@ -68,7 +76,7 @@ class CartManager {
         }
         
         guard let productIndex = cartShopInfos[cartIndex].products
-            .firstIndex(where: { $0.id == product.id }) else {
+                .firstIndex(where: { $0.id == product.id }) else {
             return
         }
         
@@ -87,8 +95,8 @@ class CartManager {
         }
         
         guard let productIndex = cartShopInfos[cartIndex].products
-            .firstIndex(where: { $0.id == product.id }) else {
-                return
+                .firstIndex(where: { $0.id == product.id }) else {
+            return
         }
         
         cartShopInfos[cartIndex].products[productIndex].quantity += 1
@@ -103,13 +111,13 @@ class CartManager {
         }
         
         guard let productIndex = cartShopInfos[cartIndex].products
-            .firstIndex(where: { $0.id == product.id }) else {
-                return
+                .firstIndex(where: { $0.id == product.id }) else {
+            return
         }
         
         cartShopInfos[cartIndex].products[productIndex].quantity -= 1
         completionHandler()
     }
-
+    
 }
 
