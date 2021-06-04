@@ -15,8 +15,8 @@ class HeaderCollectionViewCell: BaseCollectionViewCell {
         label.textAlignment = .left
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
                                        weight: .bold)
-        label.layer.cornerRadius  = dimension.cornerRadiusSmall
         label.layer.masksToBounds = true
+        label.layer.cornerRadius  = dimension.cornerRadiusSmall
         return label
     }()
     

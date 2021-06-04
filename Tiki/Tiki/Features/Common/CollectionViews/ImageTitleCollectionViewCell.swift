@@ -17,6 +17,7 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
         let imageView = ShimmerImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius  = dimension.cornerRadiusSmall
         return imageView
     }()
@@ -27,8 +28,8 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
                                        weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 2
-        label.layer.cornerRadius = dimension.cornerRadiusSmall
         label.layer.masksToBounds = true
+        label.layer.cornerRadius  = dimension.cornerRadiusSmall
         return label
     }()
     

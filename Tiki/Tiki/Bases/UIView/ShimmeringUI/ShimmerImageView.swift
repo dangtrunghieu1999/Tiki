@@ -64,6 +64,8 @@ open class ShimmerImageView: BaseShimmerView {
     
     private func layoutImageView() {
         addSubview(imageView)
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius  = dimension.cornerRadiusSmall
         imageView.snp.makeConstraints { (make) in
             make.left.right.top.bottom.equalToSuperview()
         }

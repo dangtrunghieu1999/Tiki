@@ -112,6 +112,7 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
 
     func configCell(banners: [Banner]) {
         self.banners = banners
+        self.pageControl.numberOfPages = banners.count
         self.pageView.reloadData()
     }
 }
