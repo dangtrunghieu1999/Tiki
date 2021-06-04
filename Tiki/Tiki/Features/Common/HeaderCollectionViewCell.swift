@@ -13,7 +13,10 @@ class HeaderCollectionViewCell: BaseCollectionViewCell {
         let label = ShimmerLabel()
         label.textColor = UIColor.primary
         label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                       weight: .bold)
+        label.layer.cornerRadius  = dimension.cornerRadiusSmall
+        label.layer.masksToBounds = true
         return label
     }()
     

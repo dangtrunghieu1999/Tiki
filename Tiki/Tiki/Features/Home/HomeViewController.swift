@@ -259,6 +259,7 @@ extension HomeViewController {
         APIService.request(endPoint: endPoint) { [weak self] (apiResponse) in
             guard let self = self else { return }
             self.banners = apiResponse.toArray([Banner.self])
+            self.requestAPIMenu()
             
         } onFailure: { [weak self] (apiError) in
             self?.reloadDataWhenFinishLoadAPI()

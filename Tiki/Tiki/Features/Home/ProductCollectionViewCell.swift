@@ -41,6 +41,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         let imageView = ShimmerImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius  = dimension.cornerRadiusSmall
         return imageView
     }()
     
@@ -49,7 +50,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         label.numberOfLines = 2
         label.textAlignment = .left
         label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                       weight: .semibold)
         return label
     }()
     
@@ -78,7 +80,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     fileprivate var finalPriceLabel: ShimmerLabel = {
         let label = ShimmerLabel()
         label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue,
+                                       weight: .medium)
         return label
     }()
     
@@ -88,7 +91,8 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
         label.textColor = .white
         label.layer.cornerRadius = 5
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue,
+                                       weight: .semibold)
         label.layer.masksToBounds = true
         return label
     }()

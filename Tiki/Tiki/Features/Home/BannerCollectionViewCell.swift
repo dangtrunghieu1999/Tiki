@@ -23,6 +23,8 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
     private var bannerShimmerView: BaseShimmerView = {
         let view = BaseShimmerView()
         view.isHidden = true
+        view.layer.cornerRadius  = dimension.cornerRadiusSmall
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -73,8 +75,6 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
         bannerShimmerView.isHidden = true
     }
     
-    // MARK: - GET API
-    
     // MARK: - Layout
     
     private func layoutTopView() {
@@ -112,6 +112,7 @@ class BannerCollectionViewCell: BaseCollectionViewCell {
 
     func configCell(banners: [Banner]) {
         self.banners = banners
+        self.pageView.reloadData()
     }
 }
 

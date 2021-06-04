@@ -40,6 +40,7 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     
     func configCell(_ menu: [Menu]) {
         self.menu = menu
+        self.menuCollectionView.reloadData()
     }
     
     // MARK: - Layout

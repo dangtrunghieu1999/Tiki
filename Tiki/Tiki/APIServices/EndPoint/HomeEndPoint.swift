@@ -17,9 +17,9 @@ extension HomeEndPoint: EndPointType {
     var path: String {
         switch self {
         case .getBannerHome:
-            return "/home/data"
+            return "/banner"
         case .getCateogoryMenu:
-            return "/home/menu"
+            return "/category"
         }
     }
     

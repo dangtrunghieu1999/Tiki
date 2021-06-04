@@ -15,16 +15,20 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate lazy var imageView: ShimmerImageView = {
         let imageView = ShimmerImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius  = dimension.cornerRadiusSmall
         return imageView
     }()
     
     fileprivate lazy var titleLabel: ShimmerLabel = {
         let label = ShimmerLabel()
-        label.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: FontSize.h3.rawValue,
+                                       weight: .medium)
         label.textAlignment = .center
         label.numberOfLines = 2
+        label.layer.cornerRadius = dimension.cornerRadiusSmall
+        label.layer.masksToBounds = true
         return label
     }()
     
@@ -50,6 +54,8 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
     // MARK: - Helper Method
     
     func configCell(_ image: String?, _ title: String?) {
+        self.imageView.loadImage(by: image,
+             defaultImage: ImageManager.defaultAvatar)
         self.titleLabel.text = title
     }
     
@@ -67,7 +73,8 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
     private func layoutTitleLabel() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.smallMargin)
+            make.top.equalTo(imageView.snp.bottom)
+                .offset(dimension.smallMargin)
             make.left.right.equalToSuperview()
         }
     }
