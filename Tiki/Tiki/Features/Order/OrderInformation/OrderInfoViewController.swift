@@ -25,6 +25,8 @@ enum OrderSection: Int {
 
 class OrderInfoViewController: BaseViewController {
     
+    // MARK: - UI Elements
+    
     fileprivate lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -72,9 +74,9 @@ class OrderInfoViewController: BaseViewController {
         return button
     }()
     
+    // MARK -  Variables
     
-    private var products: [Product]? = []
-
+    private var products: [Product]?    = []
     private var estimateHeight: CGFloat = 0.0
     
     convenience init(products: [Product]) {
@@ -82,6 +84,8 @@ class OrderInfoViewController: BaseViewController {
         self.products = products
         self.estimateHeight = CGFloat(products.count) * 100.0
     }
+    
+    // MARK: - View LifeCycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +104,8 @@ class OrderInfoViewController: BaseViewController {
         self.collectionView.registerReusableCell(PaymentCollectionViewCell.self)
         self.collectionView.registerReusableCell(BillerCollectionViewCell.self)
     }
+    
+    // MARK: - Layout
     
     private func layoutOrderBuyInfoView() {
         view.addSubview(bottomView)
@@ -147,6 +153,8 @@ class OrderInfoViewController: BaseViewController {
     }
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView,
@@ -174,6 +182,8 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension OrderInfoViewController: UICollectionViewDataSource {
     
@@ -218,13 +228,16 @@ extension OrderInfoViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+ 
 extension OrderInfoViewController: UICollectionViewDelegate {
     
 }
+
+// MARK: - AddressCollectionViewCellDelegate
 
 extension OrderInfoViewController: AddressCollectionViewCellDelegate {
     func didSelectAddress() {
         AppRouter.pushToDeliveryAddressVC()
     }
 }
-
