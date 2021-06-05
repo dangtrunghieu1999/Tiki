@@ -57,8 +57,7 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .greenColor
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
-                                       weight: .bold)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         label.text = "Giao vào Thứ Ba, 08/06"
         return label
     }()
@@ -72,6 +71,7 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         layoutPackImageView()
         layoutPackTitleLabel()
         layoutSecondHeaderView()
+        layoutIntendTimeLabel()
     }
     
     private func layoutBorderView() {
@@ -140,15 +140,21 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
             make.height
                 .equalTo(50)
             make.width
-                .equalTo(170)
+                .equalTo(190)
             make.left
                 .equalTo(firstHeaderView.snp.right)
         }
     }
     
     private func layoutIntendTimeLabel() {
-        addSubview(intendTimeLabel)
-        
+        secondHeaderView.addSubview(intendTimeLabel)
+        intendTimeLabel.snp.makeConstraints { (make) in
+            make.centerY
+                .equalToSuperview()
+            make.left
+                .equalToSuperview()
+                .offset(dimension.mediumMargin)
+        }
     }
     
 }
