@@ -12,7 +12,10 @@ class OrderProductTableViewCell: BaseTableViewCell {
     
     fileprivate lazy var coverViewImage: BaseView = {
         let view = BaseView()
-
+        view.layer.cornerRadius = dimension.cornerRadiusSmall
+        view.layer.borderWidth  = 1
+        view.layer.borderColor  = UIColor.separator.cgColor
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -20,7 +23,6 @@ class OrderProductTableViewCell: BaseTableViewCell {
         let imageView = UIImageView()
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = dimension.cornerRadiusSmall
         return imageView
     }()
     
@@ -33,11 +35,9 @@ class OrderProductTableViewCell: BaseTableViewCell {
         return label
     }()
     
-    fileprivate lazy var productQuantityLabel: PaddingLabel = {
-        let label = PaddingLabel()
-        label.textAlignment = .center
-        label.leftInset = 10
-        label.rightInset = 10
+    fileprivate lazy var productQuantityLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
         label.textColor = UIColor.bodyText
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
                                        weight: .medium)
@@ -46,27 +46,31 @@ class OrderProductTableViewCell: BaseTableViewCell {
     
     fileprivate lazy var productPriceLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                       weight: .semibold)
         label.textColor = UIColor.bodyText
         return label
     }()
     
     override func initialize() {
         super.initialize()
+        layoutCoverView()
         layoutProductImageView()
         layoutProductNameLabel()
         layoutProductQuantityLabel()
+        layoutProductPriceLabel()
     }
     
     func configData(product: Product) {
         self.productImageView.loadImage(by: product.defaultImage)
         self.productNameLabel.text = product.name
         self.productQuantityLabel.text = "SL:x \(product.quantity)"
+        self.productPriceLabel.text    = product.finalPrice.currencyFormat
     }
     
-    private func layoutProductImageView() {
-        addSubview(productImageView)
-        productImageView.snp.makeConstraints { (make) in
+    private func layoutCoverView() {
+        addSubview(coverViewImage)
+        coverViewImage.snp.makeConstraints { (make) in
             make.centerY
                 .equalToSuperview()
             make.height
@@ -78,15 +82,27 @@ class OrderProductTableViewCell: BaseTableViewCell {
         }
     }
     
+    private func layoutProductImageView() {
+        coverViewImage.addSubview(productImageView)
+        productImageView.snp.makeConstraints { (make) in
+            make.width.height
+                .equalTo(50)
+            make.centerY
+                .equalToSuperview()
+            make.centerX
+                .equalToSuperview()
+        }
+    }
+    
     private func layoutProductNameLabel() {
         addSubview(productNameLabel)
         productNameLabel.snp.makeConstraints { (make) in
             make.left
-                .equalTo(productImageView.snp.right)
+                .equalTo(coverViewImage.snp.right)
                 .offset(dimension.mediumMargin)
             make.right
                 .equalToSuperview()
-                .offset(dimension.normalMargin)
+                .inset(dimension.normalMargin)
             make.top
                 .equalTo(productImageView)
         }
@@ -97,6 +113,17 @@ class OrderProductTableViewCell: BaseTableViewCell {
         productQuantityLabel.snp.makeConstraints { (make) in
             make.left
                 .equalTo(productNameLabel)
+            make.bottom
+                .equalTo(productImageView)
+        }
+    }
+    
+    private func layoutProductPriceLabel() {
+        addSubview(productPriceLabel)
+        productPriceLabel.snp.makeConstraints { (make) in
+            make.right
+                .equalToSuperview()
+                .inset(dimension.normalMargin)
             make.bottom
                 .equalTo(productImageView)
         }

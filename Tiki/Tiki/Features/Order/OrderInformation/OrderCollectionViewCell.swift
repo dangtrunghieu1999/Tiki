@@ -178,7 +178,7 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         tableView.snp.makeConstraints { (make) in
             make.top
                 .equalTo(firstHeaderView.snp.bottom)
-                .offset(dimension.largeMargin)
+                .offset(dimension.normalMargin)
             make.left.right
                 .equalToSuperview()
                 .inset(dimension.normalMargin)

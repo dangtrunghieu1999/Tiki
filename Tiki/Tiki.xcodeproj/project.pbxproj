@@ -730,7 +730,6 @@
 		CF4A0202261EAE48003734EC /* Cart */ = {
 			isa = PBXGroup;
 			children = (
-				CFD0153B2635C5A200850ADB /* CartEditProperty */,
 				CFD0153A2635C58A00850ADB /* CartHome */,
 				CFD015392635C58100850ADB /* Model */,
 			);
@@ -1574,13 +1573,6 @@
 				CFD015442635CA6700850ADB /* CartCollectionViewCell.swift */,
 			);
 			path = CartHome;
-			sourceTree = "<group>";
-		};
-		CFD0153B2635C5A200850ADB /* CartEditProperty */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CartEditProperty;
 			sourceTree = "<group>";
 		};
 		CFD56FD82635CBE800B17AEA /* OrderInformation */ = {
