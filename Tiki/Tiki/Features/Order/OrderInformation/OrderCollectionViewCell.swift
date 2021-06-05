@@ -98,6 +98,7 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
                 .inset(dimension.normalMargin)
             make.top
                 .equalToSuperview()
+                .offset(dimension.largeMargin_38)
             make.bottom
                 .equalToSuperview()
                 .inset(dimension.largeMargin)
@@ -109,7 +110,7 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         firstHeaderView.snp.makeConstraints { (make) in
             make.top
                 .equalToSuperview()
-                .offset(-dimension.largeMargin)
+                .offset(dimension.normalMargin)
             make.height
                 .equalTo(50)
             make.width
@@ -152,7 +153,7 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         secondHeaderView.snp.makeConstraints { (make) in
             make.top
                 .equalToSuperview()
-                .offset(-dimension.largeMargin)
+                .offset(dimension.normalMargin)
             make.height
                 .equalTo(50)
             make.width

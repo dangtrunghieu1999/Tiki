@@ -169,10 +169,10 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
         case .address:
             return CGSize(width: width, height: 120)
         case .transport:
-            return CGSize(width: width, height: 250)
+            return CGSize(width: width, height: 230)
         case .orderInfo:
             return CGSize(width: width,
-                          height: estimateHeight + 85)
+                          height: estimateHeight + 100)
         case .payment:
             return CGSize(width: width, height: 100)
         case .bill:
