@@ -129,6 +129,14 @@ extension UIColor {
     class var secondary1: UIColor {
         return UIColor(hex: "#313131")
     }
+    
+    class var greenColor: UIColor {
+        return UIColor(hex: "#009900")
+    }
+    
+    class var lightGreenColor: UIColor {
+        return UIColor(hex: "#EFF8EF")
+    }
 }
 
 // MARK: - Support Method

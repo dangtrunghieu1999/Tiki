@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "triangle.png",
+      "filename" : "icons8-cardboard-box-100.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "triangle@2x.png",
+      "filename" : "icons8-cardboard-box-100@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "triangle@3x.png",
+      "filename" : "icons8-cardboard-box-100@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

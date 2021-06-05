@@ -75,7 +75,7 @@ extension TextManager {
     static let shareInternalSuccess         = "Chia sẻ thành công"
     static let inputComment                 = "Thêm bình luận"
     static let ratingForProduct             = "Đánh giá sản phẩm!"
- 
+    static let pack                         = "Gói"
     
     static let r1                      = "Điện thoại"
     static let r2                      = "Quần tây công sở"

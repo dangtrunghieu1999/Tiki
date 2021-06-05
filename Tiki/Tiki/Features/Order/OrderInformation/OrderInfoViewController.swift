@@ -12,13 +12,12 @@ enum OrderSection: Int {
     case address      = 0
     case section1     = 1
     case transport    = 2
-    case section2     = 3
-    case payment      = 4
-    case section3     = 5
-    case orderInfo    = 6
-    
+    case orderInfo    = 3
+    case section2     = 4
+    case payment      = 5
+
     static func numberOfSections() -> Int {
-        return 7
+        return 6
     }
 }
 
@@ -58,8 +57,8 @@ class OrderInfoViewController: BaseViewController {
         self.collectionView.registerReusableCell(AddressCollectionViewCell.self)
         self.collectionView.registerReusableCell(FooterCollectionViewCell.self)
         self.collectionView.registerReusableCell(TransportCollectionViewCell.self)
-        self.collectionView.registerReusableCell(PaymentCollectionViewCell.self)
         self.collectionView.registerReusableCell(OrderCollectionViewCell.self)
+        self.collectionView.registerReusableCell(PaymentCollectionViewCell.self)
     }
     
     
@@ -87,16 +86,17 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.width
         let type  = OrderSection(rawValue: indexPath.section)
         switch type {
-        case .section1, .section2, .section3:
+        case .section1, .section2:
             return CGSize(width: width, height: 8)
         case .address:
             return CGSize(width: width, height: 120)
         case .transport:
-            return CGSize(width: width, height: 230)
+            return CGSize(width: width, height: 250)
+        case .orderInfo:
+            return CGSize(width: width,
+                          height: estimateHeight + 50)
         case .payment:
             return CGSize(width: width, height: 200)
-        case .orderInfo:
-            return CGSize(width: width, height: estimateHeight + 100)
         default:
             return CGSize(width: width, height: 0)
         }
@@ -111,24 +111,15 @@ extension OrderInfoViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        let type = OrderSection(rawValue: section)
-        switch type {
-        case .section1, .section2, .section3:
-            return 1
-        case .address, .transport, .payment:
-            return 1
-        case .orderInfo:
-            return 1
-        default:
-            return 0
-        }
+       return 1
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let type = OrderSection(rawValue: indexPath.section)
         switch type {
-        case .section1, .section2, .section3:
+        case .section1,
+             .section2:
             let cell: FooterCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         case .address:
@@ -138,11 +129,11 @@ extension OrderInfoViewController: UICollectionViewDataSource {
         case .transport:
             let cell: TransportCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
-        case .payment:
-            let cell: PaymentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
         case .orderInfo:
             let cell: OrderCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        case .payment:
+            let cell: PaymentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         default:
             return UICollectionViewCell()

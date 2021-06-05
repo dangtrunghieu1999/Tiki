@@ -75,7 +75,7 @@ class TransportCollectionViewCell: BaseCollectionViewCell {
         headingImageView.snp.makeConstraints { (make) in
             make.width.height.equalTo(30)
             make.top.equalTo(transporterTableView.snp.bottom)
-                .offset(-8.2)
+                .offset(-10)
             make.centerX.equalToSuperview()
         }
     }
