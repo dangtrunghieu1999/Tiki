@@ -15,9 +15,11 @@ enum OrderSection: Int {
     case orderInfo    = 3
     case section2     = 4
     case payment      = 5
+    case section3     = 6
+    case bill         = 7
 
     static func numberOfSections() -> Int {
-        return 6
+        return 8
     }
 }
 
@@ -36,6 +38,41 @@ class OrderInfoViewController: BaseViewController {
         return collectionView
     }()
     
+    private let bottomView: BaseView = {
+        let view = BaseView()
+        view.addTopBorder(with: UIColor.separator, andWidth: 1)
+        view.layer.masksToBounds = true
+        return view
+    }()
+    
+    fileprivate lazy var intoMoneyTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = TextManager.totalMoney
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        return label
+    }()
+    
+    fileprivate lazy var totalMoneyTitleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .left
+        label.text = CartManager.shared.totalMoney.currencyFormat
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue)
+        label.textColor = UIColor.primary
+        return label
+    }()
+    
+    private lazy var buyButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(TextManager.buyNow, for: .normal)
+        button.backgroundColor = UIColor.primary
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
+        return button
+    }()
+    
+    
     private var products: [Product]? = []
 
     private var estimateHeight: CGFloat = 0.0
@@ -49,6 +86,8 @@ class OrderInfoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = TextManager.confirmOrder
+        layoutOrderBuyInfoView()
+        layoutBuyButton()
         layoutCollectionView()
         registerCell()
     }
@@ -59,8 +98,39 @@ class OrderInfoViewController: BaseViewController {
         self.collectionView.registerReusableCell(TransportCollectionViewCell.self)
         self.collectionView.registerReusableCell(OrderCollectionViewCell.self)
         self.collectionView.registerReusableCell(PaymentCollectionViewCell.self)
+        self.collectionView.registerReusableCell(BillerCollectionViewCell.self)
     }
     
+    private func layoutOrderBuyInfoView() {
+        view.addSubview(bottomView)
+        bottomView.snp.makeConstraints { (make) in
+            if #available(iOS 11, *) {
+                make.bottom
+                    .equalTo(view.safeAreaLayoutGuide.snp.bottom)
+            } else {
+                make.bottom
+                    .equalTo(bottomLayoutGuide.snp.top)
+            }
+            make.left.right.equalToSuperview()
+            make.height.equalTo(120)
+        }
+    }
+    
+    private func layoutBuyButton() {
+        bottomView.addSubview(buyButton)
+        buyButton.snp.makeConstraints { (make) in
+            make.right
+                .equalToSuperview()
+                .inset(dimension.normalMargin)
+            make.height
+                .equalTo(dimension.largeHeightButton)
+            make.width
+                .equalTo(150)
+            make.top
+                .equalToSuperview()
+                .offset(dimension.normalMargin)
+        }
+    }
     
     private func layoutCollectionView() {
         view.addSubview(collectionView)
@@ -68,11 +138,11 @@ class OrderInfoViewController: BaseViewController {
             make.left.right.equalToSuperview()
             if #available(iOS 11, *) {
                 make.top.equalTo(view.safeAreaLayoutGuide)
-                make.bottom.equalTo(view.snp.bottomMargin)
+                
             } else {
                 make.top.equalTo(topLayoutGuide.snp.bottom)
-                make.bottom.equalTo(bottomLayoutGuide.snp.top)
             }
+            make.bottom.equalTo(bottomView.snp.top)
         }
     }
 }
@@ -86,7 +156,7 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.width
         let type  = OrderSection(rawValue: indexPath.section)
         switch type {
-        case .section1, .section2:
+        case .section1, .section2, .section3:
             return CGSize(width: width, height: 8)
         case .address:
             return CGSize(width: width, height: 120)
@@ -96,6 +166,8 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width,
                           height: estimateHeight + 85)
         case .payment:
+            return CGSize(width: width, height: 100)
+        case .bill:
             return CGSize(width: width, height: 200)
         default:
             return CGSize(width: width, height: 0)
@@ -119,7 +191,8 @@ extension OrderInfoViewController: UICollectionViewDataSource {
         let type = OrderSection(rawValue: indexPath.section)
         switch type {
         case .section1,
-             .section2:
+             .section2,
+             .section3:
             let cell: FooterCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         case .address:
@@ -135,6 +208,9 @@ extension OrderInfoViewController: UICollectionViewDataSource {
             return cell
         case .payment:
             let cell: PaymentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            return cell
+        case .bill:
+            let cell: BillerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         default:
             return UICollectionViewCell()

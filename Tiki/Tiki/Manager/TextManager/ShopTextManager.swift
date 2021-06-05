@@ -38,7 +38,7 @@ extension TextManager {
     static let shopStallInfo                = "Gian hàng"
     static let gallery                      = "Thư viện ảnh"
     static let mesage                       = "Tin nhắn"
-    static let buyNow                       = "MUA NGAY"
+    static let buyNow                       = "Mua hàng"
     static let addTo                        = "THÊM VÀO"
     static let searchProduct                = "Tìm kiếm sản phẩm"
     static let addNewProduct                = "Thêm sản phẩm"

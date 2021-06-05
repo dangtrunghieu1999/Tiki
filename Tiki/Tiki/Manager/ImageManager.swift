@@ -87,6 +87,7 @@ final class ImageManager {
     static let logoVietNamPost                      = UIImage(named: "logoVietNamPost")
     
     // MARK: - Setting
+    
     static let shopping                             = UIImage(named: "shopping")
     static let makeMoney                            = UIImage(named: "earnMoney")
     static let myStall                              = UIImage(named: "myStall")
@@ -116,12 +117,12 @@ final class ImageManager {
     
     static let sendMessageEnable                     = UIImage(named: "sendMessageEnable")
     static let sendMessageDisable                    = UIImage(named: "sendMessageDisable")
-    
     static let avatarDefault                         = UIImage(named: "avatarDefault")
     static let more                                  = UIImage(named: "more")
         
     
     // MARK: - Order
+    
     static let managerOrder                          = UIImage(named: "managerOrder")
     static let reciveOrder                           = UIImage(named: "reciveOrder")
     static let paymentAgain                          = UIImage(named: "paymentAgain")
@@ -160,6 +161,12 @@ final class ImageManager {
     static let icon_flag                         = UIImage(named: "icon_flag")
     static let icon_logo2                        = UIImage(named: "icon_logo2")
     static let icon_pack                         = UIImage(named: "icon_pack")
+    
+    // MARK: -
+    
+    static let icon_momo                         = UIImage(named: "icon_momo")
+    static let icon_cash                         = UIImage(named: "icon_cash")
+    
     // MAKR: - Temp
     
     static let r1                                   = UIImage(named: "r1")

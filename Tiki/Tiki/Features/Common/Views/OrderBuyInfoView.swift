@@ -61,10 +61,13 @@ class OrderBuyInfoView: BaseView {
     private func layoutBuyButton() {
         addSubview(buyButton)
         buyButton.snp.makeConstraints { (make) in
-            make.left.right.equalToSuperview()
+            make.left.right
+                .equalToSuperview()
                 .inset(dimension.normalMargin)
-            make.height.equalTo(dimension.defaultHeightButton)
-            make.bottom.equalToSuperview()
+            make.height
+                .equalTo(dimension.defaultHeightButton)
+            make.bottom
+                .equalToSuperview()
                 .offset(-dimension.mediumMargin)
         }
     }
@@ -72,8 +75,10 @@ class OrderBuyInfoView: BaseView {
     private func layoutIntoMoneyTitleLabel() {
         addSubview(intoMoneyTitleLabel)
         intoMoneyTitleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(buyButton)
-            make.top.equalToSuperview()
+            make.left
+                .equalTo(buyButton)
+            make.top
+                .equalToSuperview()
                 .offset(dimension.normalMargin)
         }
     }
@@ -81,9 +86,11 @@ class OrderBuyInfoView: BaseView {
     private func layoutTotalMoneyTitleLabel() {
         addSubview(totalMoneyTitleLabel)
         totalMoneyTitleLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(buyButton.snp.top)
+            make.bottom
+                .equalTo(buyButton.snp.top)
                 .offset(-dimension.normalMargin)
-            make.right.equalTo(buyButton)
+            make.right
+                .equalTo(buyButton)
         }
     }
     
