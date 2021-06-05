@@ -94,7 +94,7 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: 250)
         case .orderInfo:
             return CGSize(width: width,
-                          height: estimateHeight + 50)
+                          height: estimateHeight + 100)
         case .payment:
             return CGSize(width: width, height: 200)
         default:
@@ -131,6 +131,7 @@ extension OrderInfoViewController: UICollectionViewDataSource {
             return cell
         case .orderInfo:
             let cell: OrderCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.products = products ?? []
             return cell
         case .payment:
             let cell: PaymentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)

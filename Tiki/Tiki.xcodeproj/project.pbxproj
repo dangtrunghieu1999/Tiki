@@ -313,6 +313,7 @@
 		F68784492653C7F400A09AEC /* ShowHidePulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */; };
 		F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */; };
 		F69BECDF265A5457003C8AF5 /* VerifyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */; };
+		F6A566F7266B76CB00B22ECA /* OrderProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */; };
 		F6DEBA2826662BDA00B84857 /* LoginInNeededViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DEBA2726662BDA00B84857 /* LoginInNeededViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -665,6 +666,7 @@
 		F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHidePulleyView.swift; sourceTree = "<group>"; };
 		F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreProductPulleyView.swift; sourceTree = "<group>"; };
 		F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneViewController.swift; sourceTree = "<group>"; };
+		F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductTableViewCell.swift; sourceTree = "<group>"; };
 		F6DEBA2726662BDA00B84857 /* LoginInNeededViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInNeededViewController.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1586,6 +1588,7 @@
 			children = (
 				CFD56FD92635CBE800B17AEA /* OrderInfoViewController.swift */,
 				CFD56FDA2635CBE800B17AEA /* OrderCollectionViewCell.swift */,
+				F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */,
 			);
 			path = OrderInformation;
 			sourceTree = "<group>";
@@ -1919,6 +1922,7 @@
 				CFA5BB5025EB89BE00AC20D1 /* HomeViewController.swift in Sources */,
 				CFAF8F0A25FC507C000E2CCA /* NIDebuggingTools.m in Sources */,
 				CFAF8E5625FC4EDD000E2CCA /* AppRouter.swift in Sources */,
+				F6A566F7266B76CB00B22ECA /* OrderProductTableViewCell.swift in Sources */,
 				CFAF8F2925FC507C000E2CCA /* PhotoGalleryCameraCell.swift in Sources */,
 				CFEA2022262EC3DA00288A39 /* BaseProductView.swift in Sources */,
 				F671F407265DEC5C009743D3 /* ProfileViewModel.swift in Sources */,

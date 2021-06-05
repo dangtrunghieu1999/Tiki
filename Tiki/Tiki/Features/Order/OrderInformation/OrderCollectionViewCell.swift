@@ -10,6 +10,8 @@ import UIKit
 
 class OrderCollectionViewCell: BaseCollectionViewCell {
     
+    var products: [Product] = []
+    
     // MARK: - UI Elements
     
     private let borderView: BaseView = {
@@ -62,6 +64,19 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
+    fileprivate lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = UIColor.clear
+        tableView.showsVerticalScrollIndicator = false
+        tableView.isScrollEnabled = false
+        tableView.isUserInteractionEnabled = false
+        tableView.dataSource = self
+        tableView.delegate   = self
+        tableView.registerReusableCell(OrderProductTableViewCell.self)
+        return tableView
+    }()
+    
     // MARK: - View LifeCycles
     
     override func initialize() {
@@ -72,6 +87,7 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         layoutPackTitleLabel()
         layoutSecondHeaderView()
         layoutIntendTimeLabel()
+        layoutTableView()
     }
     
     private func layoutBorderView() {
@@ -157,4 +173,44 @@ class OrderCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
+    private func layoutTableView() {
+        borderView.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.top
+                .equalTo(firstHeaderView.snp.bottom)
+                .offset(dimension.largeMargin)
+            make.left.right
+                .equalToSuperview()
+                .inset(dimension.normalMargin)
+            make.bottom
+                .equalToSuperview()
+                .inset(dimension.largeMargin)
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension OrderCollectionViewCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return products.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: OrderProductTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        
+        if let product = products[safe: indexPath.row] {
+            cell.configData(product: product)
+        }
+
+        return cell
+    }
+}
+
+extension OrderCollectionViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 }
