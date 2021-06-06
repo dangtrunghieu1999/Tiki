@@ -24,12 +24,21 @@ enum TransportersType: Int {
 
 enum PaymentMethodType: Int {
     case cash               = 0
-    case VTCPay             = 1
+    case momo               = 1
+    
+    var logo: UIImage? {
+        switch self {
+        case .cash:
+            return ImageManager.icon_cash
+        case .momo:
+            return ImageManager.icon_momo
+        }
+    }
     
     var name: String? {
         switch self {
-        case .VTCPay:
-            return TextManager.paymentMethodVTCPay.localized()
+        case .momo:
+            return TextManager.paymentMethodMomo.localized()
         case .cash:
             return TextManager.paymentMethodCash.localized()
         }

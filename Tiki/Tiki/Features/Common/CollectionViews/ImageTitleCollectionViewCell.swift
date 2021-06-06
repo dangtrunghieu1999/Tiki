@@ -15,7 +15,7 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate lazy var imageView: ShimmerImageView = {
         let imageView = ShimmerImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.layer.masksToBounds = true
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius  = dimension.cornerRadiusSmall
@@ -67,7 +67,11 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
     private func layoutImageView() {
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.left.right
+                .equalToSuperview()
+                .inset(dimension.smallMargin)
+            make.top.bottom
+                .equalToSuperview()
         }
     }
     

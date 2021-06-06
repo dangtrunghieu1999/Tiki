@@ -174,5 +174,6 @@ extension TextManager {
     static let myStall                      = "Gian hàng của bạn"
     static let orderSetting                 = "Đơn hàng"
     static let statusLogOut                 = "Bạn có chắc chắn muốn đăng xuất?"
+    static let paymentForm                  =  "Hình thức thanh toán"
 }
 

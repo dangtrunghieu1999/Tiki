@@ -99,7 +99,7 @@ class AppRouter: NSObject {
     
     class func pushToShopHome(_ shopId: Int) {
         let viewController = ShopHomeViewController()
-        //        viewController.loadShop(by: shopId)
+        viewController.loadShop(by: shopId)
         viewController.requestLoadShop()
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
@@ -134,4 +134,8 @@ class AppRouter: NSObject {
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
+    class func pushtoPaymentMethodVC() {
+        let viewController = PaymentViewController()
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
+    }
 }

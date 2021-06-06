@@ -82,13 +82,14 @@ class TransportCollectionViewCell: BaseCollectionViewCell {
 }
 
 extension TransportCollectionViewCell: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return 2
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: TransporterTableViewCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.backgroundColor = UIColor.lightBackground
         if let transportersType = TransportersType(rawValue: indexPath.row) {
             cell.configData(transportersType)
         }
@@ -104,7 +105,8 @@ extension TransportCollectionViewCell: UITableViewDelegate {
         return 75
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView,
+                   didSelectRowAt indexPath: IndexPath) {
         selectedTransporter = TransportersType(rawValue: indexPath.row)
         transporterTableView.reloadData()
     }

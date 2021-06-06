@@ -24,7 +24,7 @@ class PaymentCollectionViewCell: BaseCollectionViewCell {
     private lazy var methodImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = ImageManager.icon_momo
+        imageView.image = ImageManager.icon_cash
         return imageView
     }()
     
@@ -41,6 +41,7 @@ class PaymentCollectionViewCell: BaseCollectionViewCell {
         button.layer.masksToBounds = true
         button.setImage(ImageManager.more, for: .normal)
         button.backgroundColor = UIColor.clear
+        button.addTarget(self, action: #selector(tapOnPaymentMethod), for: .touchUpInside)
         return button
     }()
 
@@ -52,6 +53,10 @@ class PaymentCollectionViewCell: BaseCollectionViewCell {
         layoutMethodImageView()
         layoutMethodTitleLabel()
         layoutNextButton()
+    }
+    
+    @objc private func tapOnPaymentMethod() {
+        AppRouter.pushtoPaymentMethodVC()
     }
     
     private func layoutSelectPaymentLabel() {
@@ -93,7 +98,9 @@ class PaymentCollectionViewCell: BaseCollectionViewCell {
         nextButton.snp.makeConstraints { (make) in
             make.right
                 .equalToSuperview()
-                .inset(dimension.normalMargin)
+                .inset(dimension.smallMargin)
+            make.width.height
+                .equalTo(50)
             make.centerY
                 .equalToSuperview()
         }

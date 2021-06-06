@@ -50,7 +50,7 @@ class OrderInfoViewController: BaseViewController {
     fileprivate lazy var intoMoneyTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = TextManager.totalMoney
+        label.text = TextManager.titleTotalMoney
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         return label
     }()
@@ -90,8 +90,10 @@ class OrderInfoViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = TextManager.confirmOrder
-        layoutOrderBuyInfoView()
+        layoutBottomView()
         layoutBuyButton()
+        layoutSumMoneyTitleLabel()
+        layoutTotalMoneyTitleLabel()
         layoutCollectionView()
         registerCell()
     }
@@ -107,7 +109,7 @@ class OrderInfoViewController: BaseViewController {
     
     // MARK: - Layout
     
-    private func layoutOrderBuyInfoView() {
+    private func layoutBottomView() {
         view.addSubview(bottomView)
         bottomView.snp.makeConstraints { (make) in
             if #available(iOS 11, *) {
@@ -135,6 +137,29 @@ class OrderInfoViewController: BaseViewController {
             make.top
                 .equalToSuperview()
                 .offset(dimension.normalMargin)
+        }
+    }
+    
+    private func layoutSumMoneyTitleLabel() {
+        bottomView.addSubview(intoMoneyTitleLabel)
+        intoMoneyTitleLabel.snp.makeConstraints { (make) in
+            make.left
+                .equalToSuperview()
+                .offset(dimension.normalMargin)
+            make.top
+                .equalToSuperview()
+                .offset(dimension.normalMargin)
+        }
+    }
+    
+    private func layoutTotalMoneyTitleLabel() {
+        bottomView.addSubview(totalMoneyTitleLabel)
+        totalMoneyTitleLabel.snp.makeConstraints { (make) in
+            make.left
+                .equalTo(intoMoneyTitleLabel)
+            make.top
+                .equalTo(intoMoneyTitleLabel.snp.bottom)
+                .offset(dimension.mediumMargin)
         }
     }
     
@@ -172,7 +197,7 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width, height: 230)
         case .orderInfo:
             return CGSize(width: width,
-                          height: estimateHeight + 100)
+                          height: estimateHeight + 120)
         case .payment:
             return CGSize(width: width, height: 100)
         case .bill:

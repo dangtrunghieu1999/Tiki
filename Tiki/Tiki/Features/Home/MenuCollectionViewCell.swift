@@ -17,7 +17,7 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
 
     fileprivate lazy var menuCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 35
+        layout.minimumLineSpacing = 50
         layout.minimumInteritemSpacing = 18
         let collectionView = UICollectionView(frame: .zero,
                                               collectionViewLayout: layout)

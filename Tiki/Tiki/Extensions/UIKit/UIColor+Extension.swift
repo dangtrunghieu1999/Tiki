@@ -14,6 +14,10 @@ extension UIColor {
         return UIColor(hex: "#C8102E")
     }
     
+    class var background2: UIColor {
+        return UIColor(hex: "#C8102E")
+    }
+    
     class var thirdColor: UIColor {
         return UIColor(hex: "#0D5CB6")
     }

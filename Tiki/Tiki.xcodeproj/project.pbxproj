@@ -305,6 +305,9 @@
 		F64425BD2655F7EA00C47841 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64425BC2655F7EA00C47841 /* Review.swift */; };
 		F64D906D2669371300A55BD5 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */; };
 		F64FEF6E266A32FA00D8F775 /* TransporterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64FEF6D266A32FA00D8F775 /* TransporterTableViewCell.swift */; };
+		F659DFC1266C74D100ECE851 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC0266C74D100ECE851 /* PaymentViewController.swift */; };
+		F659DFC4266C832300ECE851 /* MethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC3266C832300ECE851 /* MethodCollectionViewCell.swift */; };
+		F659DFC7266CAF3200ECE851 /* MethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */; };
 		F66074022660ED340059753F /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66074012660ED340059753F /* CategoryTableViewCell.swift */; };
 		F66074172660F1230059753F /* CategoryHeaderTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66074162660F1230059753F /* CategoryHeaderTableView.swift */; };
 		F662B3CF266A1ABA002E7BFA /* TransportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */; };
@@ -659,6 +662,9 @@
 		F64425BC2655F7EA00C47841 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		F64FEF6D266A32FA00D8F775 /* TransporterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporterTableViewCell.swift; sourceTree = "<group>"; };
+		F659DFC0266C74D100ECE851 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		F659DFC3266C832300ECE851 /* MethodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodCollectionViewCell.swift; sourceTree = "<group>"; };
+		F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodTableViewCell.swift; sourceTree = "<group>"; };
 		F66074012660ED340059753F /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		F66074162660F1230059753F /* CategoryHeaderTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryHeaderTableView.swift; sourceTree = "<group>"; };
 		F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1583,6 +1589,7 @@
 				CFD56FD92635CBE800B17AEA /* OrderInfoViewController.swift */,
 				CFD56FDA2635CBE800B17AEA /* OrderCollectionViewCell.swift */,
 				F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */,
+				F659DFC0266C74D100ECE851 /* PaymentViewController.swift */,
 			);
 			path = OrderInformation;
 			sourceTree = "<group>";
@@ -1595,6 +1602,8 @@
 				F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */,
 				F64FEF6D266A32FA00D8F775 /* TransporterTableViewCell.swift */,
 				F66DBE28266BC08700C0AC30 /* BillerCollectionViewCell.swift */,
+				F659DFC3266C832300ECE851 /* MethodCollectionViewCell.swift */,
+				F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */,
 			);
 			path = Transporters;
 			sourceTree = "<group>";
@@ -1938,6 +1947,7 @@
 				CFAF8F3325FC507C000E2CCA /* VideoPropertyView.swift in Sources */,
 				CFAF8E3B25FC4EDD000E2CCA /* UIFont+Extension.swift in Sources */,
 				CFAF8F3625FC507C000E2CCA /* LiveView.swift in Sources */,
+				F659DFC7266CAF3200ECE851 /* MethodTableViewCell.swift in Sources */,
 				CFAF8E5325FC4EDD000E2CCA /* Comparable+Clamp.swift in Sources */,
 				CFBA8025262D765C000E1ED2 /* ProductParameter.swift in Sources */,
 				CFAF8F0D25FC507C000E2CCA /* NISnapshotRotation.m in Sources */,
@@ -1952,6 +1962,7 @@
 				CFAF8E5425FC4EDD000E2CCA /* CGSize+Extension.swift in Sources */,
 				CFAF8E2E25FC4EDD000E2CCA /* BaseShimmerView.swift in Sources */,
 				CFD56FEC2635CBE800B17AEA /* OrderInfoViewController.swift in Sources */,
+				F659DFC1266C74D100ECE851 /* PaymentViewController.swift in Sources */,
 				CFAF8EFE25FC507C000E2CCA /* NINetworkActivity.m in Sources */,
 				CFAF8E4B25FC4EDD000E2CCA /* UserDefault+Extension.swift in Sources */,
 				CFAF8E4025FC4EDD000E2CCA /* UIImage+Extension.swift in Sources */,
@@ -2087,6 +2098,7 @@
 				CFAF8E2F25FC4EDD000E2CCA /* BaseShimmerProtocol.swift in Sources */,
 				CFAF8E6425FC4EDD000E2CCA /* ChatTextManager.swift in Sources */,
 				CFAF8E5725FC4EDD000E2CCA /* Ultilities.swift in Sources */,
+				F659DFC4266C832300ECE851 /* MethodCollectionViewCell.swift in Sources */,
 				CFAF8F4125FC507C000E2CCA /* MenuItemView.swift in Sources */,
 				CFAF8E3525FC4EDD000E2CCA /* TitleTextField.swift in Sources */,
 				CFAF8FBC25FC545D000E2CCA /* PopUpSlideImageController.swift in Sources */,

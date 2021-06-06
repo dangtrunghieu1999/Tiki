@@ -136,7 +136,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         case .banner:
             return CGSize(width: width, height: 140)
         case .menu:
-            return CGSize(width: width, height: 180)
+            return CGSize(width: width, height: 225)
         case .seperator:
             return CGSize(width: width, height: 8)
         case .header:
