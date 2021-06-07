@@ -17,11 +17,6 @@ class AppRouter: NSObject {
         viewController.present(nvc, animated: true, completion: nil)
     }
     
-    class func pushToViewLoginNeeeded(viewController: UIViewController) {
-        let vc = LoginInNeededViewController()
-        UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
-    }
-    
     class func pushViewToGetProfile(viewController: UIViewController) {
         let vc = ProfileViewController()
         UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
@@ -59,14 +54,7 @@ class AppRouter: NSObject {
                                      dismis: @escaping ImageCropperDismiss) {
         
     }
-    
-    class func pushToCropCoverImageVC(image: UIImage,
-                                      delegate: UpdateCoverImageViewControllerDelegate?,
-                                      avatarURL: String?,
-                                      displayName: String) {
         
-    }
-    
     class func presentToImagePicker(pickerDelegate: ImagePickerControllerDelegate?,
                                     limitImage: Int = 1,
                                     selecedAssets: [PHAsset] = []) {
