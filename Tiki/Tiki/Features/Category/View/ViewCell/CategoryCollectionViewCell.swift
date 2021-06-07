@@ -18,7 +18,6 @@ class CategoryCollectionViewCell: BaseCollectionViewCell {
         imageView.image = ImageManager.productImage
         return imageView
     }()
-    
 
     override func initialize() {
         super.initialize()

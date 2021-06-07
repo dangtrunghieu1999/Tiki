@@ -11,7 +11,7 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Variables
     
-    var menu: [Menu] = []
+    var menu: [Category] = []
     
     // MARK: - UI Elements
 
@@ -38,7 +38,7 @@ class MenuCollectionViewCell: BaseCollectionViewCell {
     
     // MARK: - Helper Method
     
-    func configCell(_ menu: [Menu]) {
+    func configCell(_ menu: [Category]) {
         self.menu = menu
         self.menuCollectionView.reloadData()
     }

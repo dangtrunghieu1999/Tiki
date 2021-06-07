@@ -27,7 +27,7 @@ class HomeViewController: BaseViewController {
     
     fileprivate var viewModel                   = HomeViewModel()
     fileprivate var banners:        [Banner]    = []
-    fileprivate var menu:           [Menu]      = []
+    fileprivate var categorys:      [Category]  = []
     fileprivate var products:       [Product]   = []
     fileprivate var cachedProducts: [Product]   = []
     fileprivate var isLoadMore                  = false
@@ -200,7 +200,8 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         case .menu:
             let cell: MenuCollectionViewCell    = collectionView.dequeueReusableCell(for: indexPath)
-            cell.configCell(menu)
+            cell.configCell(categorys)
+            CategoryManager.shared.menuCategory = categorys
             return cell
         case .seperator:
             let cell: FooterCollectionViewCell  = collectionView.dequeueReusableCell(for: indexPath)
@@ -276,7 +277,7 @@ extension HomeViewController {
 
         APIService.request(endPoint: endPoint) { [weak self] (apiResponse) in
             guard let self = self else { return }
-            self.menu = apiResponse.toArray([Menu.self])
+            self.categorys = apiResponse.toArray([Category.self])
 
         } onFailure: {  [weak self] (apiError) in
             self?.reloadDataWhenFinishLoadAPI()

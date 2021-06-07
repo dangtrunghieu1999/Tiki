@@ -9,8 +9,7 @@ import UIKit
 
 class CategoryViewController: BaseViewController {
     
-    
-    var viewModel = CategoryViewModel()
+    var viewModel = ViewModel()
     
     fileprivate lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -36,12 +35,16 @@ class CategoryViewController: BaseViewController {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             if #available(iOS 11, *) {
-                make.top.equalTo(view.safeAreaLayoutGuide)
+                make.top
+                    .equalTo(view.safeAreaLayoutGuide)
             } else {
-                make.top.equalTo(topLayoutGuide.snp.bottom)
+                make.top
+                    .equalTo(topLayoutGuide.snp.bottom)
             }
-            make.bottom.equalToSuperview()
-            make.left.right.equalToSuperview()
+            make.bottom
+                .equalToSuperview()
+            make.left.right
+                .equalToSuperview()
         }
     }
 }

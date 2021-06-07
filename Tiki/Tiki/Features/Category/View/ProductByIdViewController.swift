@@ -7,11 +7,10 @@
 
 import UIKit
 
-class ProductByCateogryViewController: BaseViewController {
-
+class ProductByIdViewController: BaseViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
-
 }

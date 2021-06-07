@@ -10,7 +10,11 @@ import UIKit
 class CategoryTableViewCell: BaseTableViewCell {
 
     
-    let data: [UIImage?] = [UIImage(named: "c1"), UIImage(named: "c2"), UIImage(named: "c3"), UIImage(named: "c4"), UIImage(named: "c5")]
+    let data: [UIImage?] = [UIImage(named: "c1")
+                            , UIImage(named: "c2"),
+                            UIImage(named: "c3"),
+                            UIImage(named: "c4"),
+                            UIImage(named: "c5")]
     
     fileprivate lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

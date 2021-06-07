@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryViewModel {
+class ViewModel {
     let titleCategory: [String?] = ["Điện thoại - Máy tính bảng",
                                     "Laptop - Máy vi tính - Linh kiện",
                                     "Điện gia dụng",
@@ -19,4 +19,5 @@ class CategoryViewModel {
                                     "Đồng hồ và trang sức",
                                     "Ô tô - Xe máy - Xe đạp"
     ]
+    
 }
