@@ -27,6 +27,12 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
         setupViewImageView()
     }
     
+    func configCell(_ image: String?) {
+        if let url = image {
+            imageView.loadImage(by: url)
+        }
+    }
+    
     func setupData(_ photo: Photo) {
         if let image = photo.currentImage {
             imageView.image = image
@@ -38,7 +44,7 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     private func setupViewImageView() {
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.left.right.top.bottom.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     

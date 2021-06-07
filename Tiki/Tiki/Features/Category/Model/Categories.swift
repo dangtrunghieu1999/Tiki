@@ -7,13 +7,13 @@
 
 import SwiftyJSON
 
-class Category: NSObject, JSONParsable {
+class Categories: NSObject, JSONParsable {
     
     var uuid:  Int?              = 0
     var name:  String?           = ""
     var image: String?           = ""
     var parentId: Int?           = 0
-    var subCategorys: [Category]     = []
+    var subCategorys: [Categories]     = []
     
     required override init() {}
     required init(json: JSON) {

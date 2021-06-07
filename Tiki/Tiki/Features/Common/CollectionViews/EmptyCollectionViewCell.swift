@@ -51,7 +51,7 @@ class EmptyCollectionViewCell: BaseCollectionViewCell {
     private func layoutEmptyView() {
         addSubview(emptyView)
         emptyView.snp.makeConstraints { (make) in
-            make.left.right.bottom.top.equalToSuperview()
+            make.edges.equalToSuperview()
         }
     }
     

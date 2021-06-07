@@ -92,8 +92,11 @@ extension CartViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-        return CGSize(width: collectionView.frame.width, height: 50)
+        if CartManager.shared.cartShopInfos.isEmpty {
+            return CGSize(width: collectionView.frame.width, height: 0)
+        } else {
+            return CGSize(width: collectionView.frame.width, height: 50)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView,
@@ -129,7 +132,7 @@ extension CartViewController: UICollectionViewDataSource {
         if CartManager.shared.cartShopInfos.isEmpty {
             let cell: EmptyCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.message = TextManager.emptyCart
-            cell.image = ImageManager.empty
+            cell.image = ImageManager.icon_logo2
             cartCollectionView.backgroundColor = UIColor.clear
             orderBuyView.isHidden = true
             return cell

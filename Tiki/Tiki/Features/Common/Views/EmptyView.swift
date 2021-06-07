@@ -70,9 +70,12 @@ class EmptyView: BaseView {
     private func layoutImageView() {
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.width.height.equalTo(Dimension.shared.largeMargin_120)
+            make.width
+                .height
+                .equalTo(Dimension.shared.largeMargin_120)
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-Dimension.shared.mediumMargin)
+            make.centerY.equalToSuperview()
+                
         }
     }
     
@@ -80,7 +83,8 @@ class EmptyView: BaseView {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.top.equalTo(imageView.snp.bottom).offset(Dimension.shared.mediumMargin)
+            make.top.equalTo(imageView.snp.bottom)
+                .offset(Dimension.shared.mediumMargin)
         }
     }
 }

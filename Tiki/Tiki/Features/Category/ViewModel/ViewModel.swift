@@ -8,16 +8,16 @@
 import UIKit
 
 class ViewModel {
-    let titleCategory: [String?] = ["Điện thoại - Máy tính bảng",
-                                    "Laptop - Máy vi tính - Linh kiện",
-                                    "Điện gia dụng",
-                                    "Làm đẹp - Sức khoẻ",
-                                    "Nhà cửa đời sống",
-                                    "Thời trang nữ",
-                                    "Thời trang nam",
-                                    "Phụ kiện thời trang",
-                                    "Đồng hồ và trang sức",
-                                    "Ô tô - Xe máy - Xe đạp"
+    let titleCategory: [String?] = ["Điện Thoại - Máy Tính Bảng",
+                                    "Điện Tử - Điện Lạnh",
+                                    "Thiết Bị Số - Phụ Kiện Số",
+                                    "Laptop - Máy Vi Tính - Linh kiện",
+                                    "Máy Ảnh - Máy Quay Phim",
+                                    "Điện Gia Dụng",
+                                    "Nhà Cửa - Đời Sống",
+                                    "Thể Thao - Dã Ngoại",
+                                    "Làm Đẹp - Sức Khỏe",
+                                    "Ô Tô - Xe Máy - Xe Đạp"
     ]
     
 }

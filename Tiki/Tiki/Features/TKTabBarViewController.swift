@@ -19,7 +19,7 @@ class TKTabBarViewController: UITabBarController {
         homeNavigationVC.tabBarItem = UITabBarItem(title: TextManager.home, image: ImageManager.home, tag: 0)
         homeNavigationVC.tabBarItem.imageInsets = insets
         
-        let categorygNavigationVC = UINavigationController(rootViewController: CategoryViewController())
+        let categorygNavigationVC = UINavigationController(rootViewController: CategoriesViewController())
         categorygNavigationVC.tabBarItem = UITabBarItem(title: TextManager.category, image: ImageManager.category, tag: 1)
         categorygNavigationVC.tabBarItem.imageInsets = insets
     

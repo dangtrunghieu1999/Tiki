@@ -7,14 +7,9 @@
 
 import UIKit
 
-class CategoryTableViewCell: BaseTableViewCell {
+class CategoriesViewCell: BaseCollectionViewCell {
 
-    
-    let data: [UIImage?] = [UIImage(named: "c1")
-                            , UIImage(named: "c2"),
-                            UIImage(named: "c3"),
-                            UIImage(named: "c4"),
-                            UIImage(named: "c5")]
+    private var categories: [Categories] = []
     
     fileprivate lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -28,16 +23,15 @@ class CategoryTableViewCell: BaseTableViewCell {
         collectionView.dataSource = self
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = UIColor.white
-        collectionView.registerReusableCell(CategoryCollectionViewCell.self)
+        collectionView.registerReusableCell(ImageCollectionViewCell.self)
         return collectionView
     }()
     
-
     override func initialize() {
         super.initialize()
         layoutCategoryCollectionView()
     }
-
+    
     private func layoutCategoryCollectionView() {
         addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
@@ -46,7 +40,7 @@ class CategoryTableViewCell: BaseTableViewCell {
     }
 }
 
-extension CategoryTableViewCell: UICollectionViewDelegateFlowLayout {
+extension CategoriesViewCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -55,16 +49,23 @@ extension CategoryTableViewCell: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension CategoryTableViewCell: UICollectionViewDataSource {
+extension CategoriesViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 5
+        
+        return categories[safe:section]?.subCategorys.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: CategoryCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-        cell.configCell(data[indexPath.row])
+        let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        let section = indexPath.section
+        let row     = indexPath.row
+        
+        if let category = categories[safe: section]?.subCategorys[safe: row] {
+            cell.configCell(category.image)
+        }
+        
         return cell
     }
 

@@ -80,7 +80,8 @@ class ImageTitleCollectionViewCell: BaseCollectionViewCell {
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(imageView.snp.bottom)
                 .offset(dimension.smallMargin)
-            make.left.right.equalToSuperview()
+            make.left.right
+                .equalToSuperview()
         }
     }
 }
