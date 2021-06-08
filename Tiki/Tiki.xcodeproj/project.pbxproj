@@ -306,10 +306,10 @@
 		F659DFC1266C74D100ECE851 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC0266C74D100ECE851 /* PaymentViewController.swift */; };
 		F659DFC4266C832300ECE851 /* MethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC3266C832300ECE851 /* MethodCollectionViewCell.swift */; };
 		F659DFC7266CAF3200ECE851 /* MethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */; };
-		F66074022660ED340059753F /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66074012660ED340059753F /* CategoriesCollectionViewCell.swift */; };
 		F662B3CF266A1ABA002E7BFA /* TransportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */; };
 		F66DBE29266BC08700C0AC30 /* BillerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66DBE28266BC08700C0AC30 /* BillerCollectionViewCell.swift */; };
 		F671F407265DEC5C009743D3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671F406265DEC5C009743D3 /* ProfileViewModel.swift */; };
+		F672B27B266F204A00C285D1 /* CategoriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F672B27A266F204A00C285D1 /* CategoriesTableViewCell.swift */; };
 		F68784462653C7CE00A09AEC /* ThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784452653C7CE00A09AEC /* ThroughView.swift */; };
 		F68784492653C7F400A09AEC /* ShowHidePulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */; };
 		F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */; };
@@ -659,10 +659,10 @@
 		F659DFC0266C74D100ECE851 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		F659DFC3266C832300ECE851 /* MethodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodCollectionViewCell.swift; sourceTree = "<group>"; };
 		F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodTableViewCell.swift; sourceTree = "<group>"; };
-		F66074012660ED340059753F /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportCollectionViewCell.swift; sourceTree = "<group>"; };
 		F66DBE28266BC08700C0AC30 /* BillerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillerCollectionViewCell.swift; sourceTree = "<group>"; };
 		F671F406265DEC5C009743D3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		F672B27A266F204A00C285D1 /* CategoriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesTableViewCell.swift; sourceTree = "<group>"; };
 		F68784452653C7CE00A09AEC /* ThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThroughView.swift; sourceTree = "<group>"; };
 		F68784482653C7F300A09AEC /* ShowHidePulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowHidePulleyView.swift; sourceTree = "<group>"; };
 		F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreProductPulleyView.swift; sourceTree = "<group>"; };
@@ -1667,7 +1667,7 @@
 		F600CA82266DB203004DC6FF /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				F66074012660ED340059753F /* CategoriesCollectionViewCell.swift */,
+				F672B27A266F204A00C285D1 /* CategoriesTableViewCell.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -2165,6 +2165,7 @@
 				CFEC28A7260C9C3A008B90E7 /* PasswordViewController.swift in Sources */,
 				CFAF8E4725FC4EDD000E2CCA /* UITableView+Extension.swift in Sources */,
 				CFAF8F0725FC507C000E2CCA /* NIImageUtilities.m in Sources */,
+				F672B27B266F204A00C285D1 /* CategoriesTableViewCell.swift in Sources */,
 				CFAF8E4525FC4EDD000E2CCA /* UIApplication+Exension.swift in Sources */,
 				CFAF8F4025FC507C000E2CCA /* CAPSPageMenu+Options.swift in Sources */,
 				CFAF8E6625FC4EDD000E2CCA /* ShopTextManager.swift in Sources */,
@@ -2179,7 +2180,6 @@
 				F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */,
 				CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */,
 				CFAF8F1E25FC507C000E2CCA /* ImagePickerController.swift in Sources */,
-				F66074022660ED340059753F /* CategoriesCollectionViewCell.swift in Sources */,
 				F6061BB9265A9D1A003111CA /* ChangePWViewController.swift in Sources */,
 				CFD56FEF2635CBE800B17AEA /* PaymentCollectionViewCell.swift in Sources */,
 				CFAF8FC025FC545D000E2CCA /* Photo.swift in Sources */,

@@ -63,6 +63,7 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
             make.top
                 .bottom
                 .equalToSuperview()
+                .inset(dimension.mediumMargin)
         }
     }
     

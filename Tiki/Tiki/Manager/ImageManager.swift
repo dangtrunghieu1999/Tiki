@@ -166,6 +166,7 @@ final class ImageManager {
     
     static let icon_momo                         = UIImage(named: "icon_momo")
     static let icon_cash                         = UIImage(named: "icon_cash")
+    static let icon_triangle                     = UIImage(named: "icon_triangle")
     
     // MAKR: - Temp
     
