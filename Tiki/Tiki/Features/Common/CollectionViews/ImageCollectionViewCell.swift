@@ -16,6 +16,12 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
+    var cornerRadius: CGFloat = 0.0 {
+        didSet {
+            imageView.layer.cornerRadius = cornerRadius
+        }
+    }
+    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -25,6 +31,12 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         setupViewImageView()
+    }
+    
+    func borderColorCell() {
+        layer.borderColor = UIColor.separator.cgColor
+        layer.borderWidth = 1
+        layer.cornerRadius = dimension.conerRadiusMedium
     }
     
     func configCell(_ image: String?) {
@@ -44,7 +56,13 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     private func setupViewImageView() {
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.left
+                .right
+                .equalToSuperview()
+                .inset(dimension.mediumMargin)
+            make.top
+                .bottom
+                .equalToSuperview()
         }
     }
     

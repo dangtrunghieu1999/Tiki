@@ -9,6 +9,8 @@ import SwiftyJSON
 
 class Categories: NSObject, JSONParsable {
     
+//    private var identifier: String = UUID().uuidString
+    
     var uuid:  Int?              = 0
     var name:  String?           = ""
     var image: String?           = ""
@@ -17,10 +19,12 @@ class Categories: NSObject, JSONParsable {
     
     required override init() {}
     required init(json: JSON) {
-       
-        self.uuid   = json["id"].intValue
-        self.name   = json["name"].stringValue
-        self.image  = json["image"].stringValue
+        
+        self.uuid          = json["id"].intValue
+        self.name          = json["name"].stringValue
+        self.image         = json["image"].stringValue
+        self.subCategorys  = json["subCategorys"].arrayValue.map {Categories(json: $0)}
     }
 }
+
 
