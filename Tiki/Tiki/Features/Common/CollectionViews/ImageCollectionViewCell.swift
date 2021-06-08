@@ -31,12 +31,15 @@ class ImageCollectionViewCell: BaseCollectionViewCell {
     
     override func initialize() {
         setupViewImageView()
+        setupBoderCell()
     }
     
-    func borderColorCell() {
+    func setupBoderCell() {
         layer.borderColor = UIColor.separator.cgColor
         layer.borderWidth = 1
+        layer.masksToBounds = true
         layer.cornerRadius = dimension.conerRadiusMedium
+        backgroundColor = UIColor.separator
     }
     
     func configCell(_ image: String?) {

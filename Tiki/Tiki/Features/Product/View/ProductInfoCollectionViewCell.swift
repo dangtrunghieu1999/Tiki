@@ -14,7 +14,7 @@ class ProductInfoCollectionViewCell: BaseCollectionViewCell {
     // MARK: - Variables
     
     var product: Product?
-    
+    var photos: [Photo]? = []
     // MARK: - UI Elements
     
     fileprivate lazy var pageView: FSPagerView = {
@@ -114,6 +114,22 @@ class ProductInfoCollectionViewCell: BaseCollectionViewCell {
         return ScreenSize.SCREEN_WIDTH + nameHeight + 140
     }
     
+    func configDataInfomation(product: Product?) {
+        self.product = product
+        self.photos = product?.photos
+        self.numberLabel.text = "1/\(product?.photos.count ?? 0)"
+        let productName = product?.name ?? ""
+        self.titleLabel.attributedText = Ultilities.lineSpacingLabel(title: productName)
+        self.ratingView.value = CGFloat(product?.rating ?? 0)
+        self.numberReviewLabel.text = "(Xem \(product?.number_comment ?? 0) đánh giá)"
+        self.promotionPriceLabel.text = product?.promoPrice.currencyFormat
+        let originalPrice = product?.unitPrice
+        self.originalPriceLabel.attributedText = Ultilities.drawLineBetween(price: originalPrice)
+        let promotionPercent = product?.promotion_percent ?? 0
+        self.promotionPercentLabel.text = "-\(promotionPercent)%"
+        self.pageView.reloadData()
+    }
+    
     // MARK: - GET API
     
     // MARK: - Layout
@@ -204,11 +220,11 @@ class ProductInfoCollectionViewCell: BaseCollectionViewCell {
 
 extension ProductInfoCollectionViewCell: FSPagerViewDataSource {
     func numberOfItems(in pagerView: FSPagerView) -> Int {
-        return product?.photos.count ?? 0
+        return photos?.count ?? 0
     }
     
     func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let imageURL = product?.photos[index].url
+        let imageURL = photos?[index].url
         let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
         cell.imageView?.sd_setImage(with: imageURL?.url, completed: nil)
         cell.imageView?.contentMode = .scaleToFill
@@ -231,24 +247,5 @@ extension ProductInfoCollectionViewCell: FSPagerViewDelegate {
     
     func pagerViewDidEndScrollAnimation(_ pagerView: FSPagerView) {
         self.numberLabel.text = "\(pagerView.currentIndex)/\(product?.photos.count ?? 0)"
-    }
-}
-
-// MARK: - ProductDetailProtocol
-
-extension ProductInfoCollectionViewCell: ProductDetailProtocol {
-    func configDataInfomation(product: Product?) {
-        self.product = product
-        self.pageView.reloadData()
-        self.numberLabel.text = "1/\(product?.photos.count ?? 0)"
-        let productName = product?.name ?? ""
-        self.titleLabel.attributedText = Ultilities.lineSpacingLabel(title: productName)
-        self.ratingView.value = CGFloat(product?.rating ?? 0)
-        self.numberReviewLabel.text = "(Xem \(product?.number_comment ?? 0) đánh giá)"
-        self.promotionPriceLabel.text = product?.promoPrice.currencyFormat
-        let originalPrice = product?.unitPrice
-        self.originalPriceLabel.attributedText = Ultilities.drawLineBetween(price: originalPrice)
-        let promotionPercent = product?.promotion_percent ?? 0
-        self.promotionPercentLabel.text = "-\(promotionPercent)%"
     }
 }

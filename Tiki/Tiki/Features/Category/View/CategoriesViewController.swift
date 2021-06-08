@@ -158,11 +158,6 @@ extension CategoriesViewController: UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ImageCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         cell.configCell(subCategories?[indexPath.row].image)
-        cell.layer.borderColor = UIColor.separator.cgColor
-        cell.layer.borderWidth = 1
-        cell.layer.masksToBounds = true
-        cell.layer.cornerRadius = dimension.conerRadiusMedium
-        cell.backgroundColor = UIColor.separator
         return cell
     }
 }

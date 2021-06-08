@@ -11,6 +11,6 @@ class ProductByIdViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
+    
 }
