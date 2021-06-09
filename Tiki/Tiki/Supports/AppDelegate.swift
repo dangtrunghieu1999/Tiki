@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = TKTabBarViewController()
-//        window?.rootViewController = UINavigationController(rootViewController: CategoriesViewController())
+//        window?.rootViewController = TKTabBarViewController()
+        window?.rootViewController = UINavigationController(rootViewController: CategoriesViewController())
         
 //        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

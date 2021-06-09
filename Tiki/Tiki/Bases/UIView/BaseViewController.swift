@@ -66,6 +66,8 @@ open class BaseViewController: UIViewController {
         rect.size.height = 36
         searchBar.frame = rect
         searchBar.clearButtonMode = .whileEditing
+        searchBar.delegate = self
+        searchBar.endEditing(true)
         searchBar.addTarget(self, action: #selector(touchInSearchBar), for: .editingDidBegin)
         searchBar.addTarget(self, action: #selector(searchBarValueChange(_:)), for: .editingChanged)
         searchBar.delegate = self
@@ -140,6 +142,7 @@ open class BaseViewController: UIViewController {
         addTapOnSuperViewDismissKeyboard()
         setupUIComponents()
         handleDefaultNotification()
+        setupHideKeyboardOnTap()
     }
     
     deinit {

@@ -11,7 +11,7 @@ import Foundation
 class APIConfig {
     
     static var baseURLString: String {
-        return "http://96.44.159.139:8081"
+        return "http://96.44.159.139:8881"
     }
     
 }

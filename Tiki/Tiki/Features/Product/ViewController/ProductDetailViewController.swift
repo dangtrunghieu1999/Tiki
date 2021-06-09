@@ -331,6 +331,7 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return cell
         case .advanedShop:
             let cell: ProductAdvanedCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configGureeteTitleLabel(title: product.guarantee)
             return cell
         case .infoDetail:
             let cell: ProductDetailsCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)

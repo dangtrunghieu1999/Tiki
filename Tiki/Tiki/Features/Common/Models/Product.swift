@@ -21,6 +21,7 @@ class Product: NSObject, JSONParsable, NSCopying{
     var promoPrice: Double  = 0.0
     var photos: [Photo]     = []
     var descriptions        = ""
+    var guarantee: String   = ""
     var rating:Double       = 0.0
     var status              = 0
     var number_comment      = 0
@@ -50,12 +51,13 @@ class Product: NSObject, JSONParsable, NSCopying{
         id                  = json["id"].int
         name                = json["name"].stringValue
         photos              = json["photos"].arrayValue.map { Photo(json: $0) }
-        descriptions        = json["descriptions"].stringValue
+        descriptions        = json["description"].stringValue
         unitPrice           = json["unit_price"].doubleValue
-        promoPrice          = json["promotion_price"].doubleValue
+        promoPrice          = json["price"].doubleValue
         rating              = json["rating"].doubleValue
         number_comment      = json["number_comment"].intValue
         promotion_percent   = json["promotion_percent"].intValue
+        guarantee           = json["guarantee"].stringValue
         shopName            = json["shopName"].stringValue
         shopAvatar          = json["shopAvatar"].stringValue
         shopId              = json["shopId"].intValue

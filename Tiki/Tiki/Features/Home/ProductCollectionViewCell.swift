@@ -139,7 +139,7 @@ class ProductCollectionViewCell: BaseCollectionViewCell {
     }
     
     func configCell(_ product: Product) {
-        self.productImageView.loadImage(by: ""
+        self.productImageView.loadImage(by: product.photos[0].url
                                         , defaultImage: UIImage(named: "temp1"))
         self.productTitleLabel.text  = product.name
         self.numberReviewLabel.text  = "(\(product.number_comment))"

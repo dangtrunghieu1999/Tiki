@@ -15,15 +15,15 @@ class Categories: NSObject, JSONParsable {
     var name:  String?           = ""
     var image: String?           = ""
     var parentId: Int?           = 0
-    var subCategorys: [Categories]     = []
+    var subCategories: [Categories]     = []
     
     required override init() {}
     required init(json: JSON) {
         
-        self.uuid          = json["id"].intValue
-        self.name          = json["name"].stringValue
-        self.image         = json["image"].stringValue
-        self.subCategorys  = json["subCategorys"].arrayValue.map {Categories(json: $0)}
+        self.uuid           = json["id"].intValue
+        self.name           = json["name"].stringValue
+        self.image          = json["image"].stringValue
+        self.subCategories  = json["subCategories"].arrayValue.map {Categories(json: $0)}
     }
 }
 

@@ -68,7 +68,7 @@ class CategoriesViewController: BaseViewController {
             guard let self = self else { return }
             self.hideLoading()
             self.categories = apiResponse.toArray([Categories.self])
-            self.subCategories = self.categories?[self.selectIndex].subCategorys
+            self.subCategories = self.categories?[self.selectIndex].subCategories
             self.reloadDataWhenFinishLoadAPI()
         } onFailure: {  [weak self] (apiError) in
             self?.reloadDataWhenFinishLoadAPI()
@@ -142,7 +142,11 @@ extension CategoriesViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CategoriesViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        let vc = ProductByIdViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }
 
 // MARK: - UICollectionViewDataSource
@@ -171,7 +175,7 @@ extension CategoriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         selectIndex = indexPath.row
-        self.subCategories = self.categories?[selectIndex].subCategorys
+        self.subCategories = self.categories?[selectIndex].subCategories
         tableView.reloadData()
         self.collectionView.reloadData()
     }
