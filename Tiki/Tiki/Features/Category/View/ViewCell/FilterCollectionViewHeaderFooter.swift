@@ -9,6 +9,11 @@ import UIKit
 
 class FilterCollectionViewHeaderFooter: BaseCollectionViewHeaderFooterCell {
     
+    let pulleyView: FilterCouponPulleyView = {
+        let view = FilterCouponPulleyView()
+        return view
+    }()
+
     override func initialize() {
         super.initialize()
     }

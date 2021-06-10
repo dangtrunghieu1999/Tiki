@@ -314,6 +314,9 @@
 		F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */; };
 		F69BECDF265A5457003C8AF5 /* VerifyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */; };
 		F6A566F7266B76CB00B22ECA /* OrderProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */; };
+		F6F37D562671B94C00621672 /* CheckListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F37D542671B94C00621672 /* CheckListCollectionViewCell.swift */; };
+		F6F37D572671B94C00621672 /* FilterCouponPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F37D552671B94C00621672 /* FilterCouponPulleyView.swift */; };
+		F6F37D5C2671B9E600621672 /* FilterCouponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F37D5B2671B9E600621672 /* FilterCouponViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -666,6 +669,9 @@
 		F687844B2653C97200A09AEC /* SeeMoreProductPulleyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeMoreProductPulleyView.swift; sourceTree = "<group>"; };
 		F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneViewController.swift; sourceTree = "<group>"; };
 		F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductTableViewCell.swift; sourceTree = "<group>"; };
+		F6F37D542671B94C00621672 /* CheckListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6F37D552671B94C00621672 /* FilterCouponPulleyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCouponPulleyView.swift; sourceTree = "<group>"; };
+		F6F37D5B2671B9E600621672 /* FilterCouponViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCouponViewModel.swift; sourceTree = "<group>"; };
 		FC0B2C5CBBAF800C2BDAF55A /* Pods-Tiki.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiki.debug.xcconfig"; path = "Target Support Files/Pods-Tiki/Pods-Tiki.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1655,6 +1661,9 @@
 		F600CA82266DB203004DC6FF /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				F6F37D592671B95600621672 /* filter */,
+				F6F37D542671B94C00621672 /* CheckListCollectionViewCell.swift */,
+				F6F37D552671B94C00621672 /* FilterCouponPulleyView.swift */,
 				F672B27A266F204A00C285D1 /* CategoriesTableViewCell.swift */,
 				F6600A9D2670A3C5002DF8CB /* FilterCollectionViewHeaderFooter.swift */,
 			);
@@ -1709,6 +1718,14 @@
 				F64425BC2655F7EA00C47841 /* Review.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F6F37D592671B95600621672 /* filter */ = {
+			isa = PBXGroup;
+			children = (
+				F6F37D5B2671B9E600621672 /* FilterCouponViewModel.swift */,
+			);
+			path = filter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1921,6 +1938,7 @@
 				CFAF8F0925FC507C000E2CCA /* NIFoundationMethods.m in Sources */,
 				F68784462653C7CE00A09AEC /* ThroughView.swift in Sources */,
 				CFAF8F1025FC507C000E2CCA /* FLAnimatedImageView.m in Sources */,
+				F6F37D572671B94C00621672 /* FilterCouponPulleyView.swift in Sources */,
 				CF6F242C2649775100693504 /* SignInViewModel.swift in Sources */,
 				CFAF8E5D25FC4EDD000E2CCA /* UploadManager.swift in Sources */,
 				F64014A12653F9AD00B80A21 /* OrderProcessViewController.swift in Sources */,
@@ -1963,6 +1981,7 @@
 				CF4A01FF261EADDD003734EC /* NotificationViewController.swift in Sources */,
 				CFAF8F0125FC507C000E2CCA /* UIResponder+NimbusCore.m in Sources */,
 				CFAF8E2D25FC4EDD000E2CCA /* ShimmerButton.swift in Sources */,
+				F6F37D562671B94C00621672 /* CheckListCollectionViewCell.swift in Sources */,
 				CFAF8E2825FC4EDD000E2CCA /* BaseCollectionViewHeaderFooterCell.swift in Sources */,
 				CFAF8E2C25FC4EDD000E2CCA /* BaseView.swift in Sources */,
 				CFAF8FD225FC545D000E2CCA /* WebViewViewController.swift in Sources */,
@@ -2098,6 +2117,7 @@
 				CF2EC69A261DAA2700161AF3 /* ImageTitleCollectionViewCell.swift in Sources */,
 				CFAF8E6225FC4EDD000E2CCA /* CommonTextManager.swift in Sources */,
 				CFAF8E5C25FC4EDD000E2CCA /* ImageManager.swift in Sources */,
+				F6F37D5C2671B9E600621672 /* FilterCouponViewModel.swift in Sources */,
 				F66DBE29266BC08700C0AC30 /* BillerCollectionViewCell.swift in Sources */,
 				CFAF8E3A25FC4EDD000E2CCA /* UIImageView+Extension.swift in Sources */,
 				CFAF8EFC25FC507C000E2CCA /* NIViewRecycler.m in Sources */,

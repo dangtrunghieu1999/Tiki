@@ -46,6 +46,11 @@ class TitleCollectionViewHeaderCell: BaseCollectionViewHeaderFooterCell {
         setupViewTitleLabel()
     }
     
+    func configureTitle(_ title: String) {
+        self.titleLabel.text = title
+    }
+
+    
     private func setupViewbackgroundView() {
         addSubview(view)
         view.snp.makeConstraints { (make) in
