@@ -13,7 +13,7 @@ final class AppConfig {
     static let coverImageRatio: CGFloat                 = 0.5
     static let minDate                                  = "01/01/1935".toDate(with: .shortDateUserFormat)
     static let defaultDate                              = "01/01/1990".toDate(with: .shortDateUserFormat)
-    static let imageDomain                              = "https:/fitfood.topfly.vn"
+    static let imageDomain                              = "https://shortest.link/mfI"
     static let defaultProductPerPage                    = 6
     static let defaultSearchResultsPerPage              = 15
 }

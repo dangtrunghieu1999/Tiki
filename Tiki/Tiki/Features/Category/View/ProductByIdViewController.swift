@@ -11,8 +11,10 @@ class ProductByIdViewController: BaseViewController {
     
     fileprivate var products:       [Product]   = []
     fileprivate var cachedProducts: [Product]   = []
+    fileprivate var productsResponse: [Product] = []
     fileprivate var isLoadMore                  = false
     fileprivate var canLoadMore                 = true
+    var idProductByCategrory: Int?
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -30,7 +32,7 @@ class ProductByIdViewController: BaseViewController {
             LoadMoreCollectionViewCell.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
         collectionView.registerReusableSupplementaryView(
-            BaseCollectionViewHeaderFooterCell.self,
+            FilterCollectionViewHeaderFooter.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         return collectionView
     }()
@@ -101,7 +103,7 @@ extension ProductByIdViewController: UICollectionViewDataSource {
             footer.animiate(isLoadMore)
             return footer
         } else if kind == UICollectionView.elementKindSectionHeader {
-            let header: BaseCollectionViewHeaderFooterCell =
+            let header: FilterCollectionViewHeaderFooter =
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
             return header
         } else {
@@ -127,7 +129,7 @@ extension ProductByIdViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 80)
+        return CGSize(width: collectionView.frame.width, height: 60)
     }
 }
 
@@ -161,7 +163,11 @@ extension ProductByIdViewController {
     
     func requestAPIProducts() {
         
-        let endPoint = ProductEndPoint.getAllProduct
+        let params = ["pageNumber": 0,
+                      "pageSize": 5,
+                      "categoryId": idProductByCategrory ?? 0]
+        
+        let endPoint = ProductEndPoint.getAllCategoryById(parameters: params)
         
         if !isLoadMore {
             isRequestingAPI = true
@@ -169,16 +175,17 @@ extension ProductByIdViewController {
         
         APIService.request(endPoint: endPoint, onSuccess: { [weak self] (apiResponse) in
             guard let self = self else { return }
-            let productsResponse = apiResponse.toArray([Product.self])
+            let json       = apiResponse.data?["content"]
+            self.productsResponse  = json?.arrayValue.map { Product(json: $0)} ?? []
             
             if self.isLoadMore {
-                self.cachedProducts.append(contentsOf: productsResponse)
+                self.cachedProducts.append(contentsOf: self.productsResponse)
             } else {
-                self.cachedProducts = productsResponse
+                self.cachedProducts = self.productsResponse
             }
             
             if self.canLoadMore {
-                self.canLoadMore = !productsResponse.isEmpty
+                self.canLoadMore = !self.productsResponse.isEmpty
             }
             
             self.isRequestingAPI = false
@@ -188,7 +195,7 @@ extension ProductByIdViewController {
                 var reloadIndexPaths: [IndexPath] = []
                 let numberProducts = self.products.count
                 
-                for index in 0..<productsResponse.count {
+                for index in 0..<self.productsResponse.count {
                     reloadIndexPaths.append(
                         IndexPath(item: numberProducts + index,
                                   section: 0))

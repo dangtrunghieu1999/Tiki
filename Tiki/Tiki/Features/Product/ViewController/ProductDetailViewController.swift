@@ -336,7 +336,6 @@ extension ProductDetailViewController: UICollectionViewDataSource {
         case .infoDetail:
             let cell: ProductDetailsCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.delegate = self
-            cell.configValueTitle(values: product.parameter)
             return cell
         case .description:
             let cell: ProductDescribeCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)

@@ -30,7 +30,6 @@ class Product: NSObject, JSONParsable, NSCopying{
     var shopId: Int?
     var shopName            = ""
     var shopAvatar          = ""
-    var parameter: [String] = []
     var json                = JSON()
     
     var quantity = 1
@@ -61,7 +60,7 @@ class Product: NSObject, JSONParsable, NSCopying{
         shopName            = json["shopName"].stringValue
         shopAvatar          = json["shopAvatar"].stringValue
         shopId              = json["shopId"].intValue
-        parameter           = json["parameter"].arrayValue.map{$0.stringValue}
+        comments            = json["comment"].arrayValue.map{ Comment(json: $0)}
     }
     
     func copy(with zone: NSZone? = nil) -> Any {
@@ -103,23 +102,22 @@ extension Product {
         }
         
         dict["name"]                = name
-        dict["UnitPrice"]           = unitPrice
-        dict["PromoPrice"]          = promoPrice
-        
-        dict["Comments"]            = comments.map { $0.toDictionary() }
-        dict["Photos"]              = photos.map { $0.toDictionary() }
+        dict["price"]               = unitPrice
+        dict["price_sale"]          = promoPrice
+        dict["comment"]             = comments.map { $0.toDictionary() }
+        dict["photos"]              = photos.map { $0.toDictionary() }
         
         return dict
     }
     
     func toOrderDictionary() -> [String: Any] {
-        return ["ProductId": id ?? 0,
-                "PromoPrice": promoPrice,
-                "Quantity": quantity,
-                "TotalAmount": totalMoney,
-                "Discount": "",
-                "Name": name,
-                "UnitPrice": unitPrice]
+        return ["id": id ?? 0,
+                "price_sale": promoPrice,
+                "quantity": quantity,
+                "totalAmount": totalMoney,
+                "discount": "",
+                "name": name,
+                "price": unitPrice]
     }
 }
 

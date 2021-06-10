@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum ProductEndPoint {
-    case getAllCategory
+    case getAllCategoryById(parameters: Parameters)
     case createProduct(parameters: Parameters)
     case getAllProductByShopId(parameters: Parameters)
     case updateProduct(parameters: Parameters)
@@ -25,8 +25,6 @@ enum ProductEndPoint {
 extension ProductEndPoint: EndPointType {
     var path: String {
         switch self {
-        case .getAllCategory:
-            return "/Category/GetAll"
         case .createProduct:
             return "/Product/Create"
         case .getAllProductByShopId:
@@ -45,13 +43,13 @@ extension ProductEndPoint: EndPointType {
             return "/"
         case .getAllProduct:
             return "/product/loadmore"
+        case .getAllCategoryById:
+            return "/product/ref"
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .getAllCategory:
-            return .get
         case .createProduct:
             return .post
         case .getAllProductByShopId:
@@ -70,13 +68,13 @@ extension ProductEndPoint: EndPointType {
             return .post
         case .getAllProduct:
             return .get
+        case .getAllCategoryById:
+            return .get
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .getAllCategory:
-            return nil
         case .createProduct(let parameters):
             return parameters
         case .getAllProductByShopId(let parameters):
@@ -95,6 +93,8 @@ extension ProductEndPoint: EndPointType {
             return parameters
         case .getAllProduct:
             return nil
+        case .getAllCategoryById(let parameters):
+            return parameters
         }
     }
 }

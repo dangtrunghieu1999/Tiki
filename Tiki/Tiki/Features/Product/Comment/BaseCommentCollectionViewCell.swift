@@ -296,7 +296,7 @@ class BaseCommentCollectionViewCell: BaseCollectionViewCell {
         ratingView.snp.makeConstraints { (make) in
             make.left.equalTo(messageLabel)
             make.width.equalTo(130)
-            make.top.equalTo(imagesCollectionView.snp.bottom).offset(Cell.ratingViewTopMargin)
+//            make.top.equalTo(imagesCollectionView.snp.bottom).offset(Cell.ratingViewTopMargin)
             if isParentComment {
                 make.height.equalTo(Cell.ratingViewHeight)
                 make.top.equalTo(imagesCollectionView.snp.bottom)

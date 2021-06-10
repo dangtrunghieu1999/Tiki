@@ -35,7 +35,7 @@ class Comment: NSObject, JSONParsable {
         fullName    = json["fullName"].stringValue
         userAvatar  = json["userAvatar"].stringValue
         createOn    = json["createOn"].dateValue
-        photos      = json["Photos"].arrayValue.map { Photo(json: $0) }
+        photos      = json["photos"].arrayValue.map { Photo(json: $0) }
         commentChild = json["commentChild"].arrayValue.map { Comment(json: $0) }
     }
     
@@ -76,3 +76,4 @@ extension Comment {
         return dict
     }
 }
+

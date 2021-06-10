@@ -10,6 +10,6 @@ import UIKit
 class ProductChildCommentCollectionViewCell: BaseCommentCollectionViewCell {
     override func initialize() {
         super.initialize()
-        setupLayout(isParentComment: true)
+        setupLayout(isParentComment: false)
     }
 }

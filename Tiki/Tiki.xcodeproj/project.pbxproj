@@ -286,7 +286,6 @@
 		D3D31FCBF7CFFB2FE02B1431 /* Pods_Tiki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89804318629FE70AB5E51062 /* Pods_Tiki.framework */; };
 		F6061BB9265A9D1A003111CA /* ChangePWViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6061BB8265A9D1A003111CA /* ChangePWViewController.swift */; };
 		F60D4AEC26688D84001D321C /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60D4AEB26688D84001D321C /* HeaderCollectionViewCell.swift */; };
-		F60D4B5E2668D35C001D321C /* Comment.json in Resources */ = {isa = PBXBuildFile; fileRef = F60D4B5D2668D35C001D321C /* Comment.json */; };
 		F60D4B612668E677001D321C /* ProductCart.json in Resources */ = {isa = PBXBuildFile; fileRef = F60D4B602668E677001D321C /* ProductCart.json */; };
 		F60F0134265FA6240090839E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60F0133265FA6240090839E /* ViewController.swift */; };
 		F619BFD9266783000001A612 /* Banner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F619BFD8266783000001A612 /* Banner.swift */; };
@@ -305,6 +304,7 @@
 		F659DFC1266C74D100ECE851 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC0266C74D100ECE851 /* PaymentViewController.swift */; };
 		F659DFC4266C832300ECE851 /* MethodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC3266C832300ECE851 /* MethodCollectionViewCell.swift */; };
 		F659DFC7266CAF3200ECE851 /* MethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */; };
+		F6600A9E2670A3C5002DF8CB /* FilterCollectionViewHeaderFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6600A9D2670A3C5002DF8CB /* FilterCollectionViewHeaderFooter.swift */; };
 		F662B3CF266A1ABA002E7BFA /* TransportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */; };
 		F66DBE29266BC08700C0AC30 /* BillerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66DBE28266BC08700C0AC30 /* BillerCollectionViewCell.swift */; };
 		F671F407265DEC5C009743D3 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F671F406265DEC5C009743D3 /* ProfileViewModel.swift */; };
@@ -638,7 +638,6 @@
 		CFF9A0062616CB6300F702F0 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6061BB8265A9D1A003111CA /* ChangePWViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePWViewController.swift; sourceTree = "<group>"; };
 		F60D4AEB26688D84001D321C /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
-		F60D4B5D2668D35C001D321C /* Comment.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Comment.json; sourceTree = "<group>"; };
 		F60D4B602668E677001D321C /* ProductCart.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ProductCart.json; sourceTree = "<group>"; };
 		F60F0133265FA6240090839E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F619BFD8266783000001A612 /* Banner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banner.swift; sourceTree = "<group>"; };
@@ -657,6 +656,7 @@
 		F659DFC0266C74D100ECE851 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		F659DFC3266C832300ECE851 /* MethodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodCollectionViewCell.swift; sourceTree = "<group>"; };
 		F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodTableViewCell.swift; sourceTree = "<group>"; };
+		F6600A9D2670A3C5002DF8CB /* FilterCollectionViewHeaderFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewHeaderFooter.swift; sourceTree = "<group>"; };
 		F662B3CE266A1ABA002E7BFA /* TransportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportCollectionViewCell.swift; sourceTree = "<group>"; };
 		F66DBE28266BC08700C0AC30 /* BillerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillerCollectionViewCell.swift; sourceTree = "<group>"; };
 		F671F406265DEC5C009743D3 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -702,7 +702,6 @@
 			children = (
 				CF3DA2D82625391300A35EED /* ProductDetail.json */,
 				CF2A17E7262A8DBC00990EA7 /* ProductRecommend.json */,
-				F60D4B5D2668D35C001D321C /* Comment.json */,
 				F60D4B602668E677001D321C /* ProductCart.json */,
 			);
 			path = MockData;
@@ -1657,6 +1656,7 @@
 			isa = PBXGroup;
 			children = (
 				F672B27A266F204A00C285D1 /* CategoriesTableViewCell.swift */,
+				F6600A9D2670A3C5002DF8CB /* FilterCollectionViewHeaderFooter.swift */,
 			);
 			path = ViewCell;
 			sourceTree = "<group>";
@@ -1827,7 +1827,6 @@
 				CFA5BB5525EB89BF00AC20D1 /* Assets.xcassets in Resources */,
 				CF3DA2D92625391300A35EED /* ProductDetail.json in Resources */,
 				CFAF8F1625FC507C000E2CCA /* ImageCropper.xib in Resources */,
-				F60D4B5E2668D35C001D321C /* Comment.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2141,6 +2140,7 @@
 				CF050AA02647FBAA003DB90F /* NotificationsTableViewCell.swift in Sources */,
 				CFEA2018262EC18E00288A39 /* ShopHomeViewModel.swift in Sources */,
 				CF588780262824000041A595 /* ProductDescribeCollectionViewCell.swift in Sources */,
+				F6600A9E2670A3C5002DF8CB /* FilterCollectionViewHeaderFooter.swift in Sources */,
 				CFAF8FBF25FC545D000E2CCA /* User.swift in Sources */,
 				CFAF8F3B25FC507C000E2CCA /* NIAttributedLabel.m in Sources */,
 				CF1CC29C2644436A00CFA22A /* SelectShipAddressTableViewCell.swift in Sources */,

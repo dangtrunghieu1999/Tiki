@@ -145,6 +145,8 @@ extension CategoriesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
         let vc = ProductByIdViewController()
+        vc.idProductByCategrory = subCategories?[indexPath.row].uuid
+        print("a")
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
