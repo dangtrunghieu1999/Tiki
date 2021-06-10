@@ -64,6 +64,7 @@ final class ImageManager {
     static let comment                              = UIImage(named: "Comment")
     static let shareInternal                        = UIImage(named: "shareInternal")
     static let shareExternal                        = UIImage(named: "shareExternal")
+    static let filter                               = UIImage(named: "filter")
     static let likeDisable                          = UIImage(named: "likeDisable")
     static let likeEnable                           = UIImage(named: "likeEnable")
     static let productFolowEnable                   = UIImage(named: "productFolowEnable")

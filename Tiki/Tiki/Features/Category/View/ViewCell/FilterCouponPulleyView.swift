@@ -7,20 +7,24 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol FilterCouponPulleyViewDelegate: class {
-    func didSelectedFilterCoupon(selectedOrderTypes: [FilterCouponOrderType], selecedValidationTypes: [FilterCupponByValidation])
+    func didSelectedFilterCoupon(selectedOrderTypes: [FilterProductType])
 }
 
 class FilterCouponPulleyView: ShowHidePulleyView {
     
+    var disposeBag = DisposeBag()
+    
     // MARK: - Define Components
     private let titleLabel: UILabel = {
         let label = UILabel()
-//        label.text = TextManager.whatDoYouWantToView.localized()
+        label.text = TextManager.whatDoYouWantToView.localized()
         label.textAlignment = .center
         label.textColor = UIColor.secondary1
-//        label.font = UIFont.fromType(FontType.secondary(.bold, .title))
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue,
+                                       weight: .bold)
         return label
     }()
     
@@ -36,44 +40,47 @@ class FilterCouponPulleyView: ShowHidePulleyView {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.registerReusableCell(CheckListCollectionViewCell.self)
-//        collectionView.registerReusableSupplementaryView(TitleHeaderCollectionViewCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+        collectionView.registerReusableSupplementaryView(TitleCollectionViewHeaderCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         collectionView.registerReusableSupplementaryView(BaseCollectionViewHeaderFooterCell.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
         return collectionView
     }()
     
     fileprivate let lineView: UIView = {
         let view = UIView()
-//        view.backgroundColor = UIColor.secondary3
+        view.backgroundColor = UIColor.separator
         return view
     }()
     
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.cancel.localized(), for: .normal)
-//        button.setTitleColor(UIColor.secondary2, for: .normal)
-//        button.titleLabel?.font = UIFont.fromType(FontType.primary(.bold, .h1))
-//        button.backgroundColor = UIColor.background1
-//        button.layer.borderColor = UIColor.secondary3.cgColor
+        button.setTitleColor(UIColor.bodyText, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                                    weight: .bold)
+        button.backgroundColor = UIColor.lightSeparator
+        button.layer.borderColor = UIColor.separator.cgColor
         button.layer.borderWidth = 1.0
         button.layer.cornerRadius = 5
-//        button.rx.controlEvent(.touchUpInside).asObservable().subscribe(onNext: { [weak self] in
-//            guard let self = self else { return }
-//            self.hidePulley()
-//        }).disposed(by: self.disposeBag)
+        button.rx.controlEvent(.touchUpInside).asObservable().subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.hidePulley()
+        }).disposed(by: self.disposeBag)
         return button
     }()
     
     private lazy var confirmButton: UIButton = {
         let button = UIButton()
         button.setTitle(TextManager.confirm.localized(), for: .normal)
-//        button.titleLabel?.font = UIFont.fromType(FontType.primary(.bold, .h1))
-//        button.backgroundColor = UIColor.primary1
-//        button.layer.cornerRadius = 5
-//        button.rx.controlEvent(.touchUpInside).asObservable().subscribe(onNext: { [weak self] in
-//            guard let self = self else { return }
-//            self.delegate?.didSelectedFilterCoupon(selectedOrderTypes: self.viewModel.selectedOrderTypes, selecedValidationTypes: self.viewModel.selectedValidations)
-//            self.hidePulley()
-//        }).disposed(by: self.disposeBag)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                                     weight: .bold)
+        button.backgroundColor = UIColor.primary
+        button.layer.cornerRadius = 5
+        button.rx.controlEvent(.touchUpInside).asObservable().subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.didSelectedFilterCoupon(selectedOrderTypes:
+                                                    self.viewModel.selectedOrderTypes)
+            self.hidePulley()
+        }).disposed(by: self.disposeBag)
         return button
     }()
     
@@ -151,27 +158,16 @@ extension FilterCouponPulleyView {
 
 // MARK: - UICollectionViewDataSource
 extension FilterCouponPulleyView: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
-    }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return FilterProductType.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: CheckListCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
         let isSelected = self.viewModel.isSelectedCell(at: indexPath)
-        
-        if indexPath.section == 0 {
-            if let orderType = FilterCouponOrderType(rawValue: indexPath.row) {
-                cell.configureData(with: orderType.description, isSelected)
-            }
-        } else {
-            if let validationType = FilterCupponByValidation(rawValue: indexPath.row) {
-                cell.configureData(with: validationType.description, isSelected)
-            }
+        if let orderType = FilterProductType(rawValue: indexPath.row) {
+            cell.configureData(with: orderType.description, isSelected)
         }
         return cell
     }
@@ -179,11 +175,7 @@ extension FilterCouponPulleyView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
             let header: TitleCollectionViewHeaderCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-//            if indexPath.section == 0 {
-//                header.configureTitle(TextManager.viewByOrderType.localized())
-//            } else {
-//                header.configureTitle(TextManager.viewByValidation.localized())
-//            }
+            header.configureTitle(TextManager.sort)
             return header
         } else {
             let footer: BaseCollectionViewHeaderFooterCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
@@ -204,16 +196,9 @@ extension FilterCouponPulleyView: UICollectionViewDelegateFlowLayout {
 extension FilterCouponPulleyView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            if let orderType = FilterCouponOrderType(rawValue: indexPath.row),
-                self.viewModel.didSelectOrderType(orderType){
-                self.checkListCollectionView.reloadData()
-            }
-        } else {
-            if let validationType = FilterCupponByValidation(rawValue: indexPath.row),
-                self.viewModel.didSelectValidationType(validationType) {
-                self.checkListCollectionView.reloadData()
-            }
+        if let orderType = FilterProductType(rawValue: indexPath.row),
+            self.viewModel.didSelectOrderType(orderType){
+            self.checkListCollectionView.reloadData()
         }
     }
 }

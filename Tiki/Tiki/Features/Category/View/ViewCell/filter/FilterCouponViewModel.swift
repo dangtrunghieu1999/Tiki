@@ -8,43 +8,33 @@
 
 import Foundation
 
-enum FilterCouponOrderType: Int {
+enum FilterProductType: Int {
     case all            = 0
-    case delivery       = 1
-    case takeaway       = 2
-    case reservation    = 3
+    case popular        = 1
+    case selling        = 2
+    case news           = 3
+    case cheapt         = 4
+    case expensive      = 5
     
     var description: String {
         switch self {
         case .all:
             return TextManager.all.localized()
-        case .delivery:
-            return TextManager.delivery.localized()
-        case .takeaway:
-            return TextManager.takeAway.localized()
-        case .reservation:
-            return TextManager.reservation.localized()
+        case .popular:
+            return TextManager.popular.localized()
+        case .selling:
+            return TextManager.selling.localized()
+        case .news:
+            return TextManager.newProduct.localized()
+        case .cheapt:
+            return TextManager.cheapt.localized()
+        case .expensive:
+            return TextManager.expensive.localized()
         }
     }
-}
-
-enum FilterCupponByValidation: Int {
-    case all            = 0
-    case available      = 1
-    case nearExpired    = 2
-    case expired        = 3
     
-    var description: String {
-        switch self {
-        case .all:
-            return TextManager.all.localized()
-        case .available:
-            return TextManager.available.localized()
-        case .nearExpired:
-            return TextManager.nearlyExpired.localized()
-        case .expired:
-            return TextManager.expired.localized()
-        }
+    static func numberOfItems() -> Int {
+        return 6
     }
 }
 
@@ -54,14 +44,13 @@ class FilterCouponViewModel: NSObject {
     
     // MARK: - Varibles
     
-    private (set) var selectedOrderTypes: [FilterCouponOrderType] = []
-    private (set) var selectedValidations: [FilterCupponByValidation] = []
+    private (set) var selectedOrderTypes: [FilterProductType] = []
     
     // MARK: - Public methods
     
     /// Return Bool indicate should reload data
     @discardableResult
-    func didSelectOrderType(_ orderType: FilterCouponOrderType) -> Bool {
+    func didSelectOrderType(_ orderType: FilterProductType) -> Bool {
         if orderType == .all {
             if self.selectedOrderTypes.contains(orderType) {
                 return false
@@ -91,50 +80,11 @@ class FilterCouponViewModel: NSObject {
         }
     }
     
-    /// Return Bool indicate should reload data
-    @discardableResult
-    func didSelectValidationType(_ validationType: FilterCupponByValidation) -> Bool {
-        if validationType == .all {
-            if self.selectedValidations.contains(validationType) {
-                return false
-            } else {
-                self.selectedValidations.removeAll()
-                self.selectedValidations.append(validationType)
-                return true
-            }
-        } else {
-            if let index = self.selectedValidations.firstIndex(of: .all) {
-                self.selectedValidations.remove(at: index)
-                self.selectedValidations.append(validationType)
-                return true
-            } else {
-                if let selectedValidationIndex = self.selectedValidations.firstIndex(of: validationType) {
-                    if self.selectedValidations.count > 1 {
-                        self.selectedValidations.remove(at: selectedValidationIndex)
-                        return true
-                    } else {
-                        return false
-                    }
-                } else {
-                    self.selectedValidations.append(validationType)
-                    return true
-                }
-            }
-        }
-    }
-    
     func isSelectedCell(at indexPath: IndexPath) -> Bool {
-        if indexPath.section == 0 {
-            guard let orderType = FilterCouponOrderType(rawValue: indexPath.row) else {
-                return false
-            }
-            return self.selectedOrderTypes.contains(orderType)
-        } else {
-            guard let validationType = FilterCupponByValidation(rawValue: indexPath.row) else {
-                return false
-            }
-            return self.selectedValidations.contains(validationType)
+        guard let orderType = FilterProductType(rawValue: indexPath.row) else {
+            return false
         }
+        return self.selectedOrderTypes.contains(orderType)
     }
     
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class ProductByIdViewController: BaseViewController {
     
@@ -14,8 +15,10 @@ class ProductByIdViewController: BaseViewController {
     fileprivate var productsResponse: [Product] = []
     fileprivate var isLoadMore                  = false
     fileprivate var canLoadMore                 = true
+    var disposeBag                              = DisposeBag()
     var idProductByCategrory: Int?
     
+
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing      = 6
@@ -31,22 +34,45 @@ class ProductByIdViewController: BaseViewController {
         collectionView.registerReusableSupplementaryView(
             LoadMoreCollectionViewCell.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter)
-        collectionView.registerReusableSupplementaryView(
-            FilterCollectionViewHeaderFooter.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         return collectionView
+    }()
+    
+    let pulleyView: FilterCouponPulleyView = {
+        let view = FilterCouponPulleyView()
+        return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         layoutCollectionView()
+        layoutPulleyView()
         requestAPIProducts()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.pulleyView.removeFromSuperview()
+    }
+    
     func setupNavigationBar() {
+        let filterButton = UIButton(type: .custom)
+        filterButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        filterButton.setImage(UIImage(named: "filter"), for: .normal)
+        filterButton.rx.controlEvent(.touchUpInside).asObservable().subscribe(onNext: { [weak self] in
+            guard let self = self else { return }
+            
+            if self.pulleyView.isShow {
+                self.pulleyView.hidePulley()
+            } else {
+                self.pulleyView.showPulley()
+            }
+        } ).disposed(by: self.disposeBag)
+        let filterBarButtonItem = UIBarButtonItem(customView: filterButton)
+        
         self.navigationItem.titleView = searchBar
-        self.navigationItem.rightBarButtonItem = cartBarButtonItem
+        self.searchBar.delegate = self
+        self.navigationItem.rightBarButtonItems = [cartBarButtonItem,filterBarButtonItem]
         searchBar.textColor = UIColor.bodyText
         searchBar.text = "Tivi"
     }
@@ -57,14 +83,24 @@ class ProductByIdViewController: BaseViewController {
             if #available(iOS 11, *) {
                 make.top
                     .equalTo(view.safeAreaLayoutGuide)
+                    .offset(dimension.normalMargin)
             } else {
                 make.top
                     .equalTo(topLayoutGuide.snp.bottom)
+                    .offset(dimension.normalMargin)
             }
             make.left
                 .right
                 .bottom
                 .equalToSuperview()
+        }
+    }
+    
+    private func layoutPulleyView() {
+        let currentWindow: UIWindow? = UIApplication.shared.keyWindow
+        currentWindow?.addSubview(self.pulleyView)
+        self.pulleyView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
         }
     }
 }
@@ -102,15 +138,10 @@ extension ProductByIdViewController: UICollectionViewDataSource {
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
             footer.animiate(isLoadMore)
             return footer
-        } else if kind == UICollectionView.elementKindSectionHeader {
-            let header: FilterCollectionViewHeaderFooter =
-                collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-            return header
         } else {
             return UICollectionReusableView()
         }
     }
-    
 }
 
 extension ProductByIdViewController: UICollectionViewDelegateFlowLayout {
@@ -124,12 +155,6 @@ extension ProductByIdViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.frame.width, height: 70)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        layout collectionViewLayout: UICollectionViewLayout,
-                        referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 60)
     }
 }
 

@@ -14,7 +14,7 @@ class CheckListCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate let containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.background
+        view.backgroundColor = UIColor.lightSeparator
         view.layer.cornerRadius = 5
         return view
     }()

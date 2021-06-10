@@ -86,5 +86,14 @@ extension TextManager {
     static let r7                      = "Thiết bị chơi game"
     static let r8                      = "Tai nghe"
     static let r9                      = "Giỏ quà hộp quà"
+    
+    static let all                     = "Tất cả"
+    static let popular                 = "Phổ biến"
+    static let selling                 = "Bán chạy"
+    static let newProduct              = "Hàng mới"
+    static let cheapt                  = "Giá thấp"
+    static let expensive               = "Giá cao"
+    static let sort                    = "Sắp xếp"
+    static let whatDoYouWantToView     = "Bạn muốn thấy gì?"
 
 }
