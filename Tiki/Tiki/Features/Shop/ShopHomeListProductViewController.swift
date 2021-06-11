@@ -114,7 +114,8 @@ extension ShopHomeListProductViewController: UICollectionViewDataSource {
         return 2
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         if section == SectionType.header.rawValue {
             return 0
         } else {
@@ -128,7 +129,8 @@ extension ShopHomeListProductViewController: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == SectionType.header.rawValue {
             return UICollectionViewCell()
         }
@@ -149,12 +151,16 @@ extension ShopHomeListProductViewController: UICollectionViewDataSource {
         
         if kind == UICollectionView.elementKindSectionHeader
             && indexPath.section == SectionType.header.rawValue {
-            let header: ShopHomeProductListSearchHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
+            let header: ShopHomeProductListSearchHeaderView =
+                collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                for: indexPath)
             return header
             
         } else if kind == UICollectionView.elementKindSectionFooter
                     && indexPath.section == SectionType.products.rawValue {
-            let footer: LoadMoreCollectionViewCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
+            let footer: LoadMoreCollectionViewCell =
+                collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                for: indexPath)
             footer.animiate(isLoadMore)
             return footer
         } else {
@@ -170,7 +176,8 @@ extension ShopHomeListProductViewController: UICollectionViewDelegateFlowLayout 
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        if indexPath.section == SectionType.products.rawValue && products.isEmpty && !isRequestingAPI {
+        if indexPath.section == SectionType.products.rawValue
+            && products.isEmpty && !isRequestingAPI {
             return CGSize(width: collectionView.frame.width, height: 300)
         } else if indexPath.section == SectionType.products.rawValue {
             return BaseProductView.guestUserSize
@@ -190,7 +197,9 @@ extension ShopHomeListProductViewController: UICollectionViewDelegateFlowLayout 
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == SectionType.header.rawValue {
             return CGSize(width: view.frame.width, height: 70)
         } else {
@@ -207,7 +216,8 @@ extension ShopHomeListProductViewController: UICollectionViewDelegate {
             scrollDelegate(scrollView)
         }
         
-        let collectionViewOffset = listProductCollectionView.contentSize.height - listProductCollectionView.frame.size.height - 50
+        let collectionViewOffset = listProductCollectionView.contentSize.height -
+            listProductCollectionView.frame.size.height - 50
         if scrollView.contentOffset.y >= collectionViewOffset
             && !isLoadMore
             && !isRequestingAPI
@@ -220,7 +230,9 @@ extension ShopHomeListProductViewController: UICollectionViewDelegate {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        
         guard !isRequestingAPI && !products.isEmpty else { return }
         guard let product = products[safe: indexPath.row] else { return }
         AppRouter.pushToProductDetail(product)

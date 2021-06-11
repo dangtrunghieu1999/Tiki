@@ -68,7 +68,6 @@ class ShopHomeProductListSearchHeaderView: BaseCollectionViewHeaderFooterCell {
             make.height.equalTo(BaseProductView.itemSpacing)
         }
     }
-    
 }
 
 // MARK: - UITextFieldDelegate

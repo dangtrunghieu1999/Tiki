@@ -17,7 +17,7 @@ class ProductParameterViewController: BaseViewController {
         return paramter
     }()
     
-    fileprivate lazy var valueTitles: [String] = []
+    private var details = Details()
     
     // MARK: - UI Elements
     
@@ -52,8 +52,8 @@ class ProductParameterViewController: BaseViewController {
     
     // MARK: - Helper Method
     
-    func configValueTitle(values: [String]) {
-        self.valueTitles = values
+    func configCell(_ details: Details) {
+        self.details = details
     }
     
     // MARK: - GET API
@@ -66,7 +66,6 @@ class ProductParameterViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
     }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -81,12 +80,17 @@ extension ProductParameterViewController: UITableViewDelegate {
 
 extension ProductParameterViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return valueTitles.count
+        return details.dictValues.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell: TitleTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        
+        let row   = indexPath.row
+        let key   = details.dictKeys[row]
+        let value = details.dictValues[row]
+        cell.configTitle(keyTitle: key, valueTitle: value ?? "")
         
         if indexPath.row % 2 == 0{
             cell.keyCoverView.backgroundColor = UIColor.lightBackground
@@ -96,8 +100,6 @@ extension ProductParameterViewController: UITableViewDataSource {
             cell.valueCoverView.backgroundColor = UIColor.white
         }
         
-        cell.configTitle(keyTitle: productParamter.keyTitle[indexPath.row],
-                         valueTitle: valueTitles[indexPath.row])
         return cell
     }
 }

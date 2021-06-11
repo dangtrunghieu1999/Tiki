@@ -15,8 +15,10 @@ class ProductDetailViewController: BaseViewController {
     // MARK: - Variables
     
     fileprivate lazy var product = Product()
+    fileprivate lazy var details = Details()
     fileprivate lazy var productSame: [Product] = []
     fileprivate lazy var comments:    [Comment] = []
+    
     fileprivate var productInfoCellHeight:  CGFloat?
     fileprivate var desciptionCellHeight:   CGFloat?
     
@@ -74,7 +76,7 @@ class ProductDetailViewController: BaseViewController {
         layoutBuyButton()
         layoutCollectionView()
         requestProductSameAPI()
-        requestProductCart()
+        requestProductDetails()
         
         let target: Target = (target: self, selector: #selector(tapOnShareExternalButton))
         let shareExtenalButton = buildBarButton(from: BarButtonItemModel(ImageManager.shareExternal, target))
@@ -82,8 +84,8 @@ class ProductDetailViewController: BaseViewController {
         navigationItem.title = TextManager.productDetail.localized()
     }
     
-    func requestProductCart() {
-        guard let path = Bundle.main.path(forResource: "ProductCart", ofType: "json") else {
+    func requestProductDetails() {
+        guard let path = Bundle.main.path(forResource: "Details", ofType: "json") else {
             fatalError("Not available json")
         }
         
@@ -92,16 +94,7 @@ class ProductDetailViewController: BaseViewController {
             switch response.result {
             case.success(let value):
                 let json = JSON(value)
-                let data = json["data"]
-                let products = data.arrayValue.map{Product(json: $0)}
-                for product in products {
-                    CartManager.shared.addProductToCart(product) {
-                        NotificationCenter.default.post(name: Notification.Name.reloadCartBadgeNumber, object: nil)
-                        AlertManager.shared.showToast(message: TextManager.addToCartSuccess.localized())
-                    } error: {
-                        AlertManager.shared.showToast()
-                    }
-                }
+                self.details = Details(json: json)
             case .failure(let error):
                 print(error)
             }
@@ -335,6 +328,7 @@ extension ProductDetailViewController: UICollectionViewDataSource {
             return cell
         case .infoDetail:
             let cell: ProductDetailsCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.configCell(details: details)
             cell.delegate = self
             return cell
         case .description:
@@ -416,8 +410,9 @@ extension ProductDetailViewController: UICollectionViewDelegate {
 // MARK: - ProductDetailsDelegate
 
 extension ProductDetailViewController: ProductDetailsDelegate {
-    func didTapSeemoreParamter(values: [String]) {
-        AppRouter.presentViewParameterProduct(viewController: self, values: values)
+    func didTapSeemoreParamter(details: Details) {
+        AppRouter.presentViewParameterProduct(viewController: self,
+                                              details: details)
     }
 }
 

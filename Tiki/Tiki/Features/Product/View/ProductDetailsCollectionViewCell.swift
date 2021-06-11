@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProductDetailsDelegate: class {
-    func didTapSeemoreParamter(values: [String])
+    func didTapSeemoreParamter(details: Details)
 }
 
 class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
@@ -22,7 +22,7 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
         return paramter
     }()
     
-    fileprivate lazy var valueTitles: [String] = []
+    private var details = Details()
     
     // MARK: - UI Elements
     
@@ -63,13 +63,13 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
     // MARK: - UI Action
     
     @objc private func tapSeeMore() {
-        delegate?.didTapSeemoreParamter(values: valueTitles)
+        delegate?.didTapSeemoreParamter(details: details)
     }
     
     // MARK: - Helper Method
     
-    func configValueTitle(values: [String]) {
-        self.valueTitles = values
+    func configCell(details: Details) {
+        self.details = details
     }
     
     // MARK: - GET API
@@ -101,7 +101,8 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
 // MARK: - UITableViewDelegate
 
 extension ProductDetailsCollectionViewCell: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
 }
@@ -117,6 +118,12 @@ extension ProductDetailsCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell: TitleTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        let row   = indexPath.row
+        let key   = details.dictKeys[row]
+        let value = details.dictValues[row]
+        
+        cell.configTitle(keyTitle: key, valueTitle: value ?? "")
+        
         if indexPath.row % 2 == 0{
             cell.keyCoverView.backgroundColor = UIColor.lightBackground
             cell.valueCoverView.backgroundColor = UIColor.lightBackground

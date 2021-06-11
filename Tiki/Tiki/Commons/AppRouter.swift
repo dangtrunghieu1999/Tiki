@@ -27,9 +27,10 @@ class AppRouter: NSObject {
         UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
     
-    class func presentViewParameterProduct(viewController: UIViewController, values: [String]) {
+    class func presentViewParameterProduct(viewController: UIViewController, details: Details){
+        
         let vc = ProductParameterViewController()
-        vc.configValueTitle(values: values)
+        vc.configCell(details)
         let nvc = UINavigationController(rootViewController: vc)
         viewController.present(nvc, animated: true, completion: nil)
     }

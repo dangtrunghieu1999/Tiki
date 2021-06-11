@@ -13,7 +13,7 @@ final class AppConfig {
     static let coverImageRatio: CGFloat                 = 0.5
     static let minDate                                  = "01/01/1935".toDate(with: .shortDateUserFormat)
     static let defaultDate                              = "01/01/1990".toDate(with: .shortDateUserFormat)
-    static let imageDomain                              = "https://shortest.link/mfI"
+    static let imageDomain                              = "https://firebasestorage.googleapis.com/v0/b/kltn-5e877.appspot.com/o/Image_default%2FavatarDefault%402x.png?alt=media&token=b1420469-280e-45de-a05c-ce4968caf3fc"
     static let defaultProductPerPage                    = 6
     static let defaultSearchResultsPerPage              = 15
 }

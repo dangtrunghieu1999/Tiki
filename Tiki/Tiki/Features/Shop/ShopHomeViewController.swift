@@ -114,7 +114,6 @@ class ShopHomeViewController: HeaderedCAPSPageMenuViewController {
     fileprivate func addGuestChildsVC() {
         addProductListVC()
         addStallVC()
-        addGalleryVC()
         
         addPageMenu(menu: CAPSPageMenu(viewControllers: subPageControllers,
                                        frame: CGRect(x: 0,
@@ -141,13 +140,5 @@ class ShopHomeViewController: HeaderedCAPSPageMenuViewController {
         stallDetailVC.scrollDelegateFunc = { [weak self] in self?.pleaseScroll($0) }
     }
     
-    private func addGalleryVC() {
-        let galleryVC = ShopHomeGalleryViewController()
-        galleryVC.setupData(shopId: shop.id ?? 0)
-        galleryVC.title = TextManager.gallery
-        galleryVC.view.frame = viewControllerFrame
-        subPageControllers.append(galleryVC)
-        galleryVC.scrollDelegateFunc = { [weak self] in self?.pleaseScroll($0) }
-    }
     
 }

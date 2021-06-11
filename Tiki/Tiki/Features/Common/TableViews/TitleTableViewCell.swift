@@ -19,7 +19,7 @@ class TitleTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    fileprivate lazy var nameKeyTitleLabel: UILabel = {
+     lazy var nameKeyTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -34,7 +34,7 @@ class TitleTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    fileprivate lazy var nameValueTitleLabel: UILabel = {
+     lazy var nameValueTitleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
         label.numberOfLines = 0
@@ -56,7 +56,7 @@ class TitleTableViewCell: BaseTableViewCell {
     
     // MARK: - Helper Method
     
-    func configTitle(keyTitle: String, valueTitle: String) {
+    func configTitle(keyTitle: String?, valueTitle: String?) {
         self.nameKeyTitleLabel.text     = keyTitle
         self.nameValueTitleLabel.text   = valueTitle
     }
