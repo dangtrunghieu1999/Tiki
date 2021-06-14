@@ -327,7 +327,8 @@ class SignInViewController: BaseViewController {
 // MARK: - NIAttributedLabelDelegate
 
 extension SignInViewController: NIAttributedLabelDelegate {
-    func attributedLabel(_ attributedLabel: NIAttributedLabel!, didSelect result: NSTextCheckingResult!, at point: CGPoint) {
+    func attributedLabel(_ attributedLabel: NIAttributedLabel!,
+                         didSelect result: NSTextCheckingResult!, at point: CGPoint) {
         guard let url = result.url else { return }
         AppRouter.pushToWebView(config: url)
     }

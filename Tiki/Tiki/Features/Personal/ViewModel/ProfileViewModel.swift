@@ -14,6 +14,7 @@ class ProfileViewModel {
     lazy var fullName    = BehaviorRelay<String?>(value: nil)
     lazy var firstName   = BehaviorRelay<String?>(value: nil)
     lazy var lastName    = BehaviorRelay<String?>(value: nil)
+    lazy var picture     = BehaviorRelay<String?>(value: nil)
     lazy var gender      = BehaviorRelay<Int>(value: 0)
     lazy var email       = BehaviorRelay<String?>(value: nil)
     lazy var phone       = BehaviorRelay<String?>(value: nil)
@@ -23,17 +24,19 @@ class ProfileViewModel {
     lazy var isEdit      = BehaviorRelay<Bool>(value: false)
     var updateProfilePS  = PublishSubject<Void>()
     var getProfilePS     = PublishSubject<Void>()
-    lazy var error        = BehaviorRelay<ServiceErrorAPI?>(value: nil)
+    lazy var error       = BehaviorRelay<ServiceErrorAPI?>(value: nil)
     var disposeBag       = DisposeBag()
     
     init() {
         setupUpdateProfilePS()
+        setupGetProfilePS()
         userProfile.bind { [weak self] profile in
             self?.firstName.accept(profile?.firstName)
             self?.lastName.accept(profile?.lastName)
+            self?.picture.accept(profile?.pictureURL)
             self?.gender.accept(profile?.gender.rawValue ?? 0)
             self?.email.accept(profile?.email)
-            self?.phone.accept(String(profile?.phone.dropFirst(2) ?? ""))
+            self?.phone.accept(profile?.phone)
             self?.birthday.accept(profile?.birthDay)
         }.disposed(by: disposeBag)
         isEdit.skip(1).bind { [weak self] isNotFinished in
@@ -65,8 +68,12 @@ class ProfileViewModel {
             } onRequestFail: {
                 
             }
-
-            
+        }).subscribe().disposed(by: disposeBag)
+    }
+    
+    func setupGetProfilePS() {
+        getProfilePS.do(onNext: {
+            UserManager.getUserProfile()
         }).subscribe().disposed(by: disposeBag)
     }
     

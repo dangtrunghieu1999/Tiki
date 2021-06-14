@@ -23,15 +23,15 @@ public extension UIViewController {
         return tabBarController?.tabBar.frame.height ?? 0.0
     }
     
-    class public func topViewController() -> UIViewController? {
+    class func topViewController() -> UIViewController? {
         return UIViewController.topViewControllerForRoot(rootViewController: UIApplication.shared.keyWindow?.rootViewController)
     }
     
-    class public func popToViewController(_ viewController: UIViewController, animated: Bool = true) {
+    class func popToViewController(_ viewController: UIViewController, animated: Bool = true) {
         topViewController()?.navigationController?.popToViewController(viewController, animated: animated)
     }
     
-    class public func topViewControllerForRoot(rootViewController: UIViewController?) -> UIViewController? {
+    class func topViewControllerForRoot(rootViewController: UIViewController?) -> UIViewController? {
         guard let rootViewController = rootViewController else {
             return nil
         }

@@ -23,6 +23,9 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         imageView.image = ImageManager.avatarDefault
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius  = 25
+        imageView.layer.borderWidth = 1
+        imageView.layer.borderColor = UIColor.separator.cgColor
         return imageView
     }()
     
@@ -77,10 +80,18 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         
     // MARK: - Helper Method
     
-    func configData(title: String) {
-        self.subTitleLabel.text  = title
+    func configData(_ fullName: String?, url: String?) {
+        self.subTitleLabel.text = fullName
+        self.avatarImageView.loadImage(by: url ?? "")
         self.nextButton.isHidden = true
     }
+    
+    func configData() {
+        self.subTitleLabel.text = TextManager.welcomeSignInUp.localized()
+        self.avatarImageView.image = ImageManager.avatarDefault
+        self.nextButton.isHidden = false
+    }
+    
     // MARK: - GET API
     
     // MARK: - Layout

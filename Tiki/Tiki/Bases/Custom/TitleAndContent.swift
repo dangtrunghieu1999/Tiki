@@ -29,14 +29,14 @@ class TitleAndContent: BaseView {
     private let titleLabel: UILabel = {
       let label = UILabel()
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .medium)
       return label
     }()
     
     private let contentlLabel: UILabel = {
       let label = UILabel()
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         label.numberOfLines = 0
         return label
     }()

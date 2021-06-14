@@ -32,7 +32,7 @@ class User: NSObject, JSONParsable, NSCoding {
         self.id             = json["id"].stringValue
         self.firstName      = json["firstName"].stringValue
         self.lastName       = json["lastName"].stringValue
-        self.pictureURL     = json["pictureUrl"].stringValue
+        self.pictureURL     = json["pictureURL"].stringValue
         self.email          = json["gmail"].stringValue
         self.token          = json["token"].stringValue
         self.fullName       = json["fullName"].stringValue
@@ -54,6 +54,8 @@ class User: NSObject, JSONParsable, NSCoding {
         lastName    = aDecoder.decodeObject(forKey: "lastName") as? String ?? ""
         email       = aDecoder.decodeObject(forKey: "gmail") as? String ?? ""
         phone       = aDecoder.decodeObject(forKey: "phone") as? String ?? ""
+        dayOfBirth  = aDecoder.decodeObject(forKey: "dayOfBirth") as? String ?? ""
+        pictureURL  = aDecoder.decodeObject(forKey: "pictureURL") as? String ?? ""
         fullName    = "\(lastName) \(firstName)".trimmingCharacters(in: .whitespaces)
     }
     
@@ -65,9 +67,9 @@ class User: NSObject, JSONParsable, NSCoding {
         aCoder.encode(lastName,     forKey: "lastName")
         aCoder.encode(email,        forKey: "gmail")
         aCoder.encode(phone,        forKey: "phone")
+        aCoder.encode(pictureURL,   forKey: "pictureURL")
         aCoder.encode(birthDay,     forKey: "dayOfBirth")
     }
-    
 }
 
 enum Gender: Int {

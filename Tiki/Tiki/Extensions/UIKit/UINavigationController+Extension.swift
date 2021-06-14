@@ -21,6 +21,18 @@ extension UINavigationController {
         return false
     }
     
+    func popToViewControllerType(_ type: UIViewController.Type, completion: (()-> Void)?) {
+        let vc = self.viewControllers.filter {return $0.isKind(of: type)}.first
+        if let vc = vc { self.popToViewControllerWithHandler(vc, completion: completion) }
+    }
+    
+    func popToViewControllerWithHandler(_ viewController: UIViewController, completion: (()-> Void)?) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        self.popToViewController(viewController, animated: true)
+        CATransaction.commit()
+    }
+    
     override open var shouldAutorotate: Bool {
         get {
             if let visibleVC = visibleViewController {

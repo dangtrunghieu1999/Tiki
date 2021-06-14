@@ -50,6 +50,8 @@ open class BaseViewController: UIViewController {
         imageView.layer.masksToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = dimension.largeMargin_120 / 2
+        imageView.layer.borderColor = UIColor.separator.cgColor
+        imageView.layer.borderWidth = 1
         return imageView
     }()
     

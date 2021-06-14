@@ -17,6 +17,7 @@ enum EditState: Int {
 
 protocol ProfileViewControllerDelegate: class {
     func handleLogoutSuccess()
+    func handleEditSuccess()
 }
 
 class ProfileViewController: BaseViewController {
@@ -47,7 +48,8 @@ class ProfileViewController: BaseViewController {
         let scrollView = UIScrollView()
         scrollView.isUserInteractionEnabled = true
         scrollView.showsVerticalScrollIndicator = false
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchInScrollView))
+        let tapGesture = UITapGestureRecognizer(target: self,
+                                                action: #selector(touchInScrollView))
         tapGesture.cancelsTouchesInView = false
         scrollView.addGestureRecognizer(tapGesture)
         return scrollView
@@ -68,8 +70,10 @@ class ProfileViewController: BaseViewController {
         let button = UIButton()
         button.setTitle(TextManager.changePhoto, for: .normal)
         button.setTitleColor(UIColor.second, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        button.addTarget(self, action: #selector(tapOnUploadPhoto), for: .touchUpInside)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                                    weight: .semibold)
+        button.addTarget(self, action: #selector(tapOnUploadPhoto),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -95,7 +99,8 @@ class ProfileViewController: BaseViewController {
     let genderContainerView = UIView()
     
     let genderTitleLabel = UILabel(text: TextManager.gender,
-                                   font: UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold),
+                                   font: UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                                           weight: .semibold),
                                    textColor: UIColor.bodyText,
                                    textAlignment: .left)
     
@@ -117,7 +122,8 @@ class ProfileViewController: BaseViewController {
         view.iconWidth = dimension.checkBoxHeight
         view.handleDidChange = { [weak self] (isActive) in
             guard let self = self else { return }
-            self.maleCheckBoxView.isActive = !isActive
+            self.viewModel.gender.accept(Gender.female.rawValue)
+            self.viewModel.isEdit.accept(true)
         }
         return view
     }()
@@ -131,7 +137,8 @@ class ProfileViewController: BaseViewController {
         view.iconWidth = dimension.checkBoxHeight
         view.handleDidChange = { [weak self] (isActive) in
             guard let self = self else { return }
-            self.femaleCheckBoxView.isActive = !isActive
+            self.viewModel.gender.accept(Gender.male.rawValue)
+            self.viewModel.isEdit.accept(true)
         }
         return view
     }()
@@ -160,6 +167,8 @@ class ProfileViewController: BaseViewController {
         textField.textField.fontSizePlaceholder(text: TextManager.phoneNumberPlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
         textField.keyboardType = .numberPad
+        textField.isUserInteractionEnabled = false
+        textField.textField.backgroundColor = UIColor.lightBackground
         return textField
     }()
     
@@ -264,24 +273,13 @@ class ProfileViewController: BaseViewController {
         layoutDOBView()
         layoutDOBTitleLabel()
         layoutDOBTextField()
-        configData(user: UserManager.user)
+        setLeftNavButton()
     }
     
-    // MARK: - Get API
-    
-    func configData(user: User?) {
-        
-        self.firstNameTextField.text = user?.firstName
-        self.lastNameTextField.text  = user?.lastName
-        self.emailTextField.text     = user?.email
-        self.phoneTextField.text     = user?.phone
-        self.DOBTextField.text       = user?.birthDay?.desciption(by: DateFormat.shortDateUserFormat)
-        
-        if user?.gender.rawValue == 1 {
-            femaleCheckBoxView.isActive = false
-        } else {
-            maleCheckBoxView.isActive = true
-        }
+    func setLeftNavButton() {
+        let target: Target = (target: self, selector: #selector(touchUpInLeftBarButtonItem))
+        let leftBackButton = buildBarButton(from: BarButtonItemModel(ImageManager.back, target))
+        navigationItem.leftBarButtonItem = leftBackButton
     }
     
     // MARK: - UI Action
@@ -300,7 +298,13 @@ class ProfileViewController: BaseViewController {
             }
         }
     }
-    
+
+    override func touchUpInLeftBarButtonItem() {
+        self.navigationController?.popViewControllerWithHandler {
+            self.delegate?.handleEditSuccess()
+        }
+    }
+
     @objc private func tapOnUploadPhoto() {
         self.showChooseSourceTypeAlertController()
     }
@@ -381,6 +385,7 @@ extension ProfileViewController {
         contenStackView.addArrangedSubview(profileView)
         profileView.snp.makeConstraints { (make) in
             make.height.equalTo(150)
+            make.width.equalToSuperview()
         }
     }
     
@@ -486,6 +491,7 @@ extension ProfileViewController {
     private func bindingCompoents() {
         bindingFirstName()
         bindingLastName()
+        bindingAvatarUser()
         bindingPhone()
         bindingGender()
         bindingEmail()
@@ -524,6 +530,15 @@ extension ProfileViewController {
             .controlEvent(.editingDidBegin)
             .map {true}
             .bind(to: viewModel.isEdit)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindingAvatarUser(){
+        viewModel.picture
+            .subscribe(onNext: { (urlString) in
+                let url = URL(string: urlString ?? "")
+                self.profilePhotoImage.sd_setImage(with: url, completed: nil)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -623,7 +638,6 @@ extension ProfileViewController {
         viewModel.isEdit.bind(onNext: { [weak self] isEnable in
             self?.firstNameTextField.isBlur = isEnable
             self?.lastNameTextField.isBlur  = isEnable
-            self?.phoneTextField.isBlur     = isEnable
             self?.DOBTextField.isBlur       = isEnable
             self?.emailTextField.isBlur     = isEnable
         }).disposed(by: disposeBag)

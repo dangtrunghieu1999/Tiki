@@ -34,6 +34,7 @@ class PersonalViewController: BaseViewController {
         registerCollectionView()
         navigationItem.title = TextManager.person
         self.tabBarController?.tabBar.isTranslucent = false
+        reloadCollectionView()
     }
     
     // MARK: - Helper Method
@@ -95,9 +96,14 @@ extension PersonalViewController: UICollectionViewDataSource {
             let header: PersonalHeaderCollectionReusableView =
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
             
-            let fullName = UserManager.user?.fullName
-            let title = fullName ?? TextManager.welcomeSignInUp
-            header.configData(title: title)
+            if UserManager.isLoggedIn() {
+                let fullName   = UserManager.user?.fullName
+                let pictureURL = UserManager.user?.pictureURL
+                header.configData(fullName, url: pictureURL)
+            } else {
+                header.configData()
+            }
+            
             header.delegate = self
             return header
         } else {
@@ -190,6 +196,10 @@ extension PersonalViewController: SignInViewControllerDelegate {
 }
 
 extension PersonalViewController: ProfileViewControllerDelegate {
+    func handleEditSuccess() {
+        self.reloadCollectionView()
+    }
+    
     func handleLogoutSuccess() {
         self.reloadCollectionView()
     }

@@ -11,10 +11,11 @@ import SnapKit
 import IGListKit
 import FBSDKCoreKit
 import SMSegmentView
+import IQKeyboardManagerSwift
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -26,13 +27,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().barStyle = .blackOpaque
         
-        
+        IQKeyboardManager.shared.enable = true
+        IQKeyboardManager.shared.toolbarTintColor = UIColor.primary
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-        window?.rootViewController = TKTabBarViewController()
-//        window?.rootViewController = UINavigationController(rootViewController: CategoriesViewController())
+        if UserManager.isLoggedIn() {
+            UserManager.getUserProfile()
+            window?.rootViewController = TKTabBarViewController()
+        } else {
+            window?.rootViewController = TKTabBarViewController()
+        }
         
-//        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        //        window?.rootViewController = UINavigationController(rootViewController: CategoriesViewController())
+        
+        //        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     
