@@ -122,8 +122,4 @@ class AppRouter: NSObject {
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
-    class func pushtoPaymentMethodVC() {
-        let viewController = PaymentViewController()
-        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
-    }
 }

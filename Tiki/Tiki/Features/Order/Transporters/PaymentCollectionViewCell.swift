@@ -10,6 +10,7 @@ import UIKit
 
 class PaymentCollectionViewCell: BaseCollectionViewCell {
     
+    fileprivate var selectedPayment: PaymentMethodType?
     
     private let selectPaymentLabel: UILabel = {
         let label = UILabel()
@@ -21,28 +22,15 @@ class PaymentCollectionViewCell: BaseCollectionViewCell {
         return label
     }()
     
-    private lazy var methodImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.image = ImageManager.icon_cash
-        return imageView
-    }()
-    
-    fileprivate lazy var methodTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Thanh toán bằng tiền mặt"
-        label.textAlignment = .left
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
-        return label
-    }()
-
-    fileprivate lazy var nextButton: UIButton = {
-        let button = UIButton()
-        button.layer.masksToBounds = true
-        button.setImage(ImageManager.more, for: .normal)
-        button.backgroundColor = UIColor.clear
-        button.addTarget(self, action: #selector(tapOnPaymentMethod), for: .touchUpInside)
-        return button
+    fileprivate lazy var paymentTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
+        tableView.layer.masksToBounds = true
+        tableView.registerReusableCell(MethodTableViewCell.self)
+        return tableView
     }()
 
     // MARK: - View LifeCycles
@@ -50,14 +38,9 @@ class PaymentCollectionViewCell: BaseCollectionViewCell {
     override func initialize() {
         super.initialize()
         layoutSelectPaymentLabel()
-        layoutMethodImageView()
-        layoutMethodTitleLabel()
-        layoutNextButton()
+        layoutTableView()
     }
     
-    @objc private func tapOnPaymentMethod() {
-        AppRouter.pushtoPaymentMethodVC()
-    }
     
     private func layoutSelectPaymentLabel() {
         addSubview(selectPaymentLabel)
@@ -69,40 +52,42 @@ class PaymentCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    private func layoutMethodImageView() {
-        addSubview(methodImageView)
-        methodImageView.snp.makeConstraints { (make) in
-            make.top
-                .equalTo(selectPaymentLabel.snp.bottom)
-                .offset(dimension.largeMargin)
-            make.width.height
-                .equalTo(24)
-            make.left
-                .equalTo(selectPaymentLabel)
+    private func layoutTableView() {
+        addSubview(paymentTableView)
+        paymentTableView.snp.makeConstraints { (make) in
+            make.top.equalTo(selectPaymentLabel.snp.bottom)
+            make.left.right.equalToSuperview()
+                .inset(dimension.normalMargin)
+            make.height.equalTo(150)
         }
     }
-    
-    private func layoutMethodTitleLabel() {
-        addSubview(methodTitleLabel)
-        methodTitleLabel.snp.makeConstraints { (make) in
-            make.centerY
-                .equalTo(methodImageView)
-            make.left
-                .equalTo(methodImageView.snp.right)
-                .offset(dimension.normalMargin)
-        }
+}
+
+extension PaymentCollectionViewCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return 2
     }
     
-    private func layoutNextButton() {
-        addSubview(nextButton)
-        nextButton.snp.makeConstraints { (make) in
-            make.right
-                .equalToSuperview()
-                .inset(dimension.smallMargin)
-            make.width.height
-                .equalTo(50)
-            make.centerY
-                .equalToSuperview()
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell: MethodTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        if let paymentType = PaymentMethodType(rawValue: indexPath.row) {
+            cell.configData(paymentType)
         }
+        cell.isSelected = (selectedPayment == PaymentMethodType(rawValue: indexPath.row))
+        cell.backgroundColor = UIColor.white
+        return cell
+    }
+}
+
+extension PaymentCollectionViewCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedPayment = PaymentMethodType(rawValue: indexPath.row)
+        paymentTableView.reloadData()
     }
 }

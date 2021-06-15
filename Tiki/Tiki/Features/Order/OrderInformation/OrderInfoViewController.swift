@@ -16,10 +16,9 @@ enum OrderSection: Int {
     case section2     = 4
     case payment      = 5
     case section3     = 6
-    case bill         = 7
 
     static func numberOfSections() -> Int {
-        return 8
+        return 7
     }
 }
 
@@ -70,7 +69,8 @@ class OrderInfoViewController: BaseViewController {
         button.backgroundColor = UIColor.primary
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.masksToBounds = true
-        button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
+        button.layer.cornerRadius = dimension.cornerRadiusSmall
+    
         return button
     }()
     
@@ -104,7 +104,6 @@ class OrderInfoViewController: BaseViewController {
         self.collectionView.registerReusableCell(TransportCollectionViewCell.self)
         self.collectionView.registerReusableCell(OrderCollectionViewCell.self)
         self.collectionView.registerReusableCell(PaymentCollectionViewCell.self)
-        self.collectionView.registerReusableCell(BillerCollectionViewCell.self)
     }
     
     // MARK: - Layout
@@ -199,8 +198,6 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: width,
                           height: estimateHeight + 120)
         case .payment:
-            return CGSize(width: width, height: 100)
-        case .bill:
             return CGSize(width: width, height: 200)
         default:
             return CGSize(width: width, height: 0)
@@ -244,20 +241,12 @@ extension OrderInfoViewController: UICollectionViewDataSource {
         case .payment:
             let cell: PaymentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
-        case .bill:
-            let cell: BillerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
         default:
             return UICollectionViewCell()
         }
     }
 }
 
-// MARK: - UICollectionViewDelegate
- 
-extension OrderInfoViewController: UICollectionViewDelegate {
-    
-}
 
 // MARK: - AddressCollectionViewCellDelegate
 
