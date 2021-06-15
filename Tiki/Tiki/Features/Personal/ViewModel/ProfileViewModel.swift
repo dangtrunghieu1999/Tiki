@@ -14,7 +14,6 @@ class ProfileViewModel {
     lazy var fullName    = BehaviorRelay<String?>(value: nil)
     lazy var firstName   = BehaviorRelay<String?>(value: nil)
     lazy var lastName    = BehaviorRelay<String?>(value: nil)
-    lazy var picture     = BehaviorRelay<String?>(value: nil)
     lazy var gender      = BehaviorRelay<Int>(value: 0)
     lazy var email       = BehaviorRelay<String?>(value: nil)
     lazy var phone       = BehaviorRelay<String?>(value: nil)
@@ -33,7 +32,6 @@ class ProfileViewModel {
         userProfile.bind { [weak self] profile in
             self?.firstName.accept(profile?.firstName)
             self?.lastName.accept(profile?.lastName)
-            self?.picture.accept(profile?.pictureURL)
             self?.gender.accept(profile?.gender.rawValue ?? 0)
             self?.email.accept(profile?.email)
             self?.phone.accept(profile?.phone)

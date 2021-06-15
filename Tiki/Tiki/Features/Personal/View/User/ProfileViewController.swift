@@ -15,11 +15,6 @@ enum EditState: Int {
     case done      = 1
 }
 
-protocol ProfileViewControllerDelegate: class {
-    func handleLogoutSuccess()
-    func handleEditSuccess()
-}
-
 class ProfileViewController: BaseViewController {
     
     // MARK: - Variables
@@ -40,7 +35,6 @@ class ProfileViewController: BaseViewController {
     
     var isPressCancel: Bool = false
     lazy var viewModel = ProfileViewModel()
-    weak var delegate: ProfileViewControllerDelegate?
     
     // MARK: - UI Elements
     
@@ -62,19 +56,6 @@ class ProfileViewController: BaseViewController {
         stackView.distribution = .fill
         stackView.spacing = dimension.largeMargin
         return stackView
-    }()
-    
-    let profileView = UIView()
-    
-    fileprivate lazy var changePhotoButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(TextManager.changePhoto, for: .normal)
-        button.setTitleColor(UIColor.second, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
-                                                    weight: .semibold)
-        button.addTarget(self, action: #selector(tapOnUploadPhoto),
-                         for: .touchUpInside)
-        return button
     }()
     
     let nameContainerView = UIView()
@@ -259,9 +240,6 @@ class ProfileViewController: BaseViewController {
         layoutChangePasswordButton()
         layoutProfileScrollView()
         layoutContenStackView()
-        layoutProfileView()
-        layoutProfilePhotoImage()
-        layoutChangePhotoButton()
         layoutNameContainerView()
         layoutFirstNameTextFieldView()
         layoutLastNameTextFieldView()
@@ -293,20 +271,18 @@ class ProfileViewController: BaseViewController {
         AlertManager.shared.showConfirm(TextManager.statusLogOut.localized())
         { (action) in
             UserManager.logout()
-            self.navigationController?.popViewControllerWithHandler {
-                self.delegate?.handleLogoutSuccess()
-            }
+            self.handlePopView()
         }
     }
-
+    
     override func touchUpInLeftBarButtonItem() {
-        self.navigationController?.popViewControllerWithHandler {
-            self.delegate?.handleEditSuccess()
-        }
+        self.handlePopView()
     }
-
-    @objc private func tapOnUploadPhoto() {
-        self.showChooseSourceTypeAlertController()
+    
+    func handlePopView() {
+        NotificationCenter.default.post(name: Notification.Name.reloadDataCollectionView,
+                                        object: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func onPressCancelButton() {
@@ -378,31 +354,6 @@ extension ProfileViewController {
                 .offset(Dimension.shared.normalMargin)
             make.bottom.equalToSuperview()
                 .offset(-Dimension.shared.largeMargin_56)
-        }
-    }
-    
-    private func layoutProfileView() {
-        contenStackView.addArrangedSubview(profileView)
-        profileView.snp.makeConstraints { (make) in
-            make.height.equalTo(150)
-            make.width.equalToSuperview()
-        }
-    }
-    
-    private func layoutProfilePhotoImage() {
-        profileView.addSubview(profilePhotoImage)
-        profilePhotoImage.snp.makeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.width.height.equalTo(dimension.largeMargin_120)
-        }
-    }
-    
-    private func layoutChangePhotoButton() {
-        profileView.addSubview(changePhotoButton)
-        changePhotoButton.snp.makeConstraints { (make) in
-            make.top.equalTo(profilePhotoImage.snp.bottom)
-                .offset(Dimension.shared.mediumMargin)
-            make.centerX.width.equalTo(profilePhotoImage)
         }
     }
     
@@ -486,12 +437,12 @@ extension ProfileViewController {
 }
 
 // MARK: - Binding Data
+
 extension ProfileViewController {
     
     private func bindingCompoents() {
         bindingFirstName()
         bindingLastName()
-        bindingAvatarUser()
         bindingPhone()
         bindingGender()
         bindingEmail()
@@ -530,15 +481,6 @@ extension ProfileViewController {
             .controlEvent(.editingDidBegin)
             .map {true}
             .bind(to: viewModel.isEdit)
-            .disposed(by: disposeBag)
-    }
-    
-    private func bindingAvatarUser(){
-        viewModel.picture
-            .subscribe(onNext: { (urlString) in
-                let url = URL(string: urlString ?? "")
-                self.profilePhotoImage.sd_setImage(with: url, completed: nil)
-            })
             .disposed(by: disposeBag)
     }
     
@@ -642,5 +584,4 @@ extension ProfileViewController {
             self?.emailTextField.isBlur     = isEnable
         }).disposed(by: disposeBag)
     }
-    
 }

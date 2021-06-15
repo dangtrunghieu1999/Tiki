@@ -11,10 +11,9 @@ import Photos
 
 class AppRouter: NSObject {
     
-    class func presentViewToSignIn(viewController: UIViewController) {
+    class func pushViewToSignIn(viewController: UIViewController) {
         let vc = SignInViewController()
-        let nvc = UINavigationController(rootViewController: vc)
-        viewController.present(nvc, animated: true, completion: nil)
+        UIViewController.topViewController()?.navigationController?.pushViewController(vc, animated: true)
     }
     
     class func pushViewToGetProfile(viewController: UIViewController) {

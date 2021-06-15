@@ -30,7 +30,8 @@ class SignInViewController: BaseViewController {
         button.setImage(ImageManager.dismiss_close, for: .normal)
         button.backgroundColor = .clear
         button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(touchUpInLeftBarButtonItem), for: .touchUpInside)
+        button.addTarget(self, action: #selector(touchUpInLeftBarButtonItem),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -38,7 +39,8 @@ class SignInViewController: BaseViewController {
         let label = UILabel()
         label.text = TextManager.welcomeSignIn
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: FontSize.headline.rawValue,
+                                       weight: .semibold)
         label.textAlignment = .left
         return label
     }()
@@ -58,7 +60,8 @@ class SignInViewController: BaseViewController {
         textField.fontSizePlaceholder(text: TextManager.phoneNumber,
                                       size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
+        textField.addTarget(self, action: #selector(textFieldValueChange(_:))
+                            , for: .editingChanged)
         textField.delegate = self
         return textField
     }()
@@ -102,7 +105,6 @@ class SignInViewController: BaseViewController {
         return label
     }()
     
-    
     fileprivate lazy var buttonStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -129,7 +131,6 @@ class SignInViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         layoutBannerImageView()
         layoutCloseViewButton()
         layoutTitleLabel()
@@ -169,7 +170,7 @@ class SignInViewController: BaseViewController {
     // MARK: - Helper Method
     
     override func touchUpInLeftBarButtonItem() {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func tapOnPassword() {
@@ -180,7 +181,8 @@ class SignInViewController: BaseViewController {
             vc.username = self.phoneTextField.text ?? ""
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            AlertManager.shared.show(TextManager.alertTitle, message: TextManager.invalidPhone)
+            AlertManager.shared.show(TextManager.alertTitle,
+                                     message: TextManager.invalidPhone)
         }
     }
     
@@ -206,10 +208,10 @@ class SignInViewController: BaseViewController {
         view.addSubview(closeViewButton)
         closeViewButton.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
+                .offset(dimension.normalMargin)
             make.width.height.equalTo(25)
             make.top.equalToSuperview()
-                .offset(Dimension.shared.largeMargin)
+                .offset(dimension.largeMargin_32)
         }
     }
     
@@ -217,9 +219,9 @@ class SignInViewController: BaseViewController {
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(bannerImageView.snp.bottom)
-                .offset(Dimension.shared.largeMargin)
+                .offset(dimension.largeMargin)
             make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
+                .offset(dimension.normalMargin)
             make.right.equalToSuperview()
         }
     }
@@ -229,18 +231,20 @@ class SignInViewController: BaseViewController {
         subtitleLabel.snp.makeConstraints { (make) in
             make.left.right.equalTo(titleLabel)
             make.top.equalTo(titleLabel.snp.bottom)
-                .offset(Dimension.shared.normalMargin)
+                .offset(dimension.normalMargin)
         }
     }
     
     private func layoutPhoneTextField() {
         view.addSubview(phoneTextField)
         phoneTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(subtitleLabel.snp.bottom)
-                .offset(Dimension.shared.normalMargin)
-            make.left.equalTo(titleLabel)
+            make.top
+                .equalTo(subtitleLabel.snp.bottom)
+                .offset(dimension.normalMargin)
+            make.left
+                .equalTo(titleLabel)
             make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
+                .offset(-dimension.normalMargin)
             make.height.equalTo(50)
         }
     }
@@ -248,11 +252,12 @@ class SignInViewController: BaseViewController {
     private func layoutLineView() {
         view.addSubview(lineView)
         lineView.snp.makeConstraints { (make) in
-            make.top.equalTo(phoneTextField.snp.bottom)
-            make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
+            make.top
+                .equalTo(phoneTextField.snp.bottom)
+            make.left
+                .right
+                .equalToSuperview()
+                .inset(dimension.normalMargin)
             make.height.equalTo(1)
         }
     }
@@ -260,33 +265,41 @@ class SignInViewController: BaseViewController {
     private func layoutContinueButton() {
         view.addSubview(continueButton)
         continueButton.snp.makeConstraints { (make) in
-            make.left.right.equalTo(phoneTextField)
+            make.left
+                .right
+                .equalTo(phoneTextField)
             make.height.equalTo(50)
-            make.top.equalTo(lineView.snp.bottom)
-                .offset(Dimension.shared.largeMargin_32)
+            make.top
+                .equalTo(lineView.snp.bottom)
+                .offset(dimension.largeMargin_32)
         }
     }
     
     private func layoutSignUpButton() {
         view.addSubview(signUpButton)
         signUpButton.snp.makeConstraints { (make) in
-            make.top.equalTo(continueButton.snp.bottom)
-                .offset(Dimension.shared.normalMargin)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(100)
-            make.height.equalTo(20)
+            make.top
+                .equalTo(continueButton.snp.bottom)
+                .offset(dimension.normalMargin)
+            make.centerX
+                .equalToSuperview()
+            make.width
+                .equalTo(100)
+            make.height
+                .equalTo(20)
         }
     }
         
     private func layoutContainerView() {
         view.addSubview(containerView)
         containerView.snp.makeConstraints { (make) in
-            make.top.equalTo(signUpButton.snp.bottom)
-                .offset(Dimension.shared.largeMargin_32)
-            make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
+            make.top
+                .equalTo(signUpButton.snp.bottom)
+                .offset(dimension.largeMargin_32)
+            make.left
+                .right
+                .equalToSuperview()
+                .inset(dimension.normalMargin)
             make.height.equalTo(20)
         }
     }
@@ -301,10 +314,13 @@ class SignInViewController: BaseViewController {
     private func layoutButtonStackView() {
         view.addSubview(buttonStackView)
         buttonStackView.snp.makeConstraints { (make) in
-            make.top.equalTo(containerView.snp.bottom)
-                .offset(Dimension.shared.largeMargin_32)
-            make.width.equalTo(116)
-            make.centerX.equalToSuperview()
+            make.top
+                .equalTo(containerView.snp.bottom)
+                .offset(dimension.largeMargin_32)
+            make.width
+                .equalTo(116)
+            make.centerX
+                .equalToSuperview()
         }
     }
     

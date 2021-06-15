@@ -9,8 +9,6 @@ import UIKit
 
 class PersonalViewController: BaseViewController {
     
-    // MARK: - Variables
-    
     // MARK: - UI Elements
     
     fileprivate lazy var personalCollectionView: UICollectionView = {
@@ -23,6 +21,10 @@ class PersonalViewController: BaseViewController {
         collectionView.backgroundColor = UIColor.separator
         collectionView.dataSource = self
         collectionView.delegate  = self
+        collectionView.registerReusableCell(PersonCollectionViewCell.self)
+        collectionView
+            .registerReusableSupplementaryView(PersonalHeaderCollectionReusableView.self,
+             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         return collectionView
     }()
     
@@ -31,24 +33,30 @@ class PersonalViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layoutPersonalCollectionView()
-        registerCollectionView()
-        navigationItem.title = TextManager.person
-        self.tabBarController?.tabBar.isTranslucent = false
-        reloadCollectionView()
+        handleReloadDataNotification()
     }
     
     // MARK: - Helper Method
     
-    func registerCollectionView() {
-        self.personalCollectionView.registerReusableCell(PersonCollectionViewCell.self)
-        self.personalCollectionView
-            .registerReusableSupplementaryView(PersonalHeaderCollectionReusableView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
+    override func setupNavigationBar() {
+        navigationItem.title = TextManager.person
+        self.tabBarController?.tabBar.isTranslucent = false
     }
     
-    // MARK: - GET API
+    func handleReloadDataNotification() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(reloadCollectionView),
+                                               name: Notification.Name.reloadDataCollectionView,
+                                               object: nil)
+    }
     
-    func reloadCollectionView() {
+    deinit {
+        NotificationCenter.default.removeObserver(self,
+                                                  name: Notification.Name.reloadDataCollectionView,
+                                                  object: nil)
+    }
+    
+    @objc func reloadCollectionView() {
         self.personalCollectionView.reloadData()
     }
     
@@ -72,9 +80,6 @@ class PersonalViewController: BaseViewController {
 // MARK: - PersonalViewModelDelegate
 
 extension PersonalViewController: UICollectionViewDataSource {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return PersonalType.numberOfSections()
-    }
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
@@ -95,15 +100,11 @@ extension PersonalViewController: UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader {
             let header: PersonalHeaderCollectionReusableView =
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
-            
             if UserManager.isLoggedIn() {
-                let fullName   = UserManager.user?.fullName
-                let pictureURL = UserManager.user?.pictureURL
-                header.configData(fullName, url: pictureURL)
+                header.configData(true, title: UserManager.user?.fullName)
             } else {
-                header.configData()
+                header.configData(false, title: TextManager.welcomeSignInUp.localized())
             }
-            
             header.delegate = self
             return header
         } else {
@@ -111,6 +112,8 @@ extension PersonalViewController: UICollectionViewDataSource {
         }
     }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension PersonalViewController: UICollectionViewDelegateFlowLayout {
     
@@ -121,7 +124,7 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout {
         let width = collectionView.frame.width
         let type = PersonalType(rawValue: indexPath.row)
         switch type {
-        case .section1, .section2, .section3, .section4:
+        case .section1, .section2:
             return CGSize(width: width, height: 10)
         default:
             return CGSize(width: width, height: 50)
@@ -136,28 +139,28 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UICollectionViewDelegate
+
 extension PersonalViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let type = Personal.cellObject[indexPath.row].cellType else { return }
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        guard let type = PersonalType(rawValue: indexPath.row) else { return }
         switch type {
-        case .managerOrder, .recive, .paymentAgain, .transport, .successOrder, .canccelOrder:
+        case .mananger, .recive, .transport, .success, .canccel:
             let vc = ManagerOrderViewController()
             self.handleWhenLoginPushView(vc)
         case .address:
             let vc = DeliveryAddressViewController()
             self.handleWhenLoginPushView(vc)
-        case .infoPayment:
-            let vc = InfoPaymentViewController()
-            self.handleWhenLoginPushView(vc)
-        case .productedBuy:
+        case .bought:
             let vc = ProductedBuyViewController()
             vc.isBought = true
             self.handleWhenLoginPushView(vc)
-        case .productedLove:
+        case .liked:
             let vc = ProductedBuyViewController()
             vc.isBought = false
             self.handleWhenLoginPushView(vc)
-        case .productRating:
+        case .rating:
             let vc = RaitingProductViewController()
             self.handleWhenLoginPushView(vc)
         default:
@@ -169,38 +172,14 @@ extension PersonalViewController: UICollectionViewDelegate {
         if UserManager.isLoggedIn() {
             navigationController?.pushViewController(vc, animated: true)
         } else {
-            AppRouter.presentViewToSignIn(viewController: self)
+            AppRouter.pushViewToSignIn(viewController: self)
         }
     }
 }
 
 extension PersonalViewController: PersonalHeaderCollectionViewDelegate {
     func tapOnSignIn() {
-        if UserManager.isLoggedIn() {
-            let vc = ProfileViewController()
-            vc.delegate = self
-           self.navigationController?.pushViewController(vc, animated: true)
-        } else {
-            let vc = SignInViewController()
-            vc.delegate = self
-            let nvc = UINavigationController(rootViewController: vc)
-            self.present(nvc, animated: true, completion: nil)
-        }
-    }
-}
-
-extension PersonalViewController: SignInViewControllerDelegate {
-    func reloadUserInfo() {
-        self.reloadCollectionView()
-    }
-}
-
-extension PersonalViewController: ProfileViewControllerDelegate {
-    func handleEditSuccess() {
-        self.reloadCollectionView()
-    }
-    
-    func handleLogoutSuccess() {
-        self.reloadCollectionView()
+        let vc = ProfileViewController()
+        self.handleWhenLoginPushView(vc)
     }
 }

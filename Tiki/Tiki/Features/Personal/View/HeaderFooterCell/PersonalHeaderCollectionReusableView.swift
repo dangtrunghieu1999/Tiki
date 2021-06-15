@@ -42,7 +42,8 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         let label = UILabel()
         label.text = TextManager.welcomeSignInUp
         label.textColor = UIColor.primary
-        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: FontSize.body.rawValue,
+                                       weight: .bold)
         label.textAlignment = .left
         return label
     }()
@@ -80,18 +81,11 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         
     // MARK: - Helper Method
     
-    func configData(_ fullName: String?, url: String?) {
-        self.subTitleLabel.text = fullName
-        self.avatarImageView.loadImage(by: url ?? "")
-        self.nextButton.isHidden = true
+    func configData(_ hidden: Bool, title: String?) {
+        self.subTitleLabel.text  = title
+        self.nextButton.isHidden = hidden
     }
-    
-    func configData() {
-        self.subTitleLabel.text = TextManager.welcomeSignInUp.localized()
-        self.avatarImageView.image = ImageManager.avatarDefault
-        self.nextButton.isHidden = false
-    }
-    
+
     // MARK: - GET API
     
     // MARK: - Layout
@@ -99,22 +93,28 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
     private func layoutAvatarImageView() {
         addSubview(avatarImageView)
         avatarImageView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(50)
-            make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
+            make.centerY
+                .equalToSuperview()
+            make.width.height
+                .equalTo(50)
+            make.left
+                .equalToSuperview()
+                .offset(dimension.normalMargin)
         }
     }
     
     private func layoutTitleLabel() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(avatarImageView.snp.right)
-                .offset(Dimension.shared.normalMargin)
-            make.top.equalTo(avatarImageView.snp.top)
-                .offset(Dimension.shared.smallMargin)
-            make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
+            make.left
+                .equalTo(avatarImageView.snp.right)
+                .offset(dimension.normalMargin)
+            make.top
+                .equalTo(avatarImageView.snp.top)
+                .offset(dimension.smallMargin)
+            make.right
+                .equalToSuperview()
+                .offset(-dimension.normalMargin)
         }
     }
     
@@ -122,8 +122,9 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         addSubview(subTitleLabel)
         subTitleLabel.snp.makeConstraints { (make) in
             make.left.equalTo(titleLabel)
-            make.bottom.equalTo(avatarImageView.snp.bottom)
-                .offset(-Dimension.shared.smallMargin)
+            make.bottom
+                .equalTo(avatarImageView.snp.bottom)
+                .offset(-dimension.smallMargin)
         }
     }
     
@@ -131,9 +132,12 @@ class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
         addSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
-            make.centerY.equalToSuperview()
-            make.width.height.equalTo(24)
+                .offset(-dimension.normalMargin)
+            make.centerY
+                .equalToSuperview()
+            make.width
+                .height
+                .equalTo(24)
         }
     }
 }

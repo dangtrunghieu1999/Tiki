@@ -44,7 +44,6 @@ class ProductByIdViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavigationBar()
         layoutCollectionView()
         layoutPulleyView()
         requestAPIProducts()
@@ -55,7 +54,7 @@ class ProductByIdViewController: BaseViewController {
         self.pulleyView.removeFromSuperview()
     }
     
-    func setupNavigationBar() {
+    override func setupNavigationBar() {
         let filterButton = UIButton(type: .custom)
         filterButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         filterButton.setImage(UIImage(named: "filter"), for: .normal)

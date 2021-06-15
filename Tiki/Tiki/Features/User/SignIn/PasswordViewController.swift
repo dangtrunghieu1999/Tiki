@@ -13,7 +13,7 @@ protocol PasswordViewControllerDelegate: class {
 }
 
 class PasswordViewController: BaseViewController {
-
+    
     // MARK: - Variables
     
     fileprivate lazy var viewModel: SignInViewModel = {
@@ -93,7 +93,7 @@ class PasswordViewController: BaseViewController {
         layoutLineView()
         layoutSignInButton()
         layoutForgotPassword()
-     }
+    }
     
     // MARK: - Helper Method
     
@@ -107,7 +107,7 @@ class PasswordViewController: BaseViewController {
                                       NSAttributedString.Key.foregroundColor: UIColor.black]
         let requiredText = NSAttributedString(string: textAfter, attributes: requiredTextAttributes)
         attributedText.append(requiredText)
-       
+        
         return attributedText
     }
     
@@ -128,9 +128,10 @@ class PasswordViewController: BaseViewController {
         
         viewModel.requestSignIn(userName: self.username, passWord: password, onSuccess: {
             self.hideLoading()
-            self.navigationController?.popViewControllerWithHandler(completion: {
-                self.delegate?.handleLoginSuccess()
-            })
+            NotificationCenter.default.post(name: Notification.Name.reloadDataCollectionView,
+                                            object: nil)
+            self.navigationController?.popToViewController(PersonalViewController.self)
+            
         }) { (message) in
             self.hideLoading()
             AlertManager.shared.show(TextManager.alertTitle.localized(), message: message)

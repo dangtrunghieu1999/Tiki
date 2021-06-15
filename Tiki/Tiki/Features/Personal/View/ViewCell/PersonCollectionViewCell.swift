@@ -9,9 +9,6 @@ import UIKit
 
 class PersonCollectionViewCell: BaseCollectionViewCell {
     
-    // MARK: - Variables
-    
-    
     // MARK: - UI Elements
     
     fileprivate lazy var imageView: UIImageView = {
@@ -53,9 +50,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         let type = personal?.cellType
         switch type {
         case .section1,
-             .section2,
-             .section3,
-             .section4:
+             .section2:
             
             layoutCellSection()
         default:
@@ -78,16 +73,13 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         nextButton.isHidden = true
         backgroundColor = UIColor.separator
     }
-    
-    // MARK: - GET API
-    
     // MARK: - Layout
     
     private func layoutImageView() {
         addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
             make.left.equalToSuperview()
-                .offset(Dimension.shared.normalMargin)
+                .offset(dimension.normalMargin)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(20)
         }
@@ -97,7 +89,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         addSubview(nextButton)
         nextButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview()
-                .offset(-Dimension.shared.normalMargin)
+                .offset(-dimension.normalMargin)
             make.centerY.equalToSuperview()
             make.width.height.equalTo(24)
         }
@@ -108,7 +100,7 @@ class PersonCollectionViewCell: BaseCollectionViewCell {
         titleLabel.snp.makeConstraints { (make) in
             make.centerY.equalTo(imageView)
             make.left.equalTo(imageView.snp.right)
-                .offset(Dimension.shared.normalMargin)
+                .offset(dimension.normalMargin)
         }
     }
 }

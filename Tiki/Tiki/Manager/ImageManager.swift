@@ -126,8 +126,7 @@ final class ImageManager {
     
     static let managerOrder                          = UIImage(named: "managerOrder")
     static let reciveOrder                           = UIImage(named: "reciveOrder")
-    static let paymentAgain                          = UIImage(named: "paymentAgain")
-    static let transportWaiting                      = UIImage(named: "transportWaiting")
+    static let transport                             = UIImage(named: "transportWaiting")
     static let successOrder                          = UIImage(named: "successOrder")
     static let cancelOrder                           = UIImage(named: "cancelOrder")
     

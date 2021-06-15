@@ -51,13 +51,16 @@ class ManagerOrderViewController: BaseViewController {
     
     fileprivate func addGuestChildsVC() {
         addOrderAll()
-        addOrderPayment()
         addOrderProcess()
         addOrderTransport()
         addOrderSuccess()
         addOrderCancel()
         
-        pageMenu = CAPSPageMenu(viewControllers: subPageControllers, frame: CGRect(x: 0.0, y: self.topbarHeight, width: self.view.frame.width, height: self.view.frame.height), pageMenuOptions: parameters)
+        pageMenu = CAPSPageMenu(viewControllers: subPageControllers,
+                                frame: CGRect(x: 0.0, y: self.topbarHeight,
+                                width: self.view.frame.width,
+                                height: self.view.frame.height),
+                                pageMenuOptions: parameters)
         
         self.view.addSubview(pageMenu!.view)
 
@@ -70,12 +73,6 @@ class ManagerOrderViewController: BaseViewController {
         subPageControllers.append(vc)
     }
     
-    private func addOrderPayment() {
-        let vc = OrderPaymentViewController()
-        vc.title = TextManager.waitOrder
-        vc.view.frame = viewControllerFrame
-        subPageControllers.append(vc)
-    }
     
     private func addOrderProcess() {
         let vc = OrderProcessViewController()

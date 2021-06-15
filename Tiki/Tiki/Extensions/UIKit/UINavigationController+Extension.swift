@@ -14,7 +14,7 @@ extension UINavigationController {
     func popToViewController<T: BaseViewController>(_ viewcontroller: T.Type) -> Bool {
         for controller in viewControllers as Array {
             if controller.isKind(of: viewcontroller.self) {
-                popToViewController(controller, animated: true)
+                popToViewController(controller, animated: false)
                 return true
             }
         }

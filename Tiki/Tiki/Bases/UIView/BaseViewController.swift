@@ -44,17 +44,6 @@ open class BaseViewController: UIViewController {
     
     // MARK: - UI Elements
     
-    lazy var profilePhotoImage: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = ImageManager.avatarDefault
-        imageView.layer.masksToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = dimension.largeMargin_120 / 2
-        imageView.layer.borderColor = UIColor.separator.cgColor
-        imageView.layer.borderWidth = 1
-        return imageView
-    }()
-    
     lazy var searchBar: PaddingTextField = {
         let searchBar = PaddingTextField()
         searchBar.setDefaultBackgroundColor()
@@ -145,6 +134,7 @@ open class BaseViewController: UIViewController {
         setupUIComponents()
         handleDefaultNotification()
         setupHideKeyboardOnTap()
+        setupNavigationBar()
     }
     
     deinit {
@@ -223,6 +213,8 @@ open class BaseViewController: UIViewController {
                                                name: NSNotification.Name.reloadCartBadgeNumber,
                                                object: nil)
     }
+    
+    func setupNavigationBar() {}
     
     @objc func handleCartBadgeChange() {
         cartButton.badgeNumber = CartManager.shared.totalProducts
@@ -382,35 +374,5 @@ extension BaseViewController: UIGestureRecognizerDelegate {
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer,
                                   shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
-    }
-}
-
-extension BaseViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func showChooseSourceTypeAlertController() {
-        let photoLibraryAction = UIAlertAction(title:TextManager.getPhotoLibrary, style: .default) { (action) in
-            self.showImagePickerController(sourceType: .photoLibrary)
-        }
-        let cameraAction = UIAlertAction(title: TextManager.camera, style: .default) { (action) in
-            self.showImagePickerController(sourceType: .camera)
-        }
-        let cancelAction = UIAlertAction(title: TextManager.cancel, style: .cancel, handler: nil)
-        AlertManager.showAlert(style: .actionSheet, title: nil, message: nil, actions: [photoLibraryAction, cameraAction, cancelAction], completion: nil)
-    }
-    
-    func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.allowsEditing = true
-        imagePickerController.sourceType = sourceType
-        present(imagePickerController, animated: true, completion: nil)
-    }
-    
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            self.profilePhotoImage.image = editedImage.withRenderingMode(.alwaysOriginal)
-        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.profilePhotoImage.image = originalImage.withRenderingMode(.alwaysOriginal)
-        }
-        dismiss(animated: true, completion: nil)
     }
 }

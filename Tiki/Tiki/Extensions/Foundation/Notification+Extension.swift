@@ -11,7 +11,7 @@ import UIKit
 
 extension Notification.Name {
     static var reloadCartBadgeNumber                    = Notification.Name("reloadCartBadgeNumber")
-    static var reciveDataCateogries                     = Notification.Name("reciveDataCateogries")
+    static var reloadDataCollectionView                 = Notification.Name("reloadCollectionView")
     static var updateFostFeedInputStatusCellSize        = Notification.Name("updateFostFeedInputStatusCellSize")
 }
 
