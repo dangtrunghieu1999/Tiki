@@ -122,4 +122,9 @@ class AppRouter: NSObject {
         UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
     }
     
+    class func pushToOrderCompleteVC() {
+        let viewController = OrderCompleteViewController()
+        UINavigationController.topNavigationVC?.pushViewController(viewController, animated: true)
+    }
+    
 }

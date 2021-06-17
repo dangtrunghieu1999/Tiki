@@ -119,6 +119,7 @@ final class  TextManager {
     static let verifyCode                   = "Xác thực tài khoản"
     static let activeAccSuccess             = "Kích hoạt tài khoản thành công"
     static let createNewPW                  = "Tạo mật khẩu mới"
+    static let backToHome                   = "Quay về trang chủ"
     
     // MARK: - User Profile
     

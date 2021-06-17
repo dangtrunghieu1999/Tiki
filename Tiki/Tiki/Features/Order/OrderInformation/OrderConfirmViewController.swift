@@ -1,43 +1,31 @@
 //
-//  OrderInformationViewController.swift
-//  ZoZoApp
+//  OrderConfirmViewController.swift
+//  Tiki
 //
-//  Created by LAP12852 on 8/25/19.
-//  Copyright © 2019 MACOS. All rights reserved.
+//  Created by Bee_MacPro on 15/06/2021.
 //
 
 import UIKit
 
-enum OrderSection: Int {
-    case address      = 0
-    case section1     = 1
-    case transport    = 2
-    case orderInfo    = 3
-    case section2     = 4
-    case payment      = 5
-    case section3     = 6
-
-    static func numberOfSections() -> Int {
-        return 7
+enum OrderConfirm: Int {
+    case info     = 0
+    case section1 = 1
+    case address  = 2
+    case section2 = 3
+    case bill     = 4
+    
+    static func numberOfItems() -> Int {
+        return 5
     }
 }
 
-class OrderInfoViewController: BaseViewController {
+class OrderConfirmViewController: BaseViewController {
+    
+    
+    var estimateHeight: CGFloat = 0.0
+    var products: [Product]     = []
     
     // MARK: - UI Elements
-    
-    fileprivate lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
-        layout.minimumInteritemSpacing = 0
-        let collectionView = UICollectionView(frame: .zero,
-                                              collectionViewLayout: layout)
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.backgroundColor = UIColor.separator
-        collectionView.dataSource = self
-        collectionView.delegate   = self
-        return collectionView
-    }()
     
     private let bottomView: BaseView = {
         let view = BaseView()
@@ -70,50 +58,41 @@ class OrderInfoViewController: BaseViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = dimension.cornerRadiusSmall
-        button.addTarget(self, action: #selector(tapOnConfirmOrder), for: .touchUpInside)
+        button.addTarget(self, action: #selector(tapOnOrderSubbmit), for: .touchUpInside)
         return button
     }()
     
-    // MARK -  Variables
-    
-    private var products: [Product]?    = []
-    private var estimateHeight: CGFloat = 0.0
-    
-    convenience init(products: [Product]) {
-        self.init()
-        self.products = products
-        self.estimateHeight = CGFloat(products.count) * 100.0
-    }
-    
-    // MARK: - View LifeCycles
+    fileprivate lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        let collectionView = UICollectionView(frame: .zero,
+                                              collectionViewLayout: layout)
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.backgroundColor = UIColor.separator
+        collectionView.dataSource = self
+        collectionView.delegate   = self
+        collectionView.registerReusableCell(BillerCollectionViewCell.self)
+        collectionView.registerReusableCell(AddressCollectionViewCell.self)
+        collectionView.registerReusableCell(FooterCollectionViewCell.self)
+        collectionView.registerReusableCell(OrderConfirmCollectionViewCell.self)
+        return collectionView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = TextManager.order
+        self.navigationItem.title = TextManager.confirmOrder
         layoutBottomView()
         layoutBuyButton()
         layoutSumMoneyTitleLabel()
         layoutTotalMoneyTitleLabel()
         layoutCollectionView()
-        registerCell()
     }
     
-    private func registerCell() {
-        self.collectionView.registerReusableCell(AddressCollectionViewCell.self)
-        self.collectionView.registerReusableCell(FooterCollectionViewCell.self)
-        self.collectionView.registerReusableCell(TransportCollectionViewCell.self)
-        self.collectionView.registerReusableCell(OrderCollectionViewCell.self)
-        self.collectionView.registerReusableCell(PaymentCollectionViewCell.self)
-    }
-    
-    @objc private func tapOnConfirmOrder() {
-        let vc = OrderConfirmViewController()
-        vc.products = self.products ?? []
-        vc.estimateHeight = self.estimateHeight
+    @objc private func tapOnOrderSubbmit() {
+        let vc = OrderCompleteViewController()
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    // MARK: - Layout
     
     private func layoutBottomView() {
         view.addSubview(bottomView)
@@ -184,27 +163,21 @@ class OrderInfoViewController: BaseViewController {
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-
-extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
-    
+extension OrderConfirmViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width = collectionView.frame.width
-        let type  = OrderSection(rawValue: indexPath.section)
+        let type  = OrderConfirm(rawValue: indexPath.row)
         switch type {
-        case .section1, .section2, .section3:
-            return CGSize(width: width, height: 8)
+        case .info:
+            return CGSize(width: width,
+                          height: estimateHeight + 300)
         case .address:
             return CGSize(width: width, height: 120)
-        case .transport:
-            return CGSize(width: width, height: 230)
-        case .orderInfo:
-            return CGSize(width: width,
-                          height: estimateHeight + 120)
-        case .payment:
+        case .section1, .section2:
+            return CGSize(width: width, height: 8)
+        case .bill:
             return CGSize(width: width, height: 200)
         default:
             return CGSize(width: width, height: 0)
@@ -212,53 +185,34 @@ extension OrderInfoViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-// MARK: - UICollectionViewDataSource
 
-extension OrderInfoViewController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return OrderSection.numberOfSections()
-    }
+extension OrderConfirmViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-       return 1
+        return OrderConfirm.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let type = OrderSection(rawValue: indexPath.section)
+        let type = OrderConfirm(rawValue: indexPath.row)
         switch type {
-        case .section1,
-             .section2,
-             .section3:
-            let cell: FooterCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        case .info:
+            let cell: OrderConfirmCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.products = products
             return cell
         case .address:
             let cell: AddressCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.delegate = self
+            cell.hiddenButton = true
             return cell
-        case .transport:
-            let cell: TransportCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        case .section1, .section2:
+            let cell: FooterCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
-        case .orderInfo:
-            let cell: OrderCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
-            cell.products = products ?? []
-            return cell
-        case .payment:
-            let cell: PaymentCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
+        case .bill:
+            let cell: BillerCollectionViewCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
         default:
             return UICollectionViewCell()
         }
-    }
-}
-
-
-// MARK: - AddressCollectionViewCellDelegate
-
-extension OrderInfoViewController: AddressCollectionViewCellDelegate {
-    func didSelectAddress() {
-        AppRouter.pushToDeliveryAddressVC()
     }
 }

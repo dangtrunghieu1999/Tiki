@@ -13,7 +13,6 @@ class ManagerOrderViewController: BaseViewController {
     
     // MARK: - Variables
     
-    
     private lazy var viewControllerFrame = CGRect(x: 0,
                                                   y: 0,
                                                   width: view.bounds.width,
@@ -22,13 +21,15 @@ class ManagerOrderViewController: BaseViewController {
     var parameters: [CAPSPageMenuOption] = [
         .centerMenuItems(true),
         .scrollMenuBackgroundColor(UIColor.scrollMenu),
-        .selectionIndicatorColor(UIColor.clear),
+        .selectionIndicatorColor(UIColor.primary),
         .selectedMenuItemLabelColor(UIColor.bodyText),
         .menuItemFont(UIFont.systemFont(ofSize: FontSize.h2.rawValue, weight: .medium)),
         .menuHeight(42),
+        
     ]
-    var pageMenu : CAPSPageMenu?
     
+    var pageMenu : CAPSPageMenu?
+    var numberIndex = 0
     fileprivate var subPageControllers: [UIViewController] = []
     
     
@@ -45,6 +46,7 @@ class ManagerOrderViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.title = TextManager.myOrdered
         addGuestChildsVC()
+        pageMenu?.moveToPage(numberIndex)
     }
     
     // MARK: - Helper Method
@@ -61,9 +63,7 @@ class ManagerOrderViewController: BaseViewController {
                                 width: self.view.frame.width,
                                 height: self.view.frame.height),
                                 pageMenuOptions: parameters)
-        
         self.view.addSubview(pageMenu!.view)
-
     }
     
     private func addOrderAll() {
@@ -72,7 +72,6 @@ class ManagerOrderViewController: BaseViewController {
         vc.view.frame = viewControllerFrame
         subPageControllers.append(vc)
     }
-    
     
     private func addOrderProcess() {
         let vc = OrderProcessViewController()
@@ -107,7 +106,4 @@ class ManagerOrderViewController: BaseViewController {
     
     // MARK: - Layout
     
-    
-    
 }
-

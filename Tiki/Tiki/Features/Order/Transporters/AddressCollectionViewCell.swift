@@ -13,13 +13,23 @@ protocol AddressCollectionViewCellDelegate: class {
 
 class AddressCollectionViewCell: BaseCollectionViewCell {
     
+    // MARK: - Define Variables
+    
     weak var delegate: AddressCollectionViewCellDelegate?
     
+    var hiddenButton: Bool = false {
+        didSet {
+            self.changeButton.isHidden = hiddenButton
+        }
+    }
+    
+    // MARK: - UI Elements
+
     fileprivate lazy var addressTitleLabel: UILabel = {
         let label = UILabel()
         label.text = TextManager.addressRecive
         label.textColor = UIColor.bodyText
-        label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         return label
     }()
     

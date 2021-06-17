@@ -20,6 +20,7 @@ extension TextManager {
     static let confirm                                  = "Xác nhận"
     static let confirmOrder                             = "Xác nhận đơn hàng"
     static let selectTransporter                        = "Chọn nhà vận chuyển"
+    static let transportForm                            = "Nhà vận chuyển"
     static let orderInfomation                          = "Thông tin đơn hàng"
     static let paymentMethod                            = "Phương thức thanh toán"
     static let selctedMethod                            = "Chọn hình thức thanh toán"

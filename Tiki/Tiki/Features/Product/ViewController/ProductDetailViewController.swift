@@ -205,10 +205,15 @@ class ProductDetailViewController: BaseViewController {
     private func layoutBuyButton() {
         bottomView.addSubview(buyButton)
         buyButton.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(Dimension.shared.normalMargin)
-            make.right.equalToSuperview().offset(-Dimension.shared.normalMargin)
-            make.height.equalTo(Dimension.shared.defaultHeightButton)
-            make.bottom.equalToSuperview().offset(-Dimension.shared.mediumMargin)
+            make.left
+                .right
+                .equalToSuperview()
+                .inset(dimension.normalMargin)
+            make.height
+                .equalTo(dimension.defaultHeightButton)
+            make.bottom
+                .equalToSuperview()
+                .offset(-dimension.mediumMargin)
         }
     }
     

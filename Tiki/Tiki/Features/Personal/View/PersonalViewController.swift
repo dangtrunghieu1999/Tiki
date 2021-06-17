@@ -148,6 +148,7 @@ extension PersonalViewController: UICollectionViewDelegate {
         switch type {
         case .mananger, .recive, .transport, .success, .canccel:
             let vc = ManagerOrderViewController()
+            vc.numberIndex = indexPath.row - 1
             self.handleWhenLoginPushView(vc)
         case .address:
             let vc = DeliveryAddressViewController()
