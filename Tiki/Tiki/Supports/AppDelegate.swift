@@ -37,8 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             window?.rootViewController = TKTabBarViewController()
         }
-        
-//                window?.rootViewController = UINavigationController(rootViewController: OrderCompleteViewController())
+//
+//                window?.rootViewController = UINavigationController(rootViewController: DeliveryInfomationViewController())
         
         //        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

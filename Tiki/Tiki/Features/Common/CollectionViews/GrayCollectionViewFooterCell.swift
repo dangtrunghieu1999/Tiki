@@ -10,6 +10,6 @@ import UIKit
 
 class GrayCollectionViewFooterCell: BaseCollectionViewHeaderFooterCell {
     override func initialize() {
-        backgroundColor = UIColor.lightGray.withAlphaComponent(0.2)
+        backgroundColor = UIColor.lightBackground
     }
 }

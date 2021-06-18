@@ -63,18 +63,13 @@ class TitleTextField: BaseView {
         }
     }
     
-    var colorLine: UIColor? {
-        didSet {
-            lineView.backgroundColor = colorLine
-        }
-    }
-    
     // MARK: - UI Elements
     
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor.titleText
-        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
+        label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue,
+                                       weight: .semibold)
         return label
     }()
     
@@ -100,7 +95,6 @@ class TitleTextField: BaseView {
     override func initialize() {
         layoutTitleLabel()
         layoutTextField()
-        layoutLineView()
     }
     
     func addTarget(_ target: Any?, action: Selector, for event: UIControl.Event) {
@@ -129,16 +123,6 @@ class TitleTextField: BaseView {
             make.top.equalTo(titleLabel.snp.bottom).offset(Dimension.shared.mediumMargin)
             make.height.equalTo(Dimension.shared.defaultHeightTextField)
             make.bottom.equalToSuperview()
-        }
-    }
-    
-    private func layoutLineView() {
-        addSubview(lineView)
-        lineView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(textField)
-            make.bottom.equalToSuperview()
-                .offset(-1)
-            make.height.equalTo(1)
         }
     }
     

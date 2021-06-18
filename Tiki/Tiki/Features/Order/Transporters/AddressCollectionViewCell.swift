@@ -36,7 +36,6 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
     fileprivate lazy var infoUserLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue, weight: .semibold)
-        label.text = "Đặng Trung Hiếu - 0336665653"
         label.textAlignment = .left
         return label
     }()
@@ -59,7 +58,6 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
     
     fileprivate lazy var addressDetailLabel: UILabel = {
         let label = UILabel()
-        label.text = "Hẻm 457 Huỳnh Tấn Phát, phường Tân Thuận Đông, Quận7, Hồ Chí Minh"
         label.textColor = UIColor.bodyText
         label.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         label.numberOfLines = 0
@@ -72,6 +70,13 @@ class AddressCollectionViewCell: BaseCollectionViewCell {
         layoutChangeButton()
         layoutInfoUserLabel()
         layoutAddressDetailLabel()
+    }
+    
+    func configCell(with infoUser: String,
+                    addressRecive: String) {
+        
+        self.infoUserLabel.text      = infoUser
+        self.addressDetailLabel.text = addressRecive
     }
     
     @objc private func tapOnChangeAddress() {

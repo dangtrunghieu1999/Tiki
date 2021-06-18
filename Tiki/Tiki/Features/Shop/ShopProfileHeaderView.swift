@@ -27,25 +27,11 @@ class ShopProfileHeaderView: UserProfileHeaderView {
         return button
     }()
     
-    fileprivate lazy var followButton: UIButton = {
-        let button = UIButton()
-        button.layer.borderWidth = 1
-        button.setTitle(TextManager.follow, for: .normal)
-        button.titleLabel?.textColor = UIColor.white
-        button.titleLabel?.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
-        button.backgroundColor = UIColor.primary
-        button.layer.borderColor = UIColor.white.cgColor
-        button.layer.cornerRadius = Dimension.shared.smalltHeightButton_28 / 2
-        return button
-    }()
-    
-    
     // MARK: - Init
     
     override func initialize() {
         super.initialize()
         layoutChatButton()
-        layoutFollowButton()
     }
     
     // MARK: - Public Methods
@@ -62,14 +48,4 @@ class ShopProfileHeaderView: UserProfileHeaderView {
             make.centerY.equalToSuperview().offset(-Dimension.shared.normalMargin)
         }
     }
-    
-    private func layoutFollowButton() {
-        addSubview(followButton)
-        followButton.snp.makeConstraints { (make) in
-            make.right.equalTo(chatButton)
-            make.width.height.equalTo(chatButton)
-            make.top.equalTo(chatButton.snp.bottom).offset(Dimension.shared.smallMargin)
-        }
-    }
-    
 }

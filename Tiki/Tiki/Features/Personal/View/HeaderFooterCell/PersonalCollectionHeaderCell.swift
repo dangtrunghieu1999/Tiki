@@ -11,7 +11,7 @@ protocol PersonalHeaderCollectionViewDelegate: class {
     func tapOnSignIn()
 }
 
-class PersonalHeaderCollectionReusableView: BaseCollectionViewHeaderFooterCell {
+class PersonalCollectionHeaderCell: BaseCollectionViewHeaderFooterCell {
     
     // MARK: - Variables
     weak var delegate: PersonalHeaderCollectionViewDelegate?

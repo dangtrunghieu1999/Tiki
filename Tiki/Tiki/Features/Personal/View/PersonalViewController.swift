@@ -23,7 +23,7 @@ class PersonalViewController: BaseViewController {
         collectionView.delegate  = self
         collectionView.registerReusableCell(PersonCollectionViewCell.self)
         collectionView
-            .registerReusableSupplementaryView(PersonalHeaderCollectionReusableView.self,
+            .registerReusableSupplementaryView(PersonalCollectionHeaderCell.self,
              forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader)
         return collectionView
     }()
@@ -98,7 +98,7 @@ extension PersonalViewController: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionView.elementKindSectionHeader {
-            let header: PersonalHeaderCollectionReusableView =
+            let header: PersonalCollectionHeaderCell =
                 collectionView.dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
             if UserManager.isLoggedIn() {
                 header.configData(true, title: UserManager.user?.fullName)

@@ -20,7 +20,7 @@ class ManagerOrderViewController: BaseViewController {
     
     var parameters: [CAPSPageMenuOption] = [
         .centerMenuItems(true),
-        .scrollMenuBackgroundColor(UIColor.scrollMenu),
+        .scrollMenuBackgroundColor(UIColor.white),
         .selectionIndicatorColor(UIColor.primary),
         .selectedMenuItemLabelColor(UIColor.bodyText),
         .menuItemFont(UIFont.systemFont(ofSize: FontSize.h2.rawValue, weight: .medium)),
@@ -28,9 +28,10 @@ class ManagerOrderViewController: BaseViewController {
         
     ]
     
+    var order: [Order] = []
     var pageMenu : CAPSPageMenu?
     var numberIndex = 0
-    fileprivate var subPageControllers: [UIViewController] = []
+    fileprivate var subPageControllers: [AbstractOrderViewController] = []
     
     
     // MARK: - UI Elements
@@ -52,11 +53,7 @@ class ManagerOrderViewController: BaseViewController {
     // MARK: - Helper Method
     
     fileprivate func addGuestChildsVC() {
-        addOrderAll()
-        addOrderProcess()
-        addOrderTransport()
-        addOrderSuccess()
-        addOrderCancel()
+        createSubViewOrderManager()
         
         pageMenu = CAPSPageMenu(viewControllers: subPageControllers,
                                 frame: CGRect(x: 0.0, y: self.topbarHeight,
@@ -64,46 +61,49 @@ class ManagerOrderViewController: BaseViewController {
                                 height: self.view.frame.height),
                                 pageMenuOptions: parameters)
         self.view.addSubview(pageMenu!.view)
+        requestAPIOrder()
     }
     
-    private func addOrderAll() {
-        let vc = OrderAllViewController()
-        vc.title = TextManager.allOrder
-        vc.view.frame = viewControllerFrame
-        subPageControllers.append(vc)
+    func requestAPIOrder() {
+        guard let path = Bundle.main.path(forResource: "Order", ofType: "json") else {
+            fatalError("Not available json")
+        }
+        let url = URL(fileURLWithPath: path)
+        Alamofire.request(url).responseJSON { (response) in
+            switch response.result {
+            case.success(let value):
+                let json = JSON(value)
+                self.order = json.arrayValue.map{ Order(json: $0)}
+                self.reloadAllChildOrderVC(with: self.order)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
-    private func addOrderProcess() {
-        let vc = OrderProcessViewController()
-        vc.title = TextManager.processing
-        vc.view.frame = viewControllerFrame
-        subPageControllers.append(vc)
+    func createSubViewOrderManager() {
+        for status in Order.arraySubVC {
+            let vc = AbstractOrderViewController(status: status)
+            vc.view.frame = viewControllerFrame
+            vc.title = status.title
+            subPageControllers.append(vc)
+        }
     }
     
-    private func addOrderTransport() {
-        let vc = OrderTransportViewController()
-        vc.title = TextManager.transported
-        vc.view.frame = viewControllerFrame
-        subPageControllers.append(vc)
+    private func reloadAllChildOrderVC(with orders: [Order]) {
+        for vc in subPageControllers {
+            let currentOrders = filterOrders(orders, by: vc.status)
+            vc.reloadData(currentOrders)
+        }
     }
     
-    private func addOrderSuccess() {
-        let vc = OrderSuccessViewController()
-        vc.title = TextManager.recivedSuccess
-        vc.view.frame = viewControllerFrame
-        subPageControllers.append(vc)
+    func filterOrders(_ order: [Order], by status: OrderStatus) -> [Order] {
+        switch status {
+        case .recive, .transport, .success, .canccel:
+            return order.filter { $0.status == status }
+        case .all:
+            return order
+        }
     }
-    
-    private func addOrderCancel() {
-        let vc = OrderCancelViewController()
-        vc.title = TextManager.cancelOrder
-        vc.view.frame = viewControllerFrame
-        subPageControllers.append(vc)
-    }
-    
-    
-    // MARK: - GET API
-    
-    // MARK: - Layout
     
 }

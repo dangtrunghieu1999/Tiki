@@ -358,14 +358,6 @@ extension BaseViewController: UITextFieldDelegate {
         searchBar.resignFirstResponder()
         return true
     }
-    
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.addBottomBorder(UIColor.background)
-    }
-    
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.addBottomBorder(UIColor.separator)
-    }
 }
 
 // MARK: - UIGestureRecognizerDelegate

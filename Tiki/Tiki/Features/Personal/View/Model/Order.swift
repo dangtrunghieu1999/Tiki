@@ -18,25 +18,60 @@ enum OrderStatus: Int {
     
     var name: String? {
         switch self {
-        case .all:
-            return TextManager.allOrder.localized()
         case .recive:
-            return TextManager.processing.localized()
+            return "Đã tiếp nhận"
         case .transport:
-            return TextManager.transported.localized()
+            return "Đã tiếp nhận vận chuyển"
         case .success:
-            return TextManager.recivedSuccess.localized()
+            return "Đã giao thành công"
         case .canccel:
-            return TextManager.cancelOrder.localized()
+            return "Đã huỷ"
+        case .all:
+            return ""
+        }
+    }
+    
+    var title: String? {
+        switch self {
+        case .recive:
+            return TextManager.processing
+        case .transport:
+            return TextManager.transported
+        case .success:
+            return TextManager.recivedSuccess
+        case .canccel:
+            return TextManager.cancelOrder
+        case .all:
+            return TextManager.allOrder
         }
     }
 }
 
 class Order: NSObject, JSONParsable {
+    var id: Int               = 0
+    var status: OrderStatus     = .success
+    var image: String           = ""
+    var name: String            = ""
+    var quantity: Int           = 0
+    var price: Double           = 0.0
+    var bill: String            = ""
     
     required override init() { }
     
     required init(json: JSON) {
         
+        self.status     = OrderStatus(rawValue: json["status"].intValue) ?? .success
+        self.id         = json["id"].intValue
+        self.image      = json["image"].stringValue
+        self.name       = json["name"].stringValue
+        self.quantity   = json["quantity"].intValue
+        self.price      = json["price"].doubleValue
+        
+        self.bill = "\(quantity) sản phẩm | \(price.currencyFormat)"
     }
+    
+}
+
+extension Order {
+    static var arraySubVC: [OrderStatus] = [.all, .recive, .transport, .success, .canccel]
 }
