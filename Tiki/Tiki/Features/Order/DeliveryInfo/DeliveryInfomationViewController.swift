@@ -21,27 +21,6 @@ class DeliveryInfomationViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate lazy var provincePickerView: UIPickerView = {
-        let pickerView = UIPickerView()
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        return pickerView
-    }()
-    
-    fileprivate lazy var districtPickerView: UIPickerView = {
-        let pickerView = UIPickerView()
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        return pickerView
-    }()
-    
-    fileprivate lazy var wardPickerView: UIPickerView = {
-        let pickerView = UIPickerView()
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        return pickerView
-    }()
-    
     // MARK: - UI Elements
     
     fileprivate lazy var titleLabel: UILabel = {
@@ -82,7 +61,6 @@ class DeliveryInfomationViewController: BaseViewController {
                                                 size: FontSize.h1.rawValue)
         textField.titleText = TextManager.provinceCity.localized()
         textField.rightTextfieldImage = ImageManager.dropDown
-        textField.textFieldInputView = provincePickerView
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
@@ -98,9 +76,6 @@ class DeliveryInfomationViewController: BaseViewController {
                                                 size: FontSize.h1.rawValue)
         textField.titleText = TextManager.district.localized()
         textField.rightTextfieldImage = ImageManager.dropDown
-        textField.isUserInteractionEnabled = false
-        textField.textField.backgroundColor = UIColor.lightSeparator
-        textField.textFieldInputView = districtPickerView
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
@@ -116,9 +91,7 @@ class DeliveryInfomationViewController: BaseViewController {
                                                 size: FontSize.h1.rawValue)
         textField.titleText = TextManager.ward.localized()
         textField.rightTextfieldImage = ImageManager.dropDown
-        textField.isUserInteractionEnabled = false
-        textField.textField.backgroundColor = UIColor.lightSeparator
-        textField.textFieldInputView = wardPickerView
+
         textField.addTarget(self,
                             action: #selector(textFieldValueChange(_:)),
                             for: .valueChanged)
@@ -164,13 +137,14 @@ class DeliveryInfomationViewController: BaseViewController {
         layoutProvinceCityTitleLabel()
         layoutDistrictCityTitleLabel()
         layoutWardCityTitleLabel()
-        getAPIAllProvince()
     }
     
     // MARK: - Helper Method
     
     @objc private func textFieldBeginEditing(_ textField: UITextField) {
-       
+        textField.resignFirstResponder()
+        let vc = LocationViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func textFieldValueChange(_ textField: UITextField) {
@@ -194,22 +168,6 @@ class DeliveryInfomationViewController: BaseViewController {
     }
     
     // MARK: - GET API
-    
-    private func getAPIAllProvince() {
-        let path = "https://api.mysupership.vn/v1/partner/areas/province"
-        guard let url  = URL(string: path) else { return }
-       
-        Alamofire.request(url).responseJSON { (response) in
-            switch response.result {
-            case.success(let value):
-                let json = JSON(value)
-                let results = json["results"]
-                self.provinces = results.arrayValue.map{ Province(json: $0) }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
     
     // MARK: - Layout
     
@@ -263,7 +221,6 @@ class DeliveryInfomationViewController: BaseViewController {
                 .equalToSuperview()
             make.bottom
                 .equalTo(bottomView.snp.top)
-                .offset(-dimension.largeMargin_38)
         }
     }
     
@@ -300,7 +257,7 @@ class DeliveryInfomationViewController: BaseViewController {
                 .equalTo(fullNameReciveTextField)
             make.top
                 .equalTo(fullNameReciveTextField.snp.bottom)
-                .offset(dimension.largeMargin_32)
+                .offset(dimension.normalMargin)
         }
     }
     
@@ -312,7 +269,7 @@ class DeliveryInfomationViewController: BaseViewController {
                 .equalTo(fullNameReciveTextField)
             make.top
                 .equalTo(phoneReciveTextField.snp.bottom)
-                .offset(dimension.largeMargin_32)
+                .offset(dimension.normalMargin)
         }
     }
     
@@ -324,7 +281,7 @@ class DeliveryInfomationViewController: BaseViewController {
                 .equalTo(fullNameReciveTextField)
             make.top
                 .equalTo(addressReciveTextField.snp.bottom)
-                .offset(dimension.largeMargin_32)
+                .offset(dimension.normalMargin)
         }
     }
     
@@ -336,7 +293,7 @@ class DeliveryInfomationViewController: BaseViewController {
                 .equalTo(fullNameReciveTextField)
             make.top
                 .equalTo(provinceTextField.snp.bottom)
-                .offset(dimension.largeMargin_32)
+                .offset(dimension.normalMargin)
         }
     }
     
@@ -347,7 +304,7 @@ class DeliveryInfomationViewController: BaseViewController {
                 .right
                 .equalTo(fullNameReciveTextField)
             make.top.equalTo(districtTextField.snp.bottom)
-                .offset(dimension.largeMargin_32)
+                .offset(dimension.normalMargin)
             make.bottom.equalToSuperview()
         }
     }
@@ -358,49 +315,3 @@ class DeliveryInfomationViewController: BaseViewController {
 
 
 // MARK: - UIPickerViewDelegate
-
-extension DeliveryInfomationViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int,
-                    inComponent component: Int) {
-        if pickerView == provincePickerView {
-            provinceTextField.textField.text = provinces[safe:row]?.name ?? ""
-            deliveryInformation.province = provinces[safe:row]
-        } else if pickerView == districtPickerView {
-            districtTextField.textField.text = districts[safe:row]?.name ?? ""
-            deliveryInformation.district = districts[safe:row]
-        } else if pickerView == wardPickerView {
-            wardTextField.textField.text = wards[safe:row]?.name ?? ""
-            deliveryInformation.ward = wards[safe:row]
-        }
-    }
-}
-
-// MARK: - UIPickerViewDatasource
-
-extension DeliveryInfomationViewController: UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView,
-                    numberOfRowsInComponent component: Int) -> Int {
-        if pickerView == provincePickerView {
-            return provinces.count
-        } else if pickerView == districtPickerView {
-            return districts.count
-        } else {
-            return wards.count
-        }
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int,
-                    forComponent component: Int) -> String? {
-        if pickerView == provincePickerView {
-            return provinces[safe: row]?.name
-        } else if pickerView == districtPickerView {
-            return districts[safe: row]?.name
-        } else {
-            return wards[safe: row]?.name
-        }
-    }
-}

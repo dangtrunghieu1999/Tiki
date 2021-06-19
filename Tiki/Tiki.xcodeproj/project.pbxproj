@@ -293,6 +293,7 @@
 		F64425BD2655F7EA00C47841 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64425BC2655F7EA00C47841 /* Review.swift */; };
 		F64D906D2669371300A55BD5 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */; };
 		F64FEF6E266A32FA00D8F775 /* TransporterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64FEF6D266A32FA00D8F775 /* TransporterTableViewCell.swift */; };
+		F6522134267CA62E004A8287 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6522133267CA62D004A8287 /* LocationViewController.swift */; };
 		F6596F7E26799F21008E4B57 /* OrderConfirmCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6596F7D26799F21008E4B57 /* OrderConfirmCollectionViewCell.swift */; };
 		F6596F882679E43E008E4B57 /* OrderCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6596F872679E43E008E4B57 /* OrderCompleteViewController.swift */; };
 		F659DFC7266CAF3200ECE851 /* MethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */; };
@@ -311,6 +312,11 @@
 		F68DA21E26730FDB001CBF52 /* Details.json in Resources */ = {isa = PBXBuildFile; fileRef = F68DA21D26730FDB001CBF52 /* Details.json */; };
 		F69BECDF265A5457003C8AF5 /* VerifyPhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */; };
 		F6A566F7266B76CB00B22ECA /* OrderProductTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */; };
+		F6BB179F267D9713004FD5C9 /* ProvinceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB179E267D9713004FD5C9 /* ProvinceViewController.swift */; };
+		F6BB17A2267D9722004FD5C9 /* DistrictViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB17A1267D9722004FD5C9 /* DistrictViewController.swift */; };
+		F6BB17A5267D9727004FD5C9 /* WardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB17A4267D9727004FD5C9 /* WardViewController.swift */; };
+		F6BB17A9267DD06E004FD5C9 /* AbstractLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB17A8267DD06E004FD5C9 /* AbstractLocationViewController.swift */; };
+		F6BB17AC267DD475004FD5C9 /* LocationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BB17AB267DD475004FD5C9 /* LocationsTableViewCell.swift */; };
 		F6E41E4D26774F8600A668FF /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E41E4C26774F8600A668FF /* ImageCompressor.swift */; };
 		F6F37D562671B94C00621672 /* CheckListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F37D542671B94C00621672 /* CheckListCollectionViewCell.swift */; };
 		F6F37D572671B94C00621672 /* FilterCouponPulleyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F37D552671B94C00621672 /* FilterCouponPulleyView.swift */; };
@@ -646,6 +652,7 @@
 		F64425BC2655F7EA00C47841 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		F64D906C2669371300A55BD5 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		F64FEF6D266A32FA00D8F775 /* TransporterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransporterTableViewCell.swift; sourceTree = "<group>"; };
+		F6522133267CA62D004A8287 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		F6596F7D26799F21008E4B57 /* OrderConfirmCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderConfirmCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6596F872679E43E008E4B57 /* OrderCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCompleteViewController.swift; sourceTree = "<group>"; };
 		F659DFC6266CAF3200ECE851 /* MethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodTableViewCell.swift; sourceTree = "<group>"; };
@@ -664,6 +671,11 @@
 		F68DA21D26730FDB001CBF52 /* Details.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Details.json; sourceTree = "<group>"; };
 		F69BECDE265A5457003C8AF5 /* VerifyPhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPhoneViewController.swift; sourceTree = "<group>"; };
 		F6A566F6266B76CB00B22ECA /* OrderProductTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderProductTableViewCell.swift; sourceTree = "<group>"; };
+		F6BB179E267D9713004FD5C9 /* ProvinceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProvinceViewController.swift; sourceTree = "<group>"; };
+		F6BB17A1267D9722004FD5C9 /* DistrictViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictViewController.swift; sourceTree = "<group>"; };
+		F6BB17A4267D9727004FD5C9 /* WardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WardViewController.swift; sourceTree = "<group>"; };
+		F6BB17A8267DD06E004FD5C9 /* AbstractLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractLocationViewController.swift; sourceTree = "<group>"; };
+		F6BB17AB267DD475004FD5C9 /* LocationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsTableViewCell.swift; sourceTree = "<group>"; };
 		F6E41E4C26774F8600A668FF /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
 		F6F37D542671B94C00621672 /* CheckListCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckListCollectionViewCell.swift; sourceTree = "<group>"; };
 		F6F37D552671B94C00621672 /* FilterCouponPulleyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCouponPulleyView.swift; sourceTree = "<group>"; };
@@ -1600,6 +1612,12 @@
 			isa = PBXGroup;
 			children = (
 				CFD56FE92635CBE800B17AEA /* DeliveryInfomationViewController.swift */,
+				F6522133267CA62D004A8287 /* LocationViewController.swift */,
+				F6BB179E267D9713004FD5C9 /* ProvinceViewController.swift */,
+				F6BB17A1267D9722004FD5C9 /* DistrictViewController.swift */,
+				F6BB17A4267D9727004FD5C9 /* WardViewController.swift */,
+				F6BB17A8267DD06E004FD5C9 /* AbstractLocationViewController.swift */,
+				F6BB17AB267DD475004FD5C9 /* LocationsTableViewCell.swift */,
 			);
 			path = DeliveryInfo;
 			sourceTree = "<group>";
@@ -1937,6 +1955,7 @@
 				CFAF8E5D25FC4EDD000E2CCA /* UploadManager.swift in Sources */,
 				CFAF8E5E25FC4EDD000E2CCA /* AlertManager.swift in Sources */,
 				CFD015472635CA6700850ADB /* CartCollectionFooterView.swift in Sources */,
+				F6522134267CA62E004A8287 /* LocationViewController.swift in Sources */,
 				CFAF8E2B25FC4EDD000E2CCA /* BaseCollectionViewCel.swift in Sources */,
 				CF540B42260840FD003CDC6D /* ProductedBuyViewController.swift in Sources */,
 				CFAF8E1B25FC4EDD000E2CCA /* CartEndPoint.swift in Sources */,
@@ -2014,6 +2033,7 @@
 				CFAF8E1A25FC4EDD000E2CCA /* APIService.swift in Sources */,
 				CF6F553A262C732D00ED6F64 /* TitleTableViewCell.swift in Sources */,
 				CFAF8E4625FC4EDD000E2CCA /* PHAsset+Extension.swift in Sources */,
+				F6BB17AC267DD475004FD5C9 /* LocationsTableViewCell.swift in Sources */,
 				CF58877D262823F60041A595 /* ProductAdvanedCollectionViewCell.swift in Sources */,
 				CFB41DFA26476EA9006A323D /* UITextField+Extension.swift in Sources */,
 				CF58877A262823E70041A595 /* ProductStallCollectionViewCell.swift in Sources */,
@@ -2100,6 +2120,7 @@
 				CFAF8E4D25FC4EDD000E2CCA /* Double+Extension.swift in Sources */,
 				CFAF8E1F25FC4EDD000E2CCA /* OrderEndPoint.swift in Sources */,
 				F60F0134265FA6240090839E /* ViewController.swift in Sources */,
+				F6BB17A9267DD06E004FD5C9 /* AbstractLocationViewController.swift in Sources */,
 				CFAF8F0525FC507C000E2CCA /* NINonEmptyCollectionTesting.m in Sources */,
 				CFE6A3CB2652A6F80017F7E6 /* TitleCenterLineView.swift in Sources */,
 				CFAF8F3225FC507C000E2CCA /* PhotoGalleryCameraIconView.swift in Sources */,
@@ -2119,6 +2140,7 @@
 				CFAF8E5125FC4EDD000E2CCA /* Notification+Extension.swift in Sources */,
 				CFAF8FC225FC545D000E2CCA /* LoadMoreModel.swift in Sources */,
 				CFB9998F2649FC4F00F0AAD5 /* HomeEndPoint.swift in Sources */,
+				F6BB17A2267D9722004FD5C9 /* DistrictViewController.swift in Sources */,
 				CFD56FED2635CBE800B17AEA /* OrderCollectionViewCell.swift in Sources */,
 				CFD56FF62635CBE800B17AEA /* OrderManager.swift in Sources */,
 				CFAF8F1525FC507C000E2CCA /* ImageCropperPresenter.swift in Sources */,
@@ -2138,6 +2160,7 @@
 				CFAF8E4C25FC4EDD000E2CCA /* JSON+Parser.swift in Sources */,
 				CFAF8E2F25FC4EDD000E2CCA /* BaseShimmerProtocol.swift in Sources */,
 				CFAF8E6425FC4EDD000E2CCA /* ChatTextManager.swift in Sources */,
+				F6BB179F267D9713004FD5C9 /* ProvinceViewController.swift in Sources */,
 				CFAF8E5725FC4EDD000E2CCA /* Ultilities.swift in Sources */,
 				CFAF8F4125FC507C000E2CCA /* MenuItemView.swift in Sources */,
 				CFAF8E3525FC4EDD000E2CCA /* TitleTextField.swift in Sources */,
@@ -2178,6 +2201,7 @@
 				CF94A53E2651013F00EF8E7E /* ProductByIdViewController.swift in Sources */,
 				CF2A204C26464C5100EDCDB0 /* Address.swift in Sources */,
 				F687844C2653C97200A09AEC /* SeeMoreProductPulleyView.swift in Sources */,
+				F6BB17A5267D9727004FD5C9 /* WardViewController.swift in Sources */,
 				CF88CEB325FDB5EE00E30BD1 /* Personal.swift in Sources */,
 				CFAF8F1E25FC507C000E2CCA /* ImagePickerController.swift in Sources */,
 				F6061BB9265A9D1A003111CA /* ChangePWViewController.swift in Sources */,

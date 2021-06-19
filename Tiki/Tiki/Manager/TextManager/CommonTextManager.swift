@@ -120,6 +120,7 @@ final class  TextManager {
     static let activeAccSuccess             = "Kích hoạt tài khoản thành công"
     static let createNewPW                  = "Tạo mật khẩu mới"
     static let backToHome                   = "Quay về trang chủ"
+    static let locationRecive               = "Khu vực nhận hàng"
     
     // MARK: - User Profile
     
