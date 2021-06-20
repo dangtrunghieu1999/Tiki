@@ -6,6 +6,9 @@
 //
 
 import UIKit
+protocol LocationViewControllerDelegate: class {
+    func finishSelectLocation(_ deliveryInfo: DeliveryInformation)
+}
 
 class LocationViewController: BaseViewController {
     
@@ -26,6 +29,8 @@ class LocationViewController: BaseViewController {
         .bottomMenuHairlineColor(UIColor.separator)
     ]
     
+    weak var delegate: LocationViewControllerDelegate?
+    private var deliveryInformation  = DeliveryInformation()
     fileprivate let provinceVC = ProvinceViewController()
     fileprivate let districtVC = DistrictViewController()
     fileprivate let wardVC     = WardViewController()
@@ -62,12 +67,14 @@ class LocationViewController: BaseViewController {
     }
     
     private func addDistrictVC() {
+        districtVC.delegate = self
         districtVC.title = TextManager.district
         districtVC.view.frame = viewControllerFrame
         subPageControllers.append(districtVC)
     }
     
     private func addWardVC() {
+        wardVC.delegate = self
         wardVC.title = TextManager.ward
         wardVC.view.frame = viewControllerFrame
         subPageControllers.append(wardVC)
@@ -75,8 +82,38 @@ class LocationViewController: BaseViewController {
 
 }
 
+// MARK: - ProvinceViewControllerDelegate
+
 extension LocationViewController: ProvinceViewControllerDelegate {
-    func didTapProvinceSelect(title: String, index: Int) {
+    func didTapProvinceSelect(_ province: Province,
+                              index: Int,
+                              code: String) {
+        self.deliveryInformation.province = province
         self.pageMenu?.moveToPage(index)
+        self.districtVC.requestAPIDistrict(code: code)
+    }
+}
+
+// MARK: - DistrictViewControllerDelegate
+
+extension LocationViewController: DistrictViewControllerDelegate {
+    func didTapDistrictSelect(_ district: District,
+                              index: Int,
+                              code: String) {
+        self.deliveryInformation.district = district
+        self.pageMenu?.moveToPage(index)
+        self.wardVC.requestAPIWard(code: code)
+    }
+}
+
+// MARK: - WardViewControllerDelegate
+
+extension LocationViewController: WardViewControllerDelegate {
+    
+    func didTapDistrictSelect(_ ward: Ward, code: String) {
+        self.deliveryInformation.ward = ward
+        self.navigationController?.popViewControllerWithHandler(completion: {
+            self.delegate?.finishSelectLocation(self.deliveryInformation)
+        })
     }
 }

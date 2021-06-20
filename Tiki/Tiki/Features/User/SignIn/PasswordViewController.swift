@@ -47,7 +47,7 @@ class PasswordViewController: BaseViewController {
     fileprivate lazy var passwordTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.isSecureTextEntry = true
-        textField.fontSizePlaceholder(text: TextManager.password,
+        textField.fontPlaceholder(text: TextManager.password,
                                       size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)

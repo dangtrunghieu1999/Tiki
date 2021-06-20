@@ -12,12 +12,7 @@ import SwiftyJSON
 
 class DeliveryInfomationViewController: BaseViewController {
     
-    private (set) var deliveryInformation      = DeliveryInformation()
-    private (set) var provinces:    [Province] = []
-    private (set) var districts:    [District] = []
-    private (set) var wards:        [Ward]     = []
-    private (set) var isWaitingLoadDistrict    = false
-    private (set) var isWaitingLoadWard        = false
+    private (set) var deliveryInformation = DeliveryInformation()
     
     // MARK: - Variables
     
@@ -32,62 +27,82 @@ class DeliveryInfomationViewController: BaseViewController {
     }()
     
     fileprivate lazy var fullNameReciveTextField: TitleTextField = {
-        let label = TitleTextField()
-        label.titleText = TextManager.fullNameRecive
-        label.textField.fontSizePlaceholder(text: TextManager.fullNamePlaceholder,
-                                      size: FontSize.h1.rawValue)
-        return label
+        let textField = TitleTextField()
+        textField.titleText = TextManager.fullNameRecive
+        
+        textField.textField
+        .fontPlaceholder(text: TextManager.fullNamePlaceholder.localized(),
+        size: FontSize.h1.rawValue)
+        textField.addTarget(self,
+                            action: #selector(textFieldValueChange(_:)),
+                            for: .editingChanged)
+        return textField
     }()
     
     fileprivate lazy var phoneReciveTextField: TitleTextField = {
-        let label = TitleTextField()
-        label.titleText = TextManager.phoneNumber
-        label.textField.fontSizePlaceholder(text: TextManager.phoneNumberPlaceholder,
-                                      size: FontSize.h1.rawValue)
-        return label
+        let textField = TitleTextField()
+        textField.titleText = TextManager.phoneNumber
+        
+        textField.textField
+        .fontPlaceholder(text: TextManager.phoneNumberPlaceholder.localized(),
+        size: FontSize.h1.rawValue)
+        
+        textField.addTarget(self,
+                            action: #selector(textFieldValueChange(_:)),
+                            for: .editingChanged)
+        return textField
     }()
     
     fileprivate lazy var addressReciveTextField: TitleTextField = {
-        let label = TitleTextField()
-        label.titleText = TextManager.addressRecive
-        label.textField.fontSizePlaceholder(text: TextManager.addressPlaceholder,
-                                      size: FontSize.h1.rawValue)
-        return label
+        let textField = TitleTextField()
+        textField.titleText = TextManager.addressRecive
+        
+        textField.textField
+        .fontPlaceholder(text: TextManager.addressPlaceholder.localized(),
+        size: FontSize.h1.rawValue)
+        
+        textField.addTarget(self,
+                            action: #selector(textFieldValueChange(_:)),
+                            for: .editingChanged)
+        return textField
     }()
     
     fileprivate lazy var provinceTextField: TitleTextField = {
         let textField = TitleTextField()
-        textField.textField.fontSizePlaceholder(text: TextManager.provinceCity.localized(),
-                                                size: FontSize.h1.rawValue)
         textField.titleText = TextManager.provinceCity.localized()
         textField.rightTextfieldImage = ImageManager.dropDown
+        
+        textField.textField
+        .fontPlaceholder(text: TextManager.provinceCity.localized(),
+        size: FontSize.h1.rawValue)
+        
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
-        textField.addTarget(self,
-                            action: #selector(textFieldDidEndEditing(_:)),
-                            for: .editingDidEnd)
         return textField
     }()
     
     fileprivate lazy var districtTextField: TitleTextField = {
         let textField = TitleTextField()
-        textField.textField.fontSizePlaceholder(text: TextManager.district.localized(),
-                                                size: FontSize.h1.rawValue)
         textField.titleText = TextManager.district.localized()
         textField.rightTextfieldImage = ImageManager.dropDown
+        
+        textField.textField
+        .fontPlaceholder(text: TextManager.district.localized(),
+        size: FontSize.h1.rawValue)
+        
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
         textField.addTarget(self,
-                            action: #selector(textFieldDidEndEditing(_:)),
-                            for: .editingDidEnd)
+                            action: #selector(textFieldValueChange(_:)),
+                            for: .valueChanged)
         return textField
     }()
     
     fileprivate lazy var wardTextField: TitleTextField = {
         let textField = TitleTextField()
-        textField.textField.fontSizePlaceholder(text: TextManager.ward.localized(),
+        textField.textField.fontPlaceholder(text: TextManager.ward.localized(),
                                                 size: FontSize.h1.rawValue)
         textField.titleText = TextManager.ward.localized()
         textField.rightTextfieldImage = ImageManager.dropDown
@@ -98,9 +113,6 @@ class DeliveryInfomationViewController: BaseViewController {
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
-        textField.addTarget(self,
-                            action: #selector(textFieldDidEndEditing(_:)),
-                            for: .editingDidEnd)
         return textField
     }()
     
@@ -144,14 +156,11 @@ class DeliveryInfomationViewController: BaseViewController {
     @objc private func textFieldBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
         let vc = LocationViewController()
+        vc.delegate = self
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc private func textFieldValueChange(_ textField: UITextField) {
-       
-    }
-    
-    @objc private func textFieldDidEndEditing(_ textField: UITextField) {
        
     }
     
@@ -166,8 +175,6 @@ class DeliveryInfomationViewController: BaseViewController {
             shipAddressButton.setTitleColor(UIColor.bodyText, for: .normal)
         }
     }
-    
-    // MARK: - GET API
     
     // MARK: - Layout
     
@@ -311,7 +318,14 @@ class DeliveryInfomationViewController: BaseViewController {
     
 }
 
-// MARK: - UITextViewDelegate
+// MARK: - LocationViewControllerDelegate
 
-
-// MARK: - UIPickerViewDelegate
+extension DeliveryInfomationViewController: LocationViewControllerDelegate {
+    
+    func finishSelectLocation(_ deliveryInfo: DeliveryInformation) {
+        self.deliveryInformation = deliveryInfo
+        self.provinceTextField.text = deliveryInformation.province?.name
+        self.districtTextField.text = deliveryInformation.district?.name
+        self.wardTextField.text     = deliveryInformation.ward?.name
+    }
+}

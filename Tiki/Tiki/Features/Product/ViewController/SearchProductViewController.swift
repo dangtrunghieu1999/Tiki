@@ -32,7 +32,7 @@ class SearchProductViewController: BaseViewController {
         super.viewDidLoad()
         navigationItem.titleView = searchBar
         navigationItem.rightBarButtonItem = cartBarButtonItem
-        self.searchBar.fontSizePlaceholder(text: TextManager.searchTitle2, size: FontSize.h2.rawValue)
+        self.searchBar.fontPlaceholder(text: TextManager.searchTitle2, size: FontSize.h2.rawValue)
     }
     
     

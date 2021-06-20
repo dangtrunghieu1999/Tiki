@@ -63,7 +63,7 @@ class ProfileViewController: BaseViewController {
     fileprivate lazy var firstNameTextField: TitleTextField = {
         let textField = TitleTextField()
         textField.titleText   = TextManager.firstName.localized()
-        textField.textField.fontSizePlaceholder(text: TextManager.firstName.localized(),
+        textField.textField.fontPlaceholder(text: TextManager.firstName.localized(),
                                                 size: FontSize.h1.rawValue)
         return textField
     }()
@@ -71,7 +71,7 @@ class ProfileViewController: BaseViewController {
     fileprivate lazy var lastNameTextField: TitleTextField = {
         let textField = TitleTextField()
         textField.titleText   = TextManager.lastName.localized()
-        textField.textField.fontSizePlaceholder(text: TextManager.lastName.localized(),
+        textField.textField.fontPlaceholder(text: TextManager.lastName.localized(),
                                                 size: FontSize.h1.rawValue)
         return textField
     }()
@@ -136,7 +136,7 @@ class ProfileViewController: BaseViewController {
     fileprivate lazy var emailTextField: TitleTextField = {
         let textField = TitleTextField()
         textField.titleText   = TextManager.email.localized()
-        textField.textField.fontSizePlaceholder(text: TextManager.emailPlaceholder.localized(),
+        textField.textField.fontPlaceholder(text: TextManager.emailPlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
         textField.keyboardType = .emailAddress
         return textField
@@ -145,7 +145,7 @@ class ProfileViewController: BaseViewController {
     fileprivate lazy var phoneTextField: TitleTextField = {
         let textField = TitleTextField()
         textField.titleText   = TextManager.phoneNumber.localized()
-        textField.textField.fontSizePlaceholder(text: TextManager.phoneNumberPlaceholder.localized(),
+        textField.textField.fontPlaceholder(text: TextManager.phoneNumberPlaceholder.localized(),
                                                 size: FontSize.h1.rawValue)
         textField.keyboardType = .numberPad
         textField.isUserInteractionEnabled = false

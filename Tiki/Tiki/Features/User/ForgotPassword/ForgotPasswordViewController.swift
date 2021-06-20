@@ -34,7 +34,7 @@ class ForgotPasswordViewController: BaseViewController {
     
     fileprivate lazy var phoneTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.fontSizePlaceholder(text: TextManager.signInUserNamePlaceHolder,
+        textField.fontPlaceholder(text: TextManager.signInUserNamePlaceHolder,
                                       size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)

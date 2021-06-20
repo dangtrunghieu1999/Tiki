@@ -125,9 +125,7 @@ class OrderManager {
                                   "InsuranceFee":       shippingFeeInfo.insuranceFee,
                                   "CustomerName":       deliveryInformation.fullName,
                                   "Phone":              deliveryInformation.phoneNumber,
-                                  "Address":            deliveryInformation.address,
-                                  "DistrictId":         deliveryInformation.district?.id ?? 0,
-                                  "WardId":             deliveryInformation.ward?.id ?? 0,]
+                                  "Address":            deliveryInformation.address]
         
         let listOrderProducts = cartShopInfo.products.map({ $0.toOrderDictionary() })
         params["ListOrderDetail"] = listOrderProducts

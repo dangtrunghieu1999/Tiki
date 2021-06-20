@@ -52,7 +52,7 @@ open class BaseViewController: UIViewController {
         searchBar.placeholder = TextManager.search
         searchBar.font = UIFont.systemFont(ofSize: FontSize.h2.rawValue)
         searchBar.returnKeyType = .search
-        searchBar.fontSizePlaceholder(text: TextManager.search, size: FontSize.h2.rawValue)
+        searchBar.fontPlaceholder(text: TextManager.search, size: FontSize.h2.rawValue)
         var rect = navigationController?.navigationBar.frame ?? CGRect.zero
         rect.size.height = 36
         searchBar.frame = rect

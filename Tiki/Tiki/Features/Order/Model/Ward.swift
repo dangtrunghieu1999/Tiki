@@ -10,36 +10,32 @@ import UIKit
 import SwiftyJSON
 
 class Ward: NSObject, NSCoding, JSONParsable {
-    var id          = 0
-    var provinceId  = 0
-    var districtId  = 0
-    var prefix      = ""
-    var name        = ""
+    var code      = ""
+    var province  = ""
+    var district  = ""
+    var name      = ""
     
     required override init() {}
     
     required init(json: JSON) {
-        id              = json["Id"].intValue
-        provinceId      = json["ProvinceId"].intValue
-        districtId      = json["DistrictId"].intValue
-        prefix          = json["Prefix"].stringValue
-        name            = json["Name"].stringValue
+        code          = json["code"].stringValue
+        province      = json["province"].stringValue
+        district      = json["district"].stringValue
+        name          = json["name"].stringValue
     }
     
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(id, forKey: "Id")
-        aCoder.encode(provinceId, forKey: "ProvinceId")
-        aCoder.encode(districtId, forKey: "DistrictId")
-        aCoder.encode(prefix, forKey: "Prefix")
-        aCoder.encode(name, forKey: "Name")
+        aCoder.encode(code, forKey: "code")
+        aCoder.encode(province, forKey: "province")
+        aCoder.encode(district, forKey: "district")
+        aCoder.encode(name, forKey: "name")
     }
     
     required init?(coder aDecoder: NSCoder) {
-        id   = aDecoder.decodeInteger(forKey: "Id")
-        provinceId = aDecoder.decodeInteger(forKey: "ProvinceId")
-        districtId = aDecoder.decodeInteger(forKey: "DistrictId")
-        prefix = aDecoder.decodeObject(forKey: "Prefix") as? String ?? ""
-        name = aDecoder.decodeObject(forKey: "Name") as? String ?? ""
+        code     = aDecoder.decodeObject(forKey: "code") as? String ?? ""
+        province = aDecoder.decodeObject(forKey: "province") as? String ?? ""
+        district = aDecoder.decodeObject(forKey: "district") as? String ?? ""
+        name     = aDecoder.decodeObject(forKey: "name") as? String ?? ""
     }
     
 }

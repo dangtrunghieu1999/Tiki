@@ -10,7 +10,9 @@ import Alamofire
 import SwiftyJSON
 
 protocol ProvinceViewControllerDelegate: class {
-    func didTapProvinceSelect(title: String, index: Int)
+    func didTapProvinceSelect(_ province: Province,
+                              index: Int,
+                              code: String)
 }
 
 class ProvinceViewController: AbstractLocationViewController {
@@ -64,9 +66,13 @@ extension ProvinceViewController {
     
     override func tableView(_ tableView: UITableView,
                             didSelectRowAt indexPath: IndexPath) {
-        let title = provinces[indexPath.row].name
+        let title    = provinces[indexPath.row].name
+        let code     = provinces[indexPath.row].code
+        let province = provinces[indexPath.row]
         AlertManager.shared.showToast(message: title)
-        delegate?.didTapProvinceSelect(title: title, index: 1)
+        delegate?.didTapProvinceSelect(province,
+                                       index: 1,
+                                       code: code)
     }
     
 }

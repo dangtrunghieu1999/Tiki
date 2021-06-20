@@ -35,7 +35,7 @@ class ChangePWViewController: BaseViewController {
     
     fileprivate lazy var passwordTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.fontSizePlaceholder(text: TextManager.password,
+        textField.fontPlaceholder(text: TextManager.password,
                                       size: FontSize.body.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)
@@ -52,7 +52,7 @@ class ChangePWViewController: BaseViewController {
     
     fileprivate lazy var confirmPasswordTextField: PaddingTextField = {
         let textField = PaddingTextField()
-        textField.fontSizePlaceholder(text: TextManager.confirmPW,
+        textField.fontPlaceholder(text: TextManager.confirmPW,
                                       size: FontSize.body.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:)), for: .editingChanged)

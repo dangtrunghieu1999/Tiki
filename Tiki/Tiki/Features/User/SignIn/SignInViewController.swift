@@ -57,7 +57,7 @@ class SignInViewController: BaseViewController {
     fileprivate lazy var phoneTextField: PaddingTextField = {
         let textField = PaddingTextField()
         textField.keyboardType = .numberPad
-        textField.fontSizePlaceholder(text: TextManager.phoneNumber,
+        textField.fontPlaceholder(text: TextManager.phoneNumber,
                                       size: FontSize.h1.rawValue)
         textField.padding =  UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         textField.addTarget(self, action: #selector(textFieldValueChange(_:))
