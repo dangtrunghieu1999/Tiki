@@ -13,7 +13,7 @@ class DeliveryAddressViewController: BaseViewController {
     
     // MARK: - Variables
     fileprivate var selectedAddress: Bool = false
-    fileprivate var arrayAdress: [Address] = []
+    fileprivate var deliveryAddress: [DeliveryInformation] = []
     var selectIndex : Int? = 0
     
     // MARK: - UI Elements
@@ -81,7 +81,7 @@ class DeliveryAddressViewController: BaseViewController {
             switch response.result {
             case.success(let value):
                 let json = JSON(value)
-                self.arrayAdress = json.arrayValue.map{Address(json: $0)}
+                self.deliveryAddress = json.arrayValue.map{DeliveryInformation(json: $0)}
                 self.shipAdressTableView.reloadData()
             case .failure(let error):
                 print(error)
@@ -161,13 +161,13 @@ extension DeliveryAddressViewController: UITableViewDelegate {
 
 extension DeliveryAddressViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayAdress.count
+        return deliveryAddress.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: SelectShipAddressTableViewCell = tableView.dequeueReusableCell(for: indexPath)
         let index = indexPath.row
-        cell.configData(arrayAdress[indexPath.row], index: index)
+        cell.configData(deliveryAddress[indexPath.row], index: index)
         cell.isSelected = (indexPath.row == selectIndex)
         return cell
     }

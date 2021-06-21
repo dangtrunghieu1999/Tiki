@@ -12,9 +12,10 @@ import SwiftyJSON
 
 class DeliveryInfomationViewController: BaseViewController {
     
-    private (set) var deliveryInformation = DeliveryInformation()
+   
     
     // MARK: - Variables
+    private (set) var deliveryInformation = DeliveryInformation()
     
     // MARK: - UI Elements
     
@@ -26,7 +27,7 @@ class DeliveryInfomationViewController: BaseViewController {
         return label
     }()
     
-    fileprivate lazy var fullNameReciveTextField: TitleTextField = {
+    fileprivate lazy var fullNameTextField: TitleTextField = {
         let textField = TitleTextField()
         textField.titleText = TextManager.fullNameRecive
         
@@ -39,7 +40,7 @@ class DeliveryInfomationViewController: BaseViewController {
         return textField
     }()
     
-    fileprivate lazy var phoneReciveTextField: TitleTextField = {
+    fileprivate lazy var phoneNumberTextField: TitleTextField = {
         let textField = TitleTextField()
         textField.titleText = TextManager.phoneNumber
         
@@ -53,7 +54,7 @@ class DeliveryInfomationViewController: BaseViewController {
         return textField
     }()
     
-    fileprivate lazy var addressReciveTextField: TitleTextField = {
+    fileprivate lazy var addressTextField: TitleTextField = {
         let textField = TitleTextField()
         textField.titleText = TextManager.addressRecive
         
@@ -75,10 +76,11 @@ class DeliveryInfomationViewController: BaseViewController {
         textField.textField
         .fontPlaceholder(text: TextManager.provinceCity.localized(),
         size: FontSize.h1.rawValue)
-        
+
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
+
         return textField
     }()
     
@@ -90,13 +92,11 @@ class DeliveryInfomationViewController: BaseViewController {
         textField.textField
         .fontPlaceholder(text: TextManager.district.localized(),
         size: FontSize.h1.rawValue)
-        
+    
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
-        textField.addTarget(self,
-                            action: #selector(textFieldValueChange(_:)),
-                            for: .valueChanged)
+
         return textField
     }()
     
@@ -106,10 +106,6 @@ class DeliveryInfomationViewController: BaseViewController {
                                                 size: FontSize.h1.rawValue)
         textField.titleText = TextManager.ward.localized()
         textField.rightTextfieldImage = ImageManager.dropDown
-
-        textField.addTarget(self,
-                            action: #selector(textFieldValueChange(_:)),
-                            for: .valueChanged)
         textField.addTarget(self,
                             action: #selector(textFieldBeginEditing(_:)),
                             for: .editingDidBegin)
@@ -131,6 +127,7 @@ class DeliveryInfomationViewController: BaseViewController {
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.masksToBounds = true
         button.layer.cornerRadius = Dimension.shared.cornerRadiusSmall
+        button.addTarget(self, action: #selector(tapOnSaveAddress), for: .touchUpInside)
         return button
     }()
     
@@ -143,15 +140,19 @@ class DeliveryInfomationViewController: BaseViewController {
         layoutShipAddressButton()
         layoutScrollView()
         layoutTitleLabel()
-        layoutFullNameReciveTitleLabel()
-        layoutPhoneNumberReciveTitleLabel()
-        layoutAddressReciveTitleLabel()
-        layoutProvinceCityTitleLabel()
-        layoutDistrictCityTitleLabel()
-        layoutWardCityTitleLabel()
+        layoutFullNameTextField()
+        layoutPhoneNumberTextField()
+        layoutAddressTextField()
+        layoutProvinceTextField()
+        layoutDistrictTextField()
+        layoutWardCityTextField()
     }
     
     // MARK: - Helper Method
+    
+    @objc func tapOnSaveAddress() {
+        
+    }
     
     @objc private func textFieldBeginEditing(_ textField: UITextField) {
         textField.resignFirstResponder()
@@ -161,7 +162,14 @@ class DeliveryInfomationViewController: BaseViewController {
     }
     
     @objc private func textFieldValueChange(_ textField: UITextField) {
-       
+        if textField == fullNameTextField.textField {
+            deliveryInformation.fullName = textField.text ?? ""
+        } else if textField == phoneNumberTextField.textField {
+            deliveryInformation.phoneNumber = textField.text ?? ""
+        } else if textField == addressTextField.textField {
+            deliveryInformation.address = textField.text ?? ""
+        }
+        self.checkValidDeliveryInfo()
     }
     
     fileprivate func checkValidDeliveryInfo() {
@@ -244,9 +252,9 @@ class DeliveryInfomationViewController: BaseViewController {
         }
     }
     
-    private func layoutFullNameReciveTitleLabel() {
-        scrollView.addSubview(fullNameReciveTextField)
-        fullNameReciveTextField.snp.makeConstraints { (make) in
+    private func layoutFullNameTextField() {
+        scrollView.addSubview(fullNameTextField)
+        fullNameTextField.snp.makeConstraints { (make) in
             make.left
                 .right
                 .equalTo(titleLabel)
@@ -256,60 +264,60 @@ class DeliveryInfomationViewController: BaseViewController {
         }
     }
     
-    private func layoutPhoneNumberReciveTitleLabel() {
-        scrollView.addSubview(phoneReciveTextField)
-        phoneReciveTextField.snp.makeConstraints { (make) in
+    private func layoutPhoneNumberTextField() {
+        scrollView.addSubview(phoneNumberTextField)
+        phoneNumberTextField.snp.makeConstraints { (make) in
             make.left
                 .right
-                .equalTo(fullNameReciveTextField)
+                .equalTo(fullNameTextField)
             make.top
-                .equalTo(fullNameReciveTextField.snp.bottom)
+                .equalTo(fullNameTextField.snp.bottom)
                 .offset(dimension.normalMargin)
         }
     }
     
-    private func layoutAddressReciveTitleLabel() {
-        scrollView.addSubview(addressReciveTextField)
-        addressReciveTextField.snp.makeConstraints { (make) in
+    private func layoutAddressTextField() {
+        scrollView.addSubview(addressTextField)
+        addressTextField.snp.makeConstraints { (make) in
             make.left
                 .right
-                .equalTo(fullNameReciveTextField)
+                .equalTo(fullNameTextField)
             make.top
-                .equalTo(phoneReciveTextField.snp.bottom)
+                .equalTo(phoneNumberTextField.snp.bottom)
                 .offset(dimension.normalMargin)
         }
     }
     
-    private func layoutProvinceCityTitleLabel() {
+    private func layoutProvinceTextField() {
         scrollView.addSubview(provinceTextField)
         provinceTextField.snp.makeConstraints { (make) in
             make.left
                 .right
-                .equalTo(fullNameReciveTextField)
+                .equalTo(fullNameTextField)
             make.top
-                .equalTo(addressReciveTextField.snp.bottom)
+                .equalTo(addressTextField.snp.bottom)
                 .offset(dimension.normalMargin)
         }
     }
     
-    private func layoutDistrictCityTitleLabel() {
+    private func layoutDistrictTextField() {
         scrollView.addSubview(districtTextField)
         districtTextField.snp.makeConstraints { (make) in
             make.left
                 .right
-                .equalTo(fullNameReciveTextField)
+                .equalTo(fullNameTextField)
             make.top
                 .equalTo(provinceTextField.snp.bottom)
                 .offset(dimension.normalMargin)
         }
     }
     
-    private func layoutWardCityTitleLabel() {
+    private func layoutWardCityTextField() {
         scrollView.addSubview(wardTextField)
         wardTextField.snp.makeConstraints { (make) in
             make.left
                 .right
-                .equalTo(fullNameReciveTextField)
+                .equalTo(fullNameTextField)
             make.top.equalTo(districtTextField.snp.bottom)
                 .offset(dimension.normalMargin)
             make.bottom.equalToSuperview()
@@ -323,9 +331,10 @@ class DeliveryInfomationViewController: BaseViewController {
 extension DeliveryInfomationViewController: LocationViewControllerDelegate {
     
     func finishSelectLocation(_ deliveryInfo: DeliveryInformation) {
-        self.deliveryInformation = deliveryInfo
-        self.provinceTextField.text = deliveryInformation.province?.name
-        self.districtTextField.text = deliveryInformation.district?.name
-        self.wardTextField.text     = deliveryInformation.ward?.name
+        self.deliveryInformation.setLocationFinishSelect(deliveryInfo)
+        self.provinceTextField.text = deliveryInfo.province?.name
+        self.districtTextField.text = deliveryInfo.district?.name
+        self.wardTextField.text     = deliveryInfo.ward?.name
+        self.checkValidDeliveryInfo()
     }
 }

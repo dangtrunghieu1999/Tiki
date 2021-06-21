@@ -7,15 +7,18 @@
 //
 
 import UIKit
+import SwiftyJSON
 
-class DeliveryInformation: NSObject, NSCoding {
-
+class DeliveryInformation: NSObject, NSCoding, JSONParsable {
+    
     var fullName        = ""
     var phoneNumber     = ""
     var address         = ""
     var province        : Province?
     var district        : District?
     var ward            : Ward?
+    var info            = ""
+    var recive          = ""
     
     var isValidInfo: Bool {
         if fullName != ""
@@ -31,8 +34,20 @@ class DeliveryInformation: NSObject, NSCoding {
         }
     }
     
-    override init() {
+    required override init() {
         super.init()
+    }
+    
+    required init(json: JSON) {
+        self.fullName = json["fullName"].stringValue
+        self.phoneNumber = json["phoneNumber"].stringValue
+        self.address  = json["address"].stringValue
+        self.province = Province(json: json["province"])
+        self.district = District(json: json["district"])
+        self.ward     = Ward(json: json["ward"])
+        self.info     = fullName + " - " + phoneNumber
+        self.recive   =
+            "\(address), \(ward?.name ?? ""), \(district?.name ?? ""), \(province?.name ?? "")"
     }
     
     func encode(with aCoder: NSCoder) {
@@ -51,6 +66,12 @@ class DeliveryInformation: NSObject, NSCoding {
         province        = aDecoder.decodeObject(forKey: "province") as? Province
         district        = aDecoder.decodeObject(forKey: "district") as? District
         ward            = aDecoder.decodeObject(forKey: "ward") as? Ward
+    }
+    
+    func setLocationFinishSelect(_ deliveryInfo: DeliveryInformation) {
+        self.province = deliveryInfo.province
+        self.district = deliveryInfo.district
+        self.ward     = deliveryInfo.ward
     }
     
 }

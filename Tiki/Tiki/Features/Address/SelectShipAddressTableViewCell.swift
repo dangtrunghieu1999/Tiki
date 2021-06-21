@@ -91,14 +91,14 @@ class SelectShipAddressTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configData(_ address: Address, index: Int) {
+    func configData(_ delivery: DeliveryInformation, index: Int) {
         if index != 0 {
             flagImageView.isHidden = true
             addressDefaultLabel.isHidden = true
         }
-        let title = address.fullName + " - " + address.phoneNumber
-        self.infoUserLabel.text      = title
-        self.addressDetailLabel.text = address.address
+        
+        self.infoUserLabel.text      = delivery.info
+        self.addressDetailLabel.text = delivery.recive
     }
     
     // MARK: - GET API

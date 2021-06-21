@@ -12,11 +12,6 @@ class ProductParameterViewController: BaseViewController {
     
     // MARK: - Variables
     
-    fileprivate lazy var productParamter: ProductParameterModel = {
-        let paramter = ProductParameterModel()
-        return paramter
-    }()
-    
     private var details = Details()
     
     // MARK: - UI Elements

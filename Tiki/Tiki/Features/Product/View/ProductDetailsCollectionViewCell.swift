@@ -17,11 +17,6 @@ class ProductDetailsCollectionViewCell: BaseCollectionViewCell {
     
     weak var delegate: ProductDetailsDelegate?
     
-    fileprivate lazy var productParamter: ProductParameterModel = {
-        let paramter = ProductParameterModel()
-        return paramter
-    }()
-    
     private var details = Details()
     
     // MARK: - UI Elements

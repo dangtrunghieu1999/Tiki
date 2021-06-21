@@ -31,14 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.toolbarTintColor = UIColor.primary
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
-//        if UserManager.isLoggedIn() {
-//            UserManager.getUserProfile()
-//            window?.rootViewController = TKTabBarViewController()
-//        } else {
-//            window?.rootViewController = TKTabBarViewController()
-//        }
+        if UserManager.isLoggedIn() {
+            UserManager.getUserProfile()
+            window?.rootViewController = TKTabBarViewController()
+        } else {
+            window?.rootViewController = TKTabBarViewController()
+        }
 //
-        window?.rootViewController = UINavigationController(rootViewController: DeliveryInfomationViewController())
+//        window?.rootViewController = UINavigationController(rootViewController: DeliveryInfomationViewController())
         
         //        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true

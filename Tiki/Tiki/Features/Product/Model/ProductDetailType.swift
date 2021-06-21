@@ -54,16 +54,3 @@ enum ProductDetailType: Int {
     }
     
 }
-
-class ProductParameterModel {
-    let keyTitle: [String]  =         ["Danh mục",
-                                       "Cung cấp bởi",
-                                       "Thương hiệu",
-                                       "Xuất xứ thương hiệu",
-                                       "Hướng dẫn",
-                                       "Model",
-                                       "Xuất xứ",
-                                       "SKU",
-                                       "Hoá đơn VAT",
-                                       "Bảo hành"]
-}

@@ -2,18 +2,24 @@
     {
         "fullName": "Đặng Trung Hiếu",
         "phoneNumber": "0336665653",
-        "address": "Hẻm 457/31 Huỳnh Tấn Phát, phường Tân Thuận Đông, Quận 7, TP Hồ Chí Minh"
-    },
-    {
-        "fullName": "Nguyễn Đình Triều",
-        "phoneNumber": "0386616446",
-        "address": "Số 13, Tân Thuận Đông, Quận 7, Thành phố Hồ Chí Minh 70000"
-    },
-    
-    {
-        "fullName": "Đặng Trung Hiếu",
-        "phoneNumber": "0336665653",
-        "address": "49 Mạc Đĩnh Chi, Đa Kao, Quận 1, Thành phố Hồ Chí Minh"
+        "address": "Hẻm 457/31 Huỳnh Tấn Phát",
+        "province": {
+            "code": "79",
+            "name": "Thành phố Hồ Chí Minh"
+        },
+        
+        "district": {
+            "code": "785",
+            "name": "Huyện Bình Chánh",
+            "province": "Thành phố Hồ Chí Minh"
+        },
+        
+        "ward": {
+            "code": "27034",
+            "name": "Phường Hòa Thạnh",
+            "district": "Quận Tân Phú",
+            "province": "Thành phố Hồ Chí Minh"
+        }
+        
     }
-    
 ]

@@ -81,6 +81,7 @@ class TitleTextField: BaseView {
         textField.layer.cornerRadius = dimension.cornerRadiusSmall
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.separator.cgColor
+        textField.font = UIFont.systemFont(ofSize: FontSize.h1.rawValue)
         return textField
     }()
     
